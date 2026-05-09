@@ -43,7 +43,6 @@
         }
       }
     },
-
     "data-analyst": {
       "description": "Profesor senior de data science — análisis, ML, ETL, reportes",
       "mode": "subagent",
@@ -118,7 +117,6 @@
         }
       }
     },
-
     "frontend-senior": {
       "description": "Mentor senior de frontend — React, TypeScript, CSS, testing",
       "mode": "subagent",
@@ -170,554 +168,858 @@
         }
       }
     },
-
     "data-explorer": {
       "description": "EDA, profiling y análisis exploratorio",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "data-modeler": {
       "description": "Modelado ML, feature engineering, tuning",
       "mode": "subagent",
       "model": "T4-reasoning",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "data-reporter": {
       "description": "Reportes, visualizaciones y dashboards",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "data-etl": {
       "description": "Pipelines ETL y automatización",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "data-cleaning": {
       "description": "Limpieza y preprocesamiento de datos",
       "mode": "subagent",
       "model": "T2-fast",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
     },
-
     "data-validation": {
       "description": "Validación y calidad de datos",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
     },
-
     "data-question": {
       "description": "Definir preguntas de negocio, hipótesis y objetivos",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
     },
-
     "data-design": {
       "description": "Diseñar estrategia de análisis, elegir enfoque",
       "mode": "subagent",
       "model": "T4-reasoning",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
     },
-
     "data-verify": {
       "description": "Verificar resultados del análisis",
       "mode": "subagent",
       "model": "T4-reasoning",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
     },
-
     "data-archive": {
       "description": "Documentar, versionar y cerrar proyectos",
       "mode": "subagent",
       "model": "T2-fast",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
     },
-
     "data-orchestrator": {
       "description": "Orquestador de pipelines multi-paso",
       "mode": "subagent",
       "model": "T4-reasoning",
       "hidden": true,
-      "tools": { "bash": true, "delegate": true, "edit": true, "read": true, "write": true, "skill": true, "task": true }
+      "tools": {
+        "bash": true,
+        "delegate": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true,
+        "task": true
+      }
     },
-
     "data-analysis": {
       "description": "Análisis con Pandas/NumPy",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "data-profiling": {
       "description": "Profiling automático con ydata-profiling",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "ml-modeling": {
       "description": "Machine Learning con Scikit-learn, XGBoost",
       "mode": "subagent",
       "model": "T4-reasoning",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "reporting": {
       "description": "Generación de reportes HTML, PDF, Markdown",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "streamlit": {
       "description": "Dashboards interactivos con Streamlit",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "data-visualization": {
       "description": "Gráficos con Matplotlib, Seaborn, Plotly",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "time-series-analysis": {
       "description": "Series temporales y forecasting",
       "mode": "subagent",
       "model": "T4-reasoning",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "statistical-testing": {
       "description": "Tests estadísticos con SciPy",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "sql-analysis": {
       "description": "Consultas SQL, joins, window functions",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "database-connections": {
       "description": "Conexiones a bases de datos",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "file-formats": {
       "description": "Lectura/escritura de múltiples formatos",
       "mode": "subagent",
       "model": "T2-fast",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
     },
-
     "etl-pipelines": {
       "description": "Patrones ETL/ELT con Pandas",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "notebook-integration": {
       "description": "Integración con Jupyter notebooks",
       "mode": "subagent",
       "model": "T2-fast",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
     },
-
     "python-environment": {
       "description": "Gestión de entornos Python",
       "mode": "subagent",
       "model": "T2-fast",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
     },
-
     "shared-git-data": {
       "description": "Git para proyectos de datos",
       "mode": "subagent",
       "model": "T2-fast",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
     },
-
     "shared-api-integration": {
       "description": "Consumo de APIs REST",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
     },
-
     "web-scraping": {
       "description": "Extracción de datos de sitios web",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
     },
-
     "regex-data": {
       "description": "Limpieza con expresiones regulares",
       "mode": "subagent",
       "model": "T2-fast",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
     },
-
     "commits-real": {
       "description": "Commits, documentación y versioning unificados",
       "mode": "subagent",
       "model": "T2-fast",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
     },
-
     "judgment-day": {
       "description": "Revisión adversarial: dos jueces ciegos",
       "mode": "subagent",
       "model": "T4-reasoning",
       "hidden": true,
-      "tools": { "bash": true, "delegate": true, "edit": true, "read": true, "write": true, "task": true }
+      "tools": {
+        "bash": true,
+        "delegate": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "task": true
+      }
     },
-
     "skill-creator": {
       "description": "Crear nuevas skills para el ecosistema",
       "mode": "subagent",
       "model": "T4-reasoning",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
     },
-
     "skill-registry": {
       "description": "Gestionar registro de skills",
       "mode": "subagent",
       "model": "T2-fast",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
     },
-
     "branch-pr": {
       "description": "Creación de PRs con issue-first",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
     },
-
     "chained-pr": {
       "description": "PRs encadenados para cambios grandes",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
     },
-
     "issue-creation": {
       "description": "Creación de issues en GitHub",
       "mode": "subagent",
       "model": "T2-fast",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
     },
-
     "go-testing": {
       "description": "Testing en Go con Bubbletea",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
     },
-
     "youtube-transcript": {
       "description": "Extraer transcripciones de YouTube",
       "mode": "subagent",
       "model": "T2-fast",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
     },
-
     "framework-architect": {
       "description": "Arquitectura frontend",
       "mode": "subagent",
       "model": "T4-reasoning",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
     },
-
     "ui-crafter": {
       "description": "Componentes UI reutilizables",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "styling-engineer": {
       "description": "CSS y estilos",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "data-flow": {
       "description": "Manejo de datos y estado frontend",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "api-consumer": {
       "description": "Consumo de APIs frontend",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "realtime-engineer": {
       "description": "WebSockets y tiempo real",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "quality-guardian": {
       "description": "Testing y calidad frontend",
       "mode": "subagent",
       "model": "T4-reasoning",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "perf-a11y": {
       "description": "Performance y accesibilidad",
       "mode": "subagent",
       "model": "T4-reasoning",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "build-master": {
       "description": "Build y tooling",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "content-docs": {
       "description": "Documentación y contenido",
       "mode": "subagent",
       "model": "T2-fast",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
     },
-
     "e2e-testing": {
       "description": "Testing E2E con Playwright",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
     },
-
     "frontend-react-development": {
       "description": "Desarrollo con React",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "frontend-css-styling": {
       "description": "CSS moderno y Tailwind",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "frontend-type-script": {
       "description": "TypeScript 5.x strict",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "frontend-api-integration": {
       "description": "TanStack Query, fetch, Axios",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "frontend-state-management": {
       "description": "Zustand, Redux, Context",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "frontend-testing": {
       "description": "Vitest, Testing Library",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "frontend-responsive-design": {
       "description": "Mobile-first, Container Queries",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     },
-
     "frontend-web-performance": {
       "description": "Core Web Vitals, Lighthouse",
       "mode": "subagent",
       "model": "T3-balanced",
       "hidden": true,
-      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
-    }
-  },
-
-  "mcp": {
-    "servers": {
-      "engram": {
-        "type": "local",
-        "command": "engram",
-        "args": ["mcp", "--tools=agent"]
-      },
-      "sequential-thinking": {
-        "type": "local",
-        "command": "npx",
-        "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
-      },
-      "filesystem": {
-        "type": "local",
-        "command": "npx",
-        "args": ["-y", "@modelcontextprotocol/server-filesystem", "{LEND_AI_HOME}"]
-      },
-      "puppeteer": {
-        "type": "local",
-        "command": "npx",
-        "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
-      },
-      "web-search": {
-        "type": "local",
-        "command": "npx",
-        "args": ["-y", "duckduckgo-mcp-server"]
-      },
-      "github": {
-        "type": "local",
-        "command": "npx",
-        "args": ["-y", "@modelcontextprotocol/server-github"]
-      },
-      "context7": {
-        "type": "remote",
-        "url": "https://mcp.context7.com/mcp"
-      },
-      "slack": {
-        "type": "local",
-        "command": "npx",
-        "args": ["-y", "@jtalk22/slack-mcp"]
-      },
-      "google-drive": {
-        "type": "local",
-        "command": "npx",
-        "args": ["-y", "@piotr-agier/google-drive-mcp"]
-      },
-      "notion": {
-        "type": "local",
-        "command": "bash",
-        "args": ["{LEND_AI_HOME}/mcp-servers/notion-wrapper.sh"]
-      },
-      "smtp-email": {
-        "type": "local",
-        "command": "bash",
-        "args": ["{LEND_AI_HOME}/mcp-servers/smtp-wrapper.sh"]
-      },
-      "postgres": {
-        "type": "local",
-        "command": "python3",
-        "args": ["{LEND_AI_HOME}/mcp-servers/postgres-server.py"]
-      },
-      "ocr": {
-        "type": "local",
-        "command": "python3",
-        "args": ["{LEND_AI_HOME}/mcp-servers/ocr-server.py"]
-      },
-      "agent-router": {
-        "type": "local",
-        "command": "python3",
-        "args": ["{LEND_AI_HOME}/mcp-servers/agent-router.py"]
-      },
-      "model-router": {
-        "type": "local",
-        "command": "python3",
-        "args": ["{LEND_AI_HOME}/mcp-servers/model-router.py"]
-      },
-      "sqlite": {
-        "type": "local",
-        "command": "npx",
-        "args": ["-y", "mcp-sqlite-server", "{LEND_AI_HOME}/data/analisis.db"]
-      },
-      "mysql": {
-        "type": "local",
-        "command": "npx",
-        "args": ["-y", "@berthojoris/mcp-mysql-server"],
-        "enabled": false
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
       }
     }
   },
-
+  "mcp": {
+    "engram": {
+      "type": "local",
+      "command": [
+        "engram",
+        "mcp",
+        "--tools=agent"
+      ]
+    },
+    "sequential-thinking": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
+    },
+    "filesystem": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "{LEND_AI_HOME}"
+      ]
+    },
+    "puppeteer": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-puppeteer"
+      ]
+    },
+    "web-search": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "duckduckgo-mcp-server"
+      ]
+    },
+    "github": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ]
+    },
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp"
+    },
+    "slack": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@jtalk22/slack-mcp"
+      ]
+    },
+    "google-drive": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@piotr-agier/google-drive-mcp"
+      ]
+    },
+    "notion": {
+      "type": "local",
+      "command": [
+        "bash",
+        "{LEND_AI_HOME}/mcp-servers/notion-wrapper.sh"
+      ]
+    },
+    "smtp-email": {
+      "type": "local",
+      "command": [
+        "bash",
+        "{LEND_AI_HOME}/mcp-servers/smtp-wrapper.sh"
+      ]
+    },
+    "postgres": {
+      "type": "local",
+      "command": [
+        "python3",
+        "{LEND_AI_HOME}/mcp-servers/postgres-server.py"
+      ]
+    },
+    "ocr": {
+      "type": "local",
+      "command": [
+        "python3",
+        "{LEND_AI_HOME}/mcp-servers/ocr-server.py"
+      ]
+    },
+    "agent-router": {
+      "type": "local",
+      "command": [
+        "python3",
+        "{LEND_AI_HOME}/mcp-servers/agent-router.py"
+      ]
+    },
+    "model-router": {
+      "type": "local",
+      "command": [
+        "python3",
+        "{LEND_AI_HOME}/mcp-servers/model-router.py"
+      ]
+    },
+    "sqlite": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "mcp-sqlite-server",
+        "{LEND_AI_HOME}/data/analisis.db"
+      ]
+    },
+    "mysql": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@berthojoris/mcp-mysql-server"
+      ],
+      "enabled": false
+    }
+  },
   "plugin": [
     "opencode-sdd-engram-manage",
     "opencode-subagent-statusline"
