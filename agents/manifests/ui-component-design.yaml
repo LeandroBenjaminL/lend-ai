@@ -1,0 +1,12 @@
+agent:
+  name: ui-component-design
+  layer: "1"
+  trigger: "Tarea relacionada con ui-component-design"
+  description: "Agente especialista en ui-component-design"
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+mcp_bindings: []

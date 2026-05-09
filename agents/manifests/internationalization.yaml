@@ -1,0 +1,12 @@
+agent:
+  name: internationalization
+  layer: "1"
+  trigger: "Tarea relacionada con internationalization"
+  description: "Agente especialista en internationalization"
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+mcp_bindings: []

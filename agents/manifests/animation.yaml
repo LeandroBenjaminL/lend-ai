@@ -1,0 +1,12 @@
+agent:
+  name: animation
+  layer: "1"
+  trigger: "Tarea relacionada con animation"
+  description: "Agente especialista en animation"
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+mcp_bindings: []

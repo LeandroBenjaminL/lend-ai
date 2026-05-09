@@ -1,0 +1,12 @@
+agent:
+  name: web-performance
+  layer: "1"
+  trigger: "Tarea relacionada con web-performance"
+  description: "Agente especialista en web-performance"
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+mcp_bindings: []

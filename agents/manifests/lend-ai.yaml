@@ -1,12 +1,13 @@
 agent:
   name: lend-ai
   layer: "0"
+  trigger: "Orquestar el ecosistema, decidir entre data y frontend, planificar arquitectura"
   description: "Orquestador general del ecosistema Lend.Ai — Data Analysis + Frontend Development"
 
 instructions:
-  persona: agents/manifests/lend-ai/persona.md
-  workflow: agents/manifests/lend-ai/workflow.md
-  patterns: agents/manifests/lend-ai/patterns.md
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
 
 skills:
   - senior-orchestrator

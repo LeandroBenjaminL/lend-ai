@@ -1,0 +1,12 @@
+agent:
+  name: seo-meta
+  layer: "1"
+  trigger: "Tarea relacionada con seo-meta"
+  description: "Agente especialista en seo-meta"
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+mcp_bindings: []

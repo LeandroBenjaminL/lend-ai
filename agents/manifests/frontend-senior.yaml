@@ -1,0 +1,12 @@
+agent:
+  name: frontend-senior
+  layer: "1"
+  trigger: "Tarea relacionada con frontend-senior"
+  description: "Agente especialista en frontend-senior"
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+mcp_bindings: []

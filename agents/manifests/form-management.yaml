@@ -1,0 +1,12 @@
+agent:
+  name: form-management
+  layer: "1"
+  trigger: "Tarea relacionada con form-management"
+  description: "Agente especialista en form-management"
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+mcp_bindings: []

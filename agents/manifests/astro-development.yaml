@@ -1,0 +1,12 @@
+agent:
+  name: astro-development
+  layer: "1"
+  trigger: "Tarea relacionada con astro-development"
+  description: "Agente especialista en astro-development"
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+mcp_bindings: []

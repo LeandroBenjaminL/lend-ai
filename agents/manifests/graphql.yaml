@@ -1,0 +1,12 @@
+agent:
+  name: graphql
+  layer: "1"
+  trigger: "Tarea relacionada con graphql"
+  description: "Agente especialista en graphql"
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+mcp_bindings: []

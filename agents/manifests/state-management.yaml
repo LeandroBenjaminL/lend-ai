@@ -1,0 +1,12 @@
+agent:
+  name: state-management
+  layer: "1"
+  trigger: "Tarea relacionada con state-management"
+  description: "Agente especialista en state-management"
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+mcp_bindings: []

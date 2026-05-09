@@ -1,0 +1,12 @@
+agent:
+  name: realtime
+  layer: "1"
+  trigger: "Tarea relacionada con realtime"
+  description: "Agente especialista en realtime"
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+mcp_bindings: []

@@ -1,0 +1,12 @@
+agent:
+  name: e2e-testing
+  layer: "1"
+  trigger: "Tarea relacionada con e2e-testing"
+  description: "Agente especialista en e2e-testing"
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+mcp_bindings: []

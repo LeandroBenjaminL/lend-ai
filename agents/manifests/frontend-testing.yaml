@@ -1,0 +1,12 @@
+agent:
+  name: frontend-testing
+  layer: "1"
+  trigger: "Tarea relacionada con frontend-testing"
+  description: "Agente especialista en frontend-testing"
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+mcp_bindings: []

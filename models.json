@@ -1,0 +1,461 @@
+{
+  "$schema": "./schemas/models-config.schema.json",
+  "_meta": {
+    "title": "Model Mapping — Data Analyst Ecosystem",
+    "description": "Catálogo de modelos ML y LLM recomendados para cada skill y sub-agente del ecosistema",
+    "version": "1.0",
+    "updated": "2026-05-07",
+    "maintainer": "Leandro Benjamin L."
+  },
+
+  "ml_models": [
+    {
+      "skill": "ml-modeling",
+      "_description": "Modelado supervisado y no supervisado con Scikit-learn, LightGBM, XGBoost y SHAP",
+      "tasks": [
+        {
+          "task": "classification",
+          "description": "Predecir una variable categórica",
+          "models": [
+            { "name": "LogisticRegression",     "library": "sklearn",  "when": "Baseline rápido e interpretable",                          "complexity": "baja" },
+            { "name": "RandomForestClassifier",  "library": "sklearn",  "when": "Cuando importa interpretabilidad sobre features",          "complexity": "media" },
+            { "name": "LGBMClassifier",          "library": "lightgbm", "when": "Default performance — el más rápido de los gradient boosted", "complexity": "media" },
+            { "name": "XGBClassifier",           "library": "xgboost",  "when": "Cuando necesitás regularización fuerte contra overfitting", "complexity": "media" },
+            { "name": "SVC",                     "library": "sklearn",  "when": "Dataset chico (<10K), fronteras complejas",                 "complexity": "media" }
+          ]
+        },
+        {
+          "task": "regression",
+          "description": "Predecir una variable numérica continua",
+          "models": [
+            { "name": "LinearRegression",        "library": "sklearn",  "when": "Baseline interpretable — asume linealidad",                "complexity": "baja" },
+            { "name": "Ridge",                   "library": "sklearn",  "when": "Linear con regularización L2 — evita overfitting",          "complexity": "baja" },
+            { "name": "LGBMRegressor",           "library": "lightgbm", "when": "Grandes datasets, mejor performance general",               "complexity": "media" },
+            { "name": "XGBRegressor",            "library": "xgboost",  "when": "Datos con outliers — más robusto que LightGBM",             "complexity": "media" },
+            { "name": "RandomForestRegressor",   "library": "sklearn",  "when": "Feature importance clara, datos tabulares no enormes",      "complexity": "media" }
+          ]
+        },
+        {
+          "task": "clustering",
+          "description": "Segmentación no supervisada de datos",
+          "models": [
+            { "name": "KMeans",                  "library": "sklearn",  "when": "Segmentación clásica, asume clusters esféricos",           "complexity": "baja" },
+            { "name": "DBSCAN",                  "library": "sklearn",  "when": "Clusters con formas irregulares, detecta outliers",         "complexity": "media" },
+            { "name": "AgglomerativeClustering", "library": "sklearn",  "when": "Cuando necesitás jerarquía de clusters",                   "complexity": "media" },
+            { "name": "GaussianMixture",         "library": "sklearn",  "when": "Clusters solapados, distribución probabilística",           "complexity": "media" }
+          ]
+        },
+        {
+          "task": "dimensionality_reduction",
+          "description": "Reducir cantidad de features preservando información",
+          "models": [
+            { "name": "PCA",                     "library": "sklearn",  "when": "Reducción lineal estándar, features correlacionadas",       "complexity": "baja" },
+            { "name": "t-SNE",                   "library": "sklearn",  "when": "Visualización en 2D/3D, clusters complejos",                "complexity": "alta" },
+            { "name": "UMAP",                    "library": "umap",     "when": "Más rápido que t-SNE, mejor preservación de estructura",   "complexity": "alta" }
+          ]
+        },
+        {
+          "task": "explicability",
+          "description": "Explicar predicciones de modelos",
+          "models": [
+            { "name": "SHAP TreeExplainer",      "library": "shap",    "when": "Modelos tree-based (RandomForest, XGB, LGBM)",             "complexity": "media" },
+            { "name": "SHAP KernelExplainer",    "library": "shap",    "when": "Cualquier modelo (más lento, genérico)",                    "complexity": "alta" },
+            { "name": "LIME",                    "library": "lime",    "when": "Explicaciones locales por predicción individual",          "complexity": "media" }
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "time-series-analysis",
+      "_description": "Análisis y forecasting de series temporales con Pandas, Statsmodels y Prophet",
+      "tasks": [
+        {
+          "task": "forecasting",
+          "description": "Pronosticar valores futuros de una serie temporal",
+          "models": [
+            { "name": "Prophet",                 "library": "prophet",      "when": "Series con estacionalidad múltiple, tolera nulos y outliers", "complexity": "baja" },
+            { "name": "ARIMA",                  "library": "statsmodels",   "when": "Series estacionarias, baseline clásico",                       "complexity": "media" },
+            { "name": "SARIMAX",                "library": "statsmodels",   "when": "ARIMA con estacionalidad + variables exógenas",                "complexity": "alta" },
+            { "name": "ExponentialSmoothing",   "library": "statsmodels",   "when": "Series con tendencia y estacionalidad simple",                 "complexity": "baja" },
+            { "name": "LSTM",                   "library": "tensorflow/keras", "when": "Series largas (>1000 pts), patrones complejos",              "complexity": "alta" }
+          ]
+        },
+        {
+          "task": "decomposition",
+          "description": "Descomponer serie en tendencia, estacionalidad y residuo",
+          "models": [
+            { "name": "seasonal_decompose",     "library": "statsmodels",   "when": "Descomposición aditiva/multiplicativa clásica",               "complexity": "baja" },
+            { "name": "STL",                    "library": "statsmodels",   "when": "Más robusto que seasonal_decompose, tolera outliers",         "complexity": "media" }
+          ]
+        },
+        {
+          "task": "stationarity_testing",
+          "description": "Evaluar si una serie es estacionaria",
+          "models": [
+            { "name": "ADF Test",               "library": "statsmodels",   "when": "Test deDickey-Fuller aumentado — el estándar",                "complexity": "baja" },
+            { "name": "KPSS Test",              "library": "statsmodels",   "when": "Complemento del ADF — H0 inversa",                            "complexity": "baja" }
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "statistical-testing",
+      "_description": "Tests de hipótesis y análisis estadístico con SciPy y Statsmodels",
+      "tasks": [
+        {
+          "task": "group_comparison",
+          "description": "Comparar dos o más grupos entre sí",
+          "models": [
+            { "name": "ttest_ind",              "library": "scipy",     "when": "2 grupos independientes, distribución normal",                "complexity": "baja" },
+            { "name": "ttest_rel",              "library": "scipy",     "when": "2 grupos apareados (mismos sujetos, 2 momentos)",             "complexity": "baja" },
+            { "name": "MannWhitneyU",           "library": "scipy",     "when": "2 grupos independientes, NO normal",                          "complexity": "baja" },
+            { "name": "Wilcoxon",               "library": "scipy",     "when": "2 grupos apareados, NO normal",                               "complexity": "baja" },
+            { "name": "f_oneway (ANOVA)",       "library": "scipy",     "when": "3+ grupos, distribución normal + varianzas iguales",          "complexity": "media" },
+            { "name": "Kruskal",                "library": "scipy",     "when": "3+ grupos, NO normal",                                        "complexity": "media" },
+            { "name": "TukeyHSD",               "library": "statsmodels", "when": "Post-hoc después de ANOVA significativo",                   "complexity": "media" }
+          ]
+        },
+        {
+          "task": "association",
+          "description": "Medir asociación entre variables",
+          "models": [
+            { "name": "PearsonR",               "library": "scipy",     "when": "Correlación lineal entre 2 variables numéricas",             "complexity": "baja" },
+            { "name": "SpearmanR",              "library": "scipy",     "when": "Correlación monótona (ordinal o no normal)",                  "complexity": "baja" },
+            { "name": "Chi2Contingency",        "library": "scipy",     "when": "Asociación entre 2 variables categóricas",                   "complexity": "baja" }
+          ]
+        },
+        {
+          "task": "distribution_testing",
+          "description": "Evaluar si los datos siguen una distribución específica",
+          "models": [
+            { "name": "Shapiro",                "library": "scipy",     "when": "Test de normalidad (ideal < 5000 obs)",                      "complexity": "baja" },
+            { "name": "KS Test",                "library": "scipy",     "when": "Comparar distribución contra otra o contra teórica",         "complexity": "baja" },
+            { "name": "Levene",                 "library": "scipy",     "when": "Homogeneidad de varianzas entre grupos",                     "complexity": "baja" }
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "data-cleaning",
+      "_description": "Limpieza y preprocesamiento: nulos, duplicados, outliers, tipos, formatos",
+      "tasks": [
+        {
+          "task": "outlier_detection",
+          "description": "Detectar valores atípicos en datos numéricos",
+          "models": [
+            { "name": "IQR",                    "library": "pandas",    "when": "Método simple y rápido, cualquier distribución",             "complexity": "baja" },
+            { "name": "Z-Score",                "library": "scipy",     "when": "Datos normales o aproximadamente normales",                  "complexity": "baja" },
+            { "name": "IsolationForest",        "library": "sklearn",   "when": "Dataset multidimensional, outliers no globulares",           "complexity": "media" },
+            { "name": "DBSCAN",                 "library": "sklearn",   "when": "Detectar outliers como subproducto del clustering",          "complexity": "media" },
+            { "name": "LOF",                    "library": "sklearn",   "when": "Outliers locales en densidad variable",                      "complexity": "media" }
+          ]
+        },
+        {
+          "task": "imputation",
+          "description": "Rellenar valores nulos",
+          "models": [
+            { "name": "SimpleImputer (mean)",   "library": "sklearn",   "when": "Columna numérica sin outliers",                              "complexity": "baja" },
+            { "name": "SimpleImputer (median)", "library": "sklearn",   "when": "Columna numérica CON outliers",                              "complexity": "baja" },
+            { "name": "SimpleImputer (mode)",   "library": "sklearn",   "when": "Columna categórica",                                         "complexity": "baja" },
+            { "name": "KNNImputer",             "library": "sklearn",   "when": "Cuando otras columnas predicen bien el valor faltante",      "complexity": "media" },
+            { "name": "ffill / bfill",          "library": "pandas",    "when": "Series temporales — arrastrar valor anterior/siguiente",     "complexity": "baja" },
+            { "name": "IterativeImputer",       "library": "sklearn",   "when": "Imputación multivariada, relaciones entre features",         "complexity": "alta" }
+          ]
+        },
+        {
+          "task": "encoding",
+          "description": "Convertir variables categóricas a numéricas",
+          "models": [
+            { "name": "OneHotEncoder",          "library": "sklearn",   "when": "Categóricas nominales sin orden, pocas categorías",           "complexity": "baja" },
+            { "name": "LabelEncoder",           "library": "sklearn",   "when": "Variable target categórica",                                 "complexity": "baja" },
+            { "name": "OrdinalEncoder",         "library": "sklearn",   "when": "Categóricas ordinales con jerarquía clara",                  "complexity": "baja" },
+            { "name": "TargetEncoder",          "library": "category_encoders", "when": "Alta cardinalidad, relación con el target",          "complexity": "media" }
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "data-validation",
+      "_description": "Validación de esquemas y calidad de datos con Pandera, Pydantic y Great Expectations",
+      "tasks": [
+        {
+          "task": "schema_validation",
+          "description": "Validar tipos, rangos, nulos y formato de columnas",
+          "models": [
+            { "name": "Pandera DataFrameSchema", "library": "pandera",  "when": "Validar DataFrames completos con checks por columna",         "complexity": "baja" },
+            { "name": "Pydantic BaseModel",     "library": "pydantic",  "when": "Validación fila por fila, columna como campo tipado",         "complexity": "baja" },
+            { "name": "Great Expectations",     "library": "ge",        "when": "Suites de validación reutilizables, data quality as code",    "complexity": "alta" }
+          ]
+        },
+        {
+          "task": "data_quality_reporting",
+          "description": "Generar reportes de calidad de datos",
+          "models": [
+            { "name": "Pandera Schema Summary", "library": "pandera",  "when": "Chequeo rápido de schema existente vs esperado",             "complexity": "baja" },
+            { "name": "Great Expectations Suite", "library": "ge",      "when": "Reporte HTML completo con expectativas pasan/fallan",        "complexity": "alta" }
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "data-profiling",
+      "_description": "Perfil automático de datasets con ydata-profiling, sweetviz y pandas nativo",
+      "tasks": [
+        {
+          "task": "quick_profile",
+          "description": "Perfil rápido de un dataset sin librerías externas",
+          "models": [
+            { "name": "Pandas .describe() + .info()", "library": "pandas", "when": "Chusmeo rápido desde consola/Jupyter",                 "complexity": "baja" }
+          ]
+        },
+        {
+          "task": "html_report",
+          "description": "Reporte HTML completo con correlaciones, distribuciones y alertas",
+          "models": [
+            { "name": "ProfileReport",          "library": "ydata-profiling", "when": "Reporte completo explorativo, datasets < 100K filas", "complexity": "baja" },
+            { "name": "ProfileReport (minimal)","library": "ydata-profiling", "when": "Modo minimal para datasets grandes (>100K)",        "complexity": "baja" }
+          ]
+        },
+        {
+          "task": "dataset_comparison",
+          "description": "Comparar dos datasets (train/test, antes/después)",
+          "models": [
+            { "name": "sweetviz compare",       "library": "sweetviz",  "when": "Comparar dos datasets lado a lado con reporte HTML",         "complexity": "baja" }
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "data-analysis",
+      "_description": "Análisis y manipulación general con Pandas y NumPy",
+      "tasks": [
+        {
+          "task": "data_manipulation",
+          "description": "Transformaciones, merges, groupby, pivot tables",
+          "models": [
+            { "name": "Pandas DataFrame",       "library": "pandas",    "when": "Manipulación tabular estándar",                              "complexity": "baja" },
+            { "name": "NumPy arrays",           "library": "numpy",     "when": "Operaciones numéricas vectorizadas",                         "complexity": "baja" }
+          ]
+        },
+        {
+          "task": "eda",
+          "description": "Análisis exploratorio inicial",
+          "models": [
+            { "name": "Pandas profiling",       "library": "pandas",    "when": "Describe, nulos, correlaciones, distribuciones",             "complexity": "baja" }
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "data-visualization",
+      "_description": "Gráficos estáticos e interactivos con Matplotlib, Seaborn y Plotly",
+      "tasks": [
+        {
+          "task": "static_plots",
+          "description": "Gráficos para papers, informes estáticos, publicaciones",
+          "models": [
+            { "name": "Matplotlib",             "library": "matplotlib", "when": "Control total sobre cada aspecto del gráfico",               "complexity": "media" },
+            { "name": "Seaborn",                "library": "seaborn",    "when": "Gráficos estadísticos lindos con 1 línea de código",         "complexity": "baja" }
+          ]
+        },
+        {
+          "task": "interactive_plots",
+          "description": "Gráficos interactivos para dashboards y exploración",
+          "models": [
+            { "name": "Plotly Express",         "library": "plotly",    "when": "Gráficos interactivos con sintaxis simple",                  "complexity": "baja" },
+            { "name": "Plotly Graph Objects",   "library": "plotly",    "when": "Control fino sobre interactividad y animaciones",            "complexity": "media" }
+          ]
+        },
+        {
+          "task": "statistical_plots",
+          "description": "Gráficos específicos para análisis estadístico",
+          "models": [
+            { "name": "Seaborn (boxplot, violin, heatmap)", "library": "seaborn", "when": "Distribuciones, correlaciones, comparaciones", "complexity": "baja" }
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "etl-pipelines",
+      "_description": "Pipelines ETL/ELT con Pandas y automatización Python",
+      "tasks": [
+        {
+          "task": "extraction",
+          "description": "Extraer datos de múltiples fuentes",
+          "models": [
+            { "name": "pd.read_csv / .read_excel / .read_json", "library": "pandas", "when": "Archivos locales o remotos", "complexity": "baja" },
+            { "name": "SQLAlchemy + pd.read_sql", "library": "sqlalchemy", "when": "Bases de datos relacionales", "complexity": "media" },
+            { "name": "requests + pd.json_normalize", "library": "requests", "when": "APIs REST", "complexity": "media" }
+          ]
+        },
+        {
+          "task": "transformation",
+          "description": "Transformar y limpiar datos en el pipeline",
+          "models": [
+            { "name": "Pandas transformations", "library": "pandas",    "when": "Transformaciones estándar (groupby, merge, filter)",         "complexity": "baja" },
+            { "name": "PySpark",                "library": "pyspark",   "when": "Datasets > 10 GB, procesamiento distribuido",               "complexity": "alta" }
+          ]
+        },
+        {
+          "task": "loading",
+          "description": "Cargar datos transformados a destino",
+          "models": [
+            { "name": "df.to_parquet / .to_csv", "library": "pandas",   "when": "Archivos planos o data lake",                               "complexity": "baja" },
+            { "name": "SQLAlchemy df.to_sql",   "library": "sqlalchemy", "when": "Base de datos destino",                                      "complexity": "media" }
+          ]
+        }
+      ]
+    }
+  ],
+
+  "llm_models": {
+    "_description": "Recomendación de modelos de lenguaje para cada agente del ecosistema, organizados en 5 tiers según complejidad de la tarea",
+    "_tiers": {
+      "T1-ultra-fast":  { "modelo": "Minimax Free",            "tipo_tarea": "Totalmente mecánica, cero razonamiento" },
+      "T2-fast":        { "modelo": "Minimax",                 "tipo_tarea": "Simple, poco contexto" },
+      "T3-balanced":    { "modelo": "DeepSeek Medium",         "tipo_tarea": "Default del día a día" },
+      "T4-reasoning":   { "modelo": "DeepSeek Pro",            "tipo_tarea": "Pensamiento estructurado, análisis profundo" },
+      "T5-deep":        { "modelo": "DeepSeek Pro Max",        "tipo_tarea": "Muy compleja o crítica, máximo razonamiento" }
+    },
+    "_criterio": "A menor tier, más rápido y barato. A mayor tier, más capacidad de razonamiento. La asignación depende del tipo de tarea de cada sub-agente.",
+
+    "primary_agents": [
+      {
+        "agent": "data-analyst",
+        "role": "Profesor mentor de Data Analysis — interactúa directamente con el usuario",
+        "recommended": "DeepSeek Medium",
+        "alternatives": ["DeepSeek Pro", "Minimax Free"],
+        "reason": "Tareas mixtas: puede requerir desde lo más simple hasta análisis profundos. T3 como default, escala según necesidad",
+        "tier": "T3-balanced",
+        "tier_range": ["T2-fast", "T5-deep"]
+      },
+      {
+        "agent": "gentle-orchestrator",
+        "role": "Orquestador SDD — coordina sub-agentes sin ejecutar trabajo directo",
+        "recommended": "DeepSeek Pro",
+        "alternatives": ["DeepSeek Medium"],
+        "reason": "Necesita entender specs complejas y coordinar sub-agentes sin alucinar",
+        "tier": "T4-reasoning",
+        "tier_range": ["T3-balanced", "T5-deep"]
+      }
+    ],
+
+    "sub_agents": [
+      {
+        "agent": "data-question",
+        "role": "Definir preguntas de negocio, hipótesis y objetivos",
+        "recommended": "Minimax",
+        "alternatives": ["Minimax Free", "DeepSeek Medium"],
+        "reason": "Tarea acotada y conversacional. No necesita razonamiento profundo. Si la pregunta es compleja, escala a T3",
+        "tier": "T2-fast",
+        "tier_range": ["T1-ultra-fast", "T3-balanced"]
+      },
+      {
+        "agent": "data-explorer",
+        "role": "EDA, profiling y análisis exploratorio de datasets",
+        "recommended": "DeepSeek Medium",
+        "alternatives": ["DeepSeek Pro", "Minimax"],
+        "reason": "EDA del día a día con T3. Si el dataset es muy complejo o grande, escala a T4",
+        "tier": "T3-balanced",
+        "tier_range": ["T2-fast", "T4-reasoning"]
+      },
+      {
+        "agent": "data-cleaner",
+        "role": "Limpieza y preprocesamiento de datos",
+        "recommended": "Minimax Free",
+        "alternatives": ["Minimax"],
+        "reason": "Tarea mecánica y bien definida — ultra rápida, no necesita razonamiento. IQR, fillna, drop dups",
+        "tier": "T1-ultra-fast",
+        "tier_range": ["T1-ultra-fast", "T2-fast"]
+      },
+      {
+        "agent": "data-modeler",
+        "role": "Modelado ML, feature engineering, tuning y SHAP",
+        "recommended": "DeepSeek Pro",
+        "alternatives": ["DeepSeek Medium", "DeepSeek Pro Max"],
+        "reason": "La tarea más compleja del ecosistema. Feature engineering y tuning van a T4-T5 según criticidad",
+        "tier": "T4-reasoning",
+        "tier_range": ["T3-balanced", "T5-deep"]
+      },
+      {
+        "agent": "data-reporter",
+        "role": "Reportes, visualizaciones y dashboards",
+        "recommended": "Minimax",
+        "alternatives": ["Minimax Free"],
+        "reason": "Tarea principalmente de formato y presentación — más mecánica que analítica",
+        "tier": "T2-fast",
+        "tier_range": ["T1-ultra-fast", "T3-balanced"]
+      },
+      {
+        "agent": "data-design",
+        "role": "Diseñar estrategia de análisis, elegir enfoque y planificar",
+        "recommended": "DeepSeek Pro",
+        "alternatives": ["DeepSeek Medium"],
+        "reason": "Decisiones de diseño y tradeoffs requieren pensamiento estructurado. T4 para diseño, T5 si el proyecto es crítico",
+        "tier": "T4-reasoning",
+        "tier_range": ["T3-balanced", "T5-deep"]
+      },
+      {
+        "agent": "data-etl",
+        "role": "Pipelines ETL, automatización y procesamiento por batches",
+        "recommended": "Minimax",
+        "alternatives": ["Minimax Free", "DeepSeek Medium"],
+        "reason": "Tarea procedural: armar pipelines con lógica bien definida. T2 default, T3 si el pipeline es complejo",
+        "tier": "T2-fast",
+        "tier_range": ["T1-ultra-fast", "T3-balanced"]
+      },
+      {
+        "agent": "data-validator",
+        "role": "Validación de calidad, schemas y reglas de integridad",
+        "recommended": "Minimax",
+        "alternatives": ["Minimax Free"],
+        "reason": "Validar contra reglas definidas — ejecución más que razonamiento. T2 para schemas, T1 para chequeos rápidos",
+        "tier": "T2-fast",
+        "tier_range": ["T1-ultra-fast", "T2-fast"]
+      },
+      {
+        "agent": "data-verify",
+        "role": "Verificar resultados, revisar errores y validar conclusiones",
+        "recommended": "DeepSeek Pro",
+        "alternatives": ["DeepSeek Medium", "DeepSeek Pro Max"],
+        "reason": "Rol adversarial: necesita razonamiento crítico para encontrar errores. T4 default, T5 si el análisis es crítico",
+        "tier": "T4-reasoning",
+        "tier_range": ["T3-balanced", "T5-deep"]
+      },
+      {
+        "agent": "data-archive",
+        "role": "Documentar, versionar y cerrar proyectos",
+        "recommended": "Minimax Free",
+        "alternatives": ["Minimax"],
+        "reason": "Tarea mecánica: resumir y documentar lo que ya se hizo. Ultra rápido, sin razonamiento necesario",
+        "tier": "T1-ultra-fast",
+        "tier_range": ["T1-ultra-fast", "T2-fast"]
+      },
+      {
+        "agent": "data-orchestrator",
+        "role": "Orquestar pipelines multi-paso — planificar, delegar, consolidar",
+        "recommended": "DeepSeek Pro",
+        "alternatives": ["DeepSeek Medium", "DeepSeek Pro Max"],
+        "reason": "Planificación multi-paso requiere pensamiento estructurado",
+        "tier": "T4-reasoning",
+        "tier_range": ["T3-balanced", "T5-deep"]
+      }
+    ],
+
+    "_sdd_subagents": {
+      "_description": "Sub-agentes SDD (Spec-Driven Development) — generalmente internos, no visibles al usuario",
+      "agents": [
+        { "agent": "sdd-init",     "recommended": "Minimax Free",       "tier": "T1-ultra-fast" },
+        { "agent": "sdd-propose",  "recommended": "DeepSeek Pro",       "tier": "T4-reasoning" },
+        { "agent": "sdd-spec",     "recommended": "DeepSeek Pro",       "tier": "T4-reasoning" },
+        { "agent": "sdd-design",   "recommended": "DeepSeek Pro",       "tier": "T4-reasoning" },
+        { "agent": "sdd-tasks",    "recommended": "Minimax",            "tier": "T2-fast" },
+        { "agent": "sdd-apply",    "recommended": "DeepSeek Medium",    "tier": "T3-balanced" },
+        { "agent": "sdd-verify",   "recommended": "DeepSeek Pro",       "tier": "T4-reasoning" },
+        { "agent": "sdd-archive",  "recommended": "Minimax Free",       "tier": "T1-ultra-fast" },
+        { "agent": "sdd-explore",  "recommended": "DeepSeek Medium",    "tier": "T3-balanced" },
+        { "agent": "sdd-onboard",  "recommended": "Minimax",            "tier": "T2-fast" }
+      ]
+    }
+  }
+}

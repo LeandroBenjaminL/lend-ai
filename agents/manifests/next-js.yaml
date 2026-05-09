@@ -1,0 +1,12 @@
+agent:
+  name: next-js
+  layer: "1"
+  trigger: "Tarea relacionada con next-js"
+  description: "Agente especialista en next-js"
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+mcp_bindings: []

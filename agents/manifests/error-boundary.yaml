@@ -1,0 +1,12 @@
+agent:
+  name: error-boundary
+  layer: "1"
+  trigger: "Tarea relacionada con error-boundary"
+  description: "Agente especialista en error-boundary"
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+mcp_bindings: []

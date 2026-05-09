@@ -1,0 +1,12 @@
+agent:
+  name: pwa
+  layer: "1"
+  trigger: "Tarea relacionada con pwa"
+  description: "Agente especialista en pwa"
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+mcp_bindings: []

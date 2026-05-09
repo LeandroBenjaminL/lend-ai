@@ -1,0 +1,12 @@
+agent:
+  name: routing
+  layer: "1"
+  trigger: "Tarea relacionada con routing"
+  description: "Agente especialista en routing"
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+mcp_bindings: []

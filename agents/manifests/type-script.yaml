@@ -1,0 +1,12 @@
+agent:
+  name: type-script
+  layer: "1"
+  trigger: "Tarea relacionada con type-script"
+  description: "Agente especialista en type-script"
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+mcp_bindings: []

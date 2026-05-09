@@ -1,0 +1,12 @@
+agent:
+  name: build-tools
+  layer: "1"
+  trigger: "Tarea relacionada con build-tools"
+  description: "Agente especialista en build-tools"
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+mcp_bindings: []

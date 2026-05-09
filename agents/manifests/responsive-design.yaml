@@ -1,0 +1,12 @@
+agent:
+  name: responsive-design
+  layer: "1"
+  trigger: "Tarea relacionada con responsive-design"
+  description: "Agente especialista en responsive-design"
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+mcp_bindings: []
