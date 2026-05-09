@@ -4,7 +4,6 @@
     "lend-ai": {
       "description": "Orquestador general del ecosistema Lend.Ai — Data Analysis + Frontend Development",
       "mode": "primary",
-      "model": "T3-balanced",
       "tools": {
         "bash": true,
         "delegate": true,
@@ -46,7 +45,6 @@
     "data-analyst": {
       "description": "Profesor senior de data science — análisis, ML, ETL, reportes",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -120,7 +118,6 @@
     "frontend-senior": {
       "description": "Mentor senior de frontend — React, TypeScript, CSS, testing",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -171,7 +168,6 @@
     "data-explorer": {
       "description": "EDA, profiling y análisis exploratorio",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -184,7 +180,6 @@
     "data-modeler": {
       "description": "Modelado ML, feature engineering, tuning",
       "mode": "subagent",
-      "model": "T4-reasoning",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -197,7 +192,6 @@
     "data-reporter": {
       "description": "Reportes, visualizaciones y dashboards",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -210,7 +204,6 @@
     "data-etl": {
       "description": "Pipelines ETL y automatización",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -223,7 +216,6 @@
     "data-cleaning": {
       "description": "Limpieza y preprocesamiento de datos",
       "mode": "subagent",
-      "model": "T2-fast",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -235,7 +227,6 @@
     "data-validation": {
       "description": "Validación y calidad de datos",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -247,7 +238,6 @@
     "data-question": {
       "description": "Definir preguntas de negocio, hipótesis y objetivos",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -259,7 +249,6 @@
     "data-design": {
       "description": "Diseñar estrategia de análisis, elegir enfoque",
       "mode": "subagent",
-      "model": "T4-reasoning",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -271,7 +260,6 @@
     "data-verify": {
       "description": "Verificar resultados del análisis",
       "mode": "subagent",
-      "model": "T4-reasoning",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -283,7 +271,6 @@
     "data-archive": {
       "description": "Documentar, versionar y cerrar proyectos",
       "mode": "subagent",
-      "model": "T2-fast",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -295,7 +282,6 @@
     "data-orchestrator": {
       "description": "Orquestador de pipelines multi-paso",
       "mode": "subagent",
-      "model": "T4-reasoning",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -310,7 +296,6 @@
     "data-analysis": {
       "description": "Análisis con Pandas/NumPy",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -323,7 +308,6 @@
     "data-profiling": {
       "description": "Profiling automático con ydata-profiling",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -336,7 +320,6 @@
     "ml-modeling": {
       "description": "Machine Learning con Scikit-learn, XGBoost",
       "mode": "subagent",
-      "model": "T4-reasoning",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -349,7 +332,6 @@
     "reporting": {
       "description": "Generación de reportes HTML, PDF, Markdown",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -362,7 +344,6 @@
     "streamlit": {
       "description": "Dashboards interactivos con Streamlit",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -375,7 +356,6 @@
     "data-visualization": {
       "description": "Gráficos con Matplotlib, Seaborn, Plotly",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -388,7 +368,6 @@
     "time-series-analysis": {
       "description": "Series temporales y forecasting",
       "mode": "subagent",
-      "model": "T4-reasoning",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -401,7 +380,6 @@
     "statistical-testing": {
       "description": "Tests estadísticos con SciPy",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -414,7 +392,6 @@
     "sql-analysis": {
       "description": "Consultas SQL, joins, window functions",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -427,7 +404,6 @@
     "database-connections": {
       "description": "Conexiones a bases de datos",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -440,7 +416,6 @@
     "file-formats": {
       "description": "Lectura/escritura de múltiples formatos",
       "mode": "subagent",
-      "model": "T2-fast",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -452,7 +427,6 @@
     "etl-pipelines": {
       "description": "Patrones ETL/ELT con Pandas",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -465,7 +439,6 @@
     "notebook-integration": {
       "description": "Integración con Jupyter notebooks",
       "mode": "subagent",
-      "model": "T2-fast",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -477,7 +450,6 @@
     "python-environment": {
       "description": "Gestión de entornos Python",
       "mode": "subagent",
-      "model": "T2-fast",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -489,7 +461,6 @@
     "shared-git-data": {
       "description": "Git para proyectos de datos",
       "mode": "subagent",
-      "model": "T2-fast",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -501,7 +472,6 @@
     "shared-api-integration": {
       "description": "Consumo de APIs REST",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -513,7 +483,6 @@
     "web-scraping": {
       "description": "Extracción de datos de sitios web",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -525,7 +494,6 @@
     "regex-data": {
       "description": "Limpieza con expresiones regulares",
       "mode": "subagent",
-      "model": "T2-fast",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -537,7 +505,6 @@
     "commits-real": {
       "description": "Commits, documentación y versioning unificados",
       "mode": "subagent",
-      "model": "T2-fast",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -549,7 +516,6 @@
     "judgment-day": {
       "description": "Revisión adversarial: dos jueces ciegos",
       "mode": "subagent",
-      "model": "T4-reasoning",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -563,7 +529,6 @@
     "skill-creator": {
       "description": "Crear nuevas skills para el ecosistema",
       "mode": "subagent",
-      "model": "T4-reasoning",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -575,7 +540,6 @@
     "skill-registry": {
       "description": "Gestionar registro de skills",
       "mode": "subagent",
-      "model": "T2-fast",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -587,7 +551,6 @@
     "branch-pr": {
       "description": "Creación de PRs con issue-first",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -599,7 +562,6 @@
     "chained-pr": {
       "description": "PRs encadenados para cambios grandes",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -611,7 +573,6 @@
     "issue-creation": {
       "description": "Creación de issues en GitHub",
       "mode": "subagent",
-      "model": "T2-fast",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -623,7 +584,6 @@
     "go-testing": {
       "description": "Testing en Go con Bubbletea",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -635,7 +595,6 @@
     "youtube-transcript": {
       "description": "Extraer transcripciones de YouTube",
       "mode": "subagent",
-      "model": "T2-fast",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -647,7 +606,6 @@
     "framework-architect": {
       "description": "Arquitectura frontend",
       "mode": "subagent",
-      "model": "T4-reasoning",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -659,7 +617,6 @@
     "ui-crafter": {
       "description": "Componentes UI reutilizables",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -672,7 +629,6 @@
     "styling-engineer": {
       "description": "CSS y estilos",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -685,7 +641,6 @@
     "data-flow": {
       "description": "Manejo de datos y estado frontend",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -698,7 +653,6 @@
     "api-consumer": {
       "description": "Consumo de APIs frontend",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -711,7 +665,6 @@
     "realtime-engineer": {
       "description": "WebSockets y tiempo real",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -724,7 +677,6 @@
     "quality-guardian": {
       "description": "Testing y calidad frontend",
       "mode": "subagent",
-      "model": "T4-reasoning",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -737,7 +689,6 @@
     "perf-a11y": {
       "description": "Performance y accesibilidad",
       "mode": "subagent",
-      "model": "T4-reasoning",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -750,7 +701,6 @@
     "build-master": {
       "description": "Build y tooling",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -763,7 +713,6 @@
     "content-docs": {
       "description": "Documentación y contenido",
       "mode": "subagent",
-      "model": "T2-fast",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -775,7 +724,6 @@
     "e2e-testing": {
       "description": "Testing E2E con Playwright",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -787,7 +735,6 @@
     "frontend-react-development": {
       "description": "Desarrollo con React",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -800,7 +747,6 @@
     "frontend-css-styling": {
       "description": "CSS moderno y Tailwind",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -813,7 +759,6 @@
     "frontend-type-script": {
       "description": "TypeScript 5.x strict",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -826,7 +771,6 @@
     "frontend-api-integration": {
       "description": "TanStack Query, fetch, Axios",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -839,7 +783,6 @@
     "frontend-state-management": {
       "description": "Zustand, Redux, Context",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -852,7 +795,6 @@
     "frontend-testing": {
       "description": "Vitest, Testing Library",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -865,7 +807,6 @@
     "frontend-responsive-design": {
       "description": "Mobile-first, Container Queries",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
@@ -878,7 +819,6 @@
     "frontend-web-performance": {
       "description": "Core Web Vitals, Lighthouse",
       "mode": "subagent",
-      "model": "T3-balanced",
       "hidden": true,
       "tools": {
         "bash": true,
