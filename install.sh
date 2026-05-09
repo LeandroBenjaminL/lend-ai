@@ -277,14 +277,15 @@ install_git() {
 install_python_deps() {
     step "Instalando dependencias Python"
 
+    # PEP 668 workaround: algunos sistemas bloquean pip system-wide
     if [ -f "${INSTALL_DIR}/requirements.txt" ]; then
         substep "Instalando desde requirements.txt..."
-        pip3 install -r "${INSTALL_DIR}/requirements.txt" -q 2>&1 | tail -1 || \
-            warn "Algunas dependencias Python no se instalaron"
+        PIP_REQUIRE_VIRTUALENV=0 pip3 install -r "${INSTALL_DIR}/requirements.txt" -q 2>&1 | tail -1 || \
+            warn "Algunas dependencias no se instalaron (podés hacerlo manual con: pip install -r requirements.txt)"
         success "Dependencias Python instaladas"
     else
         info "No hay requirements.txt — instalando paquetes core"
-        pip3 install mcp pyyaml pydantic pytest pandas numpy -q 2>&1 | tail -1 || true
+        PIP_REQUIRE_VIRTUALENV=0 pip3 install mcp pyyaml pydantic pytest pandas numpy -q 2>&1 | tail -1 || true
         success "Paquetes core instalados"
     fi
 }
@@ -501,10 +502,12 @@ post_install_checks() {
         fi
     fi
 
-    if [ -f "${INSTALL_DIR}/opencode.json" ]; then
-        if grep -q "{LEND_AI_HOME}" "${INSTALL_DIR}/opencode.json" 2>/dev/null; then
-            warn "opencode.json tiene variables sin reemplazar"
-            substep "Corré: sed -i 's|{LEND_AI_HOME}|${INSTALL_DIR}|g' ~/.config/opencode/opencode.json"
+    # Verificar que el opencode.json GLOBAL tenga los placeholders reemplazados
+    local opencode_global="${HOME}/.config/opencode/opencode.json"
+    if [ -f "$opencode_global" ]; then
+        if grep -q "{LEND_AI_HOME}" "$opencode_global" 2>/dev/null; then
+            warn "El opencode.json global tiene placeholders sin reemplazar"
+            substep "Corré: sed -i 's|{LEND_AI_HOME}|${INSTALL_DIR}|g' $opencode_global"
         fi
     fi
 
