@@ -1,8 +1,632 @@
 {
-  "$schema": "./schemas/opencode.schema.json",
-  "version": "1.0",
-  "name": "Lend.Ai",
-  "description": "Ecosistema unificado de agentes AI — Data Analysis + Frontend Development",
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "lend-ai": {
+      "description": "Orquestador general del ecosistema Lend.Ai — Data Analysis + Frontend Development",
+      "mode": "primary",
+      "model": "T3-balanced",
+      "tools": {
+        "bash": true,
+        "delegate": true,
+        "delegation_list": true,
+        "delegation_read": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true,
+        "task": true
+      },
+      "permission": {
+        "task": {
+          "*": "deny",
+          "data-analyst": "allow",
+          "frontend-senior": "allow",
+          "commits-real": "allow",
+          "judgment-day": "allow",
+          "skill-creator": "allow",
+          "skill-registry": "allow",
+          "sdd-init": "allow",
+          "sdd-explore": "allow",
+          "sdd-propose": "allow",
+          "sdd-spec": "allow",
+          "sdd-design": "allow",
+          "sdd-tasks": "allow",
+          "sdd-apply": "allow",
+          "sdd-verify": "allow",
+          "sdd-archive": "allow",
+          "sdd-onboard": "allow",
+          "branch-pr": "allow",
+          "chained-pr": "allow",
+          "issue-creation": "allow",
+          "youtube-transcript": "allow",
+          "go-testing": "allow"
+        }
+      }
+    },
+
+    "data-analyst": {
+      "description": "Profesor senior de data science — análisis, ML, ETL, reportes",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "delegate": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true,
+        "task": true
+      },
+      "skills": [
+        "data-analysis",
+        "data-cleaning",
+        "data-visualization",
+        "data-profiling",
+        "data-question",
+        "data-design",
+        "data-validation",
+        "data-verify",
+        "ml-modeling",
+        "time-series-analysis",
+        "statistical-testing",
+        "sql-analysis",
+        "database-connections",
+        "etl-pipelines",
+        "file-formats",
+        "notebook-integration",
+        "python-environment",
+        "shared-git-data",
+        "shared-api-integration",
+        "web-scraping",
+        "regex-data",
+        "reporting",
+        "streamlit"
+      ],
+      "permission": {
+        "task": {
+          "*": "deny",
+          "data-explorer": "allow",
+          "data-modeler": "allow",
+          "data-reporter": "allow",
+          "data-etl": "allow",
+          "data-cleaning": "allow",
+          "data-validation": "allow",
+          "data-question": "allow",
+          "data-design": "allow",
+          "data-verify": "allow",
+          "data-archive": "allow",
+          "data-orchestrator": "allow",
+          "data-analysis": "allow",
+          "data-profiling": "allow",
+          "ml-modeling": "allow",
+          "reporting": "allow",
+          "streamlit": "allow",
+          "data-visualization": "allow",
+          "time-series-analysis": "allow",
+          "database-connections": "allow",
+          "file-formats": "allow",
+          "sql-analysis": "allow",
+          "etl-pipelines": "allow",
+          "notebook-integration": "allow",
+          "python-environment": "allow",
+          "shared-git-data": "allow",
+          "shared-api-integration": "allow",
+          "web-scraping": "allow",
+          "regex-data": "allow",
+          "statistical-testing": "allow"
+        }
+      }
+    },
+
+    "frontend-senior": {
+      "description": "Mentor senior de frontend — React, TypeScript, CSS, testing",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "delegate": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true,
+        "task": true
+      },
+      "skills": [
+        "frontend-react-development",
+        "frontend-css-styling",
+        "frontend-type-script",
+        "frontend-api-integration",
+        "frontend-state-management",
+        "frontend-testing",
+        "frontend-responsive-design",
+        "frontend-web-performance",
+        "shared-git-data",
+        "shared-api-integration"
+      ],
+      "permission": {
+        "task": {
+          "*": "deny",
+          "framework-architect": "allow",
+          "ui-crafter": "allow",
+          "styling-engineer": "allow",
+          "data-flow": "allow",
+          "api-consumer": "allow",
+          "realtime-engineer": "allow",
+          "quality-guardian": "allow",
+          "perf-a11y": "allow",
+          "build-master": "allow",
+          "content-docs": "allow",
+          "frontend-react-development": "allow",
+          "frontend-css-styling": "allow",
+          "frontend-type-script": "allow",
+          "frontend-api-integration": "allow",
+          "frontend-state-management": "allow",
+          "frontend-testing": "allow",
+          "frontend-responsive-design": "allow",
+          "frontend-web-performance": "allow",
+          "e2e-testing": "allow"
+        }
+      }
+    },
+
+    "data-explorer": {
+      "description": "EDA, profiling y análisis exploratorio",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "data-modeler": {
+      "description": "Modelado ML, feature engineering, tuning",
+      "mode": "subagent",
+      "model": "T4-reasoning",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "data-reporter": {
+      "description": "Reportes, visualizaciones y dashboards",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "data-etl": {
+      "description": "Pipelines ETL y automatización",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "data-cleaning": {
+      "description": "Limpieza y preprocesamiento de datos",
+      "mode": "subagent",
+      "model": "T2-fast",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+    },
+
+    "data-validation": {
+      "description": "Validación y calidad de datos",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+    },
+
+    "data-question": {
+      "description": "Definir preguntas de negocio, hipótesis y objetivos",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+    },
+
+    "data-design": {
+      "description": "Diseñar estrategia de análisis, elegir enfoque",
+      "mode": "subagent",
+      "model": "T4-reasoning",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+    },
+
+    "data-verify": {
+      "description": "Verificar resultados del análisis",
+      "mode": "subagent",
+      "model": "T4-reasoning",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+    },
+
+    "data-archive": {
+      "description": "Documentar, versionar y cerrar proyectos",
+      "mode": "subagent",
+      "model": "T2-fast",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+    },
+
+    "data-orchestrator": {
+      "description": "Orquestador de pipelines multi-paso",
+      "mode": "subagent",
+      "model": "T4-reasoning",
+      "hidden": true,
+      "tools": { "bash": true, "delegate": true, "edit": true, "read": true, "write": true, "skill": true, "task": true }
+    },
+
+    "data-analysis": {
+      "description": "Análisis con Pandas/NumPy",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "data-profiling": {
+      "description": "Profiling automático con ydata-profiling",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "ml-modeling": {
+      "description": "Machine Learning con Scikit-learn, XGBoost",
+      "mode": "subagent",
+      "model": "T4-reasoning",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "reporting": {
+      "description": "Generación de reportes HTML, PDF, Markdown",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "streamlit": {
+      "description": "Dashboards interactivos con Streamlit",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "data-visualization": {
+      "description": "Gráficos con Matplotlib, Seaborn, Plotly",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "time-series-analysis": {
+      "description": "Series temporales y forecasting",
+      "mode": "subagent",
+      "model": "T4-reasoning",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "statistical-testing": {
+      "description": "Tests estadísticos con SciPy",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "sql-analysis": {
+      "description": "Consultas SQL, joins, window functions",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "database-connections": {
+      "description": "Conexiones a bases de datos",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "file-formats": {
+      "description": "Lectura/escritura de múltiples formatos",
+      "mode": "subagent",
+      "model": "T2-fast",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+    },
+
+    "etl-pipelines": {
+      "description": "Patrones ETL/ELT con Pandas",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "notebook-integration": {
+      "description": "Integración con Jupyter notebooks",
+      "mode": "subagent",
+      "model": "T2-fast",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+    },
+
+    "python-environment": {
+      "description": "Gestión de entornos Python",
+      "mode": "subagent",
+      "model": "T2-fast",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+    },
+
+    "shared-git-data": {
+      "description": "Git para proyectos de datos",
+      "mode": "subagent",
+      "model": "T2-fast",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+    },
+
+    "shared-api-integration": {
+      "description": "Consumo de APIs REST",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+    },
+
+    "web-scraping": {
+      "description": "Extracción de datos de sitios web",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+    },
+
+    "regex-data": {
+      "description": "Limpieza con expresiones regulares",
+      "mode": "subagent",
+      "model": "T2-fast",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+    },
+
+    "commits-real": {
+      "description": "Commits, documentación y versioning unificados",
+      "mode": "subagent",
+      "model": "T2-fast",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+    },
+
+    "judgment-day": {
+      "description": "Revisión adversarial: dos jueces ciegos",
+      "mode": "subagent",
+      "model": "T4-reasoning",
+      "hidden": true,
+      "tools": { "bash": true, "delegate": true, "edit": true, "read": true, "write": true, "task": true }
+    },
+
+    "skill-creator": {
+      "description": "Crear nuevas skills para el ecosistema",
+      "mode": "subagent",
+      "model": "T4-reasoning",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+    },
+
+    "skill-registry": {
+      "description": "Gestionar registro de skills",
+      "mode": "subagent",
+      "model": "T2-fast",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+    },
+
+    "branch-pr": {
+      "description": "Creación de PRs con issue-first",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+    },
+
+    "chained-pr": {
+      "description": "PRs encadenados para cambios grandes",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+    },
+
+    "issue-creation": {
+      "description": "Creación de issues en GitHub",
+      "mode": "subagent",
+      "model": "T2-fast",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+    },
+
+    "go-testing": {
+      "description": "Testing en Go con Bubbletea",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+    },
+
+    "youtube-transcript": {
+      "description": "Extraer transcripciones de YouTube",
+      "mode": "subagent",
+      "model": "T2-fast",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+    },
+
+    "framework-architect": {
+      "description": "Arquitectura frontend",
+      "mode": "subagent",
+      "model": "T4-reasoning",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+    },
+
+    "ui-crafter": {
+      "description": "Componentes UI reutilizables",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "styling-engineer": {
+      "description": "CSS y estilos",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "data-flow": {
+      "description": "Manejo de datos y estado frontend",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "api-consumer": {
+      "description": "Consumo de APIs frontend",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "realtime-engineer": {
+      "description": "WebSockets y tiempo real",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "quality-guardian": {
+      "description": "Testing y calidad frontend",
+      "mode": "subagent",
+      "model": "T4-reasoning",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "perf-a11y": {
+      "description": "Performance y accesibilidad",
+      "mode": "subagent",
+      "model": "T4-reasoning",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "build-master": {
+      "description": "Build y tooling",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "content-docs": {
+      "description": "Documentación y contenido",
+      "mode": "subagent",
+      "model": "T2-fast",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+    },
+
+    "e2e-testing": {
+      "description": "Testing E2E con Playwright",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true }
+    },
+
+    "frontend-react-development": {
+      "description": "Desarrollo con React",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "frontend-css-styling": {
+      "description": "CSS moderno y Tailwind",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "frontend-type-script": {
+      "description": "TypeScript 5.x strict",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "frontend-api-integration": {
+      "description": "TanStack Query, fetch, Axios",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "frontend-state-management": {
+      "description": "Zustand, Redux, Context",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "frontend-testing": {
+      "description": "Vitest, Testing Library",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "frontend-responsive-design": {
+      "description": "Mobile-first, Container Queries",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    },
+
+    "frontend-web-performance": {
+      "description": "Core Web Vitals, Lighthouse",
+      "mode": "subagent",
+      "model": "T3-balanced",
+      "hidden": true,
+      "tools": { "bash": true, "edit": true, "read": true, "write": true, "skill": true }
+    }
+  },
 
   "mcp": {
     "servers": {
@@ -94,387 +718,8 @@
     }
   },
 
-  "agents": {
-    "lend-ai": {
-      "type": "primary",
-      "role": "Orquestador general del ecosistema Lend.Ai",
-      "model": "T3-balanced",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write", "skill", "task", "delegate"]
-      },
-      "subAgents": [
-        "data-analyst",
-        "frontend-senior",
-        "commits-real",
-        "judgment-day",
-        "skill-creator",
-        "skill-registry",
-        "sdd-init", "sdd-explore", "sdd-propose", "sdd-spec",
-        "sdd-design", "sdd-tasks", "sdd-apply", "sdd-verify", "sdd-archive", "sdd-onboard",
-        "branch-pr", "chained-pr", "issue-creation",
-        "youtube-transcript", "go-testing"
-      ]
-    },
-
-    "data-analyst": {
-      "type": "subagent",
-      "role": "Profesor senior de data science — análisis, ML, ETL, reportes",
-      "model": "T3-balanced",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write", "skill", "task", "delegate"]
-      },
-      "skills": [
-        "data-analysis",
-        "data-cleaning",
-        "data-visualization",
-        "data-profiling",
-        "data-question",
-        "data-design",
-        "data-validation",
-        "data-verify",
-        "ml-modeling",
-        "time-series-analysis",
-        "statistical-testing",
-        "sql-analysis",
-        "database-connections",
-        "etl-pipelines",
-        "file-formats",
-        "notebook-integration",
-        "python-environment",
-        "shared-git-data",
-        "shared-api-integration",
-        "web-scraping",
-        "regex-data",
-        "reporting",
-        "streamlit"
-      ],
-      "subAgents": [
-        "data-explorer",
-        "data-modeler",
-        "data-reporter",
-        "data-etl",
-        "data-cleaning",
-        "data-validation",
-        "data-question",
-        "data-design",
-        "data-verify",
-        "data-archive",
-        "data-orchestrator",
-        "data-analysis",
-        "data-profiling",
-        "ml-modeling",
-        "reporting",
-        "streamlit",
-        "data-visualization",
-        "time-series-analysis",
-        "database-connections",
-        "file-formats",
-        "sql-analysis",
-        "etl-pipelines",
-        "notebook-integration",
-        "python-environment",
-        "shared-git-data",
-        "shared-api-integration",
-        "web-scraping",
-        "regex-data",
-        "statistical-testing"
-      ],
-      "mcpAccess": {
-        "deny": ["slack", "google-drive"]
-      }
-    },
-
-    "frontend-senior": {
-      "type": "subagent",
-      "role": "Mentor senior de frontend — React, TypeScript, CSS, testing",
-      "model": "T3-balanced",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write", "skill", "task", "delegate"]
-      },
-      "skills": [
-        "frontend-react-development",
-        "frontend-css-styling",
-        "frontend-type-script",
-        "frontend-api-integration",
-        "frontend-state-management",
-        "frontend-testing",
-        "frontend-responsive-design",
-        "frontend-web-performance",
-        "shared-git-data",
-        "shared-api-integration"
-      ],
-      "subAgents": [
-        "framework-architect",
-        "ui-crafter",
-        "styling-engineer",
-        "data-flow",
-        "api-consumer",
-        "realtime-engineer",
-        "quality-guardian",
-        "perf-a11y",
-        "build-master",
-        "content-docs",
-        "frontend-react-development",
-        "frontend-css-styling",
-        "frontend-type-script",
-        "frontend-api-integration",
-        "frontend-state-management",
-        "frontend-testing",
-        "frontend-responsive-design",
-        "frontend-web-performance",
-        "astro-development",
-        "ui-component-design",
-        "storybook",
-        "animation",
-        "routing",
-        "form-management",
-        "graphql",
-        "accessibility",
-        "error-boundary",
-        "build-tools",
-        "pwa",
-        "internationalization",
-        "seo-meta",
-        "next-js",
-        "e2e-testing",
-        "realtime"
-      ],
-      "mcpAccess": {
-        "deny": ["postgres", "sqlite", "ocr"]
-      }
-    },
-
-    "commits-real": {
-      "type": "subagent",
-      "role": "Commits, documentación y versioning unificados",
-      "model": "T2-fast",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write"]
-      }
-    },
-
-    "judgment-day": {
-      "type": "subagent",
-      "role": "Revisión adversarial: dos jueces ciegos",
-      "model": "T4-reasoning",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write", "task", "delegate"]
-      }
-    },
-
-    "skill-creator": {
-      "type": "subagent",
-      "role": "Crear nuevas skills para el ecosistema",
-      "model": "T4-reasoning",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write"]
-      }
-    },
-
-    "skill-registry": {
-      "type": "subagent",
-      "role": "Gestionar el registro de skills del ecosistema",
-      "model": "T2-fast",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write"]
-      }
-    },
-
-    "branch-pr": {
-      "type": "subagent",
-      "role": "Creación de PRs siguiendo issue-first",
-      "model": "T3-balanced",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write"]
-      }
-    },
-
-    "chained-pr": {
-      "type": "subagent",
-      "role": "PRs encadenados para cambios grandes",
-      "model": "T3-balanced",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write"]
-      }
-    },
-
-    "issue-creation": {
-      "type": "subagent",
-      "role": "Creación de issues en GitHub",
-      "model": "T2-fast",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write"]
-      }
-    },
-
-    "youtube-transcript": {
-      "type": "subagent",
-      "role": "Extraer transcripciones de YouTube",
-      "model": "T2-fast",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write"]
-      }
-    },
-
-    "go-testing": {
-      "type": "subagent",
-      "role": "Testing en Go con Bubbletea",
-      "model": "T3-balanced",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write"]
-      }
-    },
-
-    "data-explorer": {
-      "type": "subagent",
-      "role": "EDA, profiling y análisis exploratorio",
-      "model": "T3-balanced",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write", "skill"]
-      }
-    },
-
-    "data-modeler": {
-      "type": "subagent",
-      "role": "Modelado ML, feature engineering, tuning",
-      "model": "T4-reasoning",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write", "skill"]
-      }
-    },
-
-    "data-reporter": {
-      "type": "subagent",
-      "role": "Reportes, visualizaciones y dashboards",
-      "model": "T3-balanced",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write", "skill"]
-      }
-    },
-
-    "data-etl": {
-      "type": "subagent",
-      "role": "Pipelines ETL y automatización",
-      "model": "T3-balanced",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write", "skill"]
-      }
-    },
-
-    "data-orchestrator": {
-      "type": "subagent",
-      "role": "Orquestador de pipelines multi-paso",
-      "model": "T4-reasoning",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write", "skill", "task", "delegate"]
-      }
-    },
-
-    "sdd-init": {
-      "type": "subagent",
-      "role": "SDD: Bootstrap context y configuración",
-      "model": "T3-balanced",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write"]
-      }
-    },
-
-    "sdd-explore": {
-      "type": "subagent",
-      "role": "SDD: Investigar codebase",
-      "model": "T3-balanced",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write"]
-      }
-    },
-
-    "sdd-propose": {
-      "type": "subagent",
-      "role": "SDD: Crear propuestas de cambio",
-      "model": "T3-balanced",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write"]
-      }
-    },
-
-    "sdd-spec": {
-      "type": "subagent",
-      "role": "SDD: Escribir especificaciones",
-      "model": "T4-reasoning",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write"]
-      }
-    },
-
-    "sdd-design": {
-      "type": "subagent",
-      "role": "SDD: Diseño técnico",
-      "model": "T4-reasoning",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write"]
-      }
-    },
-
-    "sdd-tasks": {
-      "type": "subagent",
-      "role": "SDD: Descomponer specs en tareas",
-      "model": "T3-balanced",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write"]
-      }
-    },
-
-    "sdd-apply": {
-      "type": "subagent",
-      "role": "SDD: Implementar cambios",
-      "model": "T3-balanced",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write"]
-      }
-    },
-
-    "sdd-verify": {
-      "type": "subagent",
-      "role": "SDD: Validar implementación",
-      "model": "T4-reasoning",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write", "task"]
-      }
-    },
-
-    "sdd-archive": {
-      "type": "subagent",
-      "role": "SDD: Archivar artefactos",
-      "model": "T2-fast",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write"]
-      }
-    },
-
-    "sdd-onboard": {
-      "type": "subagent",
-      "role": "SDD: Guiar por el ciclo completo",
-      "model": "T3-balanced",
-      "permissions": {
-        "allow": ["bash", "edit", "read", "write"]
-      }
-    }
-  },
-
-  "skills": [
-    "lend-ai-persona",
-    "lend-ai-workflow",
-    "data-analyst",
-    "frontend-senior",
-    "senior-orchestrator",
-    "commits-real",
-    "judgment-day",
-    "skill-creator",
-    "skill-registry",
-    "branch-pr",
-    "chained-pr",
-    "issue-creation",
-    "go-testing",
-    "youtube-transcript"
+  "plugin": [
+    "opencode-sdd-engram-manage",
+    "opencode-subagent-statusline"
   ]
 }
