@@ -1,0 +1,26 @@
+agent:
+  name: lend-ai
+  layer: "0"
+  description: "Orquestador general del ecosistema Lend.Ai — Data Analysis + Frontend Development"
+
+instructions:
+  persona: agents/manifests/lend-ai/persona.md
+  workflow: agents/manifests/lend-ai/workflow.md
+  patterns: agents/manifests/lend-ai/patterns.md
+
+skills:
+  - senior-orchestrator
+  - commits-real
+
+sub_agents:
+  - data-analyst
+  - frontend-senior
+
+mcp_bindings:
+  - engram
+  - sequential-thinking
+  - filesystem
+  - github
+  - notion
+  - slack
+  - google-drive

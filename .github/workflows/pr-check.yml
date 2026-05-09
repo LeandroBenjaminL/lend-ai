@@ -1,0 +1,42 @@
+name: PR Check
+
+on:
+  pull_request:
+    types: [opened, synchronize, labeled, unlabeled]
+
+jobs:
+  validate-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - run: pip install ruff
+      - run: ruff check .
+      - run: ruff format --check .
+
+      - name: Check PR has type label
+        run: |
+          if [ -z "$(echo '${{ toJSON(github.event.pull_request.labels) }}' | python3 -c "import sys,json; labels=json.load(sys.stdin); [print(l['name']) for l in labels if l['name'].startswith('type:')]" 2>/dev/null)" ]; then
+            echo "❌ PR must have a type:* label (type:feat, type:fix, type:docs, etc.)"
+            exit 1
+          fi
+          echo "✅ PR has type label"
+
+      - name: Validate YAML manifests
+        run: |
+          for f in agents/manifests/*.yaml; do
+            python3 -c "import yaml; yaml.safe_load(open('$f'))" 2>/dev/null || { echo "❌ Invalid YAML: $f"; exit 1; }
+          done
+          echo "✅ All manifests valid"
+
+      - name: Validate JSON files
+        run: |
+          for f in opencode.json model-routing.config.json models.json; do
+            python3 -c "import json; json.load(open('$f'))" 2>/dev/null || { echo "❌ Invalid JSON: $f"; exit 1; }
+          done
+          echo "✅ All JSON files valid"
+
+      - name: Check install.sh syntax
+        run: bash -n install.sh && echo "✅ install.sh syntax OK"

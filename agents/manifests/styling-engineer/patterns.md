@@ -1,0 +1,4 @@
+- Mobile-first media queries
+- CSS Custom Properties para temas
+- Tailwind para rapidez, CSS Modules para componentes críticos
+- Container Queries para componentes reutilizables

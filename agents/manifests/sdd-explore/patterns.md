@@ -1,0 +1,1 @@
+Patrones para la fase explore.

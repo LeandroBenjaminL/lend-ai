@@ -1,0 +1,15 @@
+agent:
+  name: data-validation
+  layer: 1
+  trigger: "validar esquemas de datos, calidad de datos, contratos, Pydantic, Pandera, Great Expectations"
+  description: "Auditor de calidad de datos. Define schemas, valida contratos entre productor y consumidor, ejecuta reglas de calidad con Pydantic/Pandera/GE."
+
+mcp_bindings:
+  - filesystem
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

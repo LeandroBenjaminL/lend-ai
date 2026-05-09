@@ -1,0 +1,15 @@
+agent:
+  name: sdd-verify
+  layer: 1
+  trigger: "validate implementation against specs"
+  description: "Validate implementation against specs"
+
+mcp_bindings:
+  - filesystem
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

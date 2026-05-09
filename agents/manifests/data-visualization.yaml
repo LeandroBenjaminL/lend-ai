@@ -1,0 +1,16 @@
+agent:
+  name: data-visualization
+  layer: 1
+  trigger: "crear gráficos, visualizar datos, charts, matplotlib, seaborn, plotly"
+  description: "Diseñador de visualizaciones de datos. Crea gráficos estáticos e interactivos que cuentan historias."
+
+mcp_bindings:
+  - filesystem
+
+sub_agents:
+  - data-reporter
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

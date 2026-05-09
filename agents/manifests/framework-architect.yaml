@@ -1,0 +1,19 @@
+agent:
+  name: framework-architect
+  layer: 1
+  trigger: "elegir framework, configurar proyecto, arquitectura de app, estructura de carpetas, Server Components, routing de framework"
+  description: "Arquitecto de frameworks frontend. Decide y configura el stack: React, Astro, Next.js, Vue, Nuxt. Optimiza la estructura del proyecto."
+
+mcp_bindings:
+  - filesystem
+  - context7
+
+sub_agents:
+  - react-development
+  - astro-development
+  - next-js
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

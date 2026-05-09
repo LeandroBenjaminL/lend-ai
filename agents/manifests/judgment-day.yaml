@@ -1,0 +1,17 @@
+agent:
+  name: judgment-day
+  layer: 1
+  trigger: "judgment day, doble review, juzgar, que lo juzguen, revisión adversarial"
+  description: "Protocolo de revisión adversarial con dos jueces ciegos paralelos, síntesis y re-evaluación"
+
+mcp_bindings:
+  - filesystem
+  - engram
+  - sequential-thinking
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

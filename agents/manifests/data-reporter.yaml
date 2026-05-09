@@ -1,0 +1,22 @@
+agent:
+  name: data-reporter
+  layer: 1
+  trigger: "generar reportes, visualizar datos, crear dashboards, gráficos, storytelling con datos"
+  description: "Especialista en reportes y visualizaciones. Genera gráficos, dashboards y reportes comunicando hallazgos."
+
+mcp_bindings:
+  - filesystem
+  - google-drive
+  - slack
+  - smtp-email
+
+sub_agents:
+  - reporting
+  - streamlit
+  - data-visualization
+  - comment-writer
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

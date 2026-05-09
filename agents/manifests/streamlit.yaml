@@ -1,0 +1,15 @@
+agent:
+  name: streamlit
+  layer: 1
+  trigger: "dashboards, apps web interactivas, Streamlit, visualizar datos con Streamlit, crear app interactiva"
+  description: "Desarrollador de apps de datos interactivas con Streamlit. Convierte datos en dashboards rápidos, reactivos y visualmente limpios."
+
+mcp_bindings:
+  - filesystem
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

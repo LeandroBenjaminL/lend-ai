@@ -1,0 +1,15 @@
+agent:
+  name: go-testing
+  layer: 1
+  trigger: "escribir tests Go, testing en Go, teatest, cobertura Go"
+  description: "Patrones de testing en Go incluyendo TUI con Bubbletea, table-driven tests y golden files"
+
+mcp_bindings:
+  - filesystem
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

@@ -1,0 +1,15 @@
+agent:
+  name: sdd-spec
+  layer: 1
+  trigger: "write detailed specifications from proposals"
+  description: "Write detailed specifications from proposals"
+
+mcp_bindings:
+  - filesystem
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

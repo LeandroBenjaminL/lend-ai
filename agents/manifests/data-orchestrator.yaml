@@ -1,0 +1,30 @@
+agent:
+  name: data-orchestrator
+  layer: 1
+  trigger: "orquestar pipeline multi-paso, coordinar análisis complejo, ejecutar plan secuencial, automatizar flujo de datos"
+  description: "Orquestador de pipelines multi-paso. Recibe objetivos, planifica pasos con sequential-thinking, spawnea sub-agentes Layer 2, pasa contexto y consolida resultados."
+
+mcp_bindings:
+  - agent-router
+  - docker
+  - filesystem
+  - sequential-thinking
+
+sub_agents:
+  - data-explorer
+  - data-cleaning
+  - data-analysis
+  - data-modeler
+  - data-reporter
+  - data-visualization
+  - data-verify
+  - data-etl
+  - data-validation
+  - data-design
+  - data-question
+  - data-archive
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

@@ -1,0 +1,4 @@
+- React → SPA o Next.js para SSR/SSG
+- Astro → contenido estático con islas de interactividad
+- Vue → Nuxt para SSR
+- Siempre considerá TypeScript desde el día 1

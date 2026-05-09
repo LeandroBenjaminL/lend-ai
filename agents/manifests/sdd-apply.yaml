@@ -1,0 +1,15 @@
+agent:
+  name: sdd-apply
+  layer: 1
+  trigger: "implement code changes from task definitions"
+  description: "Implement code changes from task definitions"
+
+mcp_bindings:
+  - filesystem
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

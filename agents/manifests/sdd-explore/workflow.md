@@ -1,0 +1,1 @@
+1. Ejecutá la fase explore. 2. Devolvé resultados.

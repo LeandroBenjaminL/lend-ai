@@ -1,0 +1,15 @@
+agent:
+  name: chained-pr
+  layer: 1
+  trigger: "PR muy grande, más de 400 líneas, PRs encadenados, stacked PRs"
+  description: "Divide cambios grandes en PRs encadenados respetando el presupuesto cognitivo de revisión"
+
+mcp_bindings:
+  - filesystem
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

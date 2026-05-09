@@ -1,0 +1,19 @@
+agent:
+  name: build-master
+  layer: 1
+  trigger: "build, bundler, vite, webpack, turbopack, typescript, pwa, service workers, module federation, configuración de proyecto"
+  description: "Maestro de builds y tooling. Configura bundlers, TypeScript, PWA, module federation y toda la infraestructura de desarrollo frontend."
+
+mcp_bindings:
+  - filesystem
+  - context7
+
+sub_agents:
+  - build-tools
+  - type-script
+  - pwa
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

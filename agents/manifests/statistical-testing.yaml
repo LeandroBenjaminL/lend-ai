@@ -1,0 +1,15 @@
+agent:
+  name: statistical-testing
+  layer: 1
+  trigger: "tests de hipótesis, significancia estadística, t-test, chi-cuadrado, ANOVA, correlaciones, SciPy, statsmodels"
+  description: "Estadístico. Diseña y ejecuta tests de hipótesis, valida significancia, compara grupos con rigor científico."
+
+mcp_bindings:
+  - filesystem
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

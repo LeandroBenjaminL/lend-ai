@@ -1,0 +1,21 @@
+agent:
+  name: data-explorer
+  layer: 1
+  trigger: "EDA, análisis exploratorio, profiling de datos, entender dataset, distribuciones, correlaciones, anomalías"
+  description: "Especialista en análisis exploratorio de datos. Descubre patrones, outliers, distribuciones y genera hipótesis iniciales."
+
+mcp_bindings:
+  - context7
+  - filesystem
+  - sqlite
+  - web-search
+
+sub_agents:
+  - data-analysis
+  - data-profiling
+  - notebook-integration
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

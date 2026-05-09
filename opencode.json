@@ -1,0 +1,480 @@
+{
+  "$schema": "./schemas/opencode.schema.json",
+  "version": "1.0",
+  "name": "Lend.Ai",
+  "description": "Ecosistema unificado de agentes AI — Data Analysis + Frontend Development",
+
+  "mcp": {
+    "servers": {
+      "engram": {
+        "type": "local",
+        "command": "engram",
+        "args": ["mcp", "--tools=agent"]
+      },
+      "sequential-thinking": {
+        "type": "local",
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+      },
+      "filesystem": {
+        "type": "local",
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-filesystem", "{LEND_AI_HOME}"]
+      },
+      "puppeteer": {
+        "type": "local",
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
+      },
+      "web-search": {
+        "type": "local",
+        "command": "npx",
+        "args": ["-y", "duckduckgo-mcp-server"]
+      },
+      "github": {
+        "type": "local",
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-github"]
+      },
+      "context7": {
+        "type": "remote",
+        "url": "https://mcp.context7.com/mcp"
+      },
+      "slack": {
+        "type": "local",
+        "command": "npx",
+        "args": ["-y", "@jtalk22/slack-mcp"]
+      },
+      "google-drive": {
+        "type": "local",
+        "command": "npx",
+        "args": ["-y", "@piotr-agier/google-drive-mcp"]
+      },
+      "notion": {
+        "type": "local",
+        "command": "bash",
+        "args": ["{LEND_AI_HOME}/mcp-servers/notion-wrapper.sh"]
+      },
+      "smtp-email": {
+        "type": "local",
+        "command": "bash",
+        "args": ["{LEND_AI_HOME}/mcp-servers/smtp-wrapper.sh"]
+      },
+      "postgres": {
+        "type": "local",
+        "command": "python3",
+        "args": ["{LEND_AI_HOME}/mcp-servers/postgres-server.py"]
+      },
+      "ocr": {
+        "type": "local",
+        "command": "python3",
+        "args": ["{LEND_AI_HOME}/mcp-servers/ocr-server.py"]
+      },
+      "agent-router": {
+        "type": "local",
+        "command": "python3",
+        "args": ["{LEND_AI_HOME}/mcp-servers/agent-router.py"]
+      },
+      "model-router": {
+        "type": "local",
+        "command": "python3",
+        "args": ["{LEND_AI_HOME}/mcp-servers/model-router.py"]
+      },
+      "sqlite": {
+        "type": "local",
+        "command": "npx",
+        "args": ["-y", "mcp-sqlite-server", "{LEND_AI_HOME}/data/analisis.db"]
+      },
+      "mysql": {
+        "type": "local",
+        "command": "npx",
+        "args": ["-y", "@berthojoris/mcp-mysql-server"],
+        "enabled": false
+      }
+    }
+  },
+
+  "agents": {
+    "lend-ai": {
+      "type": "primary",
+      "role": "Orquestador general del ecosistema Lend.Ai",
+      "model": "T3-balanced",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write", "skill", "task", "delegate"]
+      },
+      "subAgents": [
+        "data-analyst",
+        "frontend-senior",
+        "commits-real",
+        "judgment-day",
+        "skill-creator",
+        "skill-registry",
+        "sdd-init", "sdd-explore", "sdd-propose", "sdd-spec",
+        "sdd-design", "sdd-tasks", "sdd-apply", "sdd-verify", "sdd-archive", "sdd-onboard",
+        "branch-pr", "chained-pr", "issue-creation",
+        "youtube-transcript", "go-testing"
+      ]
+    },
+
+    "data-analyst": {
+      "type": "subagent",
+      "role": "Profesor senior de data science — análisis, ML, ETL, reportes",
+      "model": "T3-balanced",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write", "skill", "task", "delegate"]
+      },
+      "skills": [
+        "data-analysis",
+        "data-cleaning",
+        "data-visualization",
+        "data-profiling",
+        "data-question",
+        "data-design",
+        "data-validation",
+        "data-verify",
+        "ml-modeling",
+        "time-series-analysis",
+        "statistical-testing",
+        "sql-analysis",
+        "database-connections",
+        "etl-pipelines",
+        "file-formats",
+        "notebook-integration",
+        "python-environment",
+        "shared-git-data",
+        "shared-api-integration",
+        "web-scraping",
+        "regex-data",
+        "reporting",
+        "streamlit"
+      ],
+      "subAgents": [
+        "data-explorer",
+        "data-modeler",
+        "data-reporter",
+        "data-etl",
+        "data-cleaning",
+        "data-validation",
+        "data-question",
+        "data-design",
+        "data-verify",
+        "data-archive",
+        "data-orchestrator",
+        "data-analysis",
+        "data-profiling",
+        "ml-modeling",
+        "reporting",
+        "streamlit",
+        "data-visualization",
+        "time-series-analysis",
+        "database-connections",
+        "file-formats",
+        "sql-analysis",
+        "etl-pipelines",
+        "notebook-integration",
+        "python-environment",
+        "shared-git-data",
+        "shared-api-integration",
+        "web-scraping",
+        "regex-data",
+        "statistical-testing"
+      ],
+      "mcpAccess": {
+        "deny": ["slack", "google-drive"]
+      }
+    },
+
+    "frontend-senior": {
+      "type": "subagent",
+      "role": "Mentor senior de frontend — React, TypeScript, CSS, testing",
+      "model": "T3-balanced",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write", "skill", "task", "delegate"]
+      },
+      "skills": [
+        "frontend-react-development",
+        "frontend-css-styling",
+        "frontend-type-script",
+        "frontend-api-integration",
+        "frontend-state-management",
+        "frontend-testing",
+        "frontend-responsive-design",
+        "frontend-web-performance",
+        "shared-git-data",
+        "shared-api-integration"
+      ],
+      "subAgents": [
+        "framework-architect",
+        "ui-crafter",
+        "styling-engineer",
+        "data-flow",
+        "api-consumer",
+        "realtime-engineer",
+        "quality-guardian",
+        "perf-a11y",
+        "build-master",
+        "content-docs",
+        "frontend-react-development",
+        "frontend-css-styling",
+        "frontend-type-script",
+        "frontend-api-integration",
+        "frontend-state-management",
+        "frontend-testing",
+        "frontend-responsive-design",
+        "frontend-web-performance",
+        "astro-development",
+        "ui-component-design",
+        "storybook",
+        "animation",
+        "routing",
+        "form-management",
+        "graphql",
+        "accessibility",
+        "error-boundary",
+        "build-tools",
+        "pwa",
+        "internationalization",
+        "seo-meta",
+        "next-js",
+        "e2e-testing",
+        "realtime"
+      ],
+      "mcpAccess": {
+        "deny": ["postgres", "sqlite", "ocr"]
+      }
+    },
+
+    "commits-real": {
+      "type": "subagent",
+      "role": "Commits, documentación y versioning unificados",
+      "model": "T2-fast",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write"]
+      }
+    },
+
+    "judgment-day": {
+      "type": "subagent",
+      "role": "Revisión adversarial: dos jueces ciegos",
+      "model": "T4-reasoning",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write", "task", "delegate"]
+      }
+    },
+
+    "skill-creator": {
+      "type": "subagent",
+      "role": "Crear nuevas skills para el ecosistema",
+      "model": "T4-reasoning",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write"]
+      }
+    },
+
+    "skill-registry": {
+      "type": "subagent",
+      "role": "Gestionar el registro de skills del ecosistema",
+      "model": "T2-fast",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write"]
+      }
+    },
+
+    "branch-pr": {
+      "type": "subagent",
+      "role": "Creación de PRs siguiendo issue-first",
+      "model": "T3-balanced",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write"]
+      }
+    },
+
+    "chained-pr": {
+      "type": "subagent",
+      "role": "PRs encadenados para cambios grandes",
+      "model": "T3-balanced",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write"]
+      }
+    },
+
+    "issue-creation": {
+      "type": "subagent",
+      "role": "Creación de issues en GitHub",
+      "model": "T2-fast",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write"]
+      }
+    },
+
+    "youtube-transcript": {
+      "type": "subagent",
+      "role": "Extraer transcripciones de YouTube",
+      "model": "T2-fast",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write"]
+      }
+    },
+
+    "go-testing": {
+      "type": "subagent",
+      "role": "Testing en Go con Bubbletea",
+      "model": "T3-balanced",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write"]
+      }
+    },
+
+    "data-explorer": {
+      "type": "subagent",
+      "role": "EDA, profiling y análisis exploratorio",
+      "model": "T3-balanced",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write", "skill"]
+      }
+    },
+
+    "data-modeler": {
+      "type": "subagent",
+      "role": "Modelado ML, feature engineering, tuning",
+      "model": "T4-reasoning",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write", "skill"]
+      }
+    },
+
+    "data-reporter": {
+      "type": "subagent",
+      "role": "Reportes, visualizaciones y dashboards",
+      "model": "T3-balanced",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write", "skill"]
+      }
+    },
+
+    "data-etl": {
+      "type": "subagent",
+      "role": "Pipelines ETL y automatización",
+      "model": "T3-balanced",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write", "skill"]
+      }
+    },
+
+    "data-orchestrator": {
+      "type": "subagent",
+      "role": "Orquestador de pipelines multi-paso",
+      "model": "T4-reasoning",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write", "skill", "task", "delegate"]
+      }
+    },
+
+    "sdd-init": {
+      "type": "subagent",
+      "role": "SDD: Bootstrap context y configuración",
+      "model": "T3-balanced",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write"]
+      }
+    },
+
+    "sdd-explore": {
+      "type": "subagent",
+      "role": "SDD: Investigar codebase",
+      "model": "T3-balanced",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write"]
+      }
+    },
+
+    "sdd-propose": {
+      "type": "subagent",
+      "role": "SDD: Crear propuestas de cambio",
+      "model": "T3-balanced",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write"]
+      }
+    },
+
+    "sdd-spec": {
+      "type": "subagent",
+      "role": "SDD: Escribir especificaciones",
+      "model": "T4-reasoning",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write"]
+      }
+    },
+
+    "sdd-design": {
+      "type": "subagent",
+      "role": "SDD: Diseño técnico",
+      "model": "T4-reasoning",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write"]
+      }
+    },
+
+    "sdd-tasks": {
+      "type": "subagent",
+      "role": "SDD: Descomponer specs en tareas",
+      "model": "T3-balanced",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write"]
+      }
+    },
+
+    "sdd-apply": {
+      "type": "subagent",
+      "role": "SDD: Implementar cambios",
+      "model": "T3-balanced",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write"]
+      }
+    },
+
+    "sdd-verify": {
+      "type": "subagent",
+      "role": "SDD: Validar implementación",
+      "model": "T4-reasoning",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write", "task"]
+      }
+    },
+
+    "sdd-archive": {
+      "type": "subagent",
+      "role": "SDD: Archivar artefactos",
+      "model": "T2-fast",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write"]
+      }
+    },
+
+    "sdd-onboard": {
+      "type": "subagent",
+      "role": "SDD: Guiar por el ciclo completo",
+      "model": "T3-balanced",
+      "permissions": {
+        "allow": ["bash", "edit", "read", "write"]
+      }
+    }
+  },
+
+  "skills": [
+    "lend-ai-persona",
+    "lend-ai-workflow",
+    "data-analyst",
+    "frontend-senior",
+    "senior-orchestrator",
+    "commits-real",
+    "judgment-day",
+    "skill-creator",
+    "skill-registry",
+    "branch-pr",
+    "chained-pr",
+    "issue-creation",
+    "go-testing",
+    "youtube-transcript"
+  ]
+}

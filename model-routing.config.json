@@ -1,0 +1,88 @@
+{
+  "$schema": "./schemas/model-routing.schema.json",
+  "version": "2.0",
+  "active_profile": "balanced",
+  "default_tier": "T3-balanced",
+  "profiles": {
+    "balanced": {
+      "description": "Perfil balanceado para uso diario",
+      "default_tier": "T3-balanced",
+      "overrides": {}
+    },
+    "cheap": {
+      "description": "Perfil económico para tareas simples",
+      "default_tier": "T1-ultra-fast",
+      "overrides": {
+        "data-analyst": "T3-balanced",
+        "frontend-senior": "T3-balanced"
+      }
+    },
+    "premium": {
+      "description": "Perfil premium para máxima calidad",
+      "default_tier": "T5-deep",
+      "overrides": {
+        "commits-real": "T2-fast",
+        "skill-registry": "T2-fast"
+      }
+    },
+    "dev_analysis": {
+      "description": "Perfil para análisis profundo de código",
+      "default_tier": "T4-reasoning",
+      "overrides": {
+        "data-explorer": "T3-balanced",
+        "commits-real": "T2-fast"
+      }
+    }
+  },
+  "tiers": {
+    "T1-ultra-fast": {
+      "model": "minimax-free",
+      "provider": "minimax",
+      "description": "Tier gratuito para tareas mecánicas",
+      "cost": "free"
+    },
+    "T2-fast": {
+      "model": "minimax",
+      "provider": "minimax",
+      "description": "Tier económico para tareas simples",
+      "cost": "low"
+    },
+    "T3-balanced": {
+      "model": "deepseek-medium",
+      "provider": "deepseek",
+      "description": "Tier balanceado para uso diario (DEFAULT)",
+      "cost": "medium"
+    },
+    "T4-reasoning": {
+      "model": "deepseek-pro",
+      "provider": "deepseek",
+      "description": "Tier de razonamiento profundo",
+      "cost": "high"
+    },
+    "T5-deep": {
+      "model": "deepseek-pro-max",
+      "provider": "deepseek",
+      "description": "Tier de máxima capacidad",
+      "cost": "premium"
+    }
+  },
+  "skills": {
+    "data-analyst": "T3-balanced",
+    "frontend-senior": "T3-balanced",
+    "commits-real": "T2-fast",
+    "judgment-day": "T4-reasoning",
+    "skill-creator": "T4-reasoning",
+    "skill-registry": "T2-fast",
+    "branch-pr": "T3-balanced",
+    "chained-pr": "T3-balanced",
+    "issue-creation": "T2-fast",
+    "data-analysis": "T3-balanced",
+    "data-cleaning": "T2-fast",
+    "data-visualization": "T3-balanced",
+    "ml-modeling": "T4-reasoning",
+    "time-series-analysis": "T4-reasoning",
+    "statistical-testing": "T3-balanced",
+    "sql-analysis": "T3-balanced"
+  },
+  "overrides": {}
+}

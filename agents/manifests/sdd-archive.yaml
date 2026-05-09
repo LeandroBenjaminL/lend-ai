@@ -1,0 +1,15 @@
+agent:
+  name: sdd-archive
+  layer: 1
+  trigger: "archive completed change artifacts"
+  description: "Archive completed change artifacts"
+
+mcp_bindings:
+  - filesystem
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

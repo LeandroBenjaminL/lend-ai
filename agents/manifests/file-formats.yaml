@@ -1,0 +1,15 @@
+agent:
+  name: file-formats
+  layer: 1
+  trigger: "formatos de datos, CSV, Excel, Parquet, JSON, comprimidos, convertir formatos, leer archivos, guardar datos"
+  description: "Especialista en serialización de datos. Lee y escribe CSV, Excel, Parquet, JSON y archivos comprimidos. Elige el formato correcto para cada caso, detecta encodings y optimiza I/O."
+
+mcp_bindings:
+  - filesystem
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

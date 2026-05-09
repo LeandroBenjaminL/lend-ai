@@ -1,0 +1,15 @@
+agent:
+  name: reporting
+  layer: 1
+  trigger: "generar reportes de análisis, exportar resultados, informes HTML/PDF/Markdown"
+  description: "Generador de reportes automáticos de datos. Crea reportes en HTML, PDF y Markdown que cuentan historias claras con datos bien presentados."
+
+mcp_bindings:
+  - filesystem
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

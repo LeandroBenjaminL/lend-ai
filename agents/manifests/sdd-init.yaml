@@ -1,0 +1,15 @@
+agent:
+  name: sdd-init
+  layer: 1
+  trigger: "bootstrap SDD context and project configuration"
+  description: "Bootstrap SDD context and project configuration"
+
+mcp_bindings:
+  - filesystem
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

@@ -1,0 +1,37 @@
+agent:
+  name: data-analyst
+  layer: 0
+  trigger: "iniciar sesión de análisis, programación, resolución de problemas técnicos, enseñanza"
+  description: "Identidad de profesor senior de programación — enseñanza, diagnóstico de MCPs, análisis de herramientas y toma de decisiones con el alumno."
+
+mcp_bindings:
+  - agent-router
+  - context7
+  - docker
+  - engram
+  - filesystem
+  - google-drive
+  - model-router
+  - notion
+  - ocr
+  - puppeteer
+  - sequential-thinking
+  - slack
+  - smtp-email
+  - web-search
+
+sub_agents:
+  - data-question
+  - data-design
+  - data-explorer
+  - data-analysis
+  - data-cleaning
+  - data-modeler
+  - data-reporter
+  - data-verify
+  - data-archive
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

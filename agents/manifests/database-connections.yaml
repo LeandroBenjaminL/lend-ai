@@ -1,0 +1,17 @@
+agent:
+  name: database-connections
+  layer: 1
+  trigger: "conexiones a base de datos, SQLAlchemy, psycopg2, MySQL, PostgreSQL, SQLite, leer/escribir tablas con Pandas, connection strings, connection pooling"
+  description: "DBA rioplatense. Conecta Python a cualquier base de datos, escribe pd.read_sql como quien respira, y no tolera una connection leak. Dueño del create_engine y los context managers."
+
+mcp_bindings:
+  - filesystem
+  - sqlite
+  - mysql
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

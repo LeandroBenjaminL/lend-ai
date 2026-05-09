@@ -1,0 +1,15 @@
+agent:
+  name: youtube-transcript
+  layer: 1
+  trigger: "extraer transcripción de YouTube, resumir video, analizar contenido de video"
+  description: "Extracción y análisis de transcripciones de videos de YouTube. Obtiene el texto completo de subtítulos/CC, lo procesa y genera resúmenes."
+
+mcp_bindings:
+  - filesystem
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

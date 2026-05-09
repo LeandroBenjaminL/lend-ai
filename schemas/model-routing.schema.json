@@ -1,0 +1,128 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "./schemas/model-routing.schema.json",
+  "title": "Model Routing Configuration",
+  "description": "Schema for model-routing.config.json — defines tiers, models, profiles, and overrides for LLM routing",
+  "type": "object",
+  "required": ["default_tier", "tiers"],
+  "$defs": {
+    "tier": {
+      "type": "string",
+      "description": "Valid tier key",
+      "enum": ["T1-ultra-fast", "T2-fast", "T3-balanced", "T4-reasoning", "T5-deep"]
+    },
+    "profile_name": {
+      "type": "string",
+      "description": "Valid profile name",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "sdd_phase": {
+      "type": "string",
+      "description": "SDD phase or data-agent name",
+      "pattern": "^[a-z][a-z-]*$"
+    },
+    "profile": {
+      "type": "object",
+      "description": "A named profile mapping phases to tiers",
+      "required": ["description", "phases"],
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "Human-readable description of this profile"
+        },
+        "phases": {
+          "type": "object",
+          "description": "Phase-to-tier mapping. Use 'default' for the fallback tier when a phase is not explicitly listed.",
+          "minProperties": 1,
+          "additionalProperties": {
+            "$ref": "#/$defs/tier"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Reference to this schema file"
+    },
+    "_meta": {
+      "type": "object",
+      "description": "Metadata about the configuration file",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "version": { "type": "string" }
+      },
+      "required": ["title", "description", "version"]
+    },
+    "active_profile": {
+      "$ref": "#/$defs/profile_name",
+      "description": "Name of the active profile to use. Profiles are defined under the 'profiles' section. Reference a key that exists there."
+    },
+    "default_tier": {
+      "$ref": "#/$defs/tier",
+      "description": "Default tier key to use when no override and no profile phase match is set. Still used as ultimate fallback."
+    },
+    "profiles": {
+      "type": "object",
+      "description": "Map of named profiles that define phase-to-tier mappings. Each profile can override the default tier per SDD phase or data-agent.",
+      "patternProperties": {
+        "^[a-z][a-z0-9_]*$": {
+          "$ref": "#/$defs/profile"
+        }
+      },
+      "minProperties": 1,
+      "additionalProperties": false
+    },
+    "tiers": {
+      "type": "object",
+      "description": "Map of tier key to model configuration",
+      "patternProperties": {
+        "^T[1-5]-[a-z-]+$": {
+          "type": "object",
+          "required": ["model", "description", "cost_tier"],
+          "properties": {
+            "model": { "type": "string", "description": "Model identifier/name" },
+            "description": { "type": "string", "description": "Human-readable description of when to use this tier" },
+            "cost_tier": {
+              "type": "string",
+              "description": "Cost category for this tier",
+              "enum": ["free", "low", "medium", "high", "premium"]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "overrides": {
+      "type": "object",
+      "description": "Runtime overrides that take precedence over everything (profile + default_tier)",
+      "properties": {
+        "conversation": {
+          "oneOf": [
+            { "$ref": "#/$defs/tier" },
+            { "type": "null" }
+          ],
+          "description": "Override tier for the current conversation. Set via /models set-tier. null = no override."
+        },
+        "skills": {
+          "type": "object",
+          "description": "Per-skill tier overrides. Key = skill name, value = tier key.",
+          "additionalProperties": { "$ref": "#/$defs/tier" },
+          "minProperties": 0
+        },
+        "agents": {
+          "type": "object",
+          "description": "Per-agent tier overrides. Key = agent name, value = tier key.",
+          "additionalProperties": { "$ref": "#/$defs/tier" },
+          "minProperties": 0
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

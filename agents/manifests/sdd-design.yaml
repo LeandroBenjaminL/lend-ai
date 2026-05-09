@@ -1,0 +1,15 @@
+agent:
+  name: sdd-design
+  layer: 1
+  trigger: "create technical design from proposals"
+  description: "Create technical design from proposals"
+
+mcp_bindings:
+  - filesystem
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

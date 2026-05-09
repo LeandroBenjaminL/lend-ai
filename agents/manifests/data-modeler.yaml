@@ -1,0 +1,21 @@
+agent:
+  name: data-modeler
+  layer: 1
+  trigger: "entrenar modelos, ML, machine learning, clasificación, regresión, clustering, feature engineering, tuning, SHAP"
+  description: "Especialista en modelado ML. Feature engineering, entrenamiento, evaluación, tuning y explicabilidad."
+
+mcp_bindings:
+  - filesystem
+  - sequential-thinking
+  - context7
+  - sqlite
+
+sub_agents:
+  - ml-modeling
+  - time-series-analysis
+  - statistical-testing
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

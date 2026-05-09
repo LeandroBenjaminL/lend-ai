@@ -1,0 +1,19 @@
+agent:
+  name: data-design
+  layer: 0.5  # strategist-level
+  trigger: "diseñar estrategia de análisis, elegir enfoque, planificar implementación, decidir cómo abordar un problema"
+  description: "Arquitecto de soluciones analíticas. Diseña la estrategia, elige métodos, planifica antes de ejecutar."
+
+mcp_bindings:
+  - filesystem
+  - sequential-thinking
+
+sub_agents:
+  - skill-creator
+  - cognitive-doc-design
+  - data-question
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

@@ -1,0 +1,16 @@
+agent:
+  name: skill-registry
+  layer: 1
+  trigger: "update skills, skill registry, actualizar skills, update registry"
+  description: "Escanea skills, escribe .atl/skill-registry.md y persiste en Engram"
+
+mcp_bindings:
+  - filesystem
+  - engram
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

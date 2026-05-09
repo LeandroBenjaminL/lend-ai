@@ -1,0 +1,15 @@
+agent:
+  name: work-unit-commits
+  layer: 1
+  trigger: "estructurar commits, dividir PRs, planificar commits, work units"
+  description: "Estructura commits como unidades de trabajo entregables con tests y docs junto al código"
+
+mcp_bindings:
+  - filesystem
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

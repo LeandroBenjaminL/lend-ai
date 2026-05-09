@@ -1,0 +1,16 @@
+agent:
+  name: sql-analysis
+  layer: 1
+  trigger: "consultas SQL, joins, window functions, agregaciones, subqueries, EXPLAIN, índices, optimización de queries"
+  description: "DBA-analista híbrido. Escribe queries quirúrgicas, arma joins complejos, domina window functions, y no tolera un full table scan evitable."
+
+mcp_bindings:
+  - sqlite
+  - mysql
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

@@ -1,0 +1,4 @@
+- Atomic Design como guía
+- Compound Components para componentes complejos
+- Render Props para lógica compartida
+- Storybook para documentación viva

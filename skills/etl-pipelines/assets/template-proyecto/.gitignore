@@ -1,0 +1,22 @@
+# Datos
+data/raw/
+data/processed/
+*.csv
+*.parquet
+*.xlsx
+
+# Entorno
+.venv/
+.env
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Reportes
+reports/*.html
+reports/*.xlsx
+*.log
+
+# IDE
+.vscode/
+.idea/

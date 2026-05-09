@@ -1,0 +1,15 @@
+agent:
+  name: cognitive-doc-design
+  layer: 1
+  trigger: "escribir documentación técnica, guías, READMEs, instructivos, documentación clara"
+  description: "Diseña documentación con carga cognitiva reducida: divulgación progresiva, tablas, checklists"
+
+mcp_bindings:
+  - filesystem
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

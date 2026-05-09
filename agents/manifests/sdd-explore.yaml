@@ -1,0 +1,15 @@
+agent:
+  name: sdd-explore
+  layer: 1
+  trigger: "investigate codebase and think through ideas"
+  description: "Investigate codebase and think through ideas"
+
+mcp_bindings:
+  - filesystem
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

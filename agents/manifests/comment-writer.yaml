@@ -1,0 +1,15 @@
+agent:
+  name: comment-writer
+  layer: 1
+  trigger: "escribir feedback, comentarios de review, responder en GitHub, mensajes Slack"
+  description: "Escribe comentarios humanos, cálidos y directos en español rioplatense para PRs, issues y chats"
+
+mcp_bindings:
+  - filesystem
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

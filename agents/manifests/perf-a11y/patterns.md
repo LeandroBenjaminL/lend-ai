@@ -1,0 +1,5 @@
+- LCP: optimizá imágenes, preload recursos críticos
+- FID/INP: evitá long tasks, dividí chunks
+- CLS: dimensiones explícitas, fonts preloaded
+- WCAG 2.1 AA como mínimo
+- Error Boundaries por sección de la app

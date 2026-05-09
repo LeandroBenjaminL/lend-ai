@@ -1,0 +1,15 @@
+agent:
+  name: sdd-onboard
+  layer: 1
+  trigger: "guide user through a complete SDD cycle"
+  description: "Guide user through a complete SDD cycle using their real codebase"
+
+mcp_bindings:
+  - filesystem
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

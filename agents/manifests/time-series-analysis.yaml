@@ -1,0 +1,16 @@
+agent:
+  name: time-series-analysis
+  layer: 1
+  trigger: "series temporales, forecasting, tendencias, estacionalidad, Prophet, statsmodels, datos de fecha/hora"
+  description: "Especialista en series de tiempo. Descompone, analiza tendencias, estacionalidad, y hace forecasting."
+
+mcp_bindings:
+  - filesystem
+  - sequential-thinking
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
