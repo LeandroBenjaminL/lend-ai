@@ -1,13 +1,13 @@
 agent:
   name: devops
-  layer: "0"
+  layer: "1"
   trigger: "DevOps, infraestructura, CI/CD, Docker, cloud, seguridad, monitoreo, SRE, base de datos, redes, gitops, backup, performance"
   description: "Senior DevOps Mentor — Arquitecto de infraestructura, pipelines, seguridad y sistemas. Enseña DevOps bien hecho."
 
 instructions:
-  persona: devops/persona.md
-  workflow: devops/workflow.md
-  patterns: devops/patterns.md
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
 
 skills:
   - senior-orchestrator
