@@ -185,9 +185,9 @@ def show_main_menu(config: dict, overrides: dict):
             short = TIER_SHORT.get(tier, tier)
             overridden = " ⚡" if skill in skill_overrides else ""
             model = model_name(tiers.get(tier, {}))
-            print(
-                f"  {c('yellow', skill):<30} {c(color, short):<6} {c('dim', model)}{c('magenta', overridden)}"
-            )  # noqa: E501
+            tag = f"{c(color, short):<6}"
+            extra = f"{c('dim', model)}{c('magenta', overridden)}"
+            print(f"  {c('yellow', skill):<30} {tag} {extra}")
         print()
 
     print(c("bold", "═══ ACCIONES ═══"))
@@ -218,9 +218,8 @@ def pick_skill(config: dict):
         short = TIER_SHORT.get(current_tier, current_tier)
         marker = c("magenta", " ⚡") if skill in overrides else ""
         model = model_name(tiers.get(current_tier, {}))
-        print(
-            f"  [{c('yellow', str(i))}] {c('yellow', skill):<30} → {c(color, short)} {c('dim', model)}{marker}"
-        )  # noqa: E501
+        rest = f"{c(color, short)} {c('dim', model)}{marker}"
+        print(f"  [{c('yellow', str(i))}] {c('yellow', skill):<30} → {rest}")
     print()
     print(f"  [{c('red', '0')}] Volver")
     print()
@@ -262,9 +261,8 @@ def pick_agent(config: dict):
         short = TIER_SHORT.get(current_tier, current_tier)
         marker = c("magenta", " ⚡") if name in overrides else ""
         model = model_name(tiers.get(current_tier, {}))
-        print(
-            f"  [{c('blue', str(i))}] {c('blue', name):<30} → {c(color, short)} {c('dim', model)}{marker}"
-        )  # noqa: E501
+        rest = f"{c(color, short)} {c('dim', model)}{marker}"
+        print(f"  [{c('blue', str(i))}] {c('blue', name):<30} → {rest}")
     print()
     print(f"  [{c('red', '0')}] Volver")
     print()
