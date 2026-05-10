@@ -1,121 +1,76 @@
 ---
 name: data-cleaning
 description: >
-  Limpieza y preparación de datos con Pandas.
-  Trigger: Cuando necesitás limpiar datos, manejar nulos, duplicados, outliers, o preparar datasets para análisis.
-license: Apache-2.0
+  Limpieza quirúrgica de datos — nulos, outliers, duplicados, tipos e
+  inconsistencias. Integridad y reproducibilidad ante todo.
+  Trigger: Cuando necesitás limpiar datos, manejar nulos, duplicados, outliers, o preparar datasets crudos para análisis.
+license: MIT
 metadata:
-  author: leandro-data
-  version: "1.1"
-  model_tier: T1-ultra-fast
+  author: Leandro Benjamin L.
+  version: "2.0"
+  model_tier: T2-fast
 ---
 
 # Skill: data-cleaning
 
-Limpieza y preparación de datos. Es el paso que más tiempo lleva en cualquier proyecto de datos — y el que más errores evita si se hace bien.
+Limpieza quirúrgica de datos. Nada de parches pedorros.
 
 ## Trigger
 
-Cargá esta skill cuando:
-- Recibís un dataset nuevo y necesitás revisar nulos, tipos, duplicados
-- Hay valores inconsistentes, formatos mezclados o datos sucios
-- Necesitás normalizar, estandarizar o transformar columnas
-- Estás por modelar o visualizar y querés datos confiables
+- El dataset está lleno de nulos, tipos raros o valores inconsistentes
+- Hay outliers que pueden sesgar el análisis
+- Recibiste un CSV que parece un campo de batalla
+- Estás por modelar y necesitás datos confiables
 
-## Por qué limpiar primero
+## Workflow LEND
 
-Un modelo entrenado con datos sucios da resultados estúpidos con alta confianza. La limpieza no es un paso opcional — es lo que separa un análisis confiable de una pérdida de tiempo. El 80% del tiempo de un data project se va en limpieza, y está bien.
+```
+1. ANALIZAR
+   ├── Null Anatomy: clasificá cada nulo
+   │   MCAR (azar total), MAR (relacionado a otra variable), MNAR (no azar)
+   │   → Nunca dropna() sin justificar pérdida de información
+   ├── Outlier Strategy: IQR o Z-Score robusto (MAD)
+   │   → ¿Es un error o un dato real? Si es real → Winsorization, no borrado
+   ├── Tipos: verificá que cada columna tenga el tipo esperado
+   └── Duplicados: siempre primero, antes de imputar nulos
 
-## Pipeline de limpieza estándar
+2. OFRECER (Menú del Senior)
+   ├── A) Limpieza agresiva — borrar ruido, ideal para modelos rápidos
+   ├── B) Imputación inteligente — KNN o MICE para mantener volumen
+   └── C) Flagging & Capping — marcar errores sin sesgar el análisis
 
-```python
-def limpiar_dataset(df):
-    reporte = {}
-    # 1. Duplicados — siempre primero
-    dups = df.duplicated().sum()
-    if dups:
-        df = df.drop_duplicates()
-    reporte['duplicados'] = dups
+3. ELEGIR → el usuario confirma
 
-    # 2. Nulos por columna
-    nulos = df.isnull().sum()
-    nulos = nulos[nulos > 0]
-    reporte['nulos_por_columna'] = nulos.to_dict()
+4. HACER
+   ├── Duplicados primero (drop_duplicates antes de imputar)
+   ├── Nulos: media (sin outliers), mediana (con outliers), moda (categórica),
+   │   ffill (series temporales), o eliminar columna si >50% nulos
+   ├── Outliers: IQR (no asume normalidad) vs Z-score (asume normalidad)
+   │   Para Z-score robusto: usar MAD (median absolute deviation)
+   ├── Strings: strip(), lower(), regex para limpieza de texto
+   │   Si hay typos → fuzzy matching con Levenshtein
+   ├── Prohibido df.iterrows() — todo vectorizado con Pandas/NumPy
+   └── Pipeline reproducible (function que toma datos sucios y devuelve limpios)
 
-    # 3. Tipos de datos — verificá que sean los esperados
-    reporte['tipos'] = {c: str(d) for c, d in df.dtypes.items()}
-
-    # 4. Stats rápidas
-    reporte['forma'] = df.shape
-
-    return df, reporte
+5. VERIFICAR
+   ├── El pipeline corre sin errores
+   ├── No se perdió información valiosa sin justificación
+   └── El dataset transformado mantiene la estructura esperada
 ```
 
-**Por qué duplicados primero**: si eliminás duplicados después de imputar nulos, podés estar imputando filas que después vas a borrar — trabajo al pedo.
+## Patrones
 
-## Estrategias para nulos — por qué cada una
-
-| Tipo de columna | Estrategia | Por qué |
-|----------------|-----------|---------|
-| Numérica sin outliers | Media | Preserva la media de la distribución |
-| Numérica con outliers | Mediana | La mediana es robusta a outliers, la media no |
-| Categórica | Moda o "Desconocido" | La moda mantiene la distribución. "Desconocido" es honesto. |
-| Serie temporal | Forward fill (`ffill()`) | El valor anterior suele ser la mejor estimación |
-| Muchos nulos (>50%) | Eliminar columna | Imputar el 50%+ de una columna es inventar datos |
-
-## Detección de outliers con IQR
-
-```python
-def detectar_outliers(df, columna):
-    Q1 = df[columna].quantile(0.25)
-    Q3 = df[columna].quantile(0.75)
-    IQR = Q3 - Q1
-    limite_inferior = Q1 - 1.5 * IQR
-    limite_superior = Q3 + 1.5 * IQR
-    return df[(df[columna] < limite_inferior) | (df[columna] > limite_superior)]
-```
-
-**Por qué IQR y no Z-score**: IQR no asume normalidad. Z-score funciona mal con distribuciones asimétricas o datasets chicos. IQR es más robusto.
-
-## Ejemplo
-
-```python
-df = pd.read_csv('datos_raw.csv')
-
-df['fecha'] = pd.to_datetime(df['fecha'], errors='coerce')
-df['precio'] = pd.to_numeric(df['precio'], errors='coerce')
-df['categoria'] = df['categoria'].str.strip().str.lower()
-df = df.drop_duplicates(subset=['id'])
-df['precio'].fillna(df['precio'].median(), inplace=True)
-```
-
-## Comandos rápidos
-
-```python
-df.info()
-df.isnull().sum()
-df.describe(include='all')
-df.duplicated().sum()
-```
+- **Null Anatomy**: no todos los nulos son iguales. MCAR se puede borrar, MAR se imputa, MNAR requiere modelo.
+- **Outliers con IQR**: no asume normalidad. Z-score funciona mal con distribuciones asimétricas.
+- **Winsorization**: capar outliers en los percentiles 1 y 99 en vez de borrarlos.
+- **Vectorizado siempre**: `df['col'] * 2` en vez de `for i in range(len(df))`.
+- **Pipeline > Script**: una función que toma data_raw y devuelve data_clean es más testeable y reproducible.
 
 ## Anti-patrones
 
-- ❌ **Imputar todo con la media**: si tenés outliers, la media está sesgada. Usá mediana.
-- ❌ **Borrar filas con nulos sin pensar**: si los nulos no son aleatorios, estás introduciendo sesgo.
-- ❌ **No revisar tipos después de cargar**: `read_csv` a veces se equivoca con tipos. Siempre verificá con `dtypes`.
-- ❌ **Usar `inplace=True` en pipelines**: hace el código más difícil de debuggear y testear.
-- ❌ **Asumir que no hay duplicados**: siempre verificá. Una join mal hecha upstream puede duplicarte filas sin aviso.
-
-## Alternativas
-
-- **Pandas** es el estándar para limpieza en Python.
-- **Polars** tiene mejor performance en limpieza de datasets grandes (>5GB).
-- **Pydantic** + **Pandera** para validar esquemas en vez de limpiar a mano.
-- **Great Expectations** para pipelines de producción con expectativas declarativas.
-
-## Tools relevantes
-
-- `pandas` — core de limpieza
-- `pandera` — esquemas y validación de DataFrames
-- `pyjanitor` — extensiones de limpieza con nombres estilo R (limpiar, renombrar, etc.)
-- `regex-data` (skill hermana) — para limpieza de texto complejo
+- ❌ `dropna()` sin mirar — si los nulos no son MCAR, estás introduciendo sesgo
+- ❌ Imputar todo con la media — si hay outliers, la media está sesgada
+- ❌ Borrar outliers solo porque "se ven feos" — si es un dato real, se queda
+- ❌ `df.iterrows()` — lento, ilegible, no vectorizado
+- ❌ No revisar `dtypes` después de `read_csv` — Pandas a veces se equivoca
+- ❌ Asumir que no hay duplicados — una join mal hecha upstream te duplica filas sin aviso
