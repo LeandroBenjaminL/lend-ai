@@ -43,7 +43,8 @@
           "youtube-transcript": "allow",
           "go-testing": "allow",
           "devops": "allow",
-          "engram-memory-system": "allow"
+          "engram-memory-system": "allow",
+          "lend-ai-persona": "allow"
         }
       }
     },
@@ -1031,6 +1032,17 @@
         "read": true,
         "write": true,
         "skill": true
+      }
+    },
+    "lend-ai-persona": {
+      "description": "Personalidad LEND.AI (AISHA Engine) \u2014 identidad, tono rioplatense, LEND-Protocol",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": false,
+        "edit": false,
+        "read": false,
+        "write": false
       }
     }
   },
