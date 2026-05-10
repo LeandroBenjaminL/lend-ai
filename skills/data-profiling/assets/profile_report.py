@@ -3,9 +3,10 @@ Perfil automático de dataset — genera reporte HTML de calidad.
 USO: python profile_report.py datos.csv
 """
 
-import pandas as pd
-import numpy as np
 import sys
+
+import numpy as np
+import pandas as pd
 
 
 def perfil_rapido(ruta: str) -> list:

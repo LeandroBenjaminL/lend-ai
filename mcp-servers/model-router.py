@@ -30,7 +30,7 @@ MODELS_JSON = BASE_DIR / "models.json"
 ACTIVE_TIER_FILE = Path(
     os.environ.get("DATA_ANALYST_TIER_FILE", "/tmp/opencode-active-tier.json")
 )
-DEFAULT_TIER = "free-big-pickle"
+DEFAULT_TIER = "T3-balanced"
 
 
 def _get_default_tier() -> str:

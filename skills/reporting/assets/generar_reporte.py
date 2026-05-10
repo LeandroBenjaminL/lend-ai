@@ -3,9 +3,10 @@ Genera reporte markdown automático a partir de un CSV.
 USO: python generar_reporte.py datos.csv [output.md]
 """
 
-import pandas as pd
 import sys
 from datetime import datetime
+
+import pandas as pd
 
 
 def generar_reporte(ruta_csv: str, ruta_out: str = "reporte.md") -> str:

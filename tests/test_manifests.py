@@ -115,7 +115,7 @@ class TestYamlValidity:
         self, all_yaml_files: list[Path], parse_yaml: Any
     ) -> None:
         """Layer es '0', '0.5', o '1' según la arquitectura del ecosistema."""
-        VALID_LAYERS = {"0", "0.5", "1"}
+        valid_layers = {"0", "0.5", "1"}  # noqa: N806
         errors: list[str] = []
 
         for yaml_file in all_yaml_files:
@@ -126,10 +126,10 @@ class TestYamlValidity:
             # Normalizar: el YAML puede tener int o string
             layer_str = str(layer) if layer is not None else None
 
-            if layer_str not in VALID_LAYERS:
+            if layer_str not in valid_layers:
                 errors.append(
                     f"{name}: layer='{layer_str}' no es válido. "
-                    f"Se espera uno de {VALID_LAYERS}"
+                    f"Se espera uno de {valid_layers}"
                 )
 
         assert not errors, (

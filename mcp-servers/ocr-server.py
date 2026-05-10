@@ -9,10 +9,11 @@ Usage:
 Requires: pillow, mcp
 """
 
-import sys
-import os
 import argparse
+import importlib.util
+import os
 import subprocess
+import sys
 from pathlib import Path
 
 try:
@@ -20,8 +21,6 @@ try:
 except ImportError:
     print("❌ mcp package not installed. Run: pip install mcp")
     sys.exit(1)
-
-import importlib.util
 
 if importlib.util.find_spec("PIL") is None:
     print("❌ Pillow not installed. Run: pip install pillow")

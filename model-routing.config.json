@@ -2,41 +2,41 @@
   "$schema": "./schemas/model-routing.schema.json",
   "version": "3.0",
   "active_profile": "balanced",
-  "default_tier": "free-big-pickle",
+  "default_tier": "T3-balanced",
   "profiles": {
     "free": {
       "description": "Todo gratis - máximo ahorro",
-      "default_tier": "free-big-pickle",
+      "default_tier": "T3-balanced",
       "overrides": {}
     },
     "balanced": {
       "description": "Balanceado - mayormente gratis, premium cuando vale la pena",
-      "default_tier": "free-big-pickle",
+      "default_tier": "T3-balanced",
       "overrides": {
-        "ml-modeling": "paid-deepseek-v4-pro",
-        "data-design": "paid-deepseek-v4-pro",
-        "data-verify": "paid-deepseek-v4-pro",
-        "judgment-day": "paid-deepseek-v4-pro"
+        "ml-modeling": "T5-deep",
+        "data-design": "T5-deep",
+        "data-verify": "T5-deep",
+        "judgment-day": "T5-deep"
       }
     },
     "fast": {
       "description": "Rápido y barato - para tareas simples",
-      "default_tier": "free-minimax-free",
+      "default_tier": "T2-fast",
       "overrides": {}
     },
     "power": {
       "description": "Máxima potencia - reasoning profundo",
-      "default_tier": "paid-deepseek-v4-pro",
+      "default_tier": "T5-deep",
       "overrides": {}
     },
     "reasoning": {
       "description": "Para tareas que requieren reasoning",
-      "default_tier": "free-nemotron-super-free",
+      "default_tier": "T4-reasoning",
       "overrides": {
-        "ml-modeling": "paid-deepseek-v4-pro",
-        "data-design": "paid-deepseek-v4-pro",
-        "data-verify": "paid-deepseek-v4-pro",
-        "skill-creator": "paid-qwen3-max"
+        "ml-modeling": "T5-deep",
+        "data-design": "T5-deep",
+        "data-verify": "T5-deep",
+        "skill-creator": "T5-deep"
       }
     }
   },
@@ -160,46 +160,86 @@
       "cost": "high",
       "context": 131000,
       "reasoning": true
+    },
+    "T1-ultra-fast": {
+      "model": "minimax-m2.5-free",
+      "provider": "opencode",
+      "description": "Minimax Free - Gratis, 200K context",
+      "cost": "free",
+      "context": 200000,
+      "reasoning": false
+    },
+    "T2-fast": {
+      "model": "minimax-m2.5-free",
+      "provider": "opencode",
+      "description": "Minimax - Simple, poco contexto",
+      "cost": "free",
+      "context": 200000,
+      "reasoning": true
+    },
+    "T3-balanced": {
+      "model": "big-pickle",
+      "provider": "opencode",
+      "description": "Big Pickle - Gratis, 200K context, reasoning",
+      "cost": "free",
+      "context": 200000,
+      "reasoning": true
+    },
+    "T4-reasoning": {
+      "model": "deepseek-v4-flash",
+      "provider": "opencode-go",
+      "description": "DeepSeek V4 Flash - $0.14/$0.28, 1M context",
+      "cost": "low",
+      "context": 1048000,
+      "reasoning": true
+    },
+    "T5-deep": {
+      "model": "deepseek-v4-pro",
+      "provider": "opencode-go",
+      "description": "DeepSeek V4 Pro - $1.69/$3.38, 1M context",
+      "cost": "high",
+      "context": 1048000,
+      "reasoning": true
     }
   },
   "skills": {
-    "commits-real": "free-big-pickle",
-    "skill-registry": "free-big-pickle",
-    "branch-pr": "free-big-pickle",
-    "chained-pr": "free-big-pickle",
-    "issue-creation": "free-big-pickle",
-    "data-cleaning": "free-minimax-free",
-    "data-visualization": "free-big-pickle",
-    "sql-analysis": "free-big-pickle",
-    "statistical-testing": "free-big-pickle",
-    "frontend-senior": "free-big-pickle",
-    "data-profiling": "free-big-pickle",
-    "data-archive": "free-big-pickle",
-    "etl-pipelines": "free-minimax-free",
-    "file-formats": "free-minimax-free",
-    "python-environment": "free-minimax-free",
-    "regex-data": "free-minimax-free",
-    "reporting": "free-big-pickle",
-    "database-connections": "free-minimax-free",
-    "web-scraping": "free-minimax-free",
-    "notebook-integration": "free-big-pickle",
-    "git-data": "free-minimax-free",
-    "api-integration": "free-minimax-free",
-    "data-analysis": "free-big-pickle",
-    "streamlit": "free-big-pickle",
-    "data-question": "free-big-pickle",
-    "data-validation": "free-minimax-free",
-    "go-testing": "free-minimax-free",
-    "time-series-analysis": "paid-deepseek-v4-flash",
-    "ml-modeling": "free-big-pickle",
-    "data-design": "paid-deepseek-v4-pro",
-    "data-verify": "paid-deepseek-v4-pro",
-    "judgment-day": "paid-deepseek-v4-pro",
-    "skill-creator": "paid-deepseek-v4-pro"
+    "commits-real": "T3-balanced",
+    "skill-registry": "T3-balanced",
+    "branch-pr": "T3-balanced",
+    "chained-pr": "T3-balanced",
+    "issue-creation": "T3-balanced",
+    "data-cleaning": "T2-fast",
+    "data-visualization": "T3-balanced",
+    "sql-analysis": "T3-balanced",
+    "statistical-testing": "T3-balanced",
+    "frontend-senior": "T3-balanced",
+    "data-profiling": "T3-balanced",
+    "data-archive": "T3-balanced",
+    "etl-pipelines": "T2-fast",
+    "file-formats": "T2-fast",
+    "python-environment": "T2-fast",
+    "regex-data": "T2-fast",
+    "reporting": "T3-balanced",
+    "database-connections": "T2-fast",
+    "web-scraping": "T2-fast",
+    "notebook-integration": "T3-balanced",
+    "git-data": "T2-fast",
+    "api-integration": "T2-fast",
+    "data-analysis": "T3-balanced",
+    "streamlit": "T3-balanced",
+    "data-question": "T3-balanced",
+    "data-validation": "T2-fast",
+    "go-testing": "T2-fast",
+    "time-series-analysis": "T4-reasoning",
+    "ml-modeling": "T3-balanced",
+    "data-design": "T5-deep",
+    "data-verify": "T5-deep",
+    "judgment-day": "T5-deep",
+    "skill-creator": "T5-deep"
   },
   "overrides": {
     "skills": {
-      "ml-modeling": "paid-deepseek-v4-pro"
+      "ml-modeling": "T5-deep"
     },
     "agents": {}
   }

@@ -6,7 +6,6 @@ Muestra una lista de modelos organizados por precio y te deja elegir.
 """
 
 import json
-import os
 import sys
 from pathlib import Path
 
@@ -23,7 +22,7 @@ def main():
     config = load_config()
     tiers = config.get("tiers", {})
     skills = config.get("skills", {})
-    
+
     if len(sys.argv) < 2:
         print("=" * 60)
         print("🎯 SELECCIONAR MODELO PARA SKILL")
@@ -117,28 +116,28 @@ def main():
 
     print("\n" + "=" * 60)
     choice = input("👉 Elegí un número (o Enter para cancelar): ").strip()
-    
+
     if not choice:
         print("❌ Cancelado")
         return
-    
+
     try:
         num = int(choice)
         if num < 1 or num > len(opciones):
             print(f"❌ Número inválido. Elegí entre 1 y {len(opciones)}")
             return
-        
+
         nuevo_tier = opciones[num - 1]
         nuevo_model = tiers[nuevo_tier].get("model", "")
-        
+
         skills[skill] = nuevo_tier
         config["skills"] = skills
-        
+
         with open(CONFIG, "w", encoding="utf-8") as f:
             json.dump(config, f, indent=2, ensure_ascii=False)
-        
+
         print(f"\n✅ Cambiado: {skill} → {nuevo_model}")
-        
+
     except ValueError:
         print("❌输入 inválido")
 

@@ -3,11 +3,12 @@ Pipeline ETL template — extraer, transformar, cargar.
 USO: python pipeline.py [origen] [destino]
 """
 
-import pandas as pd
 import logging
+import sys
 from datetime import datetime
 from pathlib import Path
-import sys
+
+import pandas as pd
 
 logging.basicConfig(
     level=logging.INFO,

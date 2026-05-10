@@ -1,8 +1,9 @@
 """Tests adaptados para manifests del ecosistema Lend.Ai."""
 
+from pathlib import Path
+
 import pytest
 import yaml
-from pathlib import Path
 
 MANIFESTS_DIR = Path("agents/manifests")
 
@@ -10,11 +11,11 @@ MANIFESTS_DIR = Path("agents/manifests")
 def test_lend_ai_manifest_exists():
     """El manifest del orquestador Lend.Ai debe existir."""
     manifest = MANIFESTS_DIR / "lend-ai.yaml"
-    assert manifest.exists(), f"❌ lend-ai.yaml no encontrado"
-    
+    assert manifest.exists(), "❌ lend-ai.yaml no encontrado"
+
     with open(manifest) as f:
         data = yaml.safe_load(f)
-    
+
     assert data["agent"]["name"] == "lend-ai"
     assert "data-analyst" in data.get("sub_agents", [])
     assert "frontend-senior" in data.get("sub_agents", [])

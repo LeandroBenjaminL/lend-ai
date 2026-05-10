@@ -17,10 +17,7 @@ Comandos:
 
 import argparse
 import json
-import os
-import sys
 from pathlib import Path
-from typing import Any
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 ROUTER = BASE_DIR / "mcp-servers" / "model-router.py"

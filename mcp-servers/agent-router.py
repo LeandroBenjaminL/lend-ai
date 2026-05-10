@@ -17,7 +17,7 @@ import os
 import subprocess
 import sys
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 logging.basicConfig(
     level=logging.INFO,
@@ -174,7 +174,7 @@ mcp = FastMCP("Agent Router")
 
 
 @mcp.tool()
-def list_agents(layer: Optional[str] = None) -> str:
+def list_agents(layer: str | None = None) -> str:
     """
     Lista todos los agentes registrados en el ecosistema.
 
@@ -556,7 +556,10 @@ def agent_health_check() -> str:
             for sub_name in sub_agents:
                 sub_yaml = yaml_path.parent / f"{sub_name}.yaml"
                 if not sub_yaml.exists():
-                    warn_msg = f"Sub-agente '{sub_name}' referenciado pero no existe como {sub_yaml.name}"
+                    warn_msg = (
+                        f"Sub-agente '{sub_name}' referenciado"
+                        f" pero no existe como {sub_yaml.name}"
+                    )
                     detail["issues"].append(warn_msg)
 
         # 5. MCP bindings (warning si está vacío, pero no error)

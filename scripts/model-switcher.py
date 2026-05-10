@@ -17,7 +17,6 @@ import os
 import subprocess
 import sys
 from pathlib import Path
-from typing import Any
 
 # ── ANSI Colors ────────────────────────────────────────────────────────────
 
@@ -95,7 +94,8 @@ def clear():
 def print_header():
     print()
     print(c("bold", c("cyan", "╔══════════════════════════════════════════════════════╗")))
-    print(c("bold", c("cyan", "║")), c("bold", c("yellow", "  🎯 MODEL SWITCHER — Orquestador de Modelos TUI  ")), c("bold", c("cyan", "║")))
+    title = "  🎯 MODEL SWITCHER — Orquestador de Modelos TUI  "
+    print(c("bold", c("cyan", "║")), c("bold", c("yellow", title)), c("bold", c("cyan", "║")))
     print(c("bold", c("cyan", "╚══════════════════════════════════════════════════════╝")))
     print()
     print(c("dim", "  Elegí qué modelo usar para cada skill o sub-agente."))
@@ -128,7 +128,7 @@ def tier_row(name: str, tier_info: dict) -> str:
     return (
         f"  {tier_tag(name)}  {c('dim', '→')}  "
         f"{c('bold', model_name(tier_info))}  "
-        f"{c('dim', f'({tier_info.get('description', '')})')}"
+        f"{c('dim', '(' + tier_info.get('description', '') + ')')}"
     )
 
 
@@ -160,13 +160,15 @@ def show_main_menu(config: dict, overrides: dict):
         for skill, tier in sorted(skill_overrides.items()):
             color = TIER_COLORS.get(tier, "white")
             short = TIER_SHORT.get(tier, tier)
-            print(f"    {c('yellow', skill)} → {c(color, short)} {c('dim', model_name(tiers.get(tier, {})))}")
+            model = model_name(tiers.get(tier, {}))
+            print(f"    {c('yellow', skill)} → {c(color, short)} {c('dim', model)}")
     if agent_overrides:
         print(c("cyan", "  Agentes:"))
         for agent, tier in sorted(agent_overrides.items()):
             color = TIER_COLORS.get(tier, "white")
             short = TIER_SHORT.get(tier, tier)
-            print(f"    {c('blue', agent)} → {c(color, short)} {c('dim', model_name(tiers.get(tier, {})))}")
+            model = model_name(tiers.get(tier, {}))
+            print(f"    {c('blue', agent)} → {c(color, short)} {c('dim', model)}")
     if not skill_overrides and not agent_overrides:
         print(c("dim", "  (ninguno — todo en default según models.json)"))
     print()
@@ -180,7 +182,8 @@ def show_main_menu(config: dict, overrides: dict):
             color = TIER_COLORS.get(tier, "white")
             short = TIER_SHORT.get(tier, tier)
             overridden = " ⚡" if skill in skill_overrides else ""
-            print(f"  {c('yellow', skill):<30} {c(color, short):<6} {c('dim', model_name(tiers.get(tier, {})))}{c('magenta', overridden)}")
+            model = model_name(tiers.get(tier, {}))
+            print(f"  {c('yellow', skill):<30} {c(color, short):<6} {c('dim', model)}{c('magenta', overridden)}")  # noqa: E501
         print()
 
     print(c("bold", "═══ ACCIONES ═══"))
@@ -210,7 +213,8 @@ def pick_skill(config: dict):
         color = TIER_COLORS.get(current_tier, "white")
         short = TIER_SHORT.get(current_tier, current_tier)
         marker = c("magenta", " ⚡") if skill in overrides else ""
-        print(f"  [{c('yellow', str(i))}] {c('yellow', skill):<30} → {c(color, short)} {c('dim', model_name(tiers.get(current_tier, {})))}{marker}")
+        model = model_name(tiers.get(current_tier, {}))
+        print(f"  [{c('yellow', str(i))}] {c('yellow', skill):<30} → {c(color, short)} {c('dim', model)}{marker}")  # noqa: E501
     print()
     print(f"  [{c('red', '0')}] Volver")
     print()
@@ -251,7 +255,8 @@ def pick_agent(config: dict):
         color = TIER_COLORS.get(current_tier, "white")
         short = TIER_SHORT.get(current_tier, current_tier)
         marker = c("magenta", " ⚡") if name in overrides else ""
-        print(f"  [{c('blue', str(i))}] {c('blue', name):<30} → {c(color, short)} {c('dim', model_name(tiers.get(current_tier, {})))}{marker}")
+        model = model_name(tiers.get(current_tier, {}))
+        print(f"  [{c('blue', str(i))}] {c('blue', name):<30} → {c(color, short)} {c('dim', model)}{marker}")  # noqa: E501
     print()
     print(f"  [{c('red', '0')}] Volver")
     print()
@@ -318,7 +323,8 @@ def pick_tier(config: dict, entity_type: str, entity_name: str):
 
             print()
             new_model = model_name(tiers.get(selected_tier, {}))
-            print(c("green", f"  ✅ {entity_type} '{entity_name}' → {tier_tag(selected_tier)} {new_model}"))
+            msg = f"  ✅ {entity_type} '{entity_name}' → {tier_tag(selected_tier)} {new_model}"
+            print(c("green", msg))
             print(c("dim", "  Guardado en model-routing.config.json"))
             input(c("dim", "\n  Enter para continuar..."))
     except (ValueError, IndexError):
@@ -332,7 +338,7 @@ def reset_override(config: dict):
 
     skill_ov = config.get("overrides", {}).get("skills", {})
     agent_ov = config.get("overrides", {}).get("agents", {})
-    tiers = config.get("tiers", {})
+    tiers: dict = config.get("tiers", {})  # noqa: F841
 
     items = []
     for skill, tier in sorted(skill_ov.items()):
@@ -351,7 +357,7 @@ def reset_override(config: dict):
         color = TIER_COLORS.get(tier, "white")
         short = TIER_SHORT.get(tier, tier)
         icon = c("yellow", "⬢") if etype == "skill" else c("blue", "⬡")
-        print(f"  [{c('magenta', str(i))}] {icon} {c('bold', ename):<30} {c(color, short)} → default")
+        print(f"  [{c('magenta', str(i))}] {icon} {c('bold', ename):<30} {c(color, short)} → default")  # noqa: E501
     print()
     print(f"  [{c('red', '0')}] Cancelar")
     print()
@@ -399,7 +405,8 @@ def list_all_view(config: dict):
         color = TIER_COLORS.get(actual, "white")
         short = TIER_SHORT.get(actual, actual)
         status = c("magenta", "⚡ overridden") if skill in skill_overrides else c("dim", "default")
-        print(f"  {c('yellow', skill):<30} {c(color, short):<8} {model_name(tiers.get(actual, {})):<20} {status}")
+        model = model_name(tiers.get(actual, {}))
+        print(f"  {c('yellow', skill):<30} {c(color, short):<8} {model:<20} {status}")
 
     # Agents from router
     result = run_router("list")
@@ -416,8 +423,9 @@ def list_all_view(config: dict):
             actual = agent_overrides.get(name, default_tier)
             color = TIER_COLORS.get(actual, "white")
             short = TIER_SHORT.get(actual, actual)
-            status = c("magenta", "⚡ overridden") if name in agent_overrides else c("dim", "default")
-            print(f"  {c('blue', name):<30} {c(color, short):<8} {model_name(tiers.get(actual, {})):<20} {status}")
+            status = c("magenta", "⚡ overridden") if name in agent_overrides else c("dim", "default")  # noqa: E501
+            model = model_name(tiers.get(actual, {}))
+            print(f"  {c('blue', name):<30} {c(color, short):<8} {model:<20} {status}")
 
     print()
     input(c("dim", "  Enter para volver..."))

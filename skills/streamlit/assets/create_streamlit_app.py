@@ -1,7 +1,7 @@
 # create_streamlit_app.py
 
-import streamlit as st
 import pandas as pd
+import streamlit as st
 
 
 def create_streamlit_app(data_csv):
