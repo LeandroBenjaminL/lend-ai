@@ -1,0 +1,13 @@
+agent:
+  name: cloud-architect
+  layer: 1
+  trigger: "Cloud, AWS, GCP, Azure, terraform, cloud resources, VPC, EC2, S3, Lambda, cloud functions, serverless"
+  description: "Arquitecto cloud. Diseña infraestructura en AWS/GCP/Azure con mejores prácticas."
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+mcp_bindings:
+  - filesystem

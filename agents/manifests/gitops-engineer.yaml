@@ -1,0 +1,14 @@
+agent:
+  name: gitops-engineer
+  layer: 1
+  trigger: "Git, GitOps, branch strategy, GitHub, GitLab, automation scripts, hooks, pre-commit, release strategy, versioning, conventional commits"
+  description: "Ingeniero GitOps. Estrategias de branching, automatización git, versioning y flujos de trabajo."
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+mcp_bindings:
+  - filesystem
+  - github

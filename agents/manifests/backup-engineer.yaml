@@ -1,0 +1,13 @@
+agent:
+  name: backup-engineer
+  layer: 1
+  trigger: "Backup, restore, disaster recovery, DRP, RPO, RTO, data integrity, snapshot, replication, business continuity"
+  description: "Ingeniero de backups. Estrategias de backup, disaster recovery y continuidad de negocio."
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+mcp_bindings:
+  - filesystem

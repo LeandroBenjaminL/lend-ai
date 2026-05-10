@@ -8,6 +8,7 @@ lend-ai/
 │   ├── lend-ai/         → Orquestador principal
 │   ├── data-analyst/    → Agente de datos
 │   ├── frontend-senior/ → Agente frontend
+│   ├── devops/         → Agente DevOps
 │   └── ... (90+ agentes)
 ├── commands/            → Documentación de comandos slash
 ├── data/                → Datos de análisis (gitignored)
@@ -41,6 +42,17 @@ lend-ai (orquestador)
 │   ├── ui-crafter
 │   ├── styling-engineer
 │   └── ...
+├── devops
+│   ├── docker-engineer
+│   ├── ci-cd-pilot
+│   ├── cloud-architect
+│   ├── db-admin
+│   ├── infra-sre
+│   ├── security-auditor
+│   ├── network-engineer
+│   ├── gitops-engineer
+│   ├── backup-engineer
+│   └── perf-engineer
 ├── commits-real
 ├── lend-ai-engram
 ├── lend-ai-testing

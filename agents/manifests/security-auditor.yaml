@@ -1,0 +1,14 @@
+agent:
+  name: security-auditor
+  layer: 1
+  trigger: "Seguridad, auditoría, vulnerabilidades, OWASP, SAST, DAST, compliance, secret scanning, CVE, hardening, HIDS, NIST"
+  description: "Auditor de seguridad. Escanea, audita y hardening de infraestructura y aplicaciones."
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+mcp_bindings:
+  - filesystem
+  - github
