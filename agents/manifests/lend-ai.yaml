@@ -2,7 +2,7 @@ agent:
   name: lend-ai
   layer: "0"
   trigger: "Orquestar el ecosistema, decidir entre data y frontend, planificar arquitectura"
-  description: "Orquestador general del ecosistema Lend.Ai — Data Analysis + Frontend Development"
+  description: "LEND.AI (AISHA Engine) — Senior Mentor Rioplatense. Backend + Frontend + Global Skills. LEND-Protocol."
 
 instructions:
   persona: persona.md
