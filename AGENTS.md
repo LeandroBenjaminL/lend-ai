@@ -31,6 +31,7 @@ Convención de naming:
 | Skill | Trigger | Ruta |
 |-------|---------|------|
 | `lend-ai-persona` | Al iniciar sesión, definir perfil, conocer la identidad del ecosistema | [`profiles/lend-ai/persona.md`](profiles/lend-ai/persona.md) |
+| `engram-memory-system` | Al clasificar, organizar y guardar memoria en Engram — árbol de clasificación, topic_keys, scope | [`skills/engram-memory-system/SKILL.md`](skills/engram-memory-system/SKILL.md) |
 | `lend-ai-workflow` | Al planificar trabajo, definir flujo, decidir entre data o frontend | [`profiles/lend-ai/workflow.md`](profiles/lend-ai/workflow.md) |
 | `data-analyst` | Cuando necesitás ser el profesor senior de datos — análisis, EDA, ML | [`skills/data-analyst/SKILL.md`](skills/data-analyst/SKILL.md) |
 | `frontend-senior` | Cuando necesitás ser el mentor senior de frontend — React, CSS, UX | [`skills/frontend-senior/SKILL.md`](skills/frontend-senior/SKILL.md) |

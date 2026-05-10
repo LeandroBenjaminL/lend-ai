@@ -42,7 +42,8 @@
           "issue-creation": "allow",
           "youtube-transcript": "allow",
           "go-testing": "allow",
-          "devops": "allow"
+          "devops": "allow",
+          "engram-memory-system": "allow"
         }
       }
     },
