@@ -86,6 +86,12 @@ Convención de naming:
 | `infra-sre` | Al monitorear servicios — Prometheus/Grafana, RED/USE method, SLIs/SLOs, runbooks | [`skills/infra-sre/SKILL.md`](skills/infra-sre/SKILL.md) |
 | `security-auditor` | Al escanear vulnerabilidades — SAST/DAST, secret scanning, hardening, OWASP, compliance | [`skills/security-auditor/SKILL.md`](skills/security-auditor/SKILL.md) |
 
+| `network-engineer` | Al configurar DNS, proxies, firewalls, SSL, CDN — Nginx, Caddy, Cloudflare, balanceo | [`skills/network-engineer/SKILL.md`](skills/network-engineer/SKILL.md) |
+| `gitops-engineer` | Al diseñar branching strategy, releases, versionado — trunk-based, GitHub Flow, conventional commits | [`skills/gitops-engineer/SKILL.md`](skills/gitops-engineer/SKILL.md) |
+| `backup-engineer` | Al diseñar backups, disaster recovery — 3-2-1, RPO/RTO, restic, pg_dump | [`skills/backup-engineer/SKILL.md`](skills/backup-engineer/SKILL.md) |
+| `perf-engineer` | Al hacer load testing, profiling — k6, Lighthouse, cProfile, EXPLAIN ANALYZE | [`skills/perf-engineer/SKILL.md`](skills/perf-engineer/SKILL.md) |
+| `db-admin` | Al administrar bases de datos — PostgreSQL, MySQL, Redis, índices, migraciones, replicación | [`skills/db-admin/SKILL.md`](skills/db-admin/SKILL.md) |
+
 ## Skills Transversales
 
 | Skill | Trigger | Ruta |

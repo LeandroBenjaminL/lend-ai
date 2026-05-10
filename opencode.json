@@ -49,7 +49,12 @@
           "ci-cd-pilot": "allow",
           "cloud-architect": "allow",
           "infra-sre": "allow",
-          "security-auditor": "allow"
+          "security-auditor": "allow",
+          "network-engineer": "allow",
+          "gitops-engineer": "allow",
+          "backup-engineer": "allow",
+          "perf-engineer": "allow",
+          "db-admin": "allow"
         }
       }
     },
@@ -974,7 +979,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "db-admin"
+      ]
     },
     "infra-sre": {
       "description": "Monitoreo, alertas, SRE",
@@ -1016,7 +1024,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "network-engineer"
+      ]
     },
     "gitops-engineer": {
       "description": "Git workflows y automation",
@@ -1028,7 +1039,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "gitops-engineer"
+      ]
     },
     "backup-engineer": {
       "description": "Backups y disaster recovery",
@@ -1040,7 +1054,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "backup-engineer"
+      ]
     },
     "perf-engineer": {
       "description": "Performance y load testing",
@@ -1052,7 +1069,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "perf-engineer"
+      ]
     },
     "lend-ai-persona": {
       "description": "Personalidad LEND.AI (AISHA Engine) \u2014 identidad, tono rioplatense, LEND-Protocol",
