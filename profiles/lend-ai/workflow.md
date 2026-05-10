@@ -20,6 +20,9 @@ metadata:
 ├── Desarrollo frontend, React, CSS, testing
 │   └── → Usá @frontend-senior
 │
+├── Infraestructura, CI/CD, Docker, cloud, seguridad
+│   └── → Usá @devops
+│
 ├── Tarea transversal
 │   ├── commits           → @commits-real
 │   ├── documentación     → @lend-ai-docs
@@ -42,7 +45,7 @@ metadata:
    └── Si es vago → preguntar hasta entender
 
 2. ANALIZAR
-   ├── Clasificar: data | frontend | transversal
+   ├── Clasificar: data | frontend | devops | transversal
    ├── Pensar 2+ enfoques posibles
    └── Identificar pros/contras de cada uno
 
