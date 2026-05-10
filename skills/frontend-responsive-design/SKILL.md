@@ -1,78 +1,51 @@
-# Responsive Design
+---
+name: frontend-responsive-design
+description: >
+  Diseño responsive moderno — Container Queries, Grid, Flexbox, clamp().
+  Mobile-first, adaptable a cualquier pantalla.
+  Trigger: Cuando necesitás que un layout funcione en mobile y desktop, o un componente se adapte a su contenedor.
+license: MIT
+metadata:
+  author: Leandro Benjamin L.
+  version: "2.0"
+  model_tier: T2-fast
+---
 
-## Descripción
-Diseño adaptable a múltiples dispositivos y tamaños de pantalla. Mobile-first, breakpoints, container queries, y patrones de layout responsivo.
+# Skill: frontend-responsive-design
 
-## Tecnologías
-- **CSS Media Queries**: Breakpoints tradicionales
-- **CSS Container Queries**: Responsive por contenedor, no por viewport
-- **CSS Grid + Flexbox**: Layouts adaptativos sin frameworks
-- **clamp()**: Tamaños fluidos sin media queries
-- **Viewport units**: vw, vh, dvw, dvh, lvh, svh
+Responsive design moderno. Mobile-first, Container Queries, tamaños fluidos.
 
-## Enfoque Mobile-First
+## Trigger
 
-```css
-/* Base: mobile */
-.card { padding: 1rem; }
+- Un layout no funciona en mobile
+- Un componente debería adaptarse a diferentes contenedores (sidebar, main, modal)
+- Querés tamaños de fuente que escalen sin media queries
+- Necesitás breakpoints consistentes en todo el proyecto
 
-/* Tablet+ */
-@media (min-width: 768px) {
-  .card { padding: 1.5rem; }
-}
+## Workflow LEND
 
-/* Desktop+ */
-@media (min-width: 1024px) {
-  .card { padding: 2rem; }
-}
-```
+1. ANALIZAR
+   ├── Contexto: ¿página completa o componente aislado?
+   ├── Público: ¿mobile-first o desktop-first? (casi siempre mobile-first)
+   ├── Estado actual: ¿ya hay breakpoints? ¿son consistentes?
+   └── Contenedor: ¿el componente vive en diferentes anchos?
 
-## Patrones clave
+2. OFRECER (Menú del Senior)
+   ├── A) Media Queries — breakpoints tradicionales, mobile-first (min-width)
+   ├── B) Container Queries — responsive por contenedor, ideal para componentes reutilizables
+   └── C) Híbrido — Container Queries para componentes, Media Queries para layout global
 
-### Tamaños fluidos con clamp()
-```css
-/* Título: 2rem en mobile, 4rem en desktop */
-h1 { font-size: clamp(2rem, 5vw, 4rem); }
+3. ELEGIR → confirmación
 
-/* Padding fluido */
-.container { padding-inline: clamp(1rem, 5vw, 3rem); }
-```
+4. HACER
+   ├── Mobile-first: estilos base para mobile, media queries con min-width para desktop
+   ├── Container Queries: container-type: inline-size en el padre, @container en el hijo
+   ├── clamp() para tamaños fluidos: font-size: clamp(1rem, 2.5vw, 2rem)
+   ├── Grid + auto-fit para layouts que se adaptan solos
+   ├── dvw/dvh para viewport dinámico (móviles con toolbar)
+   └── Breakpoints consistentes: 480px, 768px, 1024px, 1280px
 
-### Container Queries (responsive por componente)
-```css
-.product-card {
-  container-type: inline-size;
-  container-name: card;
-}
-
-@container card (min-width: 400px) {
-  .product-card { flex-direction: row; }
-  .product-card img { width: 200px; }
-}
-```
-
-### Grid responsivo sin media queries
-```css
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
-}
-```
-
-## Breakpoints recomendados
-```css
-/* 480px  — mobile grande  */
-/* 640px  — tablet chica    */
-/* 768px  — tablet           */
-/* 1024px — desktop          */
-/* 1280px — desktop grande   */
-/* 1536px — ultra-wide       */
-```
-
-## Consideraciones
-- Mobile-first: base mobile, media queries para más grande
-- No uses breakpoints de dispositivos específicos, usá contenido
-- Container Queries son el futuro del responsive component-level
-- Probá en dispositivos reales, no solo en devtools
-- Touch targets mínimos: 44x44px (WCAG)
+5. VERIFICAR
+   ├── El componente se ve bien en 320px, 768px, 1280px
+   ├── No hay scroll horizontal
+   └── Los textos son legibles sin zoom

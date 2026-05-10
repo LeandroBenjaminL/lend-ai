@@ -1,84 +1,52 @@
-# Frontend Testing
+---
+name: frontend-testing
+description: >
+  Testing frontend con Vitest, Testing Library y Playwright. Tests desde la
+  perspectiva del usuario, no desde la implementación.
+  Trigger: Cuando necesitás escribir tests de componentes, hooks, o E2E. O cuando querés configurar el runner de tests.
+license: MIT
+metadata:
+  author: Leandro Benjamin L.
+  version: "2.0"
+  model_tier: T3-balanced
+---
 
-## Descripción
-Testing de aplicaciones frontend. Tests unitarios, de componentes, de integración y E2E. Pirámide de testing, mocks, y mejores prácticas.
+# Skill: frontend-testing
 
-## Tecnologías
-- **Vitest**: Test runner rápido (Vite native), compatible con Jest API
-- **Testing Library**: Tests desde la perspectiva del usuario
-- **Playwright**: E2E, multi-browser, mobile emulation
-- **MSW** (Mock Service Worker): Mock de APIs en service worker
-- **Cypress**: Alternativa E2E, buen debugging visual
+Tests frontend que duelen cuando fallan, no cuando los escribís.
 
-## Pirámide de testing
+## Trigger
 
-```
-    ⬆️  E2E (Playwright)  — flujos críticos
-   ⬆️⬆️  Integración      — componentes + API
-  ⬆️⬆️⬆️  Unitarios        — hooks, utils, lógica pura
-⬆️⬆️⬆️⬆️  Estático         — TypeScript, ESLint
-```
+- Terminaste un componente y querés testearlo
+- Un bug se coló porque no había test
+- Querés configurar Vitest o Playwright
+- Necesitás mockear una API o un hook
 
-## Patrones clave
+## Workflow LEND
 
-### Test de componente (desde el usuario)
-```tsx
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { describe, it, expect } from 'vitest';
+1. ANALIZAR
+   ├── Tipo: ¿unitario (componente/hook), integración (flujo), E2E (navegador)?
+   ├── Stack: ¿Vitest ya está configurado? ¿Testing Library?
+   ├── Cobertura: ¿qué es crítico? (flujos de auth, pago, carga de datos)
+   └── Mock: ¿hay APIs que mockear? (MSW o manual)
 
-import Counter from './Counter';
+2. OFRECER (Menú del Senior)
+   ├── A) Unit + Integración — Vitest + Testing Library, mock con MSW
+   ├── B) Solo E2E — Playwright, cubrir flujos críticos
+   └── C) Pirámide completa — unit + integración + E2E
 
-describe('Counter', () => {
-  it('increments when clicked', async () => {
-    const user = userEvent.setup();
-    render(<Counter initial={0} />);
-    
-    const button = screen.getByRole('button', { name: /increment/i });
-    await user.click(button);
-    
-    expect(screen.getByText('1')).toBeInTheDocument();
-  });
-});
-```
+3. ELEGIR → confirmación
 
-### Mock de API con MSW
-```ts
-import { http, HttpResponse } from 'msw';
-import { setupServer } from 'msw/node';
+4. HACER
+   ├── Vitest: config con jsdom, setup con cleanup automático
+   ├── Testing Library: render + screen.findBy/findAllBy (no getBy)
+   ├── userEvent sobre fireEvent — simula interacciones reales
+   ├── MSW: handlers para APIs, server en setup
+   ├── Playwright: tests en chromium, page.goto + page.locator + assertions
+   ├── Data-testid: solo para elementos difíciles de ubicar semánticamente
+   └── Cobertura: vitest --coverage, mínimo 80% en líneas críticas
 
-const server = setupServer(
-  http.get('/api/users', () => {
-    return HttpResponse.json([{ id: 1, name: 'Leandro' }]);
-  }),
-);
-
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
-```
-
-### Test de hook
-```ts
-import { renderHook, act } from '@testing-library/react';
-import useCounter from './useCounter';
-
-describe('useCounter', () => {
-  it('should increment', () => {
-    const { result } = renderHook(() => useCounter());
-    act(() => result.current.increment());
-    expect(result.current.count).toBe(1);
-  });
-});
-```
-
-## Alternativas
-- **Jest**: El anterior estándar, migrando a Vitest
-- **Cypress**: Bueno para E2E, menos rápido que Playwright
-- **Testing Library**: Para React, Vue, Svelte, Angular — misma API
-
-## Consideraciones
-- Probá comportamiento, no implementación
-- No tests de snapshot a menos que sean críticos
-- Un test que toca el DOM lento es mejor que un test que no existe
-- CI debe ejecutar tests en cada PR
+5. VERIFICAR
+   ├── vitest run pasa sin errores
+   ├── npx playwright test pasa en chromium
+   └── Los tests fallan si el componente cambia de comportamiento (no por refactor)

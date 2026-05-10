@@ -1,62 +1,50 @@
-# CSS Styling
+---
+name: frontend-css-styling
+description: >
+  Estilos CSS modernos — Tailwind, CSS Modules, Grid, Flexbox, Container Queries.
+  Elige la estrategia correcta según el proyecto.
+  Trigger: Cuando necesitás estilar componentes, decidir entre Tailwind y CSS puro, o hacer layouts responsive.
+license: MIT
+metadata:
+  author: Leandro Benjamin L.
+  version: "2.0"
+  model_tier: T2-fast
+---
 
-## Descripción
-Estilos para interfaces web modernas. CSS nativo, Tailwind CSS, CSS Modules, sistemas de diseño, responsive, temas, y animaciones.
+# Skill: frontend-css-styling
 
-## Tecnologías
-- **CSS Moderno**: Grid, Flexbox, Container Queries, Custom Properties, :has(), nesting
-- **Tailwind CSS**: Utility-first, configuración, plugins, JIT
-- **CSS Modules**: Scoped styles, composición
-- **CSS-in-JS**: styled-components, Emotion (menos recomendado hoy)
+CSS moderno. Seleccioná la estrategia correcta y no mezcles todo.
 
-## Cuándo usar cada enfoque
+## Trigger
 
-| Enfoque | Cuándo | Por qué |
-|---------|--------|---------|
-| Tailwind CSS | Proyectos nuevos, equipos chicos | Rápido, consistente, sin naming |
-| CSS Modules | Componentes críticos, librerías | Scope real, sin runtime |
-| CSS-in-JS | Legado o casos muy específicos | Runtime cost, mejor evitarlo |
-| Vanilla CSS | Proyectos simples, prototipos | Sin dependencias |
+- Necesitás maquetar un componente o página
+- No sabés si usar Tailwind, CSS Modules o CSS-in-JS
+- Un layout no se comporta como esperás en mobile
+- Hay estilos duplicados o que se pisan entre componentes
 
-## Patrones clave
+## Workflow LEND
 
-### Layout con Grid
-```css
-.layout {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem;
-}
-```
+1. ANALIZAR
+   ├── Stack: ¿Tailwind ya está en el proyecto? ¿CSS Modules?
+   ├── Tipo: ¿layout global o componente aislado?
+   ├── Estado: ¿estilos dinámicos (prop-driven) o estáticos?
+   └── Escala: ¿proyecto chico o grande? Tailwind brilla en equipos grandes
 
-### Container Queries (responsive por componente)
-```css
-.card-container { container-type: inline-size; }
-@container (min-width: 400px) {
-  .card { flex-direction: row; }
-}
-```
+2. OFRECER (Menú del Senior)
+   ├── A) Tailwind CSS — utility-first, consistente, ideal para equipos
+   ├── B) CSS Modules — scoped por componente, CSS puro, sin runtime
+   └── C) CSS Global + BEM — para proyectos chicos o landing pages
 
-### Temas con Custom Properties
-```css
-:root {
-  --color-primary: #3b82f6;
-  --color-surface: #ffffff;
-  --spacing-unit: 0.25rem;
-}
-[data-theme="dark"] {
-  --color-primary: #60a5fa;
-  --color-surface: #1e1e2e;
-}
-```
+3. ELEGIR → confirmación
 
-## Alternativas
-- **SCSS/Sass**: Preprocesador con nesting, mixins, variables (hoy CSS nativo tiene casi todo)
-- **UnoCSS**: Alternativa a Tailwind, bajo demanda, más rápido
-- **Open Props**: Custom Properties pre-hechas, sin clases
+4. HACER
+   ├── Tailwind: config con colores, fonts, spacing en tailwind.config
+   ├── CSS Modules: un archivo .module.css por componente
+   ├── Layout: Grid para 2D, Flexbox para 1D. Container Queries para responsive por componente
+   ├── Variables CSS para temas (--color-primary, --spacing-md)
+   └── Mobile-first: min-width en media queries, no max-width
 
-## Consideraciones
-- Mobile-first siempre: `min-width` en media queries
-- Evitá `!important` — es olor a diseño no encapsulado
-- Preferí lógica CSS (Grid, Container Queries) sobre frameworks de grilla
-- CSS tiene 25+ nuevas features en los últimos 3 años — mantenete actualizado
+5. VERIFICAR
+   ├── El layout se ve bien en mobile y desktop
+   ├── No hay estilos que se pisan entre componentes
+   └── Los breakpoints son consistentes (no 5 media queries distintos)

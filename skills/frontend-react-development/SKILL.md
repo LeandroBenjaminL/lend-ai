@@ -1,73 +1,67 @@
-# React Development
+---
+name: frontend-react-development
+description: >
+  Desarrollo de componentes React con hooks, patrones y mejores prácticas.
+  Componentes reutilizables, estado local y composición.
+  Trigger: Cuando necesitás crear componentes React, hooks, manejar estado local, o decidir entre patrones de componentes.
+license: MIT
+metadata:
+  author: Leandro Benjamin L.
+  version: "2.0"
+  model_tier: T3-balanced
+---
 
-## Descripción
-Desarrollo de interfaces con React. Componentes, hooks, patrones de composición, Server Components, Suspense, y mejores prácticas del ecosistema React.
+# Skill: frontend-react-development
 
-## Tecnologías
-- React 18/19
-- React Hooks (useState, useEffect, useCallback, useMemo, useRef, useContext, useReducer, custom hooks)
-- Server Components (React 19)
-- Suspense y Transitions
-- Patrones: Compound Components, Render Props, Higher-Order Components
+Componentes React que escalan. No es magia, es patrones.
 
-## Frameworks relacionados
-- **Next.js** → SSR, SSG, ISR, App Router
-- **Astro** → Islas de interactividad con React
-- **Vite** → Build tool recomendado
+## Trigger
 
-## Cuándo usar React
-- Apps interactivas con estado complejo
-- Dashboards y paneles de administración
-- Aplicaciones que necesitan ecosistema maduro de librerías
-- Equipos grandes que necesitan estructura
+- Necesitás crear un componente nuevo
+- Un componente se está volviendo muy grande y hay que partirlo
+- No sabés si usar prop drilling, contexto, o estado local
+- Querés decidir entre Server Component o Client Component
 
-## Alternativas
-- **Vue 3** → Más fácil de aprender, template-based
-- **Svelte 5** → Menos boilerplate, compilado
-- **Solid** → Más performante, sin virtual DOM
-- **Preact** → Misma API que React, 3KB
+## Workflow LEND
 
-## Patrones clave
+1. ANALIZAR
+   ├── ¿Es servidor o cliente? ¿necesita interactividad, useState, useEffect?
+   ├── ¿Composición o herencia? React prefiere composición siempre
+   ├── Estado: ¿local, lifting, contexto, o externo?
+   └── Props: ¿cuántas? ¿tipadas? ¿con valores default?
 
-### Composición sobre herencia
-```tsx
-function Card({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="card">
-      <h2>{title}</h2>
-      {children}
-    </div>
-  );
-}
-```
+2. OFRECER (Menú del Senior)
+   ├── A) Componente simple — function + props, sin estado, puro render
+   ├── B) Componente con estado — hooks internos (useState, useReducer)
+   └── C) Compound component — varios sub-componentes que comparten estado vía contexto
 
-### Custom Hooks para lógica reutilizable
-```tsx
-function useLocalStorage<T>(key: string, initial: T) {
-  const [value, setValue] = useState<T>(() => {
-    const stored = localStorage.getItem(key);
-    return stored ? JSON.parse(stored) : initial;
-  });
+3. ELEGIR → confirmación
 
-  useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(value));
-  }, [key, value]);
+4. HACER
+   ├── TypeScript estricto, props tipadas con interface
+   ├── Componente pequeño (< 100 líneas). Si crece, partilo.
+   ├── Custom hooks para lógica reutilizable (useDatos, useAuth)
+   ├── useMemo/useCallback solo si hay rerenders demostrables (no premature optimization)
+   ├── Server Component por defecto, Client Component solo cuando necesitás interactividad
+   └── Estados: loading, empty, error, success — siempre cubiertos
 
-  return [value, setValue] as const;
-}
-```
+5. VERIFICAR
+   ├── El componente funciona en aislamiento
+   ├── Los tipos son correctos (tsc sin errores)
+   └── No hay warnings de React en consola
 
-### Error Boundaries
-```tsx
-class ErrorBoundary extends React.Component<{ fallback: React.ReactNode }, { hasError: boolean }> {
-  state = { hasError: false };
-  static getDerivedStateFromError() { return { hasError: true }; }
-  render() { return this.state.hasError ? this.props.fallback : this.props.children; }
-}
-```
+## Patrones
 
-## Consideraciones
-- Preferí Server Components para datos, Client Components para interactividad
-- Evitá useEffect para sincronizar estado — preferí useSyncExternalStore o librerías de estado
-- Usá React.memo solo cuando haya re-renders medibles, no por default
-- TypeScript es obligatorio en proyectos React modernos
+- **Composición > Props**: pasá componentes como children en vez de 15 props booleanas
+- **Custom hooks**: extraé lógica repetida a hooks (useFetch, useLocalStorage)
+- **Server Component first**: menos JS en el cliente, mejor performance
+- **Estados visibles**: loading, empty, error, success — no dejés ningún estado sin cubrir
+- **Props con defaults**: destructuring con valor default, no && encadenados
+
+## Anti-patrones
+
+- ❌ Componentes de 300 líneas — partí en componentes chicos
+- ❌ useEffect sin dependencias — "solo al montar" casi nunca es correcto
+- ❌ Prop drilling de 5 niveles — usá contexto o composición
+- ❌ useMemo/useCallback en todos lados — midamos primero
+- ❌ Cero estados intermedios — la pantalla no puede quedarse en blanco mientras carga

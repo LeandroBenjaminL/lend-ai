@@ -1,73 +1,51 @@
-# Web Performance
+---
+name: frontend-web-performance
+description: >
+  Optimización de rendimiento web — Core Web Vitals, Lighthouse, lazy loading,
+  bundle splitting y métricas.
+  Trigger: Cuando necesitás optimizar performance, mejorar Lighthouse scores, o reducir el bundle size.
+license: MIT
+metadata:
+  author: Leandro Benjamin L.
+  version: "2.0"
+  model_tier: T3-balanced
+---
 
-## Descripción
-Optimización de performance web. Core Web Vitals, Lighthouse, bundle optimization, lazy loading, caching, y patrones de renderizado eficiente.
+# Skill: frontend-web-performance
 
-## Métricas Core Web Vitals
+Performance web. Medí antes de optimizar.
 
-| Métrica | Qué mide | Bueno | Malo |
-|---------|----------|-------|------|
-| **LCP** | Carga del contenido principal | ≤2.5s | >4s |
-| **FID / INP** | Interactividad | ≤100ms | >300ms |
-| **CLS** | Estabilidad visual | ≤0.1 | >0.25 |
+## Trigger
 
-## Patrones clave
+- Lighthouse da scores bajos
+- La app tarda en cargar
+- Las interacciones se sienten lentas
+- Querés reducir el bundle de JS
 
-### Lazy Loading de imágenes
-```tsx
-// Nativo del browser — sin librerías
-<img src="hero.webp" loading="lazy" decoding="async" />
+## Workflow LEND
 
-// Con next/image o @astrojs/image
-<Image src="/hero.jpg" width={1200} height={600} loading="lazy" />
-```
+1. ANALIZAR
+   ├── Core Web Vitals actuales: LCP, INP, CLS (Lighthouse o PageSpeed)
+   ├── Bundle: ¿cuánto pesa? ¿qué librerías ocupan más?
+   ├── Imágenes: ¿están optimizadas? ¿formatos modernos?
+   └── Fuentes: ¿cargás fuentes custom? ¿con display swap?
 
-### Code Splitting con React.lazy
-```tsx
-const Dashboard = lazy(() => import('./Dashboard'));
+2. OFRECER (Menú del Senior)
+   ├── A) Quick wins — imágenes next-gen, lazy loading, fuentes display swap
+   ├── B) Bundle optimization — code splitting, tree shaking, dynamic imports
+   └── C) Full audit — todo + SSR/SSG, CDN, service worker, caching
 
-<Suspense fallback={<Skeleton />}>
-  <Dashboard />
-</Suspense>
-```
+3. ELEGIR → confirmación
 
-### Preload de recursos críticos
-```html
-<link rel="preload" href="/fonts/inter.woff2" as="font" crossorigin />
-<link rel="preload" href="/hero.webp" as="image" />
-<link rel="preconnect" href="https://api.example.com" />
-```
+4. HACER
+   ├── LCP: optimizar imagen hero (WebP/AVIF, preload), reducir render-blocking resources
+   ├── INP: evitar long tasks (>50ms), usar debounce en inputs, lazy load de handlers pesados
+   ├── CLS: dimensiones explícitas en imágenes y iframes, no inyectar contenido arriba del fold
+   ├── Dynamic imports: React.lazy + Suspense para rutas y componentes pesados
+   ├── Bundle analysis: vite build --analyze o webpack-bundle-analyzer
+   └── Service worker: Workbox para precaching y runtime caching
 
-### Bundle Analysis
-```bash
-# Vite
-npx vite-bundle-analyzer
-
-# Webpack
-npx webpack-bundle-analyzer dist/stats.json
-```
-
-### Técnicas de optimización
-
-| Técnica | Impacto | Esfuerzo |
-|---------|---------|----------|
-| Imágenes WebP/AVIF | Alto | Bajo |
-| Code splitting | Alto | Medio |
-| Tree shaking | Medio | Bajo |
-| Critical CSS | Alto | Medio |
-| Font display swap | Medio | Bajo |
-| CDN + caching | Alto | Bajo |
-| Preconnect a origins | Medio | Bajo |
-
-## Herramientas
-- **Lighthouse**: Audit automático en Chrome DevTools
-- **PageSpeed Insights**: Lighthouse desde servers de Google
-- **Web Vitals Library**: Medir en producción (JS)
-- **BundlePhobia**: Costo de agregar una dependencia
-- **Calibre / SpeedCurve**: Monitoreo continuo
-
-## Consideraciones
-- Medí antes de optimizar — no optimices lo que no sabés que es problema
-- El mayor impacto suele venir de imágenes y fonts
-- Third-party scripts (analytics, ads, chat) son la causa #1 de performance pobre
-- Performance es feature, no afterthought
+5. VERIFICAR
+   ├── Lighthouse > 90 en mobile y desktop
+   ├── LCP < 2.5s, INP < 200ms, CLS < 0.1
+   └── El bundle JS principal es < 100KB (gzipped)

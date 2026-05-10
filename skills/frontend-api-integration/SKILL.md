@@ -1,70 +1,51 @@
-# API Integration
+---
+name: frontend-api-integration
+description: >
+  Consumo de APIs en el frontend — TanStack Query, fetch, Axios.
+  Caché, refetch, optimistic updates y manejo de errores.
+  Trigger: Cuando necesitás consumir APIs desde el frontend, cachear respuestas, o manejar estados de carga/error.
+license: MIT
+metadata:
+  author: Leandro Benjamin L.
+  version: "2.0"
+  model_tier: T3-balanced
+---
 
-## Descripción
-Consumo de APIs desde el frontend. Fetching de datos, caché, revalidación, optimistic updates, manejo de errores, y patrones de integración con backend.
+# Skill: frontend-api-integration
 
-## Tecnologías
-- **TanStack Query (React Query)**: Caché automática, refetch, paginación, infinite scroll
-- **fetch nativo**: Sin dependencias, suficiente para casos simples
-- **Axios**: Interceptors, cancelación, progreso de upload
-- **SWR**: Estrategia stale-while-revalidate, más liviano que TanStack Query
-- **RTK Query**: Integrado con Redux Toolkit
+APIs en el frontend. Que los datos lleguen sin romper la UI.
 
-## Cuándo usar qué
+## Trigger
 
-| Biblioteca | Cuándo | Ventaja |
-|------------|--------|---------|
-| TanStack Query | Apps con datos del server | Caché, refetch, devtools |
-| fetch + hooks | Apps simples, SSR | 0 dependencias |
-| Axios | Necesitás interceptors | Request/response transforms |
-| SWR | Priorizás velocidad sobre features | Liviano, simple |
+- Un componente necesita traer datos de una API
+- Las llamadas se repiten sin cachear
+- Querés hacer optimistic update (cambiar la UI antes de la respuesta)
+- Hay que manejar loading, error y retry
 
-## Patrones clave
+## Workflow LEND
 
-### Custom Hook con TanStack Query
-```ts
-function usePosts() {
-  return useQuery({
-    queryKey: ['posts'],
-    queryFn: () => fetch('/api/posts').then(r => r.json()),
-    staleTime: 5 * 60 * 1000, // 5 min
-  });
-}
-```
+1. ANALIZAR
+   ├── Stack: ¿TanStack Query ya está en el proyecto?
+   ├── Tipo: ¿GETs, POSTs, suscripciones? ¿REST o GraphQL?
+   ├── Caché: ¿los datos cambian seguido? ¿pueden ser stale?
+   └── Errores: ¿cómo se muestran? ¿toast, inline, página de error?
 
-### Optimistic Update
-```ts
-const mutation = useMutation({
-  mutationFn: (newPost) => fetch('/api/posts', { method: 'POST', body: JSON.stringify(newPost) }),
-  onMutate: async (newPost) => {
-    await queryClient.cancelQueries({ queryKey: ['posts'] });
-    const previous = queryClient.getQueryData(['posts']);
-    queryClient.setQueryData(['posts'], (old) => [...old, newPost]);
-    return { previous };
-  },
-  onError: (err, newPost, context) => {
-    queryClient.setQueryData(['posts'], context.previous);
-  },
-});
-```
+2. OFRECER (Menú del Senior)
+   ├── A) TanStack Query — caché, refetch, paginación, mutations
+   ├── B) fetch nativo — sin dependencias, para apps chicas
+   └── C) SWR — liviano, stale-while-revalidate, si no necesitás mutations complejas
 
-### Estados del request
-```ts
-function PostList() {
-  const { data, isLoading, isError, error } = usePosts();
-  if (isLoading) return <Spinner />;
-  if (isError) return <Error message={error.message} />;
-  return <List items={data} />;
-}
-```
+3. ELEGIR → confirmación
 
-## Alternativas
-- **tRPC**: APIs end-to-end type-safe, TypeScript en front y back
-- **OpenAPI Generator**: Genera clientes desde spec OpenAPI
-- **GraphQL**: Apollo, urql (cubierto en skill graphql)
+4. HACER
+   ├── TanStack Query: useQuery + useMutation con queryClient central
+   ├── Caché: staleTime configurado (no dejar defaults de 0)
+   ├── Errores: onError global + retry con backoff
+   ├── Optimistic updates: onMutate actualiza caché, onError rollback
+   ├── Loading: useQuery isLoading vs isFetching (la primera carga vs refetch)
+   └── Tipado: respuesta tipada con genéricos (useQuery<Datos>)
 
-## Consideraciones
-- Siempre mostrá loading, error y success states
-- Caché bien configurada reduce requests un 80%
-- Optimistic updates mejoran UX pero requieren manejo de errores
-- Los endpoints del backend deberían ser versionados (/api/v1/)
+5. VERIFICAR
+   ├── Las llamadas se cachean correctamente (Network tab)
+   ├── Los errores se muestran al usuario
+   └── El refetch funciona después de una mutación (invalidateQueries)

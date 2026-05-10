@@ -1,82 +1,52 @@
-# State Management
+---
+name: frontend-state-management
+description: >
+  Manejo de estado global en React — Zustand, Redux Toolkit, Context.
+  Elige la solución según la complejidad del estado.
+  Trigger: Cuando necesitás estado global, compartir datos entre componentes lejanos, o decidir qué herramienta de estado usar.
+license: MIT
+metadata:
+  author: Leandro Benjamin L.
+  version: "2.0"
+  model_tier: T3-balanced
+---
 
-## Descripción
-Manejo de estado en aplicaciones frontend. Estado global vs local, librerías de estado, persistencia, y patrones de sincronización.
+# Skill: frontend-state-management
 
-## Tecnologías
-- **Zustand**: Liviano, simple, sin boilerplate, middleware
-- **Redux Toolkit**: Estructurado, devtools, RTK Query integrado
-- **React Context**: Built-in, para estado simple/theme/auth
-- **Jotai**: Atómico, similar a Recoil pero más simple
-- **TanStack Query**: Para estado del servidor (ver api-integration)
+Estado global. Elegí la herramienta correcta y no overengineeres.
 
-## Cuándo usar qué
+## Trigger
 
-| Librería | Cuándo | Ventaja |
-|----------|--------|---------|
-| React Context | Tema, auth, idioma | Sin dependencias |
-| Zustand | Apps medianas, equipo chico | Mínimo boilerplate |
-| Redux Toolkit | Apps grandes, equipo grande | Estructura, devtools, middlewares |
-| Jotai | Estado atómico, performance | Re-renders precisos |
+- Dos componentes lejanos necesitan compartir datos
+- El prop drilling ya es insoportable (5+ niveles)
+- Querés persistir estado (localStorage, URL)
+- Necesitás devtools para debuggear estado
 
-## Patrones clave
+## Workflow LEND
 
-### Zustand — Store simple
-```ts
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+1. ANALIZAR
+   ├── Tipo: ¿estado del servidor (API) o estado del cliente (UI)?
+   ├── Server state → TanStack Query (no va acá)
+   ├── Client state: ¿global o local? ¿persistente?
+   ├── Frecuencia: ¿cambia en cada click o solo al cargar?
+   └── ¿Cuánto estado? 2 variables o 50?
 
-interface CartStore {
-  items: string[];
-  addItem: (item: string) => void;
-  removeItem: (item: string) => void;
-  total: number;
-}
+2. OFRECER (Menú del Senior)
+   ├── A) Zustand — liviano, simple, middleware, suficiente para el 80% de los casos
+   ├── B) Context — built-in, para estado simple (theme, auth)
+   └── C) Redux Toolkit — estructurado, slices, devtools, para apps grandes
 
-const useCart = create<CartStore>()(
-  persist(
-    (set, get) => ({
-      items: [],
-      addItem: (item) => set((state) => ({ items: [...state.items, item] })),
-      removeItem: (item) => set((state) => ({
-        items: state.items.filter((i) => i !== item),
-      })),
-      get total() { return get().items.length; }, // 👎 no hacer, mejor computed selector
-    }),
-    { name: 'cart-storage' }
-  )
-);
-```
+3. ELEGIR → confirmación
 
-### Redux Toolkit — Slice
-```ts
-const cartSlice = createSlice({
-  name: 'cart',
-  initialState: { items: [] as string[] },
-  reducers: {
-    addItem: (state, action: PayloadAction<string>) => {
-      state.items.push(action.payload); // immer: mutable syntax
-    },
-    removeItem: (state, action: PayloadAction<string>) => {
-      state.items = state.items.filter(i => i !== action.payload);
-    },
-  },
-});
-```
+4. HACER
+   ├── Zustand: store simple con set() y get(), selectors para rerenders controlados
+   ├── Context: Provider en el nivel correcto (no en el root si no hace falta)
+   ├── Redux: createSlice + configureStore + useAppSelector/useAppDispatch tipados
+   ├── Devtools: habilitados en desarrollo, desactivados en producción
+   ├── Persist: zustand/middleware persist o redux-persist para localStorage
+   └── Selectors: memoizados con createSelector (Redux) o selectores por referencia (Zustand)
 
-### Regla de oro: Estado local > Context > Librería
-1. ¿Lo usa solo este componente? → `useState`
-2. ¿Lo usan 2-3 componentes cercanos? → `useState` + props
-3. ¿Lo usan varios componentes lejanos? → Context
-4. ¿Muchos componentes, muchas actualizaciones? → Zustand/Redux
-
-## Alternativas
-- **Pinia** (Vue) → El Vuex reemplazado
-- **Svelte stores** → Built-in en Svelte
-- **Signals** (Solid, Preact, Angular) → Modelo atómico moderno
-
-## Consideraciones
-- No pongas TODO en estado global — solo lo que realmente se comparte
-- Los selectores mal hechos causan re-renders innecesarios
-- Preferí selectores atómicos (un valor a la vez)
-- Estado del servidor NO va en estado global — va en TanStack Query
+5. VERIFICAR
+   ├── No hay rerenders innecesarios (React DevTools)
+   ├── El estado persiste si es necesario
+   └── Los devtools muestran el estado correctamente

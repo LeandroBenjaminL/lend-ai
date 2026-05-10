@@ -1,73 +1,51 @@
-# TypeScript
+---
+name: frontend-type-script
+description: >
+  TypeScript 5.x strict — tipos, genéricos, satisfies, template literal types.
+  Código tipado que no molesta, ayuda.
+  Trigger: Cuando necesitás tipar componentes, definir interfaces, usar genéricos, o resolver errores de tipos.
+license: MIT
+metadata:
+  author: Leandro Benjamin L.
+  version: "2.0"
+  model_tier: T3-balanced
+---
 
-## Descripción
-TypeScript avanzado para frontend. Tipado estricto, genéricos, utility types, branded types, type inference, y patrones de tipos para React.
+# Skill: frontend-type-script
 
-## Tecnologías
-- TypeScript 5.x
-- strict mode
-- satisfies, const type parameters
-- Template literal types
-- Conditional types, mapped types
+TypeScript strict. Que los tipos te ayuden, no que te estorben.
 
-## Configuración recomendada
+## Trigger
 
-```json
-{
-  "compilerOptions": {
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "skipLibCheck": true,
-    "moduleResolution": "bundler",
-    "target": "ES2022"
-  }
-}
-```
+- Estás escribiendo una función o componente nuevo
+- Un error de tipos no te deja compilar
+- Tenés `any` en el código y querés sacarlo
+- Necesitás un tipo complejo (intersección, unión discriminada, template literal)
 
-## Patrones clave
+## Workflow LEND
 
-### Branded Types para IDs
-```ts
-type UserId = string & { __brand: 'UserId' };
-type PostId = string & { __brand: 'PostId' };
-function getUser(id: UserId) { /* ... */ }
-// getUser(postId) → ERROR en compilación
-```
+1. ANALIZAR
+   ├── ¿strict mode está activado? tsconfig.json: strict: true
+   ├── ¿Hay anys? contalos y planeá eliminarlos
+   ├── ¿Los tipos reflejan el dominio o solo repiten la forma de los datos?
+   └── ¿Hay tipos compartidos que deberían estar en una carpeta types/?
 
-### Discriminated Unions para estado
-```ts
-type RequestState<T> =
-  | { status: 'idle' }
-  | { status: 'loading' }
-  | { status: 'success'; data: T }
-  | { status: 'error'; error: string };
-```
+2. OFRECER (Menú del Senior)
+   ├── A) Tipado simple — interface + type, sin genéricos complejos
+   ├── B) Tipado genérico — utility types, genéricos, satisfies
+   └── C) Tipado avanzado — template literal types, infer, conditional types
 
-### satisfies para inferencia precisa
-```ts
-const config = {
-  api: 'https://api.example.com',
-  timeout: 5000,
-} satisfies Record<string, string | number>;
-// config.api → string, no string | number
-```
+3. ELEGIR → confirmación
 
-### Utility Types para componentes
-```ts
-type PropsWithChildren<T = {}> = T & { children?: React.ReactNode };
-type OmitAndMerge<T, K extends keyof T, Overrides> = Omit<T, K> & Overrides;
-```
+4. HACER
+   ├── interface para objetos (extensible), type para uniones y primitivos
+   ├── satisfies para validar que un valor cumple un tipo sin asumirlo
+   ├── as const para objetos literales con tipos exactos
+   ├── discriminated unions para estados (type State = Loading | Success | Error)
+   ├── z.
+   └── stricter: evitar `any`, preferir `unknown` si no sabés el tipo
 
-## Alternativas
-- **JSDoc**: Tipado sin compilación, útil para JS puro
-- **Flow**: De Facebook, prácticamente muerto
-- **PureScript/ReasonML**: Funcional, no mainstream
-
-## Consideraciones
-- strict mode NO es negociable
-- Evitá `any` — usá `unknown` y después type narrowing
-- Los `as` casts son necesarios a veces pero siempre intentá type narrowing primero
-- TypeScript es inversión: más tiempo ahora, menos bugs después
+5. VERIFICAR
+   ├── tsc sin errores (o vite build)
+   ├── No hay anys nuevos
+   └── Los tipos ayudan al autocompletado sin ser una novela
