@@ -19,11 +19,13 @@ lend-ai/
 ├── registry/            → Registro central de agentes
 ├── schemas/             → Schemas de validación
 ├── scripts/             → Scripts de utilidad (model picker, etc)
-├── skills/              → Skills (instrucciones para cada dominio)
-│   ├── data-*/          → Data analysis skills
-│   ├── frontend-*/      → Frontend skills
-│   ├── sdd-*/           → Spec-Driven Development skills
-│   └── lend-ai-*/       → Skills transversales del ecosistema
+├── skills/              → Skills con LEND-Protocol (58 skills)
+│   ├── data-*/          → Data analysis (23 skills)
+│   ├── frontend-*/      → Frontend (8 skills)
+│   ├── docker-engineer… → DevOps (5 skills)
+│   ├── sdd-*/           → SDD (10 skills)
+│   ├── commits-real,…   → Transversales (12 skills)
+│   └── lend-ai-*/       → Skills del ecosistema
 └── tests/               → Tests
 ```
 
@@ -61,13 +63,13 @@ lend-ai (orquestador)
 
 ## Modelos y Tiers
 
-| Tier | Modelo | Uso |
-|------|--------|-----|
-| T1 | Minimax Free | Tareas mecánicas (limpieza, formateo) |
-| T2 | Minimax | Reportes simples, validaciones |
-| T3 | DeepSeek Medium | EDA, análisis general (default) |
-| T4 | DeepSeek Pro | Arquitectura, ML complejo |
-| T5 | DeepSeek Pro Max | Problemas muy difíciles |
+| Tier | Modelo | Costo | Uso |
+|------|--------|-------|-----|
+| T1 | Minimax Free | Gratis | Tareas mecánicas (limpieza, formateo) |
+| T2 | Minimax Free | Gratis | Reportes simples, validaciones |
+| T3 | Big Pickle | Gratis | EDA, análisis general (default) |
+| T4 | DeepSeek V4 Flash | Bajo | Arquitectura, ML complejo |
+| T5 | DeepSeek V4 Pro | Alto | Problemas muy difíciles |
 
 Ver `model-routing.config.json` y `scripts/model-commands.py`.
 
