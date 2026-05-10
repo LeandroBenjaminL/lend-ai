@@ -1,88 +1,206 @@
 {
   "$schema": "./schemas/model-routing.schema.json",
-  "version": "2.0",
+  "version": "3.0",
   "active_profile": "balanced",
-  "default_tier": "T3-balanced",
+  "default_tier": "free-big-pickle",
   "profiles": {
-    "balanced": {
-      "description": "Perfil balanceado para uso diario",
-      "default_tier": "T3-balanced",
+    "free": {
+      "description": "Todo gratis - máximo ahorro",
+      "default_tier": "free-big-pickle",
       "overrides": {}
     },
-    "cheap": {
-      "description": "Perfil económico para tareas simples",
-      "default_tier": "T1-ultra-fast",
+    "balanced": {
+      "description": "Balanceado - mayormente gratis, premium cuando vale la pena",
+      "default_tier": "free-big-pickle",
       "overrides": {
-        "data-analyst": "T3-balanced",
-        "frontend-senior": "T3-balanced"
+        "ml-modeling": "paid-deepseek-v4-pro",
+        "data-design": "paid-deepseek-v4-pro",
+        "data-verify": "paid-deepseek-v4-pro",
+        "judgment-day": "paid-deepseek-v4-pro"
       }
     },
-    "premium": {
-      "description": "Perfil premium para máxima calidad",
-      "default_tier": "T5-deep",
-      "overrides": {
-        "commits-real": "T2-fast",
-        "skill-registry": "T2-fast"
-      }
+    "fast": {
+      "description": "Rápido y barato - para tareas simples",
+      "default_tier": "free-minimax-free",
+      "overrides": {}
     },
-    "dev_analysis": {
-      "description": "Perfil para análisis profundo de código",
-      "default_tier": "T4-reasoning",
+    "power": {
+      "description": "Máxima potencia - reasoning profundo",
+      "default_tier": "paid-deepseek-v4-pro",
+      "overrides": {}
+    },
+    "reasoning": {
+      "description": "Para tareas que requieren reasoning",
+      "default_tier": "free-nemotron-super-free",
       "overrides": {
-        "data-explorer": "T3-balanced",
-        "commits-real": "T2-fast"
+        "ml-modeling": "paid-deepseek-v4-pro",
+        "data-design": "paid-deepseek-v4-pro",
+        "data-verify": "paid-deepseek-v4-pro",
+        "skill-creator": "paid-qwen3-max"
       }
     }
   },
   "tiers": {
-    "T1-ultra-fast": {
-      "model": "minimax-free",
+    "free-big-pickle": {
+      "model": "big-pickle",
+      "provider": "opencode",
+      "description": "Big Pickle - Gratis, 200K context, reasoning",
+      "cost": "free",
+      "context": 200000,
+      "reasoning": true
+    },
+    "free-minimax-free": {
+      "model": "minimax-m2.5-free",
+      "provider": "opencode",
+      "description": "MiniMax Free - Gratis, 200K context",
+      "cost": "free",
+      "context": 200000,
+      "reasoning": true
+    },
+    "free-hy3-preview": {
+      "model": "hy3-preview-free",
+      "provider": "opencode",
+      "description": "Hy3 Preview Free - Gratis, 256K context, reasoning",
+      "cost": "free",
+      "context": 256000,
+      "reasoning": true
+    },
+    "free-nemotron-super-free": {
+      "model": "nemotron-3-super-free",
+      "provider": "nvidia",
+      "description": "Nemotron 3 Super Free - Gratis, 262K context, reasoning",
+      "cost": "free",
+      "context": 262000,
+      "reasoning": true
+    },
+    "free-nemotron-nano-free": {
+      "model": "nemotron-3-nano-30b-a3b",
+      "provider": "nvidia",
+      "description": "Nemotron 3 Nano - $0.06/1M tokens, 262K context, reasoning",
+      "cost": "free",
+      "context": 262000,
+      "reasoning": true
+    },
+    "free-qwen-plus-free": {
+      "model": "qwen3.6-plus-free",
+      "provider": "qwen",
+      "description": "Qwen3.6 Plus Free - Gratis, 1M context, reasoning",
+      "cost": "free",
+      "context": 1000000,
+      "reasoning": true
+    },
+    "paid-deepseek-v4-flash": {
+      "model": "deepseek-v4-flash",
+      "provider": "opencode-go",
+      "description": "DeepSeek V4 Flash - $0.14/$0.28, 1M context, reasoning",
+      "cost": "low",
+      "context": 1048000,
+      "reasoning": true
+    },
+    "paid-deepseek-v4-pro": {
+      "model": "deepseek-v4-pro",
+      "provider": "opencode-go",
+      "description": "DeepSeek V4 Pro - $1.69/$3.38, 1M context, reasoning",
+      "cost": "high",
+      "context": 1048000,
+      "reasoning": true
+    },
+    "paid-qwen3-max": {
+      "model": "qwen3-max",
+      "provider": "qwen",
+      "description": "Qwen3 Max - $1.20/$6.00, 262K context, reasoning",
+      "cost": "high",
+      "context": 262000,
+      "reasoning": true
+    },
+    "paid-qwen3-plus": {
+      "model": "qwen3.6-plus",
+      "provider": "qwen",
+      "description": "Qwen3.6 Plus - $0.50/$3.00, 1M context, reasoning",
+      "cost": "medium",
+      "context": 1000000,
+      "reasoning": true
+    },
+    "paid-minimax-m2.5": {
+      "model": "minimax-m2.5",
       "provider": "minimax",
-      "description": "Tier gratuito para tareas mecánicas",
-      "cost": "free"
+      "description": "MiniMax M2.5 - $0.30/$1.20, 204K context, reasoning",
+      "cost": "medium",
+      "context": 204000,
+      "reasoning": true
     },
-    "T2-fast": {
-      "model": "minimax",
+    "paid-minimax-m2.7": {
+      "model": "minimax-m2.7",
       "provider": "minimax",
-      "description": "Tier económico para tareas simples",
-      "cost": "low"
+      "description": "MiniMax M2.7 - $0.30/$1.20, 204K context, reasoning",
+      "cost": "medium",
+      "context": 204000,
+      "reasoning": true
     },
-    "T3-balanced": {
-      "model": "deepseek-medium",
-      "provider": "deepseek",
-      "description": "Tier balanceado para uso diario (DEFAULT)",
-      "cost": "medium"
+    "paid-qwen3-flash": {
+      "model": "qwen3.6-flash",
+      "provider": "qwen",
+      "description": "Qwen3.6 Flash - $0.25/$1.50, 1M context, reasoning",
+      "cost": "low",
+      "context": 1000000,
+      "reasoning": true
     },
-    "T4-reasoning": {
-      "model": "deepseek-pro",
-      "provider": "deepseek",
-      "description": "Tier de razonamiento profundo",
-      "cost": "high"
+    "paid-nemotron-super": {
+      "model": "nemotron-3-super-120b",
+      "provider": "nvidia",
+      "description": "Nemotron 3 Super - $0.20/$0.80, 262K context, reasoning",
+      "cost": "medium",
+      "context": 262000,
+      "reasoning": true
     },
-    "T5-deep": {
-      "model": "deepseek-pro-max",
-      "provider": "deepseek",
-      "description": "Tier de máxima capacidad",
-      "cost": "premium"
+    "paid-deepseek-r1": {
+      "model": "deepseek-r1",
+      "provider": "deepseek-ai",
+      "description": "DeepSeek R1 - $0.55/$2.20, 131K context, reasoning",
+      "cost": "high",
+      "context": 131000,
+      "reasoning": true
     }
   },
   "skills": {
-    "data-analyst": "T3-balanced",
-    "frontend-senior": "T3-balanced",
-    "commits-real": "T2-fast",
-    "judgment-day": "T4-reasoning",
-    "skill-creator": "T4-reasoning",
-    "skill-registry": "T2-fast",
-    "branch-pr": "T3-balanced",
-    "chained-pr": "T3-balanced",
-    "issue-creation": "T2-fast",
-    "data-analysis": "T3-balanced",
-    "data-cleaning": "T2-fast",
-    "data-visualization": "T3-balanced",
-    "ml-modeling": "T4-reasoning",
-    "time-series-analysis": "T4-reasoning",
-    "statistical-testing": "T3-balanced",
-    "sql-analysis": "T3-balanced"
+    "commits-real": "free-big-pickle",
+    "skill-registry": "free-big-pickle",
+    "branch-pr": "free-big-pickle",
+    "chained-pr": "free-big-pickle",
+    "issue-creation": "free-big-pickle",
+    "data-cleaning": "free-minimax-free",
+    "data-visualization": "free-big-pickle",
+    "sql-analysis": "free-big-pickle",
+    "statistical-testing": "free-big-pickle",
+    "frontend-senior": "free-big-pickle",
+    "data-profiling": "free-big-pickle",
+    "data-archive": "free-big-pickle",
+    "etl-pipelines": "free-minimax-free",
+    "file-formats": "free-minimax-free",
+    "python-environment": "free-minimax-free",
+    "regex-data": "free-minimax-free",
+    "reporting": "free-big-pickle",
+    "database-connections": "free-minimax-free",
+    "web-scraping": "free-minimax-free",
+    "notebook-integration": "free-big-pickle",
+    "git-data": "free-minimax-free",
+    "api-integration": "free-minimax-free",
+    "data-analysis": "free-big-pickle",
+    "streamlit": "free-big-pickle",
+    "data-question": "free-big-pickle",
+    "data-validation": "free-minimax-free",
+    "go-testing": "free-minimax-free",
+    "time-series-analysis": "paid-deepseek-v4-flash",
+    "ml-modeling": "free-big-pickle",
+    "data-design": "paid-deepseek-v4-pro",
+    "data-verify": "paid-deepseek-v4-pro",
+    "judgment-day": "paid-deepseek-v4-pro",
+    "skill-creator": "paid-deepseek-v4-pro"
   },
-  "overrides": {}
+  "overrides": {
+    "skills": {
+      "ml-modeling": "paid-deepseek-v4-pro"
+    },
+    "agents": {}
+  }
 }

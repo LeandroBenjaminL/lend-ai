@@ -1,10 +1,10 @@
 ---
 name: lend-ai-workflow
-description: "Flujo de trabajo del ecosistema Lend.Ai — cómo decidir entre data y frontend, y cómo ejecutar cada tarea."
+description: "Flujo de trabajo del ecosistema Lend.Ai — flujo senior completo."
 license: MIT
 metadata:
   author: Leandro Benjamin L.
-  version: "1.0"
+  version: "1.1"
 ---
 
 # Lend.Ai — Workflow
@@ -20,41 +20,52 @@ metadata:
 ├── Desarrollo frontend, React, CSS, testing
 │   └── → Usá @frontend-senior
 │
-├── Tarea transversal (commits, PRs, issues, skills)
-│   └── → Usá el agente que esté activo
+├── Tarea transversal
+│   ├── commits           → @commits-real
+│   ├── documentación     → @lend-ai-docs
+│   ├── tests, CI         → @lend-ai-testing
+│   └── engram, memoria   → @lend-ai-engram
 │
-├── Arquitectura general, modelos, orquestación
+├── Arquitectura general, modelos
 │   └── → Cargá skill senior-orchestrator
 │
-└── No sabés / necesitás ayuda para decidir
+└── No sabés / ayuda para decidir
     └── → Preguntame (soy lend-ai)
 ```
 
-## Flujo de trabajo general
+## Flujo senior
 
 ```
-1. ENTENDER
-   └── ¿Qué necesita el usuario? ¿Cuál es el objetivo?
-   
-2. DECIDIR
-   ├── ¿Qué agente/dominio aplica? (data vs frontend)
-   ├── ¿Qué skills cargar?
-   └── ¿Qué MCPs se necesitan?
-   
-3. DISEÑAR
-   ├── Pensar la solución (consequential thinking si es complejo)
-   ├── Mostrar 2+ opciones con pros/contras
-   └── Preguntar, no imponer
-   
-4. EJECUTAR
+1. LEER
+   ├── Escuchar la solicitud del usuario
+   ├── Consultar Engram (¿hay contexto previo?)
+   └── Si es vago → preguntar hasta entender
+
+2. ANALIZAR
+   ├── Clasificar: data | frontend | transversal
+   ├── Pensar 2+ enfoques posibles
+   └── Identificar pros/contras de cada uno
+
+3. PREGUNTAR
+   ├── Mostrar alternativas al usuario
+   ├── Preguntar "¿por qué?" antes de decidir
+   └── Explicar tradeoffs
+
+4. DECIDIR
+   ├── Elegir el mejor enfoque CON el usuario
+   ├── Delegar al sub-agente correcto
+   └── Cargar skills necesarias antes de ejecutar
+
+5. RESOLVER
    ├── Implementar paso a paso
    ├── Verificar cada paso antes de avanzar
-   └── Documentar decisiones en Engram
-   
-5. REVISAR
-   ├── Verificar que responde la pregunta original
-   ├── Ejecutar judgment-day si es crítico
-   └── Commit con Conventional Commits
+   └── Tests > documentación > commit
+
+6. ENGRAM
+   ├── Guardar decisiones de arquitectura
+   ├── Guardar bugs encontrados y fixes
+   ├── Guardar patrones y aprendizajes
+   └── Guardar resumen de sesión al finalizar
 ```
 
 ## Reglas de oro
@@ -62,7 +73,7 @@ metadata:
 ### Para data-analyst
 - **Regla de hierro**: Preguntá antes de decidir. Mostrá 2+ opciones.
 - **Regla de las herramientas**: Diagnosticá MCPs antes de usarlos. Si fallan, reportá.
-- **Antes de cada análisis**: Definí la pregunta de negocio (skill `data-question`).
+- **Antes de cada análisis**: Definí la pregunta de negocio.
 
 ### Para frontend-senior
 - **Component-first**: Pensá en componentes, no en páginas.
@@ -70,18 +81,6 @@ metadata:
 - **Mobile-first**: Diseñá para mobile primero, desktop después.
 
 ### Para ambos
-- **Engram siempre**: Guardá decisiones, bugs, patrones.
+- **Engram siempre**: consultar antes de empezar, guardar después de cada cambio
 - **Modo Gentleman**: No rompas nada, sé tolerante.
 - **Enseñá**: Cada interacción = algo nuevo aprendido.
-
-## Modelos por defecto
-
-| Tarea | Tier | Modelo |
-|-------|------|--------|
-| Tareas mecánicas (limpiar, formatear) | T1 | Minimax Free |
-| Reportes simples, validaciones | T2 | Minimax |
-| EDA, análisis general | T3 | DeepSeek Medium |
-| Arquitectura, ML complejo | T4 | DeepSeek Pro |
-| Problemas muy difíciles | T5 | DeepSeek Pro Max |
-
-> Ver `model-routing.config.json` para configuración detallada.

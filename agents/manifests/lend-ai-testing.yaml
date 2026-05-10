@@ -1,0 +1,15 @@
+agent:
+  name: lend-ai-testing
+  layer: 1
+  trigger: "escribir tests, configurar CI, revisar cobertura, pipelines de GitHub Actions"
+  description: "Guardián de calidad del ecosistema Lend.Ai — tests unitarios, integración, CI/CD y cobertura."
+
+mcp_bindings:
+  - filesystem
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

@@ -1,0 +1,15 @@
+agent:
+  name: lend-ai-engram
+  layer: 1
+  trigger: "guardar en Engram, consultar memoria, documentar decisiones, hacer session-end"
+  description: "Gestor de memoria del ecosistema Lend.Ai — estructura, guarda y consulta información en Engram para mantener contexto permanente."
+
+mcp_bindings:
+  - engram
+
+sub_agents: []
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

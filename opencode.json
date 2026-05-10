@@ -21,6 +21,9 @@
           "data-analyst": "allow",
           "frontend-senior": "allow",
           "commits-real": "allow",
+          "lend-ai-engram": "allow",
+          "lend-ai-testing": "allow",
+          "lend-ai-docs": "allow",
           "judgment-day": "allow",
           "skill-creator": "allow",
           "skill-registry": "allow",
@@ -56,6 +59,7 @@
         "task": true
       },
       "skills": [
+        "commits-real",
         "data-analysis",
         "data-cleaning",
         "data-visualization",
@@ -83,6 +87,10 @@
       "permission": {
         "task": {
           "*": "deny",
+          "commits-real": "allow",
+          "lend-ai-engram": "allow",
+          "lend-ai-testing": "allow",
+          "lend-ai-docs": "allow",
           "data-explorer": "allow",
           "data-modeler": "allow",
           "data-reporter": "allow",
@@ -129,6 +137,7 @@
         "task": true
       },
       "skills": [
+        "commits-real",
         "frontend-react-development",
         "frontend-css-styling",
         "frontend-type-script",
@@ -143,6 +152,10 @@
       "permission": {
         "task": {
           "*": "deny",
+          "commits-real": "allow",
+          "lend-ai-engram": "allow",
+          "lend-ai-testing": "allow",
+          "lend-ai-docs": "allow",
           "framework-architect": "allow",
           "ui-crafter": "allow",
           "styling-engineer": "allow",
@@ -508,6 +521,39 @@
       "hidden": true,
       "tools": {
         "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
+    },
+    "lend-ai-engram": {
+      "description": "Gestor de memoria del ecosistema — estructura, guarda y consulta Engram",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": false,
+        "edit": false,
+        "read": true,
+        "write": false
+      }
+    },
+    "lend-ai-testing": {
+      "description": "Guardián de calidad — tests unitarios, CI, cobertura",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true
+      }
+    },
+    "lend-ai-docs": {
+      "description": "Estándar de documentación senior — multi-archivo, Google-style docstrings, ADR",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": false,
         "edit": true,
         "read": true,
         "write": true

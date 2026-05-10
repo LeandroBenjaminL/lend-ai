@@ -19,6 +19,12 @@ Si la skill no existe, el comando muestra un error con las skills válidas.
 /model set skill sql-analysis T2
 ```
 
+## Ejecución
+Al ejecutar este comando, el agente debe ejecutar:
+```
+python3 scripts/model-commands.py set-skill <nombre> <tier>
+```
+
 ## Skills disponibles
 | Skill | Descripción |
 |-------|-------------|

@@ -21,6 +21,12 @@ Si el agente no existe, el comando muestra un error con los agentes válidos.
 /model set agent data-reporter T3
 ```
 
+## Ejecución
+Al ejecutar este comando, el agente debe ejecutar:
+```
+python3 scripts/model-commands.py set-agent <nombre> <tier>
+```
+
 ## Agentes disponibles
 | Agente | Descripción |
 |--------|-------------|

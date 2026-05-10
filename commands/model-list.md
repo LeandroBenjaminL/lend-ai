@@ -20,6 +20,12 @@ Los sub-comandos `skills` y `agents` filtran la vista a solo una categoría.
 /model list agents
 ```
 
+## Ejecución
+Al ejecutar este comando, el agente debe ejecutar:
+```
+python3 scripts/model-commands.py list [skills|agents]
+```
+
 ## Salida esperada
 
 ### Vista completa

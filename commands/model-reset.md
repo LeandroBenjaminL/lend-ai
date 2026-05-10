@@ -20,6 +20,13 @@ Si el nombre no existe o no está personalizado, el comando muestra un aviso sin
 /model reset agent data-etl
 ```
 
+## Ejecución
+Al ejecutar este comando, el agente debe ejecutar:
+```
+python3 scripts/model-commands.py reset-skill <skill>
+python3 scripts/model-commands.py reset-agent <agent>
+```
+
 ## Skills que se pueden resetear
 Cualquier skill listada en `/model set skill`:
 `data-analysis`, `data-visualization`, `data-cleaning`, `ml-modeling`, `sql-analysis`, `api-integration`, `time-series-analysis`, `web-scraping`, `statistical-testing`, `streamlit`, `notebook-integration`, `data-validation`, `git-data`, `file-formats`, `python-environment`, `database-connections`, `regex-data`, `data-profiling`, `reporting`, `etl-pipelines`, `data-verify`, `data-archive`, `data-design`, `data-question`

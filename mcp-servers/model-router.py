@@ -30,7 +30,12 @@ MODELS_JSON = BASE_DIR / "models.json"
 ACTIVE_TIER_FILE = Path(
     os.environ.get("DATA_ANALYST_TIER_FILE", "/tmp/opencode-active-tier.json")
 )
-DEFAULT_TIER = "T3-balanced"
+DEFAULT_TIER = "free-big-pickle"
+
+
+def _get_default_tier() -> str:
+    config = cargar_config()
+    return config.get("default_tier", DEFAULT_TIER)
 CONFIG_JSON = BASE_DIR / "model-routing.config.json"
 
 # ── Carga de datos ───────────────────────────────────────────────────────────
@@ -48,10 +53,26 @@ def cargar_models() -> dict[str, Any]:
         return {}
 
 
+def cargar_config() -> dict[str, Any]:
+    """Carga la config de routing desde model-routing.config.json"""
+    if not CONFIG_JSON.exists():
+        log.warning("No se encuentra %s, usando config por defecto", CONFIG_JSON)
+        return {}
+    try:
+        with open(CONFIG_JSON, encoding="utf-8") as f:
+            return json.load(f)
+    except (json.JSONDecodeError, OSError) as e:
+        log.error("Error al leer %s: %s", CONFIG_JSON, e)
+        return {}
+
+
 _models_data: dict[str, Any] = {}
 
 
 def _extraer_tiers(data: dict) -> dict[str, dict]:
+    config = cargar_config()
+    if config.get("tiers"):
+        return config["tiers"]
     return data.get("llm_models", {}).get("_tiers", {})
 
 
@@ -113,6 +134,9 @@ _SKILL_TO_AGENT_MAP: dict[str, str] = {
 
 
 def _construir_skill_agent_map(agentes: dict[str, str]) -> dict[str, str]:
+    config = cargar_config()
+    if config.get("skills"):
+        return config["skills"]
     skills_en_models = set()
     for entry in _models_data.get("ml_models", []):
         nombre = entry.get("skill")
@@ -143,7 +167,9 @@ def _construir_task_skill_map() -> dict[str, str]:
 def obtener_modelo_para_tier(tier: str) -> str:
     tiers = _extraer_tiers(_models_data)
     entry = tiers.get(tier)
-    return entry.get("modelo", "") if entry else ""
+    if entry:
+        return entry.get("model", entry.get("modelo", ""))
+    return ""
 
 
 def leer_tier_activo() -> str:

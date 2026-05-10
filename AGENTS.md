@@ -21,7 +21,7 @@ Convención de naming:
 
 | Agente | Rol | Primary | Sub-agentes |
 |--------|-----|---------|-------------|
-| `lend-ai` | Orquestador general del ecosistema | ✅ | data-analyst, frontend-senior |
+| `lend-ai` | Orquestador general del ecosistema | ✅ | data-analyst, frontend-senior, commits-real, lend-ai-engram, lend-ai-testing |
 | `data-analyst` | Análisis de datos, ML, EDA, reporting | ❌ (sub) | data-explorer, data-modeler, data-reporter, etc. |
 | `frontend-senior` | Desarrollo frontend, React, CSS, testing | ❌ (sub) | framework-architect, ui-crafter, styling-engineer, etc. |
 
@@ -35,6 +35,9 @@ Convención de naming:
 | `frontend-senior` | Cuando necesitás ser el mentor senior de frontend — React, CSS, UX | [`skills/frontend-senior/SKILL.md`](skills/frontend-senior/SKILL.md) |
 | `senior-orchestrator` | Cuando necesitás orquestar modelos, decidir tiers, planear arquitectura | [`skills/senior-orchestrator/SKILL.md`](skills/senior-orchestrator/SKILL.md) |
 | `commits-real` | Al escribir commits, PRs, issues, documentación | [`skills/commits-real/SKILL.md`](skills/commits-real/SKILL.md) |
+| `lend-ai-engram` | Al guardar o consultar memoria en Engram | [`skills/lend-ai-engram/SKILL.md`](skills/lend-ai-engram/SKILL.md) |
+| `lend-ai-testing` | Al escribir tests, configurar CI, revisar calidad | [`skills/lend-ai-testing/SKILL.md`](skills/lend-ai-testing/SKILL.md) |
+| `lend-ai-docs` | Al escribir documentación, docstrings, ADR, ARCHITECTURE.md | [`skills/lend-ai-docs/SKILL.md`](skills/lend-ai-docs/SKILL.md) |
 | `data-analysis` | Al analizar datasets, manipular DataFrames, cálculos numéricos | [`skills/data-analysis/SKILL.md`](skills/data-analysis/SKILL.md) |
 | `data-cleaning` | Al limpiar datos, manejar nulos, duplicados, outliers | [`skills/data-cleaning/SKILL.md`](skills/data-cleaning/SKILL.md) |
 | `data-visualization` | Al crear gráficos y visualizaciones | [`skills/data-visualization/SKILL.md`](skills/data-visualization/SKILL.md) |
