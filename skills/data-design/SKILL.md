@@ -1,104 +1,66 @@
 ---
 name: data-design
 description: >
-  Diseñar la estrategia de análisis, elegir el enfoque y planificar la implementación.
+  Diseñá la estrategia de análisis — elegí el enfoque, las herramientas y
+  el pipeline antes de escribir código.
   Trigger: Cuando ya tenés clara la pregunta y necesitás decidir cómo abordarla.
-license: Apache-2.0
+license: MIT
 metadata:
-  author: leandro-data
-  version: "2.0"
-  model_tier: T2-fast
+  author: Leandro Benjamin L.
+  version: "3.0"
+  model_tier: T5-deep
 ---
 
 # Skill: data-design
 
-El diseño es el puente entre la pregunta de negocio y el código. Es donde definís **qué vas a hacer, con qué herramientas, y por qué ese enfoque**. Saltarse esta etapa es el error más común: agarrar los datos y empezar a codear sin plan, lo que lleva a resultados inconsistentes, idas por las ramas y pérdida de tiempo.
-
-Pensalo así: no construirías una casa sin plano. Tampoco construyas un análisis sin diseño.
+Diseño de análisis. La pregunta está clara, ahora definí cómo responderla.
 
 ## Trigger
 
-- Ya definiste la pregunta de negocio (usá data-question primero)
-- Hay múltiples caminos posibles y necesitás elegir uno
-- Estás por arrancar a codificar — detenete y pensá el enfoque primero
-- Vas a presentar una propuesta técnica y necesitás justificar tus decisiones
+- Ya definiste la pregunta de negocio (con data-question)
+- Tenés que elegir entre múltiples enfoques técnicos
+- No sabés si esto es un trabajo de SQL, Python o Excel
+- El proyecto creció y necesitás una arquitectura de análisis
 
-## Workflow
+## Workflow LEND
 
-### 1. Aclarar el tipo de análisis
-¿Es descriptivo (qué pasó), diagnóstico (por qué pasó), predictivo (qué va a pasar) o prescriptivo (qué deberíamos hacer)? Cada tipo pide métodos y herramientas distintas.
+```
+1. ANALIZAR
+   ├── Pregunta: ¿descriptiva, diagnóstica, predictiva o prescriptiva?
+   ├── Datos: ¿cuántos? ¿estructurados? ¿limpios? ¿dónde están?
+   ├── Stack: ¿SQL directo, Python, R, o herramienta visual?
+   └── Entrega: ¿dashboard, reporte PDF, API, modelo?
 
-### 2. Elegir el método
-Estadístico (tests de hipótesis), ML (modelo predictivo), visual (tendencias y patrones gráficos) o híbrido. No elijas ML porque "queda bien" — si una visualización responde la pregunta, es más simple y más defendible.
+2. OFRECER (Menú del Senior)
+   ├── A) SQL-first — si los datos están en DB y la pregunta es simple
+   ├── B) Python pipeline — si necesitás transformaciones complejas o ML
+   └── C) Híbrido — SQL para extracción + Python para análisis + visualización
 
-### 3. Definir las variables
-¿Cuáles son tus variables independientes y dependientes? ¿Qué columnas vas a necesitar? ¿Hay variables proxy si no tenés la medida exacta?
+3. ELEGIR → confirmación
 
-### 4. Planificar la validación
-¿Cómo vas a saber si el análisis es correcto? Train/test split, cross-validation, contraste con datos históricos, o revisión manual con un experto de negocio.
+4. HACER
+   ├── Definir pipeline de análisis (extracción → limpieza → transformación → análisis → presentación)
+   ├── Elegir herramientas: Pandas, Polars, DuckDB, SQLAlchemy
+   ├── Estimar tiempo: ¿esto se resuelve en 30 minutos o necesita 2 semanas?
+   ├── Identificar riesgos: datos incompletos, leakage, escala
+   └── Documentar el diseño antes de implementar
 
-### 5. Estimar el esfuerzo
-¿Cuánto va a tomar cada etapa (limpieza, análisis, visualización, documentación)? Esto evita prometer resultados que no podés entregar a tiempo.
-
-## Patrones y ejemplos
-
-### Matriz de decisión de enfoque
-
-```markdown
-| Pregunta | Enfoque recomendado | Herramientas |
-|----------|--------------------|--------------|
-| "¿Cuánto vendimos?" | Descriptivo (agregaciones) | Pandas, SQL |
-| "¿Por qué cayó?" | Diagnóstico (comparación + filtros) | Pandas, visualización |
-| "¿Qué va a pasar?" | Predictivo (serie temporal / ML) | Prophet, scikit-learn |
-| "¿Qué deberíamos hacer?" | Prescriptivo (simulación / optimización) | SimPy, PuLP, what-if |
+5. VERIFICAR
+   ├── El diseño responde la pregunta original sin desviarse
+   ├── Las herramientas elegidas son las correctas para el volumen de datos
+   └── Hay un plan B si el enfoque principal falla
 ```
 
-### Esqueleto de plan de análisis
+## Patrones
 
-```python
-plan = {
-    "pregunta": "¿El nuevo layout aumenta la conversión?",
-    "tipo": "diagnóstico",
-    "metodo": "A/B test con bootstrap",
-    "variables": {
-        "independiente": "versión_layout (A/B)",
-        "dependiente": "tasa_conversión",
-        "control": "tráfico, día_semana, dispositivo"
-    },
-    "validacion": "bootstrap con 10k repeticiones, IC 95%",
-    "datos_necesarios": [
-        "eventos_usuario (60 días antes y después)",
-        "tabla_layout_por_usuario"
-    ],
-    "riesgos": [
-        "Efecto novelty: los primeros días pueden no ser representativos",
-        "Estacionalidad semanal: comparar mismo día de semana"
-    ]
-}
-```
-
-### Tradeoffs a considerar
-
-| Decisión | Ventaja | Riesgo |
-|----------|---------|--------|
-| **Modelo simple vs complejo** | Simple se explica solo, fácil de mantener | Puede no capturar patrones finos |
-| **Muestra vs todo el dataset** | Rápido para iterar | La muestra puede no ser representativa |
-| **Código ad-hoc vs pipeline** | Flexible, rápido al principio | Difícil de reproducir y mantener |
-| **Visual vs estadístico** | La visual es intuitiva | Difícil de cuantificar certeza |
-
-**Regla de oro**: empezá siempre por lo más simple que pueda funcionar. Solo agregá complejidad cuando el enfoque simple no alcance.
-
-## Alternativas
-
-- **Diagramas de flujo**: dibujá el pipeline antes de codificar (Miro, Draw.io, o papel)
-- **RFCs técnicos**: documentos formales de diseño para proyectos grandes (usá sdd-design si estás en SDD)
-- **Pair design**: diseñá con un colega — dos cabezas atrapan más riesgos
-- **Notebook prototipo**: para dudas metodológicas, hacé un mini prototipo antes de diseñar el análisis completo
+- **Pregunta primero, diseño después**: no diseñes sin saber qué preguntás
+- **Lo más simple que funciona**: SQL > Python > Spark. No uses un cañón para una mosca
+- **Pipeline explícito**: cada etapa tiene input, transformación y output claros
+- **Prototipar rápido**: un MVP de 30 lines vale más que una arquitectura de 2 días
 
 ## Anti-patrones
 
-- ❌ **Diseñar en la cabeza sin escribirlo** — lo que no está escrito no existe y no se puede criticar
-- ❌ **Elegir método por moda** — "usemos ML" no es una decisión de diseño, es una respuesta automática
-- ❌ **No considerar limitaciones de datos** — diseñás un análisis que necesita datos que no tenés
-- ❌ **Diseño sin validación** — si no sabés cómo vas a verificar, no sabés si el resultado vale algo
-- ❌ **Pasar directo de la pregunta al código** — el diseño es lo que evita que tengas que rehacer todo
+- ❌ Diseñar sin tener clara la pregunta — terminás resolviendo lo que no te pidieron
+- ❌ Elegir herramienta por moda y no por necesidad — "usemos Spark" para 10MB de datos
+- ❌ Arquitectura sobreingenierizada — pipelines de 10 etapas para una pregunta de 2 variables
+- ❌ No considerar el tiempo — "esto es fácil" sin haber visto los datos
