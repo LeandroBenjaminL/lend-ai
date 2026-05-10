@@ -70,6 +70,12 @@ Convención de naming:
 | `web-scraping` | Al extraer datos de sitios web | [`skills/web-scraping/SKILL.md`](skills/web-scraping/SKILL.md) |
 | `youtube-transcript` | Al extraer transcripciones de YouTube | [`skills/youtube-transcript/SKILL.md`](skills/youtube-transcript/SKILL.md) |
 
+| `docker-engineer` | Al containerizar apps, optimizar Dockerfiles, armar docker-compose o debuggear contenedores — multi-stage, non-root, healthcheck | [`skills/docker-engineer/SKILL.md`](skills/docker-engineer/SKILL.md) |
+| `ci-cd-pilot` | Al automatizar tests, linting, builds o deploys — GitHub Actions, pipelines, CI/CD | [`skills/ci-cd-pilot/SKILL.md`](skills/ci-cd-pilot/SKILL.md) |
+| `cloud-architect` | Al diseñar infraestructura cloud, escribir Terraform, elegir proveedor — AWS/GCP/Azure, serverless, IaC | [`skills/cloud-architect/SKILL.md`](skills/cloud-architect/SKILL.md) |
+| `infra-sre` | Al monitorear servicios, configurar alertas, definir SLOs — Prometheus, Grafana, observabilidad, incident response | [`skills/infra-sre/SKILL.md`](skills/infra-sre/SKILL.md) |
+| `security-auditor` | Al escanear vulnerabilidades, secrets, hardening de Docker — SAST, DAST, OWASP, compliance | [`skills/security-auditor/SKILL.md`](skills/security-auditor/SKILL.md) |
+
 ## Skills SDD (Spec-Driven Development)
 
 | Skill | Trigger | Ruta |

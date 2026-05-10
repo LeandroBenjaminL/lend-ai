@@ -44,7 +44,12 @@
           "go-testing": "allow",
           "devops": "allow",
           "engram-memory-system": "allow",
-          "lend-ai-persona": "allow"
+          "lend-ai-persona": "allow",
+          "docker-engineer": "allow",
+          "ci-cd-pilot": "allow",
+          "cloud-architect": "allow",
+          "infra-sre": "allow",
+          "security-auditor": "allow"
         }
       }
     },
@@ -924,7 +929,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "docker-engineer"
+      ]
     },
     "ci-cd-pilot": {
       "description": "CI/CD pipelines",
@@ -936,7 +944,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "ci-cd-pilot"
+      ]
     },
     "cloud-architect": {
       "description": "Cloud infrastructure (AWS/GCP/Azure)",
@@ -948,7 +959,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "cloud-architect"
+      ]
     },
     "db-admin": {
       "description": "Administraci\u00f3n de bases de datos",
@@ -972,7 +986,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "infra-sre"
+      ]
     },
     "security-auditor": {
       "description": "Seguridad y auditor\u00eda",
@@ -984,7 +1001,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "security-auditor"
+      ]
     },
     "network-engineer": {
       "description": "Networking, DNS, proxies",
