@@ -1,112 +1,48 @@
+---
+name: sdd-tasks
+description: >
+  Divide el cambio en tareas concretas, ordenadas por dependencia y
+  agrupadas por fase. Cada tarea es accionable y verificable.
+  Trigger: Después de sdd-design para desglosar el cambio en tareas.
+license: MIT
+metadata:
+  author: Leandro Benjamin L.
+  version: "2.0"
+---
+
 # Skill: sdd-tasks
 
-## Qué es
-
-Divide el cambio en tareas concretas, ordenadas por dependencia y agrupadas por fase.
-
-**El principio**: una tarea bien escrita es accionable, verificable, y completable en una sesión. Si una tarea dice "implementar feature", está mal.
+Desglose en tareas. Cada tarea se completa en una sesión.
 
 ## Trigger
 
-El orquestador te llama después de sdd-design para desglosar el cambio en tareas de implementación.
+- El diseño está aprobado
+- Necesitás dividir el trabajo en pasos accionables
+- Varias personas van a trabajar en paralelo
 
-## Workflow
+## Workflow LEND
 
-### 1. Leé proposal + specs + design
-Identificá todos los archivos a crear/modificar/borrar, el orden de dependencias, y los requerimientos de testing.
+1. ANALIZAR
+   ├── Diseño: ¿qué archivos tocar? ¿en qué orden?
+   ├── Dependencias: ¿qué tareas bloquean a otras?
+   ├── Tamaño: cada tarea < 1 sesión de trabajo
+   └── Fases: preparación, implementación, tests, documentación
 
-### 2. Estimá el workload (Review Workload Forecast)
-```
-Decision needed before apply: Yes|No
-Chained PRs recommended: Yes|No
-Chain strategy: stacked-to-main|feature-branch-chain|size-exception|pending
-400-line budget risk: Low|Medium|High
-```
+2. OFRECER (Menú del Senior)
+   ├── A) Tareas lineales — secuencia de pasos, una atrás de otra
+   ├── B) Tareas con dependencias — árbol de tareas con bloqueos
+   └── C) Tareas paralelizables — múltiples tracks independientes
 
-Si el riesgo es High o probable >400 líneas:
-1. Marcá "Chained PRs: Yes"
-2. Dividí en work units que puedan ser PRs encadenados
-3. Cada unidad: scope autónomo, verification incluida, rollback claro
+3. ELEGIR → confirmación
 
-### 3. Escribí tasks.md
+4. HACER
+   ├── Cada tarea: título + descripción + archivos afectados + criterio de done
+   ├── Orden: por dependencias (primero lo que bloquea a lo demás)
+   ├── Tamaño: cada tarea completable en < 1 hora de código
+   ├── Formato: "Implementar X en archivo Y haciendo Z"
+   └── Checklist: al completar, marcar y pasar a la siguiente
 
-```markdown
-# Tasks: {Change Title}
-
-## Review Workload Forecast
-{Las 4 líneas de plain-text de arriba}
-
-## Suggested Work Units
-| Unit | Goal | PR | Notes |
-|------|------|----|-------|
-| 1 | {deliverable} | PR 1 | {tests/docs} |
-| 2 | {deliverable} | PR 2 | {depends on PR 1} |
-
-## Phase 1: Foundation / Infrastructure
-- [ ] 1.1 {archivo} — {qué hacer exactamente}
-- [ ] 1.2 {archivo} — {qué hacer}
-
-## Phase 2: Core Implementation
-- [ ] 2.1 {acción concreta}
-- [ ] 2.2 {acción concreta}
-
-## Phase 3: Testing
-- [ ] 3.1 {Test para spec scenario X}
-- [ ] 3.2 {Test para spec scenario Y}
-```
-
-**Organización típica**:
-- Phase 1: Foundation (tipos, interfaces, DB, config)
-- Phase 2: Core (lógica principal, business rules)
-- Phase 3: Integration/Wiring
-- Phase 4: Testing (tests por spec scenario)
-- Phase 5: Cleanup (docs, dead code)
-
-### 4. Persistí
-- artifact: `tasks`, topic_key: `sdd/{change-name}/tasks`
-
-### 5. Devolvé summary
-
-```markdown
-## Tasks Created
-| Phase | Tasks | Focus |
-|-------|-------|-------|
-| Phase 1 | {N} | Infrastructure |
-| Phase 2 | {N} | Core |
-| Total | {N} | |
-
-### Review Workload Forecast
-- 400-line risk: {Low/Medium/High}
-- Chained PRs: {Yes/No}
-- Decision needed: {Yes/No}
-
-### Next Step
-Apply (sdd-apply) o preguntar al usuario por chain strategy.
-```
-
-## Ejemplos
-
-1. **Tasks para rate limiting**: Phase 1: `middleware/rate-limiter.go` + config struct. Phase 2: integración en router. Phase 3: tests para cada spec scenario. Workload: Low risk, single PR.
-
-2. **Tasks para migración PostgreSQL**: Phase 1: schema + migrations. Phase 2: adapter + repository. Phase 3: migrar services uno por uno. Phase 4: tests de integración. Workload: High risk, 3 chained PRs.
-
-3. **Tasks pequeñas para hotfix**: Phase 1: fix en `validateEmail()`. Phase 2: test del edge case. Workload: Low, single PR, decision needed: No.
-
-## Reglas
-
-- Toda tarea debe ser: **específica** ("Crear `auth/middleware.go` con JWT"), **accionable** ("Agregar `ValidateToken()`"), **verificable** ("Test: POST /login returns 401 sin token"), **chica** (un archivo o unidad lógica)
-- Tasks ordenadas por dependencia — Phase 1 no depende de Phase 2
-- Testing tasks referencian scenarios específicos de los specs
-- Cada task: completable en UNA sesión
-- Numeración jerárquica: 1.1, 1.2, 2.1
-- Si TDD activo: RED (escribir test fallido) → GREEN (hacerlo pasar) → REFACTOR
-- Máximo 530 words. Cada task: 1-2 líneas. Checklist, no párrafos.
-- Siempre incluí Review Workload Forecast con las 4 líneas de plain-text
-
-## Anti-patrones
-
-- ❌ **Tareas vagas**: "Implementar feature" no es una tarea, es un epígrafe
-- ❌ **Sin orden de dependencias**: Task 1.1 debería poder hacerse sin la 2.3
-- ❌ **Saltarse el workload forecast**: Después llega apply con un PR de 1200 líneas
-- ❌ **Tareas monolíticas**: Una task de "todo auth" debería ser 5-6 tareas chicas
-- ❌ **Olvidar tests**: Si los specs tienen escenarios, las tasks deben testearlos
+5. VERIFICAR
+   ├── Todas las tareas juntas cubren el diseño completo
+   ├── No hay tareas que dependan de sí mismas
+   └── Cada tarea tiene un criterio de "done" claro
