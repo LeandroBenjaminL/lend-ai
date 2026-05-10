@@ -1,50 +1,49 @@
 ---
 name: lend-ai-testing
-description: "Guardián de calidad — tests unitarios, integración, E2E, CI/CD y cobertura para el ecosistema Lend.Ai."
+description: >
+  Testing y calidad de código — tests unitarios, CI, cobertura, y
+  estándares de calidad del ecosistema.
+  Trigger: Al escribir tests, configurar CI, o revisar calidad de código.
 license: MIT
 metadata:
   author: Leandro Benjamin L.
-  version: "1.1"
+  version: "2.0"
 ---
 
 # Skill: lend-ai-testing
 
-Cargá esta skill cuando necesites escribir tests, configurar CI, o revisar calidad de código.
+Calidad de código. Tests que duelen cuando fallan, no cuando los escribís.
 
-## ¿Qué es CI?
+## Trigger
 
-La Integración Continua verifica automáticamente cada cambio que subís. El objetivo es asegurar que cada cambio que llegue a main sea funcional, seguro y siga los estándares del proyecto.
+- Terminaste de escribir código y necesitás testearlo
+- Vas a configurar o modificar el CI
+- Querés medir cobertura o mejorarla
+- Un test existente falla y hay que debuggearlo
 
-En GitHub, se maneja con **GitHub Actions**: eventos → config YAML → runners → jobs → steps.
+## Workflow LEND
 
-## Los 3 pilares de CI en Python
+1. ANALIZAR
+   ├── Stack: pytest, vitest, go test?
+   ├── Tipo: unitario, integración, E2E?
+   ├── Cobertura actual: ¿está configurada? ¿mínimo aceptable?
+   └── CI: ¿ya hay pipeline? ¿corre en cada PR?
 
-| Pilar | Herramienta | ¿Qué revisa? |
-|-------|-------------|--------------|
-| **Linting** | ruff, flake8, black | PEP 8, código legible |
-| **Tests** | pytest, unittest | Que el código funcione |
-| **Seguridad** | pip-audit, bandit, Dependabot | Vulnerabilidades |
+2. OFRECER (Menú del Senior)
+   ├── A) Tests unitarios — pytest + coverage para funciones críticas
+   ├── B) Integración — tests que cruzan módulos, API real o mockeada
+   └── C) Suite completa — unit + integración + CI pipeline en GitHub Actions
 
-## Tipos de tests
+3. ELEGIR → confirmación
 
-| Tipo | Framework | Propósito |
-|------|-----------|-----------|
-| Unitarios | pytest / Vitest | Funciones, hooks, componentes |
-| Integración | pytest+httpx / Testing Library | APIs, servicios |
-| E2E | Playwright | Flujos completos |
+4. HACER
+   ├── pytest: test_*.py, assert, fixtures, parametrize
+   ├── Cobertura: pytest --cov, mínimo 80% en líneas críticas
+   ├── CI: workflow que corre tests + lint + coverage report
+   ├── Tests aislados: cada test independiente, sin estado compartido
+   └── Nombres descriptivos: test_cuando_condicion_entonces_resultado
 
-## CI (GitHub Actions)
-
-- Trigger: push a main + PRs a main
-- Orden: linter → tests → security
-- Cobertura mínima: 80%
-- Cache de dependencias
-- Matrix de versiones
-
-## Reglas
-
-- Cada PR incluye tests del cambio
-- No se mergea con CI rojo ni coverage decreciente
-- Tests lentos → mark como slow
-- Mocks necesarios pero sin abusar
-- El CI es tu red de seguridad: experimentá con confianza
+5. VERIFICAR
+   ├── pytest pasa sin errores
+   ├── Cobertura cumple el mínimo
+   └── CI corre automáticamente en cada PR

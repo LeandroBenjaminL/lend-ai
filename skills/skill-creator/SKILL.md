@@ -1,111 +1,50 @@
 ---
 name: skill-creator
 description: >
-  Crea nuevas skills para agentes siguiendo el estándar Agent Skills.
-  Trigger: Cuando querés crear una skill nueva, agregar instrucciones
-  para la IA, o documentar patrones.
-license: Apache-2.0
+  Crea nuevas skills para el ecosistema siguiendo el estándar Agent Skills.
+  Template, estructura de carpetas y registro automático.
+  Trigger: Cuando querés crear una skill nueva, agregar instrucciones para la IA, o documentar patrones.
+license: MIT
 metadata:
-  author: gentleman-programming
-  version: "1.1"
+  author: Leandro Benjamin L.
+  version: "2.0"
   model_tier: T3-balanced
-  allowed-tools: Read, Edit, Write, Glob, Grep, Bash
 ---
 
 # Skill: skill-creator
 
-Crear skills que los agentes puedan entender y aplicar sin ambigüedad.
+Creador de skills. Mantené el ecosistema creciendo con orden.
 
 ## Trigger
 
-- Un patrón se repite y el agente necesita guía para no equivocarse.
-- El proyecto tiene convenciones propias que difieren de las prácticas genéricas.
-- Un workflow complejo necesita pasos detallados.
-- Un árbol de decisión ayuda al agente a elegir el approach correcto.
+- Un patrón se repite y el agente necesita guía
+- El proyecto tiene convenciones propias que difieren de las prácticas genéricas
+- Un workflow complejo necesita pasos detallados
+- Un árbol de decisión ayuda al agente a elegir el approach correcto
 
-**No crees una skill cuando**: ya existe documentación (creá un reference mejor),
-el patrón es trivial o autoevidente, o es una tarea de una sola vez.
+## Workflow LEND
 
-## Por qué existe
+1. ANALIZAR
+   ├── ¿Ya existe una skill similar? (buscar en skills/ y AGENTS.md)
+   ├── ¿Qué problema resuelve? ¿es específico de un agente o transversal?
+   ├── ¿Es para Data, Frontend, DevOps o Transversal?
+   └── Formato: ¿sigue el estándar LEND? (trigger → workflow → patrones → anti-patrones)
 
-Los agentes sin skills escriben código genérico. Con skills, escriben código
-que respeta las convenciones del proyecto, los patrones del equipo y las
-decisiones de arquitectura. Una skill bien escrita ahorra horas de correcciones.
+2. OFRECER (Menú del Senior)
+   ├── A) Skill simple — SKILL.md con trigger + workflow básico, sin assets
+   ├── B) Skill completa — SKILL.md + assets/ (templates, schemas)
+   └── C) Skill con references — SKILL.md + references/ a docs locales
 
-## Workflow
+3. ELEGIR → confirmación
 
-```
-1. Verificá que no exista ya (buscá en skills/ y en AGENTS.md)
-2. Elegí un nombre corto con guiones ({tecnologia}, {proyecto}-{componente})
-3. Creá la carpeta: skills/{skill-name}/
-4. Escribí SKILL.md con el template de abajo
-5. Si necesitás templates o schemas, ponelos en assets/
-6. Si necesitás referenciar docs existentes, poné links en references/
-7. Registrala en AGENTS.md
-```
+4. HACER
+   ├── skills/{nombre}/SKILL.md con frontmatter: name, description, trigger, license, metadata
+   ├── Template: trigger, workflow LEND, patrones, anti-patrones
+   ├── Si necesita: assets/ para templates, references/ para docs locales
+   ├── Nombre: corto con guiones (tecnología, proyecto-componente)
+   └── Registrar en AGENTS.md
 
-## Estructura de carpetas
-
-```
-skills/{skill-name}/
-├── SKILL.md              # Obligatorio
-├── assets/               # Opcional: templates, schemas, ejemplos
-└── references/           # Opcional: links a docs locales (NO web URLs)
-```
-
-## Template de SKILL.md
-
-```markdown
----
-name: {skill-name}
-description: >
-  {Una línea: qué hace esta skill}.
-  Trigger: {Cuándo cargarla}.
-license: Apache-2.0
-metadata:
-  author: gentleman-programming
-  version: "1.0"
----
-
-# Skill: {skill-name}
-
-{Descripción corta: para qué sirve, qué problema resuelve.}
-
-## Trigger
-
-{Casos concretos: cuándo cargar esta skill.}
-
-## Por qué existe
-
-{Breve explicación de por qué este enfoque, no solo el qué.}
-
-## Workflow
-
-{Pasos detallados para implementar lo que la skill enseña.}
-
-## Patrones
-
-{Lo que el agente DEBE hacer siempre.}
-
-## Anti-patrones
-
-{Lo que el agente NO DEBE hacer nunca.}
-```
-
-## Patrones
-
-- **Arrancá con los patrones críticos**: el agente necesita saber primero lo
-  que no puede violar.
-- **Tablas para decisiones**: si hay opciones, tabla. Si hay pasos, checklist.
-- **Ejemplos mínimos**: 2-3 líneas que ilustren el punto. Nada de 50 líneas de código.
-- **Menos es más**: 80-150 líneas total. Si necesitás más, la skill es muy amplia.
-- **Frontmatter completo**: `name`, `description` (con trigger), `license`,
-  `metadata.author`, `metadata.version`.
-
-## Anti-patrones
-
-- Skills de 300+ líneas que nadie va a leer — partilas en skills más chicas.
-- Repetir información que ya está en la documentación del proyecto — referenciá, no dupliques.
-- Secciones de Keywords o Troubleshooting — el agente busca por frontmatter y patrones.
-- URLs web en references/ — usá paths locales.
-- Instrucciones contradictorias entre skills — si pasa, unificá.
+5. VERIFICAR
+   ├── La skill existe en skills/
+   ├── El manifest del agente la referencia si aplica
+   └── Está registrada en AGENTS.md

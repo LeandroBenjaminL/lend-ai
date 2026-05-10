@@ -1,41 +1,49 @@
 ---
 name: lend-ai-docs
-description: "Estándar de documentación senior — multi-archivo, Google-style docstrings, ADR y estructura profesional para el ecosistema Lend.Ai."
+description: >
+  Documentación senior — multi-archivo, Google-style docstrings, ADR,
+  y documentación técnica en inglés.
+  Trigger: Al escribir documentación, generar docstrings, o estructurar la documentación de un proyecto.
 license: MIT
 metadata:
   author: Leandro Benjamin L.
-  version: "1.0"
+  version: "2.0"
 ---
 
 # Skill: lend-ai-docs
 
-Cargá esta skill cuando necesites escribir documentación, generar docstrings, o estructurar la documentación de un proyecto.
+Documentación senior. Código sin docs es deuda técnica.
 
-## Estructura multi-archivo
+## Trigger
 
-| Archivo | Propósito |
-|---------|-----------|
-| `README.md` | Puerta de entrada: qué hace, cómo instalar, cómo ejecutar |
-| `CONTRIBUTING.md` | Reglas del juego: entorno, estándares, PRs, tests |
-| `ARCHITECTURE.md` | Big picture: estructura, decisiones técnicas |
-| `CHANGELOG.md` | Historial de versiones (Keep a Changelog) |
-| `DEVELOPMENT.md` | Comandos frecuentes, ADR |
-| `docs/` | Guías detalladas, tutoriales |
+- Terminaste una función y necesitás su docstring
+- Vas a crear o actualizar un README, ARCHITECTURE, o CHANGELOG
+- Necesitás documentar una decisión de arquitectura (ADR)
+- El proyecto no tiene documentación y hay que arrancarla
 
-## Docstrings: Google Style
+## Workflow LEND
 
-Toda función pública necesita:
-- Type hints + descripción corta + Args + Returns + Raises + Notes (si aplica)
+1. ANALIZAR
+   ├── Tipo: docstring (API pública), README (proyecto), ADR (decisión), guía (cómo usar)
+   ├── Audiencia: ¿desarrollador, usuario, operador?
+   ├── Estado: ¿docs desde cero o actualizar existentes?
+   └── Lenguaje: inglés técnico US para código y commits
 
-## ADR
+2. OFRECER (Menú del Senior)
+   ├── A) Docstrings — Google-style para funciones y clases públicas
+   ├── B) README + ARCHITECTURE — visión general del proyecto + estructura
+   └── C) ADR — documentar decisión con contexto, opciones y resultado
 
-Decisiones técnicas importantes van en `docs/adr/NNN-titulo.md`.
-Formato: Contexto → Decisión → Consecuencias → Estado.
+3. ELEGIR → confirmación
 
-## Reglas
+4. HACER
+   ├── Google-style: Args, Returns, Raises, Examples (cuando aplica)
+   ├── README: qué hace, cómo instalar, cómo usar, configuración
+   ├── ARCHITECTURE: estructura, agentes, skills, decisiones técnicas
+   ├── ADR: título, contexto, opciones, decisión, consecuencias
+   └── Inglés técnico US, claro y directo
 
-- Cada archivo tiene UN propósito
-- Progressive disclosure: de lo general a lo específico
-- El docstring explica el por qué, no el qué
-- ADR ante cualquier decisión técnica con alternativas
-- CHANGELOG desde el primer commit
+5. VERIFICAR
+   ├── La documentación es útil sin leer el código
+   ├── Los ejemplos funcionan (ejecutables)
+   └── No hay información desactualizada
