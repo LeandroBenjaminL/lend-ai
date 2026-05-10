@@ -59,9 +59,8 @@ class TestYamlValidity:
             except yaml.YAMLError as e:
                 errors.append(f"{yaml_file.name}: {e}")
 
-        assert not errors, (
-            f"Se encontraron {len(errors)} errores de parseo YAML:\n"
-            + "\n".join(errors)
+        assert not errors, f"Se encontraron {len(errors)} errores de parseo YAML:\n" + "\n".join(
+            errors
         )
 
     def test_all_yaml_have_required_fields(self, all_yaml_files: list[Path]) -> None:
@@ -94,26 +93,18 @@ class TestYamlValidity:
             if isinstance(agent, dict):
                 for field in REQUIRED_AGENT_FIELDS:
                     if field not in agent:
-                        errors.append(
-                            f"{yaml_file.name} ({name}): falta 'agent.{field}'"
-                        )
+                        errors.append(f"{yaml_file.name} ({name}): falta 'agent.{field}'")
 
             # instructions.*
             instructions = data.get("instructions", {})
             if isinstance(instructions, dict):
                 for field in REQUIRED_INSTRUCTION_FIELDS:
                     if field not in instructions:
-                        errors.append(
-                            f"{yaml_file.name} ({name}): falta 'instructions.{field}'"
-                        )
+                        errors.append(f"{yaml_file.name} ({name}): falta 'instructions.{field}'")
 
-        assert not errors, (
-            f"Se encontraron {len(errors)} campos faltantes:\n" + "\n".join(errors)
-        )
+        assert not errors, f"Se encontraron {len(errors)} campos faltantes:\n" + "\n".join(errors)
 
-    def test_all_yaml_have_valid_layer(
-        self, all_yaml_files: list[Path], parse_yaml: Any
-    ) -> None:
+    def test_all_yaml_have_valid_layer(self, all_yaml_files: list[Path], parse_yaml: Any) -> None:
         """Layer es '0', '0.5', o '1' según la arquitectura del ecosistema."""
         valid_layers = {"0", "0.5", "1"}  # noqa: N806
         errors: list[str] = []
@@ -128,21 +119,16 @@ class TestYamlValidity:
 
             if layer_str not in valid_layers:
                 errors.append(
-                    f"{name}: layer='{layer_str}' no es válido. "
-                    f"Se espera uno de {valid_layers}"
+                    f"{name}: layer='{layer_str}' no es válido. Se espera uno de {valid_layers}"
                 )
 
-        assert not errors, (
-            f"Se encontraron {len(errors)} layers inválidos:\n" + "\n".join(errors)
-        )
+        assert not errors, f"Se encontraron {len(errors)} layers inválidos:\n" + "\n".join(errors)
 
 
 class TestManifestIntegrity:
     """Pruebas de integridad y consistencia entre manifests."""
 
-    def test_sub_agents_exist(
-        self, all_yaml_files: list[Path], parse_yaml: Any
-    ) -> None:
+    def test_sub_agents_exist(self, all_yaml_files: list[Path], parse_yaml: Any) -> None:
         """Cada sub_agent referenciado existe como otro .yaml en manifests/.
 
         Nota: sub_agents puede estar en top-level o dentro de `agent:`.
@@ -156,13 +142,10 @@ class TestManifestIntegrity:
             sub_agents = _get_agent_field(data, "sub_agents") or []
             for sub in sub_agents:
                 if sub not in existing:
-                    errors.append(
-                        f"{name}: sub_agent '{sub}' no tiene un .yaml en manifests/"
-                    )
+                    errors.append(f"{name}: sub_agent '{sub}' no tiene un .yaml en manifests/")
 
-        assert not errors, (
-            f"Se encontraron {len(errors)} sub-agents sin manifest:\n"
-            + "\n".join(errors)
+        assert not errors, f"Se encontraron {len(errors)} sub-agents sin manifest:\n" + "\n".join(
+            errors
         )
 
     def test_instructions_files_exist(
@@ -197,9 +180,7 @@ class TestManifestIntegrity:
             + "\n".join(errors)
         )
 
-    def test_mcp_bindings_are_strings(
-        self, all_yaml_files: list[Path], parse_yaml: Any
-    ) -> None:
+    def test_mcp_bindings_are_strings(self, all_yaml_files: list[Path], parse_yaml: Any) -> None:
         """mcp_bindings es una lista de strings.
 
         Nota: puede estar en top-level o dentro de `agent:`.
@@ -221,9 +202,7 @@ class TestManifestIntegrity:
                         f"(tipo: {type(binding).__name__})"
                     )
 
-        assert not errors, (
-            f"Se encontraron {len(errors)} bindings no-string:\n" + "\n".join(errors)
-        )
+        assert not errors, f"Se encontraron {len(errors)} bindings no-string:\n" + "\n".join(errors)
 
     def test_no_duplicate_names(self, all_manifest_names: list[str]) -> None:
         """No hay dos agentes con el mismo nombre."""
@@ -236,9 +215,7 @@ class TestManifestIntegrity:
 
         assert not duplicates, f"Nombres duplicados encontrados: {duplicates}"
 
-    def test_trigger_is_not_empty(
-        self, all_yaml_files: list[Path], parse_yaml: Any
-    ) -> None:
+    def test_trigger_is_not_empty(self, all_yaml_files: list[Path], parse_yaml: Any) -> None:
         """Todos los agentes tienen trigger definido y no vacío."""
         errors: list[str] = []
         for yaml_file in all_yaml_files:
@@ -249,17 +226,15 @@ class TestManifestIntegrity:
             if not trigger or not trigger.strip():
                 errors.append(f"{name}: trigger está vacío o ausente")
 
-        assert not errors, (
-            f"Se encontraron {len(errors)} agentes sin trigger:\n" + "\n".join(errors)
+        assert not errors, f"Se encontraron {len(errors)} agentes sin trigger:\n" + "\n".join(
+            errors
         )
 
 
 class TestManifestConventions:
     """Convenciones de formato y estilo en manifests."""
 
-    def test_agent_name_matches_filename(
-        self, all_yaml_files: list[Path], parse_yaml: Any
-    ) -> None:
+    def test_agent_name_matches_filename(self, all_yaml_files: list[Path], parse_yaml: Any) -> None:
         """El agent.name dentro del YAML coincide con el nombre del archivo."""
         errors: list[str] = []
         for yaml_file in all_yaml_files:
@@ -273,9 +248,7 @@ class TestManifestConventions:
                 )
         assert not errors, "\n".join(errors)
 
-    def test_description_is_not_empty(
-        self, all_yaml_files: list[Path], parse_yaml: Any
-    ) -> None:
+    def test_description_is_not_empty(self, all_yaml_files: list[Path], parse_yaml: Any) -> None:
         """Todos los agentes tienen description definida."""
         errors: list[str] = []
         for yaml_file in all_yaml_files:

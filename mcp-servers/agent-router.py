@@ -42,9 +42,7 @@ except ImportError:
 # ── Constantes ───────────────────────────────────────────────────────────────
 
 _MANIFESTS_DIR_DEFAULT = Path(__file__).resolve().parent.parent / "agents" / "manifests"
-MANIFESTS_DIR = Path(
-    os.environ.get("DATA_ANALYST_MANIFESTS_DIR", str(_MANIFESTS_DIR_DEFAULT))
-)
+MANIFESTS_DIR = Path(os.environ.get("DATA_ANALYST_MANIFESTS_DIR", str(_MANIFESTS_DIR_DEFAULT)))
 
 _BASE_DIR = Path(__file__).resolve().parent
 MODEL_ROUTER = _BASE_DIR / "model-router.py"
@@ -186,9 +184,7 @@ def list_agents(layer: str | None = None) -> str:
     """
     valid_layers = {"0", "0.5", "1"}
     if layer is not None and layer not in valid_layers:
-        return (
-            f"❌ Layer inválida: '{layer}'. Válidas: {', '.join(sorted(valid_layers))}"
-        )
+        return f"❌ Layer inválida: '{layer}'. Válidas: {', '.join(sorted(valid_layers))}"
 
     results: list[dict[str, Any]] = []
     for name, data in sorted(ALL_AGENTS.items()):
@@ -534,11 +530,7 @@ def agent_health_check() -> str:
 
         # 3. Instrucciones apuntan a archivos existentes
         actual_name = _get_agent_name(data)
-        agent_dir = (
-            yaml_path.parent / actual_name
-            if actual_name
-            else yaml_path.parent / agent_name
-        )
+        agent_dir = yaml_path.parent / actual_name if actual_name else yaml_path.parent / agent_name
 
         if isinstance(instructions, dict):
             for field in ["persona", "workflow", "patterns"]:
@@ -557,8 +549,7 @@ def agent_health_check() -> str:
                 sub_yaml = yaml_path.parent / f"{sub_name}.yaml"
                 if not sub_yaml.exists():
                     warn_msg = (
-                        f"Sub-agente '{sub_name}' referenciado"
-                        f" pero no existe como {sub_yaml.name}"
+                        f"Sub-agente '{sub_name}' referenciado pero no existe como {sub_yaml.name}"
                     )
                     detail["issues"].append(warn_msg)
 

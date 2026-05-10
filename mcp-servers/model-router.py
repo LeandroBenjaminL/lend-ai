@@ -27,15 +27,15 @@ log = logging.getLogger("model-router")
 _BASE_DIR_DEFAULT = Path(__file__).resolve().parent.parent
 BASE_DIR = Path(os.environ.get("DATA_ANALYST_HOME", str(_BASE_DIR_DEFAULT)))
 MODELS_JSON = BASE_DIR / "models.json"
-ACTIVE_TIER_FILE = Path(
-    os.environ.get("DATA_ANALYST_TIER_FILE", "/tmp/opencode-active-tier.json")
-)
+ACTIVE_TIER_FILE = Path(os.environ.get("DATA_ANALYST_TIER_FILE", "/tmp/opencode-active-tier.json"))
 DEFAULT_TIER = "T3-balanced"
 
 
 def _get_default_tier() -> str:
     config = cargar_config()
     return config.get("default_tier", DEFAULT_TIER)
+
+
 CONFIG_JSON = BASE_DIR / "model-routing.config.json"
 
 # ── Carga de datos ───────────────────────────────────────────────────────────
@@ -237,9 +237,7 @@ def _guardar_overrides(data: dict) -> dict:
 # ── Inicializar datos ────────────────────────────────────────────────────────
 
 
-def _init_data() -> tuple[
-    dict[str, dict], dict[str, str], dict[str, str], dict[str, str]
-]:
+def _init_data() -> tuple[dict[str, dict], dict[str, str], dict[str, str], dict[str, str]]:
     data = cargar_models()
     _models_data.update(data)
     tiers = _extraer_tiers(data)
@@ -334,9 +332,7 @@ def set_tier(tier: str) -> str:
             )
         else:
             return json.dumps(
-                {
-                    "error": f"Tier '{tier_input}' no encontrado. Válidos: {list(tiers.keys())}"
-                },
+                {"error": f"Tier '{tier_input}' no encontrado. Válidos: {list(tiers.keys())}"},
                 ensure_ascii=False,
             )
     result = guardar_tier_activo(tier_key)
@@ -385,9 +381,7 @@ def set_skill_tier(skill: str, tier: str) -> str:
     """Asigna un tier específico a una skill. Persiste en model-routing.config.json."""
     if skill not in skill_map:
         return json.dumps(
-            {
-                "error": f"Skill '{skill}' no encontrada. Válidas: {sorted(skill_map.keys())}"
-            },
+            {"error": f"Skill '{skill}' no encontrada. Válidas: {sorted(skill_map.keys())}"},
             ensure_ascii=False,
         )
     if tier not in tiers:
@@ -420,9 +414,7 @@ def set_agent_tier(agent: str, tier: str) -> str:
     """Asigna un tier específico a un agente. Persiste en model-routing.config.json."""
     if agent not in agentes:
         return json.dumps(
-            {
-                "error": f"Agente '{agent}' no encontrado. Válidos: {sorted(agentes.keys())}"
-            },
+            {"error": f"Agente '{agent}' no encontrado. Válidos: {sorted(agentes.keys())}"},
             ensure_ascii=False,
         )
     if tier not in tiers:
@@ -455,9 +447,7 @@ def reset_skill_tier(skill: str) -> str:
     """Elimina el override de una skill, vuelve al default."""
     if skill not in skill_map:
         return json.dumps(
-            {
-                "error": f"Skill '{skill}' no encontrada. Válidas: {sorted(skill_map.keys())}"
-            },
+            {"error": f"Skill '{skill}' no encontrada. Válidas: {sorted(skill_map.keys())}"},
             ensure_ascii=False,
         )
     config = _cargar_overrides()
@@ -491,9 +481,7 @@ def reset_agent_tier(agent: str) -> str:
     """Elimina el override de un agente, vuelve al default."""
     if agent not in agentes:
         return json.dumps(
-            {
-                "error": f"Agente '{agent}' no encontrado. Válidos: {sorted(agentes.keys())}"
-            },
+            {"error": f"Agente '{agent}' no encontrado. Válidos: {sorted(agentes.keys())}"},
             ensure_ascii=False,
         )
     config = _cargar_overrides()
@@ -553,9 +541,7 @@ def _run_cli() -> None:
     """Punto de entrada CLI: python3 model-router.py <comando> [args]."""
     import argparse
 
-    parser = argparse.ArgumentParser(
-        description="Model Router — resuelve qué modelo LLM usar"
-    )
+    parser = argparse.ArgumentParser(description="Model Router — resuelve qué modelo LLM usar")
     sub = parser.add_subparsers(dest="command", help="Comando a ejecutar")
 
     # list
@@ -575,16 +561,12 @@ def _run_cli() -> None:
     sub.add_parser("get-tier", help="Lee el tier activo actual")
 
     # set-skill-tier
-    set_sk_p = sub.add_parser(
-        "set-skill-tier", help="Asigna un tier específico a una skill"
-    )
+    set_sk_p = sub.add_parser("set-skill-tier", help="Asigna un tier específico a una skill")
     set_sk_p.add_argument("skill", type=str)
     set_sk_p.add_argument("tier", type=str)
 
     # set-agent-tier
-    set_ag_p = sub.add_parser(
-        "set-agent-tier", help="Asigna un tier específico a un agente"
-    )
+    set_ag_p = sub.add_parser("set-agent-tier", help="Asigna un tier específico a un agente")
     set_ag_p.add_argument("agent", type=str)
     set_ag_p.add_argument("tier", type=str)
 

@@ -33,11 +33,20 @@ def test_data_analyst_manifest_exists():
     assert manifest.exists()
 
 
-@pytest.mark.parametrize("required_dir", [
-    "lend-ai", "data-analyst", "frontend-mentor",
-    "data-explorer", "data-modeler", "data-reporter",
-    "framework-architect", "ui-crafter", "styling-engineer",
-])
+@pytest.mark.parametrize(
+    "required_dir",
+    [
+        "lend-ai",
+        "data-analyst",
+        "frontend-mentor",
+        "data-explorer",
+        "data-modeler",
+        "data-reporter",
+        "framework-architect",
+        "ui-crafter",
+        "styling-engineer",
+    ],
+)
 def test_required_manifest_dirs(required_dir):
     """Verificar que los directorios de manifiestos requeridos existen."""
     dir_path = MANIFESTS_DIR / required_dir

@@ -86,9 +86,7 @@ class TestRegistryConsistency:
         known_without_manifest = {"gentle-orchestrator", "orchestrator"}
         actual_missing = [m for m in missing if m not in known_without_manifest]
 
-        assert not actual_missing, (
-            f"Agentes en el registry sin manifest: {actual_missing}"
-        )
+        assert not actual_missing, f"Agentes en el registry sin manifest: {actual_missing}"
 
     def test_all_manifests_are_in_registry(
         self, registry_path: Path, all_manifest_names: list[str]
@@ -99,9 +97,15 @@ class TestRegistryConsistency:
 
         # En Lend.Ai solo verificamos los agentes core, no todos los sub-agentes
         core_agents = {
-            "lend-ai", "data-analyst", "frontend-senior",
-            "data-explorer", "data-modeler", "data-reporter",
-            "data-etl", "framework-architect", "ui-crafter",
+            "lend-ai",
+            "data-analyst",
+            "frontend-senior",
+            "data-explorer",
+            "data-modeler",
+            "data-reporter",
+            "data-etl",
+            "framework-architect",
+            "ui-crafter",
             "styling-engineer",
         }
 
@@ -110,9 +114,7 @@ class TestRegistryConsistency:
             if name in core_agents and name not in registry_agents:
                 missing.append(name)
 
-        assert not missing, (
-            f"Agentes core faltan en AGENT_REGISTRY.md: {missing}"
-        )
+        assert not missing, f"Agentes core faltan en AGENT_REGISTRY.md: {missing}"
 
 
 class TestSkillsConsistency:
@@ -129,15 +131,29 @@ class TestSkillsConsistency:
 
         # Skills que no requieren manifest propio en Lend.Ai
         known_without_manifest = {
-            "_shared", "sdd-init", "sdd-propose", "sdd-spec", "sdd-design",
-            "sdd-tasks", "sdd-apply", "sdd-verify", "sdd-archive",
-            "sdd-explore", "sdd-onboard",
+            "_shared",
+            "sdd-init",
+            "sdd-propose",
+            "sdd-spec",
+            "sdd-design",
+            "sdd-tasks",
+            "sdd-apply",
+            "sdd-verify",
+            "sdd-archive",
+            "sdd-explore",
+            "sdd-onboard",
             # Transversales con prefijo
-            "frontend-api-integration", "frontend-css-styling",
-            "frontend-e2e-testing", "frontend-react-development",
-            "frontend-responsive-design", "frontend-state-management",
-            "frontend-testing", "frontend-type-script", "frontend-web-performance",
-            "shared-api-integration", "shared-git-data",
+            "frontend-api-integration",
+            "frontend-css-styling",
+            "frontend-e2e-testing",
+            "frontend-react-development",
+            "frontend-responsive-design",
+            "frontend-state-management",
+            "frontend-testing",
+            "frontend-type-script",
+            "frontend-web-performance",
+            "shared-api-integration",
+            "shared-git-data",
             # Orchestrators
             "senior-orchestrator",
         }
@@ -213,13 +229,10 @@ class TestModelsConsistency:
                 orphan_models.append(agent)
 
         assert not orphan_models, (
-            f"Agentes en models.json sin manifest y no listados como virtuales: "
-            f"{orphan_models}"
+            f"Agentes en models.json sin manifest y no listados como virtuales: {orphan_models}"
         )
 
-    def test_agent_layers_are_consistent(
-        self, all_yaml_files: list[Path], parse_yaml: Any
-    ) -> None:
+    def test_agent_layers_are_consistent(self, all_yaml_files: list[Path], parse_yaml: Any) -> None:
         """Layer 0 solo tiene agentes estrategas, layer 1 tiene domain agents.
         Según el registry: layer 0.5 = strategists, layer 1 = domain agents.
         Pero los manifests usan layer 0 para los strategists."""
@@ -238,9 +251,7 @@ class TestModelsConsistency:
 class TestMcpConsistency:
     """Verificación de bindings MCP."""
 
-    def test_mcp_names_are_reasonable(
-        self, all_yaml_files: list[Path], parse_yaml: Any
-    ) -> None:
+    def test_mcp_names_are_reasonable(self, all_yaml_files: list[Path], parse_yaml: Any) -> None:
         """Los nombres de MCP bindings son razonables (no vacíos, sin espacios raros)."""
         errors: list[str] = []
         for yaml_file in all_yaml_files:

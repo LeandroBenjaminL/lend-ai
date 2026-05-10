@@ -17,27 +17,19 @@ class TestModelsJsonStructure:
         """models.json se puede parsear correctamente (ya se cargó en la fixture)."""
         assert models_data is not None, "models.json no se pudo cargar"
 
-    def test_models_json_has_required_sections(
-        self, models_data: dict[str, Any]
-    ) -> None:
+    def test_models_json_has_required_sections(self, models_data: dict[str, Any]) -> None:
         """models.json tiene las secciones obligatorias: ml_models, llm_models."""
         assert "ml_models" in models_data, "Falta la sección 'ml_models'"
         assert "llm_models" in models_data, "Falta la sección 'llm_models'"
-        assert isinstance(models_data["ml_models"], list), (
-            "'ml_models' debe ser una lista"
-        )
-        assert isinstance(models_data["llm_models"], dict), (
-            "'llm_models' debe ser un dict"
-        )
+        assert isinstance(models_data["ml_models"], list), "'ml_models' debe ser una lista"
+        assert isinstance(models_data["llm_models"], dict), "'llm_models' debe ser un dict"
 
     def test_models_json_has_tiers(self, models_data: dict[str, Any]) -> None:
         """llm_models tiene la sección _tiers."""
         tiers = models_data.get("llm_models", {}).get("_tiers", {})
         assert len(tiers) > 0, "_tiers está vacío o no existe"
         # Verificar que hay al menos 5 tiers
-        assert len(tiers) >= 5, (
-            f"Se esperaban al menos 5 tiers, se encontraron {len(tiers)}"
-        )
+        assert len(tiers) >= 5, f"Se esperaban al menos 5 tiers, se encontraron {len(tiers)}"
 
 
 class TestTiers:
@@ -107,9 +99,7 @@ class TestPrimaryAgents:
 
         assert not errors, "\n".join(errors)
 
-    def test_primary_agents_have_required_fields(
-        self, models_data: dict[str, Any]
-    ) -> None:
+    def test_primary_agents_have_required_fields(self, models_data: dict[str, Any]) -> None:
         """Todos los primary_agents tienen agent, role, recommended, tier."""
         agents = models_data.get("llm_models", {}).get("primary_agents", [])
         required = {"agent", "role", "recommended", "tier"}
@@ -159,11 +149,7 @@ class TestSddAgents:
 
     def test_sdd_agents_have_tier(self, models_data: dict[str, Any]) -> None:
         """Todos los SDD agents tienen tier definido."""
-        agents = (
-            models_data.get("llm_models", {})
-            .get("_sdd_subagents", {})
-            .get("agents", [])
-        )
+        agents = models_data.get("llm_models", {}).get("_sdd_subagents", {}).get("agents", [])
         errors: list[str] = []
 
         for entry in agents:
@@ -175,11 +161,7 @@ class TestSddAgents:
 
     def test_sdd_agents_have_required_fields(self, models_data: dict[str, Any]) -> None:
         """Todos los SDD agents tienen al menos agent, tier."""
-        agents = (
-            models_data.get("llm_models", {})
-            .get("_sdd_subagents", {})
-            .get("agents", [])
-        )
+        agents = models_data.get("llm_models", {}).get("_sdd_subagents", {}).get("agents", [])
         errors: list[str] = []
 
         for entry in agents:
@@ -220,15 +202,11 @@ class TestMlModels:
                 task_name = task_entry.get("task", "unknown")
                 models = task_entry.get("models", [])
                 if len(models) == 0:
-                    errors.append(
-                        f"Skill '{skill}', task '{task_name}': no tiene modelos"
-                    )
+                    errors.append(f"Skill '{skill}', task '{task_name}': no tiene modelos")
 
         assert not errors, "\n".join(errors)
 
-    def test_ml_models_skill_names_are_unique(
-        self, models_data: dict[str, Any]
-    ) -> None:
+    def test_ml_models_skill_names_are_unique(self, models_data: dict[str, Any]) -> None:
         """No hay skills duplicadas en ml_models."""
         seen: set[str] = set()
         duplicates: list[str] = []
@@ -240,9 +218,7 @@ class TestMlModels:
 
         assert not duplicates, f"Skills duplicadas en ml_models: {duplicates}"
 
-    def test_ml_models_task_names_are_unique_per_skill(
-        self, models_data: dict[str, Any]
-    ) -> None:
+    def test_ml_models_task_names_are_unique_per_skill(self, models_data: dict[str, Any]) -> None:
         """Los nombres de task son únicos dentro de cada skill."""
         errors: list[str] = []
         for entry in models_data.get("ml_models", []):

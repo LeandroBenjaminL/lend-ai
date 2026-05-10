@@ -75,7 +75,9 @@ def run_router(*args: str) -> dict:
     try:
         result = subprocess.run(
             ["python3", str(ROUTER), *args],
-            capture_output=True, text=True, timeout=10,
+            capture_output=True,
+            text=True,
+            timeout=10,
         )
         if result.stdout.strip():
             return json.loads(result.stdout.strip())
@@ -183,7 +185,9 @@ def show_main_menu(config: dict, overrides: dict):
             short = TIER_SHORT.get(tier, tier)
             overridden = " ⚡" if skill in skill_overrides else ""
             model = model_name(tiers.get(tier, {}))
-            print(f"  {c('yellow', skill):<30} {c(color, short):<6} {c('dim', model)}{c('magenta', overridden)}")  # noqa: E501
+            print(
+                f"  {c('yellow', skill):<30} {c(color, short):<6} {c('dim', model)}{c('magenta', overridden)}"
+            )  # noqa: E501
         print()
 
     print(c("bold", "═══ ACCIONES ═══"))
@@ -214,7 +218,9 @@ def pick_skill(config: dict):
         short = TIER_SHORT.get(current_tier, current_tier)
         marker = c("magenta", " ⚡") if skill in overrides else ""
         model = model_name(tiers.get(current_tier, {}))
-        print(f"  [{c('yellow', str(i))}] {c('yellow', skill):<30} → {c(color, short)} {c('dim', model)}{marker}")  # noqa: E501
+        print(
+            f"  [{c('yellow', str(i))}] {c('yellow', skill):<30} → {c(color, short)} {c('dim', model)}{marker}"
+        )  # noqa: E501
     print()
     print(f"  [{c('red', '0')}] Volver")
     print()
@@ -256,7 +262,9 @@ def pick_agent(config: dict):
         short = TIER_SHORT.get(current_tier, current_tier)
         marker = c("magenta", " ⚡") if name in overrides else ""
         model = model_name(tiers.get(current_tier, {}))
-        print(f"  [{c('blue', str(i))}] {c('blue', name):<30} → {c(color, short)} {c('dim', model)}{marker}")  # noqa: E501
+        print(
+            f"  [{c('blue', str(i))}] {c('blue', name):<30} → {c(color, short)} {c('dim', model)}{marker}"
+        )  # noqa: E501
     print()
     print(f"  [{c('red', '0')}] Volver")
     print()
@@ -357,7 +365,9 @@ def reset_override(config: dict):
         color = TIER_COLORS.get(tier, "white")
         short = TIER_SHORT.get(tier, tier)
         icon = c("yellow", "⬢") if etype == "skill" else c("blue", "⬡")
-        print(f"  [{c('magenta', str(i))}] {icon} {c('bold', ename):<30} {c(color, short)} → default")  # noqa: E501
+        print(
+            f"  [{c('magenta', str(i))}] {icon} {c('bold', ename):<30} {c(color, short)} → default"
+        )  # noqa: E501
     print()
     print(f"  [{c('red', '0')}] Cancelar")
     print()
@@ -399,7 +409,7 @@ def list_all_view(config: dict):
     print(c("bold", "═══ SKILLS ═══"))
     print()
     print(f"  {'SKILL':<30} {'TIER':<8} {'MODELO':<20} {'ESTADO'}")
-    print(f"  {'─'*30} {'─'*8} {'─'*20} {'─'*10}")
+    print(f"  {'─' * 30} {'─' * 8} {'─' * 20} {'─' * 10}")
     for skill, tier in sorted(skills_config.items()):
         actual = skill_overrides.get(skill, tier)
         color = TIER_COLORS.get(actual, "white")
@@ -416,14 +426,16 @@ def list_all_view(config: dict):
         print(c("bold", "═══ AGENTES ═══"))
         print()
         print(f"  {'AGENTE':<30} {'TIER':<8} {'MODELO':<20} {'ESTADO'}")
-        print(f"  {'─'*30} {'─'*8} {'─'*20} {'─'*10}")
+        print(f"  {'─' * 30} {'─' * 8} {'─' * 20} {'─' * 10}")
         for a in agents_list:
             name = a.get("agent", "?")
             default_tier = a.get("tier", "T3-balanced")
             actual = agent_overrides.get(name, default_tier)
             color = TIER_COLORS.get(actual, "white")
             short = TIER_SHORT.get(actual, actual)
-            status = c("magenta", "⚡ overridden") if name in agent_overrides else c("dim", "default")  # noqa: E501
+            status = (
+                c("magenta", "⚡ overridden") if name in agent_overrides else c("dim", "default")
+            )  # noqa: E501
             model = model_name(tiers.get(actual, {}))
             print(f"  {c('blue', name):<30} {c(color, short):<8} {model:<20} {status}")
 

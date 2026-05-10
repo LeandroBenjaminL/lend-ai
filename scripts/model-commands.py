@@ -107,7 +107,7 @@ def cmd_list(which: str = "all") -> str:
     if which in ("all", "skills"):
         output.append(c(BOLD, "SKILLS:"))
         output.append(f"  {'Skill':<30} {'Tier':<10} {'Estado'}")
-        output.append(f"  {'─'*30} {'─'*10} {'─'*10}")
+        output.append(f"  {'─' * 30} {'─' * 10} {'─' * 10}")
         for skill, default_tier in sorted(skills_default.items()):
             tier = skill_overrides.get(skill, default_tier)
             tier_key = tier if tier in tiers else "T3-balanced"
@@ -119,7 +119,7 @@ def cmd_list(which: str = "all") -> str:
     if which in ("all", "agents"):
         output.append(c(BOLD, "AGENTES:"))
         output.append(f"  {'Agente':<30} {'Tier':<10} {'Estado'}")
-        output.append(f"  {'─'*30} {'─'*10} {'─'*10}")
+        output.append(f"  {'─' * 30} {'─' * 10} {'─' * 10}")
         for agent, default_tier in sorted(agent_tier_map.items()):
             tier = agent_overrides.get(agent, default_tier)
             is_ov = c("magenta", "⚡ override") if agent in agent_overrides else c("dim", "default")

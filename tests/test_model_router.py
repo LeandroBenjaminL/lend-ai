@@ -34,8 +34,7 @@ def _router_json(script: Path, *args: str) -> dict[str, Any]:
     """Ejecuta model-router.py y parsea su salida como JSON."""
     result = _run_router(script, *args)
     assert result.returncode == 0, (
-        f"Error ejecutando: python3 model-router.py {' '.join(args)}\n"
-        f"stderr: {result.stderr}"
+        f"Error ejecutando: python3 model-router.py {' '.join(args)}\nstderr: {result.stderr}"
     )
     return json.loads(result.stdout)
 
@@ -63,9 +62,7 @@ class TestRouterBasics:
             capture_output=True,
             text=True,
         )
-        assert result.returncode == 0, (
-            f"Error de sintaxis en model-router.py:\n{result.stderr}"
-        )
+        assert result.returncode == 0, f"Error de sintaxis en model-router.py:\n{result.stderr}"
 
 
 class TestRouterList:
@@ -107,9 +104,7 @@ class TestRouterResolve:
     @pytest.mark.slow
     def test_router_resolve_agent(self, model_router_script: Path) -> None:
         """`resolve --agent data-analysis` devuelve un tier válido."""
-        result = _router_json(
-            model_router_script, "resolve", "--agent", "data-analysis"
-        )
+        result = _router_json(model_router_script, "resolve", "--agent", "data-analysis")
 
         assert result.get("agent") == "data-analysis", (
             f"Se esperaba agent='data-analysis', got '{result.get('agent')}'"
@@ -120,9 +115,7 @@ class TestRouterResolve:
     @pytest.mark.slow
     def test_router_resolve_skill(self, model_router_script: Path) -> None:
         """`resolve --skill data-cleaning` devuelve un resultado con skill y tier."""
-        result = _router_json(
-            model_router_script, "resolve", "--skill", "data-cleaning"
-        )
+        result = _router_json(model_router_script, "resolve", "--skill", "data-cleaning")
 
         assert result.get("skill") == "data-cleaning", (
             f"Se esperaba skill='data-cleaning', got '{result.get('skill')}'"
@@ -148,9 +141,7 @@ class TestRouterResolve:
         Nota: el router resuelve tasks a skills, y la respuesta incluye
         'skill' y 'tier' (no 'task' cuando el resolve es exitoso).
         """
-        result = _router_json(
-            model_router_script, "resolve", "--task", "classification"
-        )
+        result = _router_json(model_router_script, "resolve", "--task", "classification")
 
         assert "skill" in result, f"Respuesta no contiene 'skill': {result}"
         assert "tier" in result, "Respuesta no contiene 'tier'"
@@ -167,15 +158,12 @@ class TestRouterTierManagement:
         set_result = _run_router(model_router_script, "set-tier", "T4")
         assert set_result.returncode == 0, f"Error al setear tier: {set_result.stderr}"
         set_data = json.loads(set_result.stdout)
-        assert "tier" in set_data, (
-            f"Respuesta de set-tier no contiene 'tier': {set_data}"
-        )
+        assert "tier" in set_data, f"Respuesta de set-tier no contiene 'tier': {set_data}"
 
         # Obtener
         get_result = _router_json(model_router_script, "get-tier")
         assert get_result.get("tier") == set_data["tier"], (
-            f"get-tier devolvió '{get_result.get('tier')}', "
-            f"pero se seteó '{set_data['tier']}'"
+            f"get-tier devolvió '{get_result.get('tier')}', pero se seteó '{set_data['tier']}'"
         )
 
         # Restaurar default

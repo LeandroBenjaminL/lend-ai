@@ -27,9 +27,7 @@ except ImportError:
 import argparse
 
 parser = argparse.ArgumentParser(description="PostgreSQL MCP Server")
-parser.add_argument(
-    "--url", help="Database URL (e.g. postgresql://user:pass@host:port/db)"
-)
+parser.add_argument("--url", help="Database URL (e.g. postgresql://user:pass@host:port/db)")
 parser.add_argument("--host", default=os.environ.get("PG_HOST", "localhost"))
 parser.add_argument("--port", type=int, default=int(os.environ.get("PG_PORT", "5432")))
 parser.add_argument("--user", default=os.environ.get("PG_USER", "postgres"))
@@ -124,9 +122,7 @@ def pg_get_schema(table_name: str) -> str:
             "|--------|------|----------|---------|------------|",
         ]
         for col, dtype, nullable, default, const in rows:
-            result.append(
-                f"| {col} | {dtype} | {nullable} | {default or ''} | {const or ''} |"
-            )
+            result.append(f"| {col} | {dtype} | {nullable} | {default or ''} | {const or ''} |")
 
         return "\n".join(result)
     finally:

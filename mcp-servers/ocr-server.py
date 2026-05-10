@@ -110,11 +110,7 @@ def ocr_supported_languages() -> str:
         # Parse output: first line is header, rest are languages
         lines = result.stdout.strip().split("\n")
         # Skip the "List of available languages" header
-        langs = [
-            lang.strip()
-            for lang in lines
-            if lang.strip() and not lang.startswith("List")
-        ]
+        langs = [lang.strip() for lang in lines if lang.strip() and not lang.startswith("List")]
         return f"Available languages ({len(langs)}): {', '.join(sorted(langs))}"
     except FileNotFoundError:
         return "❌ tesseract not found. Install it first."
