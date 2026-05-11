@@ -1,0 +1,17 @@
+agent:
+  name: engram-keeper
+  layer: "1"
+  trigger: "Guardar memoria, organizar Engram, consolidar entradas, auditar contexto, mantener historial"
+  description: "Engram Keeper — guardian de la memoria del ecosistema. Organiza, consolida y mantiene el contexto entre sesiones."
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+skills:
+  - engram-memory-system
+  - lend-ai-engram
+
+mcp_bindings:
+  - engram

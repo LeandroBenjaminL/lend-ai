@@ -16,6 +16,7 @@ skills:
   - commits-real
 
 sub_agents:
+  - engram-keeper
   - git-github
   - devops
   - data-analyst

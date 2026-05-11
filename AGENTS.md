@@ -26,6 +26,7 @@ Naming convention:
 | `frontend-senior` | Frontend development, React, CSS, testing | ❌ (sub) | framework-architect, ui-crafter, styling-engineer, etc. |
 | `devops` | DevOps, infrastructure, CI/CD, security, cloud, SRE | ❌ (sub) | docker-engineer, ci-cd-pilot, cloud-architect, db-admin, infra-sre, security-auditor, network-engineer, gitops-engineer, backup-engineer, perf-engineer |
 | `git-github` | Commits, PRs, issues, branches, releases, versioning, Git, GitHub | ❌ (sub) | commits-real, branch-pr, chained-pr, issue-creation, gitops-engineer, shared-git-data |
+| `engram-keeper` | Memory keeper — organizes, consolidates, audits Engram constantly | ❌ (sub) | engram-memory-system, lend-ai-engram |
 
 ## Global Skills (lend-ai orchestrator)
 

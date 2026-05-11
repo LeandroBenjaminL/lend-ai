@@ -501,6 +501,7 @@ verify_installation() {
         "agents/manifests/lend-ai.yaml"
         "agents/manifests/devops.yaml"
         "agents/manifests/git-github.yaml"
+        "agents/manifests/engram-keeper.yaml"
         "skills/engram-memory-system/SKILL.md"
         "skills/commits-real/SKILL.md"
     )

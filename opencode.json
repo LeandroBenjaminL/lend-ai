@@ -56,7 +56,8 @@
           "perf-engineer": "allow",
           "db-admin": "allow",
           "git-github": "allow",
-          "shared-git-data": "allow"
+          "shared-git-data": "allow",
+          "engram-keeper": "allow"
         }
       },
       "skills": [
@@ -1128,6 +1129,21 @@
           "lend-ai-docs": "allow"
         }
       }
+    },
+    "engram-keeper": {
+      "description": "Engram Keeper \u2014 guardian of ecosystem memory. Organizes, consolidates, maintains context.",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": false,
+        "edit": false,
+        "read": true,
+        "write": false
+      },
+      "skills": [
+        "engram-memory-system",
+        "lend-ai-engram"
+      ]
     }
   },
   "mcp": {

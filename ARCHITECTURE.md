@@ -10,6 +10,7 @@ lend-ai/
 │   ├── frontend-senior/ → Agente frontend
 │   ├── devops/         → DevOps agent
 │   ├── git-github/      → Git/GitHub agent
+│   ├── engram-keeper/    → Memory keeper
 │   └── ... (90+ agentes)
 ├── commands/            → Slash command documentation
 ├── data/                → Analysis data (gitignored)
@@ -63,6 +64,8 @@ lend-ai (orchestrator)
 │   ├── issue-creation
 │   ├── gitops-engineer
 │   └── shared-git-data
+├── engram-keeper
+│   └── engram-memory-system
 ├── commits-real
 ├── lend-ai-engram
 ├── lend-ai-testing
