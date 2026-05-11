@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # ============================================================================
 # Lend.Ai — Install Script
-# Ecosistema unificado de agentes AI: Data Analysis + Frontend Development
+# Ecosistema unificado de agentes AI: Data Analysis + Frontend Development + DevOps + SDD
 #
 # Usage:
 #   curl -sL https://raw.githubusercontent.com/LeandroBenjaminL/lend-ai/main/install.sh | bash
@@ -372,15 +372,16 @@ verify_installation() {
 
     local warnings=0
     local required_dirs=(
-        "agents" "skills" "mcp-servers" "profiles" "docs"
+        "agents" "skills" "mcp-servers" "profiles" "docs" "commands" "schemas"
     )
     local required_files=(
-        "opencode.json" "install.sh" "AGENTS.md"
+        "opencode.json" "install.sh" "AGENTS.md" "ARCHITECTURE.md"
         "profiles/lend-ai/persona.md"
         "profiles/lend-ai/workflow.md"
-        "skills/data-analyst/SKILL.md"
-        "skills/frontend-senior/SKILL.md"
-        "skills/senior-orchestrator/SKILL.md"
+        "agents/manifests/lend-ai.yaml"
+        "agents/manifests/devops.yaml"
+        "skills/engram-memory-system/SKILL.md"
+        "skills/commits-real/SKILL.md"
     )
 
     echo -e "  ${BOLD}Estructura:${NC}"
@@ -472,7 +473,10 @@ print_next_steps() {
     echo -e "  ${CYAN}3.${NC} Para frontend:"
     echo -e "     ${DIM}@frontend-senior creá un componente React${NC}"
     echo ""
-    echo -e "  ${CYAN}4.${NC} Atajos de teclado:"
+    echo -e "  ${CYAN}4.${NC} Para DevOps:"
+    echo -e "     ${DIM}@devops configurá CI/CD para este proyecto${NC}"
+    echo ""
+    echo -e "  ${CYAN}5.${NC} Atajos de teclado:"
     echo -e "     ${DIM}Alt+B   → Ver sub-agentes activos${NC}"
     echo -e "     ${DIM}Tab     → Cambiar entre agentes${NC}"
     echo ""
