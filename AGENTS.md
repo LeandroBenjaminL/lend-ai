@@ -1,33 +1,33 @@
 # Lend.Ai — Agent Skills Index
 
-Ecosistema unificado de agentes AI para Data Analysis, Frontend Development y DevOps.
+Unified AI agent ecosystem: Data Analysis, Frontend Development, DevOps, and Git/GitHub.
 
-Cuando trabajes en este proyecto, cargá la skill relevante ANTES de escribir código.
+When working on this project, load the relevant skill BEFORE writing code.
 
-Convención de naming:
-- `lend-ai-*` skills son específicas del repo (workflow, identidad)
-- `data-*` skills son del dominio Data Analysis
-- `frontend-*` skills son del dominio Frontend
-- `devops-*` y nombres sin prefijo son transversales/portables
+Naming convention:
+- `lend-ai-*` skills are repo-specific (workflow, identity)
+- `data-*` skills belong to the Data Analysis domain
+- `frontend-*` skills belong to the Frontend domain
+- `devops-*` and unprefixed names are transversal/portable
 
-## Cómo usar
+## How to use
 
-1. Revisá la columna **Trigger** para encontrar la skill que coincide con tu tarea
-2. Cargá la skill leyendo el archivo SKILL.md en la ruta indicada
-3. Seguí TODOS los patrones y reglas de la skill cargada
-4. Múltiples skills pueden aplicarse simultáneamente
+1. Check the **Trigger** column to find the skill matching your task
+2. Load the skill by reading the SKILL.md file at the indicated path
+3. Follow ALL the patterns and rules in the loaded skill
+4. Multiple skills can be applied simultaneously
 
-## Agentes del Ecosistema
+## Ecosystem Agents
 
-| Agente | Rol | Primary | Sub-agentes |
+| Agent | Role | Primary | Sub-agents |
 |--------|-----|---------|-------------|
-| `lend-ai` | Orquestador general del ecosistema | ✅ | data-analyst, frontend-senior, devops, git-github, commits-real, lend-ai-engram, lend-ai-testing |
-| `data-analyst` | Análisis de datos, ML, EDA, reporting | ❌ (sub) | data-explorer, data-modeler, data-reporter, etc. |
-| `frontend-senior` | Desarrollo frontend, React, CSS, testing | ❌ (sub) | framework-architect, ui-crafter, styling-engineer, etc. |
-| `devops` | DevOps, infraestructura, CI/CD, seguridad, cloud, SRE | ❌ (sub) | docker-engineer, ci-cd-pilot, cloud-architect, db-admin, infra-sre, security-auditor, network-engineer, gitops-engineer, backup-engineer, perf-engineer |
-| `git-github` | Commits, PRs, issues, branches, releases, versionado, Git, GitHub | ❌ (sub) | commits-real, branch-pr, chained-pr, issue-creation, gitops-engineer, shared-git-data |
+| `lend-ai` | General ecosystem orchestrator | ✅ | data-analyst, frontend-senior, devops, git-github, commits-real, lend-ai-engram, lend-ai-testing |
+| `data-analyst` | Data analysis, ML, EDA, reporting | ❌ (sub) | data-explorer, data-modeler, data-reporter, etc. |
+| `frontend-senior` | Frontend development, React, CSS, testing | ❌ (sub) | framework-architect, ui-crafter, styling-engineer, etc. |
+| `devops` | DevOps, infrastructure, CI/CD, security, cloud, SRE | ❌ (sub) | docker-engineer, ci-cd-pilot, cloud-architect, db-admin, infra-sre, security-auditor, network-engineer, gitops-engineer, backup-engineer, perf-engineer |
+| `git-github` | Commits, PRs, issues, branches, releases, versioning, Git, GitHub | ❌ (sub) | commits-real, branch-pr, chained-pr, issue-creation, gitops-engineer, shared-git-data |
 
-## Skills Globales (orquestador lend-ai)
+## Global Skills (lend-ai orchestrator)
 
 | Skill | Trigger | Ruta |
 |-------|---------|------|
@@ -36,7 +36,7 @@ Convención de naming:
 | `engram-memory-system` | Al clasificar, organizar y guardar memoria en Engram — árbol de clasificación, topic_keys, scope | [`skills/engram-memory-system/SKILL.md`](skills/engram-memory-system/SKILL.md) |
 | `senior-orchestrator` | Al orquestar modelos, decidir tiers, planear arquitectura | [`skills/senior-orchestrator/SKILL.md`](skills/senior-orchestrator/SKILL.md) |
 
-## Skills Data Analysis (data-analyst)
+## Data Analysis Skills (data-analyst)
 
 | Skill | Trigger | Ruta |
 |-------|---------|------|
@@ -64,7 +64,7 @@ Convención de naming:
 | `shared-api-integration` | Al consumir APIs REST — requests Session, timeout, rate limiting, .env para secrets | [`skills/shared-api-integration/SKILL.md`](skills/shared-api-integration/SKILL.md) |
 | `web-scraping` | Al extraer datos de sitios web — BeautifulSoup, Playwright, robots.txt, rate limiting | [`skills/web-scraping/SKILL.md`](skills/web-scraping/SKILL.md) |
 
-## Skills Frontend (frontend-senior)
+## Frontend Skills (frontend-senior)
 
 | Skill | Trigger | Ruta |
 |-------|---------|------|
@@ -77,7 +77,7 @@ Convención de naming:
 | `frontend-responsive-design` | Al diseñar responsive — Container Queries, clamp(), Grid + auto-fit, mobile-first | [`skills/frontend-responsive-design/SKILL.md`](skills/frontend-responsive-design/SKILL.md) |
 | `frontend-web-performance` | Al optimizar performance — Core Web Vitals, Lighthouse, dynamic imports, bundle analysis | [`skills/frontend-web-performance/SKILL.md`](skills/frontend-web-performance/SKILL.md) |
 
-## Skills DevOps (devops)
+## DevOps Skills (devops)
 
 | Skill | Trigger | Ruta |
 |-------|---------|------|
@@ -93,7 +93,7 @@ Convención de naming:
 | `perf-engineer` | Al hacer load testing, profiling — k6, Lighthouse, cProfile, EXPLAIN ANALYZE | [`skills/perf-engineer/SKILL.md`](skills/perf-engineer/SKILL.md) |
 | `db-admin` | Al administrar bases de datos — PostgreSQL, MySQL, Redis, índices, migraciones, replicación | [`skills/db-admin/SKILL.md`](skills/db-admin/SKILL.md) |
 
-## Skills Transversales
+## Transversal Skills
 
 | Skill | Trigger | Ruta |
 |-------|---------|------|
@@ -110,7 +110,7 @@ Convención de naming:
 | `skill-registry` | Al auditar skills — sync skills/ vs AGENTS.md vs manifests, detectar huérfanas | [`skills/skill-registry/SKILL.md`](skills/skill-registry/SKILL.md) |
 | `youtube-transcript` | Al extraer transcripciones de YouTube — resumen estructurado, timestamps, análisis | [`skills/youtube-transcript/SKILL.md`](skills/youtube-transcript/SKILL.md) |
 
-## Skills SDD (Spec-Driven Development)
+## SDD Skills (Spec-Driven Development)
 
 | Skill | Trigger | Ruta |
 |-------|---------|------|
@@ -125,4 +125,4 @@ Convención de naming:
 | `sdd-archive` | Al archivar cambios completados — sync specs, merge, changelog, Engram | [`skills/sdd-archive/SKILL.md`](skills/sdd-archive/SKILL.md) |
 | `sdd-onboard` | Al guiar a alguien por SDD — cambio real, ciclo completo, aprendizaje práctico | [`skills/sdd-onboard/SKILL.md`](skills/sdd-onboard/SKILL.md) |
 
-> **Skills deprecadas**: `cognitive-doc-design`, `comment-writer`, `work-unit-commits` → reemplazadas por `commits-real`
+> **Deprecated skills**: `cognitive-doc-design`, `comment-writer`, `work-unit-commits` → replaced by `commits-real`

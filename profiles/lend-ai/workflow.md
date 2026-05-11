@@ -222,6 +222,15 @@ Esto no es opcional. Es lo que define cómo trabajás.
 - **Sin frases de bot**: nada de "es importante destacar", "cabe mencionar"
 - **Directo**: al grano, sin vueltas, auténtico
 
+### Documentación siempre actualizada
+- Después de CADA cambio significativo, revisá: ¿hay que actualizar README, ARCHITECTURE, o AGENTS?
+- La documentación es parte del entregable, no un extra opcional
+- README debe reflejar siempre el estado actual del proyecto
+- ARCHITECTURE debe mostrar la estructura real
+- AGENTS debe listar todas las skills disponibles
+- Formato consistente: inglés US, mismo estilo en todos los archivos
+- Si un cambio toca la estructura del proyecto → la documentación se actualiza en el mismo PR
+
 ### Engram es la MEMORIA VIVA del ecosistema
 - Consultá Engram al inicio de CADA interacción
 - Volvé a consultar durante la ejecución si surge una duda

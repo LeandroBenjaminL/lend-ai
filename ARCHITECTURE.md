@@ -1,26 +1,26 @@
-# Arquitectura
+# Architecture
 
-## Estructura de carpetas
+## Folder structure
 
 ```
 lend-ai/
-├── agents/manifests/    → Manifests YAML de cada agente
-│   ├── lend-ai/         → Orquestador principal
-│   ├── data-analyst/    → Agente de datos
+├── agents/manifests/    → YAML manifests for each agent
+│   ├── lend-ai/         → Main orchestrator
+│   ├── data-analyst/    → Data agent
 │   ├── frontend-senior/ → Agente frontend
-│   ├── devops/         → Agente DevOps
-│   ├── git-github/      → Agente Git/GitHub
+│   ├── devops/         → DevOps agent
+│   ├── git-github/      → Git/GitHub agent
 │   └── ... (90+ agentes)
-├── commands/            → Documentación de comandos slash
-├── data/                → Datos de análisis (gitignored)
-├── docs/                → Guías y documentación detallada
-├── mcp-servers/         → Servidores MCP custom
-├── openspec/            → Especificaciones SDD
-├── profiles/lend-ai/    → Perfiles de identidad y workflow
-├── registry/            → Registro central de agentes
-├── schemas/             → Schemas de validación
-├── scripts/             → Scripts de utilidad (model picker, etc)
-├── skills/              → Skills con LEND-Protocol (58 skills)
+├── commands/            → Slash command documentation
+├── data/                → Analysis data (gitignored)
+├── docs/                → Guides and detailed documentation
+├── mcp-servers/         → Custom MCP servers
+├── openspec/            → SDD specifications
+├── profiles/lend-ai/    → Identity and workflow profiles
+├── registry/            → Central agent registry
+├── schemas/             → Validation schemas
+├── scripts/             → Utility scripts (model picker, etc)
+├── skills/              → Skills with LEND Protocol
 │   ├── data-*/          → Data analysis (23 skills)
 │   ├── frontend-*/      → Frontend (8 skills)
 │   ├── docker-engineer… → DevOps (5 skills)
@@ -30,10 +30,10 @@ lend-ai/
 └── tests/               → Tests
 ```
 
-## Agentes
+## Agents
 
 ```
-lend-ai (orquestador)
+lend-ai (orchestrator)
 ├── data-analyst
 │   ├── data-explorer
 │   ├── data-modeler
@@ -69,32 +69,32 @@ lend-ai (orquestador)
 └── lend-ai-docs
 ```
 
-## Modelos y Tiers
+## Models and Tiers
 
-| Tier | Modelo | Costo | Uso |
+| Tier | Model | Cost | Use |
 |------|--------|-------|-----|
-| T1 | Minimax Free | Gratis | Tareas mecánicas (limpieza, formateo) |
-| T2 | Minimax Free | Gratis | Reportes simples, validaciones |
-| T3 | Big Pickle | Gratis | EDA, análisis general (default) |
-| T4 | DeepSeek V4 Flash | Bajo | Arquitectura, ML complejo |
-| T5 | DeepSeek V4 Pro | Alto | Problemas muy difíciles |
+| T1 | Minimax Free | Free | Mechanical tasks (cleaning, formatting) |
+| T2 | Minimax Free | Free | Simple reports, validations |
+| T3 | Big Pickle | Free | EDA, general analysis (default) |
+| T4 | DeepSeek V4 Flash | Low | Architecture, complex ML |
+| T5 | DeepSeek V4 Pro | High | Very difficult problems |
 
 Ver `model-routing.config.json` y `scripts/model-commands.py`.
 
-## Decisiones técnicas clave
+## Key technical decisions
 
-| Decisión | Elegido | Alternativas |
+| Decision | Chosen | Alternatives |
 |----------|---------|--------------|
-| Model routing | Sistema propio por tiers | OpenRouter, LiteLLM |
-| Platforma | OpenCode | Cline, Aider |
-| Skill system | SKILL.md + manifests YAML | Solo prompts |
+| Model routing | Custom tier system | OpenRouter, LiteLLM |
+| Platform | OpenCode | Cline, Aider |
+| Skill system | SKILL.md + YAML manifests | Prompts only |
 
 ## MCP Servers
 
-- `engram` — Memoria persistente entre sesiones
-- `agent-router` — Resolución y enrutamiento de agentes
-- `model-router` — Asignación de modelos por tier
-- `filesystem` — Acceso a archivos del proyecto
-- `github`, `slack`, `notion`, `google-drive` — Integraciones externas
-- `postgres`, `sqlite` — Bases de datos
-- `ocr`, `puppeteer`, `web-search` — Utilidades
+- `engram` — Persistent memory between sessions
+- `agent-router` — Agent resolution and routing
+- `model-router` — Model assignment by tier
+- `filesystem` — Project file access
+- `github`, `slack`, `notion`, `google-drive` — External integrations
+- `postgres`, `sqlite` — Databases
+- `ocr`, `puppeteer`, `web-search` — Utilities

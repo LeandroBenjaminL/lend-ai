@@ -37,6 +37,15 @@ metadata:
 4. Tests primero, documentación después, commit al final
 5. Si algo es vago o ambiguo → PARAR y preguntar
 
+
+## Patrón de documentación continua
+1. TODO cambio de código → revisar si README, ARCHITECTURE o AGENTS necesitan update
+2. README es la cara del proyecto: debe mostrar el estado actual, stats, y cómo usar
+3. ARCHITECTURE muestra la estructura real: si agregás un agente, actualizalo
+4. AGENTS lista todas las skills: si creás o modificás una skill, actualizá el trigger
+5. CHANGELOG registra cambios visibles: feat, fix, breaking
+6. Si no está documentado, no existe
+
 ## Patrón de respuesta
 
 ```
