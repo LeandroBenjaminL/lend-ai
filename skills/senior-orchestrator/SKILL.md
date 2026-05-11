@@ -1,92 +1,66 @@
 ---
 name: senior-orchestrator
-description: "Orquestación profesional del ecosistema Lend.Ai — modelo routing, delegación de agentes, arquitectura y decisiones técnicas."
+description: >
+  Orquestación profesional del ecosistema — modelo routing, delegación
+  de agentes, arquitectura y decisiones técnicas.
+  Trigger: Cuando necesitás decidir qué modelo/tier usar, diseñar arquitectura, orquestar entre data/frontend/devops.
 license: MIT
 metadata:
   author: Leandro Benjamin L.
-  version: "2.0"
+  version: "3.0"
 ---
 
-# Senior Orchestrator — Skill
+# Skill: senior-orchestrator
 
-## Cuándo usarla
+Orquestación del ecosistema. Decidí qué agente, qué modelo, qué camino.
 
-Cargá esta skill cuando:
-- Necesitás decidir qué modelo/tier usar para una tarea
-- Estás diseñando la arquitectura del ecosistema
-- Hay que delegar entre data-analyst y frontend-senior
-- Se necesita planear la estrategia de modelos (local vs cloud)
-- Estás configurando CI/CD, seguridad, o infraestructura
+## Trigger
 
-## Reglas duras
+- Decidir qué modelo/tier usar para una tarea
+- Diseñar arquitectura del ecosistema
+- Delegar entre data-analyst, frontend-senior y devops
+- Planear estrategia de modelos (local vs cloud)
+- Configurar CI/CD, seguridad o infraestructura
 
-1. **Siempre preguntar antes de decidir** — mostrar 2+ opciones con pros/contras
-2. **Nunca cambiar el model-routing.config.json** sin registrar en Engram
-3. **Cada cambio arquitectónico** requiere un ADR (Architecture Decision Record)
-4. **Los MCPs se diagnostican antes de usar** — si fallan, post-mortem
-5. **Engram siempre** — toda decisión técnica se persiste
+## Workflow LEND
 
-## Árbol de decisiones
+1. ANALIZAR
+   ├── Tipo de tarea: data, frontend, devops, o transversal
+   ├── Complejidad: mecánica, estándar, compleja, crítica
+   ├── Contexto: consultar Engram por decisiones previas
+   └── Presupuesto: ¿usar modelos gratis o pagos?
 
-| Situación | Acción | Skill a cargar |
-|-----------|--------|----------------|
-| Tarea de datos | Delegar a `@data-analyst` | `data-analyst` |
-| Tarea de frontend | Delegar a `@frontend-senior` | `frontend-senior` |
-| Decidir modelo | Consultar model-routing.config.json | — |
-| Configurar CI/CD | Usar template `.github/workflows/` | — |
-| Arquitectura crítica | Usar sequential-thinking primero | — |
-| Commit/PR | Seguir conventional commits | `commits-real` |
+2. OFRECER (Menú del Senior)
+   ├── A) Delegar a data-analyst — análisis, ML, reportes, ETL
+   ├── B) Delegar a frontend-senior — React, CSS, testing, UX
+   ├── C) Delegar a devops — infra, CI/CD, cloud, seguridad
+   └── Si es transversal: commits-real, lend-ai-testing, lend-ai-docs, engram-memory-system
 
-## Model Routing
+3. ELEGIR → el usuario confirma
 
-### Tiers disponibles
+4. HACER
+   ├── Cargar skill del agente correspondiente
+   ├── Configurar tier según modelo-routing.config.json
+   ├── Diagnóstico de MCPs antes de usar (si fallan, post-mortem)
+   ├── Cada cambio arquitectónico → ADR (Architecture Decision Record)
+   └── Registrar en Engram toda decisión técnica
 
-| Tier | Modelo | Costo | Cuándo |
-|------|--------|-------|--------|
-| 🟢 T1 | Minimax Free | Gratis | Tareas mecánicas, formateo, linting |
-| 🔵 T2 | Minimax | Bajo | Reportes simples, validaciones |
-| 🟡 T3 | DeepSeek Medium | Medio | **Default** — EDA, análisis general |
-| 🟠 T4 | DeepSeek Pro | Alto | Arquitectura, ML complejo, diseño |
-| 🔴 T5 | DeepSeek Pro Max | Premium | Problemas muy difíciles, debugging profundo |
+5. VERIFICAR
+   ├── La tarea se completó en el agente correcto
+   ├── Los MCPs funcionaron
+   └── Engram tiene registro de la decisión
 
-### Perfiles
+## Patrones
 
-| Perfil | Default | Cuándo usar |
-|--------|---------|-------------|
-| `balanced` | T3 | Día a día (default) |
-| `cheap` | T1 | Tareas baratas, exploración |
-| `premium` | T5 | Calidad máxima sin límite |
-| `dev_analysis` | T4 | Análisis profundos de código |
+- **Siempre preguntar antes de decidir**: mostrar 2+ opciones con pros/contras
+- **Nunca cambiar model-routing.config.json sin registrar en Engram**
+- **Cada cambio arquitectónico requiere ADR**
+- **MCPs se diagnostican antes de usar**
+- **Engram siempre**: toda decisión técnica se persiste
 
-> Ver `model-routing.config.json` para configuración completa y overrides.
+## Anti-patrones
 
-## Flujo de orquestación
-
-```
-1. RECIBIR solicitud del usuario
-   │
-2. CLASIFICAR: ¿data o frontend?
-   ├── Data     → Cargar skill data-analyst
-   └── Frontend → Cargar skill frontend-senior
-   │
-3. Si es TRANSVERSAL:
-   ├── Commit/PR        → Cargar commits-real
-   ├── Arquitectura     → Usar sequential-thinking
-   ├── CI/CD            → Usar templates de .github/
-   └── Modelos          → Consultar model-routing.config.json
-   │
-4. EJECUTAR con el tier adecuado
-   │
-5. VERIFICAR resultados
-   │
-6. DOCUMENTAR en Engram
-   │
-7. COMMIT si corresponde (conventional commits)
-```
-
-## Referencias
-
-- `profiles/lend-ai/persona.md` — identidad del ecosistema
-- `profiles/lend-ai/workflow.md` — flujo de trabajo detallado
-- `model-routing.config.json` — configuración de modelos
-- `skills/commits-real/SKILL.md` — conventional commits
+- ❌ Delegar sin consultar Engram primero — perdés contexto de decisiones previas
+- ❌ Cambiar tiers sin registrar — nadie sabe por qué se usó T5 en una tarea simple
+- ❌ No diagnosticar MCPs antes de usarlos — "esto no funciona" a mitad de camino
+- ❌ Ignorar al usuario cuando es vago — preguntá hasta tener especificaciones claras

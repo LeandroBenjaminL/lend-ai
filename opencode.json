@@ -56,7 +56,13 @@
           "perf-engineer": "allow",
           "db-admin": "allow"
         }
-      }
+      },
+      "skills": [
+        "lend-ai-persona",
+        "engram-memory-system",
+        "senior-orchestrator",
+        "commits-real"
+      ]
     },
     "data-analyst": {
       "description": "Profesor senior de data science \u2014 an\u00e1lisis, ML, ETL, reportes",

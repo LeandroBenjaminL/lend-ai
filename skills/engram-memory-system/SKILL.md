@@ -1,138 +1,76 @@
 ---
 name: engram-memory-system
-description: "Skill global de gestión de memoria — clasifica, organiza y decide el mejor sistema de almacenamiento para cada tipo de conocimiento en Engram."
+description: >
+  Skill global de gestión de memoria — clasifica, organiza y decide el
+  mejor sistema de almacenamiento para cada tipo de conocimiento en Engram.
+  Trigger: Al clasificar, organizar, guardar o consultar memoria en Engram.
 license: MIT
 metadata:
   author: Leandro Benjamin L.
-  version: "1.0"
+  version: "2.0"
 ---
 
 # Skill: engram-memory-system
 
-Cargá esta skill cuando estés por guardar o consultar memoria en Engram. Es la skill global que orquesta el sistema de memoria del ecosistema.
+Sistema global de memoria. Clasificá, guardá y consultá con criterio.
+
+## Trigger
+
+- Vas a guardar una decisión, bug o aprendizaje
+- Necesitás consultar contexto previo antes de arrancar
+- Finalizás una sesión y hay que cerrar el ciclo
+- El usuario expresó una preferencia o workflow
+
+## Workflow LEND
+
+1. ANALIZAR
+   ├── Tipo: decision, bugfix, pattern, architecture, config, discovery, learning, user_preference, session_summary
+   ├── Scope: ¿project (código/arquitectura) o personal (preferencias del usuario)?
+   ├── Evolución: ¿esto va a cambiar en el tiempo? → topic_key sí. ¿Es puntual? → topic_key no
+   └── Contexto: consultar si ya hay info similar antes de guardar
+
+2. OFRECER (Menú del Senior)
+   ├── A) Guardar — mem_save con What/Why/Where/Learned
+   ├── B) Consultar — mem_search por proyecto, tipo o keyword
+   └── C) Resumen de sesión — mem_session_summary al finalizar
+
+3. ELEGIR → confirmación
+
+4. HACER
+   ├── Formato: **What**, **Why**, **Where**, **Learned**
+   ├── Tipo según árbol de clasificación
+   ├── topic_key: architecture/*, pattern/*, bugfix/*, config/*, preference/*
+   ├── scope: project (default) o personal (preferencias)
+   └── session_summary: al final de cada sesión con Goal/Accomplished/Next Steps
+
+5. VERIFICAR
+   ├── La entrada es clara y útil para el futuro
+   ├── No duplica información existente
+   └── Está accesible desde búsquedas futuras
 
 ## Árbol de clasificación
 
-Antes de guardar, clasificá la memoria usando este árbol:
+| Tipo | Cuándo | topic_key |
+|------|--------|-----------|
+| decision | Elecciones de diseño con tradeoffs | architecture/<area> |
+| architecture | Decisiones de alto nivel del sistema | architecture/<area> |
+| bugfix | Bugs, causa raíz y solución | bugfix/<area> |
+| pattern | Patrones y convenciones reutilizables | pattern/<area> |
+| config | Setup, instalaciones, variables | config/<area> |
+| discovery | Gotchas, edge cases, aprendizajes | discovery/<area> |
+| user_preference | Preferencias del usuario (scope personal) | preference/<area> |
+| session_summary | Resumen al finalizar sesión | — |
 
-```
-¿Qué tipo de información es?
-│
-├── decision
-│   Elecciones de diseño con tradeoffs documentados
-│   → Ej: "Elegimos Zustand sobre Redux porque..."
-│   → topic_key: architecture/<area>
-│   → scope: project
-│
-├── architecture
-│   Decisiones de alto nivel sobre estructura del sistema
-│   → Ej: "Microservicios con API Gateway en lugar de monolito"
-│   → topic_key: architecture/<area>
-│   → scope: project
-│
-├── bugfix
-│   Bugs encontrados, su causa raíz y cómo se solucionaron
-│   → Ej: "FTS5 crashea con caracteres especiales"
-│   → topic_key: bugfix/<area>
-│   → scope: project
-│
-├── pattern
-│   Patrones reutilizables, convenciones, templates
-│   → Ej: "Convención de commits conventional commits"
-│   → topic_key: pattern/<area>
-│   → scope: project
-│
-├── config
-│   Configuraciones, setup, instalaciones, variables de entorno
-│   → Ej: "MCP de Docker necesita PYTHONPATH=x"
-│   → topic_key: config/<area>
-│   → scope: project
-│
-├── discovery
-│   Gotchas, edge cases, aprendizajes no obvios
-│   → Ej: "El paquete X ya no existe en npm, se migró a Y"
-│   → topic_key: discovery/<area>
-│   → scope: project
-│
-├── learning
-│   Aprendizajes generales sin una categoría específica
-│   → Ej: "Cómo funciona el sistema de tiers en model-router"
-│   → topic_key: learning/<area>
-│   → scope: project
-│
-├── user_preference
-│   Preferencias del usuario, su forma de trabajar, gustos
-│   → Ej: "Al usuario no le gustan los emojis en outputs"
-│   → topic_key: preference/<area>
-│   → scope: personal
-│
-├── session_summary
-│   Resumen completo al finalizar una sesión
-│   → Usá mem_session_summary, no mem_save
-│   → scope: project
-│
-└── manual
-    Cualquier cosa que no encaje arriba
-    → topic_key: auto-generado
-    → scope: project
-```
+## Patrones
 
-## Reglas de scope
+- **Consultar antes de guardar**: no duplicar información
+- **topic_key solo si evoluciona**: si es puntual, no usar topic_key
+- **scope personal**: preferencias del usuario, su forma de trabajar
+- **session_summary al final**: cierra el ciclo y deja contexto para la próxima
 
-| Scope | Cuándo usarlo |
-|-------|--------------|
-| `project` | Todo lo que sea específico de este proyecto: código, arquitectura, bugs, config, skills |
-| `personal` | Preferencias del usuario, forma de trabajar, atajos, gustos personales |
+## Anti-patrones
 
-## Reglas de topic_key
-
-Usá topic_key cuando la información evoluciona (se actualiza en el tiempo):
-
-| Situación | topic_key |
-|-----------|-----------|
-| Decisión de arquitectura que puede cambiar | `architecture/<area>` |
-| Bug recurrente en un área | `bugfix/<area>` |
-| Patrón que refinamos | `pattern/<area>` |
-| Preferencia del usuario | `preference/<area>` |
-| Config global | `config/<area>` |
-| Un descubrimiento puntual (no evoluciona) | No usar topic_key |
-
-## Cuándo guardar
-
-- ✅ Después de cada decisión significativa (con alternativas documentadas)
-- ✅ Al encontrar y corregir un bug (incluir causa raíz)
-- ✅ Al finalizar una sesión (usar mem_session_summary)
-- ✅ Cuando descubrís algo no obvio (gotcha, edge case)
-- ✅ Cuando el usuario expresa una preferencia clara
-- ⛔ NO guardar cada comando que ejecutaste
-- ⛔ NO guardar trivialidades (instalaciones de paquetes obvias)
-- ⛔ NO duplicar info que ya está en el código (para eso está el repo)
-
-## Cuándo consultar
-
-- ✅ Al empezar una sesión → `mem_context` o `mem_search` por proyecto
-- ✅ Antes de decisiones de arquitectura → `mem_search "tema"`
-- ✅ Cuando un error parece familiar → `mem_search type:bugfix`
-- ✅ Cuando no recordás una preferencia del usuario → `mem_search scope:personal`
-- ✅ Antes de crear una skill nueva → ver si ya hay patrones similares
-
-## Formato del contenido
-
-Toda entrada usa esta estructura:
-
-```
-**What**: [qué se hizo, en una línea]
-**Why**: [por qué, qué problema resolvía]
-**Where**: [archivos/rutas afectadas]
-**Learned**: [gotchas, edge cases, decisiones no obvias — omitir si no aplica]
-```
-
-## Flujo completo: antes de guardar
-
-```
-1. CLASIFICAR → usar el árbol de clasificación
-2. ELEGIR scope → project o personal
-3. DECIDIR topic_key → solo si evoluciona
-4. REDACTAR → What, Why, Where, Learned
-5. GUARDAR → mem_save (o mem_session_summary si es fin de sesión)
-```
+- ❌ Guardar cada comando ejecutado — es ruido, no memoria
+- ❌ Guardar trivialidades — no duplicar info que ya está en el código
+- ❌ No consultar antes de decidir — Engram existe para mantener contexto
+- ❌ Tipo incorrecto — un bugfix no es una decision
