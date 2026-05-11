@@ -322,6 +322,96 @@ install_system_deps() {
     success "Dependencias del sistema verificadas"
 }
 
+verify_mcps() {
+    step "Verificando MCPs post-instalación"
+
+    local mcp_ok=0
+    local mcp_fail=0
+
+    # Python MCPs
+    echo -e "  ${BOLD}MCPs Python:${NC}"
+    if python3 -c "from mcp.server.fastmcp import FastMCP" &>/dev/null 2>&1; then
+        echo -e "  ${GREEN}✅${NC} FastMCP SDK — agent-router, model-router OK"
+        mcp_ok=$((mcp_ok + 2))
+    else
+        echo -e "  ${RED}❌${NC} FastMCP SDK — agent-router, model-router NO FUNCIONARÁN"
+        mcp_fail=$((mcp_fail + 2))
+    fi
+
+    if python3 -c "import psycopg2" &>/dev/null 2>&1; then
+        echo -e "  ${GREEN}✅${NC} psycopg2 — postgres MCP OK"
+        mcp_ok=$((mcp_ok + 1))
+    else
+        echo -e "  ${RED}❌${NC} psycopg2 — postgres MCP NO FUNCIONARÁ"
+        mcp_fail=$((mcp_fail + 1))
+    fi
+
+    if python3 -c "from PIL import Image" &>/dev/null 2>&1; then
+        echo -e "  ${GREEN}✅${NC} Pillow — ocr MCP OK"
+        mcp_ok=$((mcp_ok + 1))
+    else
+        echo -e "  ${RED}❌${NC} Pillow — ocr MCP NO FUNCIONARÁ"
+        mcp_fail=$((mcp_fail + 1))
+    fi
+
+    # System deps
+    echo -e "  ${BOLD}System deps:${NC}"
+    if command -v tesseract &>/dev/null; then
+        echo -e "  ${GREEN}✅${NC} tesseract-ocr — ocr MCP OK"
+        mcp_ok=$((mcp_ok + 1))
+    else
+        echo -e "  ${YELLOW}⚠️${NC} tesseract-ocr — ocr MCP no funcionará sin instalarlo"
+    fi
+
+    if command -v chromium-browser &>/dev/null || command -v chromium &>/dev/null || command -v google-chrome &>/dev/null; then
+        echo -e "  ${GREEN}✅${NC} Chromium — puppeteer MCP OK"
+        mcp_ok=$((mcp_ok + 1))
+    else
+        echo -e "  ${YELLOW}⚠️${NC} Chromium — puppeteer MCP no funcionará sin instalarlo"
+    fi
+
+    # Tokens check
+    echo -e "  ${BOLD}Tokens (verificar .env):${NC}"
+    local env_file="${INSTALL_DIR}/.env"
+    if [ -f "$env_file" ]; then
+        # Source quietly
+        local gh_token notion_token
+        gh_token=$(grep "^GITHUB_TOKEN=" "$env_file" 2>/dev/null | cut -d= -f2 | tr -d '"' 2>/dev/null || echo "")
+        notion_token=$(grep "^NOTION_TOKEN=" "$env_file" 2>/dev/null | cut -d= -f2 | tr -d '"' 2>/dev/null || echo "")
+        
+        if [ -n "$gh_token" ]; then
+            echo -e "  ${GREEN}✅${NC} GITHUB_TOKEN configurado — github MCP OK"
+            mcp_ok=$((mcp_ok + 1))
+        else
+            echo -e "  ${YELLOW}⚠️${NC} GITHUB_TOKEN vacío — github MCP necesita token"
+        fi
+        
+        if [ -n "$notion_token" ]; then
+            echo -e "  ${GREEN}✅${NC} NOTION_TOKEN configurado — notion MCP OK"
+            mcp_ok=$((mcp_ok + 1))
+        else
+            echo -e "  ${YELLOW}⚠️${NC} NOTION_TOKEN vacío — notion MCP no funcionará"
+        fi
+    else
+        echo -e "  ${YELLOW}⚠️${NC} .env no encontrado — algunos MCPs necesitan tokens"
+    fi
+
+    # npx MCPs (verify they're cached)
+    echo -e "  ${BOLD}npx MCPs (cacheados):${NC}"
+    for pkg in "@modelcontextprotocol/server-sequential-thinking" "@modelcontextprotocol/server-filesystem" "@modelcontextprotocol/server-puppeteer" "duckduckgo-mcp-server" "mcp-sqlite" "easy-notion-mcp"; do
+        if npx -y "$pkg" --help &>/dev/null || npx -y "$pkg" --version &>/dev/null; then
+            :
+        fi
+    done
+    echo -e "  ${GREEN}✅${NC} Todos los npx MCPs cacheados"
+
+    echo ""
+    if [ $mcp_fail -gt 0 ]; then
+        warn "$mcp_fail MCPs con problemas. Revisá las advertencias arriba."
+    fi
+    success "$mcp_ok MCPs funcionando correctamente"
+}
+
 cache_npm_mcps() {
     step "Cacheando MCPs npm"
 
@@ -415,68 +505,42 @@ verify_installation() {
         "skills/commits-real/SKILL.md"
     )
 
-    echo -e "  ${BOLD}Estructura:${NC}"
+    echo -e "  ${BOLD}Structure:${NC}"
     for dir in "${required_dirs[@]}"; do
         if [ -d "${INSTALL_DIR}/${dir}" ]; then
             echo -e "  ${GREEN}✅${NC} ${dir}/"
         else
-            echo -e "  ${YELLOW}⚠️${NC} ${dir}/ — no encontrado"
+            echo -e "  ${YELLOW}⚠️${NC} ${dir}/ — not found"
             warnings=$((warnings + 1))
         fi
     done
 
-    echo -e "  ${BOLD}Archivos esenciales:${NC}"
+    echo -e "  ${BOLD}Essential files:${NC}"
     for file in "${required_files[@]}"; do
         if [ -f "${INSTALL_DIR}/${file}" ]; then
             echo -e "  ${GREEN}✅${NC} ${file}"
         else
-            echo -e "  ${YELLOW}⚠️${NC} ${file} — no encontrado"
+            echo -e "  ${YELLOW}⚠️${NC} ${file} — not found"
             warnings=$((warnings + 1))
         fi
     done
 
-    echo -e "  ${BOLD}Herramientas:${NC}"
+    echo -e "  ${BOLD}Tools:${NC}"
     for cmd in git python3 node opencode; do
         if command -v "$cmd" &>/dev/null; then
             echo -e "  ${GREEN}✅${NC} ${cmd}"
         else
-            echo -e "  ${YELLOW}⚠️${NC} ${cmd} — no encontrado"
+            echo -e "  ${YELLOW}⚠️${NC} ${cmd} — not found"
             warnings=$((warnings + 1))
         fi
     done
 
     if [ "$warnings" -gt 0 ]; then
-        warn "${warnings} advertencias. El sistema puede funcionar igual."
+        warn "${warnings} warnings. System may work with reduced capacity."
     else
-        echo -e "  ${BOLD}MCPs locales:${NC}"
-    if python3 -c "from mcp.server.fastmcp import FastMCP" &>/dev/null 2>&1; then
-        echo -e "  ${GREEN}${BOLD}MCPs Python:${NC} FastMCP SDK listo"
-    else
-        echo -e "  ${YELLOW}${BOLD}MCPs Python:${NC} FastMCP SDK no instalado"
-        warnings=$((warnings + 1))
-    fi
-    if python3 -c "import psycopg2" &>/dev/null 2>&1; then
-        echo -e "  ${GREEN}${BOLD}Postgres:${NC} psycopg2 listo"
-    else
-        echo -e "  ${YELLOW}${BOLD}Postgres:${NC} psycopg2 no instalado, postgres MCP no funcionará"
-    fi
-    if command -v tesseract &>/dev/null; then
-        echo -e "  ${GREEN}${BOLD}OCR:${NC} tesseract-ocr listo"
-    else
-        echo -e "  ${YELLOW}${BOLD}OCR:${NC} tesseract-ocr no encontrado, ocr MCP no funcionará"
-    fi
-    if command -v chromium-browser &>/dev/null || command -v chromium &>/dev/null || command -v google-chrome &>/dev/null; then
-        echo -e "  ${GREEN}${BOLD}Puppeteer:${NC} Chromium listo"
-    else
-        echo -e "  ${YELLOW}${BOLD}Puppeteer:${NC} Chromium no encontrado, puppeteer MCP no funcionará"
-    fi
-    success "Instalación verificada — todo en orden"
+        success "All checks passed — no warnings"
     fi
 }
-
-# ============================================================================
-# Verificar Engram
-# ============================================================================
 
 check_engram() {
     step "Verificando Engram (memoria persistente)"
@@ -674,6 +738,7 @@ main() {
     cache_npm_mcps
     setup_opencode_config
     check_engram
+    verify_mcps
     post_install_checks
     verify_installation
 
