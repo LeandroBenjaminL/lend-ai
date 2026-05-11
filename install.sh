@@ -114,7 +114,7 @@ print_banner() {
     echo "   ║  | |___ | |___   | |___ / ___ \ | |   | |     ║"
     echo "   ║  |_____||_____|  |_____/_/   \_\___| |___|    ║"
     echo "   ║                                               ║"
-    echo "   ║   Data Analysis  +  Frontend Development      ║"
+    echo "   ║   Data + Frontend + DevOps + Git      ║"
     echo "   ╚═══════════════════════════════════════════════╝"
     echo -e "${NC}"
     echo -e "  ${DIM}Lend.Ai — Unified AI agent ecosystem${NC}"
@@ -533,7 +533,7 @@ print_next_steps() {
     echo -e "     ${DIM}Alt+B   → Ver sub-agentes activos${NC}"
     echo -e "     ${DIM}Tab     → Cambiar entre agentes${NC}"
     echo ""
-    echo -e "  ${CYAN}5.${NC} Si algo sale mal, restaurá desde backup:"
+    echo -e "  ${CYAN}6.${NC} Si algo sale mal, restaurá desde backup:"
     if [ -n "${BACKUP_PATH:-}" ]; then
         echo -e "     ${DIM}cp -a ${BACKUP_PATH}/* ${INSTALL_DIR}/${NC}"
     fi
