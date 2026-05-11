@@ -143,6 +143,7 @@ class TestSkillsConsistency:
             "sdd-explore",
             "sdd-onboard",
             "engram-memory-system",
+            "lend-ai-persona",
             # Transversales con prefijo
             "frontend-api-integration",
             "frontend-css-styling",
@@ -223,6 +224,7 @@ class TestModelsConsistency:
             "sdd-explore",
             "sdd-onboard",
             "engram-memory-system",
+            "lend-ai-persona",
         }
 
         orphan_models = []
