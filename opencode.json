@@ -54,7 +54,9 @@
           "gitops-engineer": "allow",
           "backup-engineer": "allow",
           "perf-engineer": "allow",
-          "db-admin": "allow"
+          "db-admin": "allow",
+          "git-github": "allow",
+          "shared-git-data": "allow"
         }
       },
       "skills": [
@@ -1089,6 +1091,42 @@
         "edit": false,
         "read": false,
         "write": false
+      }
+    },
+    "git-github": {
+      "description": "Ingeniero Git/GitHub \u2014 commits, PRs, issues, branches, releases, versionado",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "delegate": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true,
+        "task": true
+      },
+      "skills": [
+        "commits-real",
+        "branch-pr",
+        "chained-pr",
+        "issue-creation",
+        "gitops-engineer",
+        "shared-git-data"
+      ],
+      "permission": {
+        "task": {
+          "*": "deny",
+          "commits-real": "allow",
+          "branch-pr": "allow",
+          "chained-pr": "allow",
+          "issue-creation": "allow",
+          "gitops-engineer": "allow",
+          "shared-git-data": "allow",
+          "lend-ai-engram": "allow",
+          "lend-ai-testing": "allow",
+          "lend-ai-docs": "allow"
+        }
       }
     }
   },

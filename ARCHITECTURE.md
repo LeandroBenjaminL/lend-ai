@@ -9,6 +9,7 @@ lend-ai/
 │   ├── data-analyst/    → Agente de datos
 │   ├── frontend-senior/ → Agente frontend
 │   ├── devops/         → Agente DevOps
+│   ├── git-github/      → Agente Git/GitHub
 │   └── ... (90+ agentes)
 ├── commands/            → Documentación de comandos slash
 ├── data/                → Datos de análisis (gitignored)
@@ -55,6 +56,13 @@ lend-ai (orquestador)
 │   ├── gitops-engineer
 │   ├── backup-engineer
 │   └── perf-engineer
+├── git-github
+│   ├── commits-real
+│   ├── branch-pr
+│   ├── chained-pr
+│   ├── issue-creation
+│   ├── gitops-engineer
+│   └── shared-git-data
 ├── commits-real
 ├── lend-ai-engram
 ├── lend-ai-testing

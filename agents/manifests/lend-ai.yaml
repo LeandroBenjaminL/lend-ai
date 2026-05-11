@@ -16,6 +16,7 @@ skills:
   - commits-real
 
 sub_agents:
+  - git-github
   - devops
   - data-analyst
   - frontend-senior

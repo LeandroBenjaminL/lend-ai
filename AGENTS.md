@@ -21,10 +21,11 @@ Convención de naming:
 
 | Agente | Rol | Primary | Sub-agentes |
 |--------|-----|---------|-------------|
-| `lend-ai` | Orquestador general del ecosistema | ✅ | data-analyst, frontend-senior, devops, commits-real, lend-ai-engram, lend-ai-testing |
+| `lend-ai` | Orquestador general del ecosistema | ✅ | data-analyst, frontend-senior, devops, git-github, commits-real, lend-ai-engram, lend-ai-testing |
 | `data-analyst` | Análisis de datos, ML, EDA, reporting | ❌ (sub) | data-explorer, data-modeler, data-reporter, etc. |
 | `frontend-senior` | Desarrollo frontend, React, CSS, testing | ❌ (sub) | framework-architect, ui-crafter, styling-engineer, etc. |
 | `devops` | DevOps, infraestructura, CI/CD, seguridad, cloud, SRE | ❌ (sub) | docker-engineer, ci-cd-pilot, cloud-architect, db-admin, infra-sre, security-auditor, network-engineer, gitops-engineer, backup-engineer, perf-engineer |
+| `git-github` | Commits, PRs, issues, branches, releases, versionado, Git, GitHub | ❌ (sub) | commits-real, branch-pr, chained-pr, issue-creation, gitops-engineer, shared-git-data |
 
 ## Skills Globales (orquestador lend-ai)
 
