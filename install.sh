@@ -117,7 +117,7 @@ print_banner() {
     echo "   ║   Data Analysis  +  Frontend Development      ║"
     echo "   ╚═══════════════════════════════════════════════╝"
     echo -e "${NC}"
-    echo -e "  ${DIM}Lend.Ai — Ecosistema unificado de agentes AI${NC}"
+    echo -e "  ${DIM}Lend.Ai — Unified AI agent ecosystem${NC}"
     echo -e "  ${DIM}${GITHUB_OWNER}/${GITHUB_REPO}${NC}"
     echo ""
 }
@@ -410,6 +410,7 @@ verify_installation() {
         "profiles/lend-ai/workflow.md"
         "agents/manifests/lend-ai.yaml"
         "agents/manifests/devops.yaml"
+        "agents/manifests/git-github.yaml"
         "skills/engram-memory-system/SKILL.md"
         "skills/commits-real/SKILL.md"
     )

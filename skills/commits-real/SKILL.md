@@ -51,6 +51,11 @@ Professional commits. Every message tells a story.
    ├── No unrelated files in the commit
    └── Breaking changes are documented
 
+### Post-task (always)
+1. Save this task to Engram with mem_save
+2. Review if documentation needs updating (README, AGENTS.md, ARCHITECTURE.md)
+3. If docs changed → include in the same PR/commit
+
 ## Patterns
 
 - **Imperative mood**: "Add login endpoint" not "Added login endpoint" or "Adding login endpoint"

@@ -53,6 +53,11 @@ Enterprise PR workflow. Small PRs, clear descriptions, review before merge.
    ├── No conflicts with the base branch
    └── Reviewer is assigned
 
+### Post-task (always)
+1. Save this task to Engram with mem_save
+2. Review if documentation needs updating (README, AGENTS.md, ARCHITECTURE.md)
+3. If docs changed → include in the same PR/commit
+
 ## Patterns
 
 - **Issue-first**: every branch/PR comes from an issue

@@ -50,3 +50,7 @@ Git for data science. Different from code — data needs its own rules.
    ├── .gitignore covers what shouldn't be in the repo
    ├── Notebooks can be diffed (no outputs)
    └── A fresh `git clone && pip install` is enough to start
+
+- [ ] Save decisions and changes to Engram (mem_save)
+- [ ] Check if README, AGENTS.md, or ARCHITECTURE.md need updating
+- [ ] If docs changed → update them in the same PR/commit

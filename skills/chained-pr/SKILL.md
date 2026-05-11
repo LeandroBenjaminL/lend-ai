@@ -47,3 +47,7 @@ Chained PRs. Large changes broken into reviewable chunks.
    ├── Each PR is < 400 lines
    ├── The chain has a logical order
    └── No conflicts between PRs in the chain
+
+- [ ] Save decisions and changes to Engram (mem_save)
+- [ ] Check if README, AGENTS.md, or ARCHITECTURE.md need updating
+- [ ] If docs changed → update them in the same PR/commit

@@ -50,3 +50,7 @@ Enterprise GitOps. Git is the single source of truth.
    ├── Branch protection rules are active
    ├── Hooks run without errors
    └── A test release generates the changelog correctly
+
+- [ ] Save decisions and changes to Engram (mem_save)
+- [ ] Check if README, AGENTS.md, or ARCHITECTURE.md need updating
+- [ ] If docs changed → update them in the same PR/commit

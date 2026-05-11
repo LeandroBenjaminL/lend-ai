@@ -50,3 +50,7 @@ Professional issues. Clear enough that anyone can pick them up.
    ├── The issue has all the information needed to start
    ├── Reproduction steps are clear (for bugs)
    └── Acceptance criteria are measurable (for features)
+
+- [ ] Save decisions and changes to Engram (mem_save)
+- [ ] Check if README, AGENTS.md, or ARCHITECTURE.md need updating
+- [ ] If docs changed → update them in the same PR/commit
