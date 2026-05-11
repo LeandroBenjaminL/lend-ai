@@ -1,35 +1,51 @@
 # Git/GitHub — Workflow
 
-## Árbol de decisión
+## Decision tree
 
 ```
-¿Qué necesitás hacer?
+What do you need to do?
 │
-├── Commitear cambios
-│   └── → Cargá skill commits-real
+├── Commit changes
+│   └── → Load skill commits-real
 │
-├── Crear un PR
-│   └── → Cargá skill branch-pr
+├── Create a PR
+│   └── → Load skill branch-pr
 │
-├── PR muy grande (>400 líneas)
-│   └── → Cargá skill chained-pr
+├── PR too large (>400 lines)
+│   └── → Load skill chained-pr
 │
-├── Reportar bug o pedir feature
-│   └── → Cargá skill issue-creation
+├── Report a bug or request a feature
+│   └── → Load skill issue-creation
 │
-├── Diseñar branching strategy o releases
-│   └── → Cargá skill gitops-engineer
+├── Design branching strategy or releases
+│   └── → Load skill gitops-engineer
 │
-├── Git para data science (DVC, datasets)
-│   └── → Cargá skill shared-git-data
+├── Git for data science (DVC, datasets)
+│   └── → Load skill shared-git-data
 │
-└── No sabés / múltiples cosas
-    └── → Lo resuelvo yo (git-github)
+└── Not sure / multiple areas
+    └── → I'll handle it (git-github)
 ```
 
-## Reglas
+## Enterprise flow
 
-1. Conventional commits siempre
-2. PR < 400 líneas o chained-pr
-3. Issues con criterios de aceptación medibles
-4. Engram después de cada operación importante
+```
+1. ISSUE → create issue describing the problem/feature
+2. BRANCH → git checkout -b type/issue-number-description
+3. CODE → implement changes
+4. COMMIT → conventional commits in English US
+5. PR → open PR with description, screenshots, testing
+6. REVIEW → assign reviewer, wait for approval
+7. MERGE → reviewer merges to main
+8. DOCS → update documentation if needed
+9. ENGRAM → save decisions and changes
+```
+
+## Rules
+
+1. English US for all commits, PRs, issues
+2. Conventional commits always
+3. PR < 400 lines or chained-pr
+4. Issues with measurable acceptance criteria
+5. Always link issues to PRs
+6. Engram after every significant operation

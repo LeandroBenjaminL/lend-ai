@@ -1,51 +1,68 @@
 ---
 name: commits-real
 description: >
-  Commits, documentación y versioning unificados — conventional commits,
-  changelog, versionado semántico y mensajes que no son una vergüenza.
-  Trigger: Al escribir commits, PRs, issues, documentación, o al iniciar/configurar un proyecto.
+  Professional commits with Conventional Commits in English US.
+  Semantic versioning, changelog generation, and commit hygiene.
+  Trigger: When writing commits, creating PRs, filing issues, or writing documentation.
 license: MIT
 metadata:
   author: Leandro Benjamin L.
-  version: "2.0"
+  version: "3.0"
   model_tier: T3-balanced
 ---
 
 # Skill: commits-real
 
-Commits que cuentan una historia. No mensajes pedorros.
+Professional commits. Every message tells a story.
 
 ## Trigger
 
-- Vas a escribir un commit
-- Creás un PR o un issue en GitHub
-- Necesitás generar o actualizar un CHANGELOG
-- Configurás versionado semántico para un proyecto
+- You finished a change and need to commit
+- You're creating a PR or issue
+- You need to update a CHANGELOG
+- Setting up semantic versioning for a project
 
 ## Workflow LEND
 
-1. ANALIZAR
-   ├── ¿Qué cambió? archivos, funcionalidad, bug fix, refactor?
-   ├── Scope: ¿qué módulo/componente? (api, ui, data, infra)
-   ├── Breaking: ¿rompe compatibilidad hacia atrás?
-   └── ¿Hay issues/PRs relacionados?
+1. ANALYZE
+   ├── What changed? files, functionality, bug fix, refactor?
+   ├── Scope: which module? (api, ui, data, infra, docs)
+   ├── Breaking: does it break backward compatibility?
+   └── Issues: are there related issues or PRs?
 
-2. OFRECER (Menú del Senior)
-   ├── A) Conventional Commit simple — feat/fix/chore/docs/refactor + mensaje corto
-   ├── B) Commit con cuerpo — conventional commit + descripción + issue link
-   └── C) Estructura completa — conventional commit + breaking change + changelog update
+2. OFFER (Senior Menu)
+   ├── A) Simple conventional commit — feat/fix/chore + short message in English
+   ├── B) Commit with body — conventional commit + description + issue reference
+   └── C) Full structure — conventional commit + breaking change + changelog update
 
-3. ELEGIR → confirmación
+3. CHOOSE → user confirms
 
-4. HACER
-   ├── Formato: `tipo(scope): mensaje` (feat, fix, chore, docs, refactor, test, style)
-   ├── Mensaje: imperativo, presente, < 50 chars título, < 72 cuerpo
-   ├── Breaking: `feat(api): eliminar endpoint obsoleto\n\nBREAKING CHANGE: ...`
-   ├── Commits atómicos: un cambio por commit, no "varios fixes"
-   ├── Issues: `Closes #123` o `Refs #456` en el cuerpo
-   └── Versionado: semver (major.minor.patch) según conventional commits
+4. EXECUTE
+   ├── Format: `type(scope): message` (feat, fix, chore, docs, refactor, test, style)
+   ├── Message: imperative, present tense, < 50 chars title, < 72 chars body
+   ├── Breaking: `feat(api): remove deprecated endpoint\n\nBREAKING CHANGE: ...`
+   ├── Atomic commits: one change per commit, not "multiple fixes"
+   ├── Issues: `Closes #123` or `Refs #456` in the body
+   ├── Language: English US, technical, clear
+   └── Versioning: semver (major.minor.patch) based on conventional commits
 
-5. VERIFICAR
-   ├── El mensaje sigue el formato conventional commit
-   ├── No hay archivos no relacionados en el commit
-   └── Si es breaking, está documentado
+5. VERIFY
+   ├── The message follows conventional commit format
+   ├── No unrelated files in the commit
+   └── Breaking changes are documented
+
+## Patterns
+
+- **Imperative mood**: "Add login endpoint" not "Added login endpoint" or "Adding login endpoint"
+- **Atomic commits**: one logical change per commit
+- **Issue linking**: `Closes #123` in the body, not the title
+- **Scope**: lowercase, single word: (api), (ui), (data), (deps)
+- **Types**: feat, fix, chore, docs, refactor, test, style, perf, ci
+
+## Anti-patterns
+
+- ❌ Vague messages: "update", "fix", "changes"
+- ❌ Commits in Spanish — English US only
+- ❌ Multiple features in one commit
+- ❌ Breaking changes without BREAKING CHANGE note
+- ❌ Unrelated files in the same commit

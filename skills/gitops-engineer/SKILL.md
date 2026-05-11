@@ -1,51 +1,52 @@
 ---
 name: gitops-engineer
 description: >
-  Git workflows, branching strategies, release management, versionado
-  semántico, conventional commits y automatización git.
-  Trigger: Cuando necesitás diseñar branching strategy, automatizar releases, configurar hooks o gestionar versionado.
+  Enterprise GitOps — branching strategies, release management, semantic
+  versioning, conventional commits, and git automation.
+  Trigger: When designing branching strategy, automating releases, configuring hooks, or managing versioning.
 license: MIT
 metadata:
   author: Leandro Benjamin L.
-  version: "1.0"
+  version: "2.0"
 ---
 
 # Skill: gitops-engineer
 
-GitOps. Git es la fuente de verdad de todo.
+Enterprise GitOps. Git is the single source of truth.
 
 ## Trigger
 
-- Diseñar branching strategy para un proyecto
-- Automatizar releases y changelogs
-- Configurar hooks de git (pre-commit, pre-push)
-- Definir versionado semántico y conventional commits
-- Resolver conflictos de merge o problemas de historial
+- Designing a branching strategy for a project
+- Automating releases and changelogs
+- Configuring git hooks (pre-commit, pre-push)
+- Defining semantic versioning and conventional commits
+- Resolving merge conflicts or history issues
 
 ## Workflow LEND
 
-1. ANALIZAR
-   ├── Stack: GitHub, GitLab, Gitea, Azure DevOps
-   ├── Equipo: ¿solo, 2-5, 5+ personas?
-   ├── Estrategia actual: ¿trunk-based, GitHub Flow, Git Flow?
-   └── Releases: ¿manual, automático, semver?
+1. ANALYZE
+   ├── Stack: GitHub, GitLab, Gitea
+   ├── Team: solo, 2-5, 5+ people?
+   ├── Current strategy: trunk-based, GitHub Flow, Git Flow?
+   └── Releases: manual, automatic, semver?
 
-2. OFRECER (Menú del Senior)
-   ├── A) Trunk-based — commits directos a main, feature flags, ideal para CI/CD
-   ├── B) GitHub Flow — branches por feature, PRs a main, simple y efectivo
-   └── C) Git Flow — develop/main, release branches, hotfixes, para proyectos con ciclos largos
+2. OFFER (Senior Menu)
+   ├── A) GitHub Flow — branches per feature, PRs to main, simple and effective
+   ├── B) Trunk-based — direct commits to main with feature flags, ideal for CI/CD
+   └── C) Git Flow — develop/main, release branches, hotfixes, for long cycles
 
-3. ELEGIR → confirmación
+3. CHOOSE → user confirms
 
-4. HACER
-   ├── Branch protection: requerir PRs, approvals, status checks, linear history
+4. EXECUTE
+   ├── Branch protection: require PRs, approvals, status checks, linear history
    ├── Hooks: pre-commit (lint + format + secrets), commit-msg (conventional)
-   ├── Release: etiquetas semver, changelog automático (git-cliff o semantic-release)
+   ├── Release: semver tags, automatic changelog (git-cliff or semantic-release)
    ├── Conventional commits: feat, fix, chore, docs, refactor, test, style
-   ├── Merge strategies: squash (trunk-based), merge commit (Git Flow), rebase (historia limpia)
-   └── Automatización: GitHub Actions para validar commits y PRs
+   ├── Merge strategies: squash (trunk-based), merge commit (Git Flow), rebase (clean history)
+   ├── CI: GitHub Actions to validate commits and PRs
+   └── Documentation: CONTRIBUTING.md with workflow explained
 
-5. VERIFICAR
-   ├── Las reglas de branch protection están activas
-   ├── Los hooks corren sin errores
-   └── Una release de prueba genera el changelog correctamente
+5. VERIFY
+   ├── Branch protection rules are active
+   ├── Hooks run without errors
+   └── A test release generates the changelog correctly
