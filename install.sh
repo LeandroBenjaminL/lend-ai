@@ -280,12 +280,12 @@ install_python_deps() {
     # PEP 668 workaround: algunos sistemas bloquean pip system-wide
     if [ -f "${INSTALL_DIR}/requirements.txt" ]; then
         substep "Instalando desde requirements.txt..."
-        PIP_REQUIRE_VIRTUALENV=0 pip3 install -r "${INSTALL_DIR}/requirements.txt" -q 2>&1 | tail -1 || \
+        PIP_REQUIRE_VIRTUALENV=0 pip3 install -r "${INSTALL_DIR}/requirements.txt" -q --break-system-packages 2>&1 | tail -1 || \
             warn "Algunas dependencias no se instalaron (podés hacerlo manual con: pip install -r requirements.txt)"
         success "Dependencias Python instaladas"
     else
         info "No hay requirements.txt — instalando paquetes core"
-        PIP_REQUIRE_VIRTUALENV=0 pip3 install mcp pyyaml pydantic pytest pandas numpy -q 2>&1 | tail -1 || true
+        PIP_REQUIRE_VIRTUALENV=0 pip3 install mcp pyyaml pydantic pytest pandas numpy psycopg2-binary -q --break-system-packages 2>&1 | tail -1 || true
         success "Paquetes core instalados"
     fi
 }
@@ -293,6 +293,34 @@ install_python_deps() {
 # ============================================================================
 # Cachear MCPs npm
 # ============================================================================
+
+install_system_deps() {
+    step "Instalando dependencias del sistema"
+
+    if [ "$OS" = "linux" ] || [ "$OS" = "wsl" ]; then
+        if command -v apt-get &>/dev/null; then
+            substep "Debian/Ubuntu — instalando tesseract-ocr..."
+            sudo apt-get install -y tesseract-ocr 2>/dev/null && \
+                success "tesseract-ocr instalado" || \
+                warn "tesseract-ocr no se instaló (sudo necesario). OCR no funcionará."
+            substep "Instalando Chromium para puppeteer..."
+            sudo apt-get install -y chromium-browser 2>/dev/null && \
+                success "Chromium instalado" || \
+                warn "Chromium no se instaló. Puppeteer no funcionará."
+        elif command -v brew &>/dev/null; then
+            brew install tesseract 2>/dev/null || true
+            success "tesseract instalado via brew"
+        else
+            warn "No se detectó apt-get ni brew. Instalá manual: tesseract-ocr, chromium"
+        fi
+    elif [ "$OS" = "macos" ]; then
+        if command -v brew &>/dev/null; then
+            brew install tesseract 2>/dev/null || true
+            success "tesseract instalado via brew"
+        fi
+    fi
+    success "Dependencias del sistema verificadas"
+}
 
 cache_npm_mcps() {
     step "Cacheando MCPs npm"
@@ -306,6 +334,8 @@ cache_npm_mcps() {
         "mcp-sqlite"
         "@jtalk22/slack-mcp"
         "@piotr-agier/google-drive-mcp"
+        "@souluanf/mcp-smtp"
+        "easy-notion-mcp"
     )
 
     for pkg in "${packages[@]}"; do
@@ -417,7 +447,29 @@ verify_installation() {
     if [ "$warnings" -gt 0 ]; then
         warn "${warnings} advertencias. El sistema puede funcionar igual."
     else
-        success "Instalación verificada — todo en orden"
+        echo -e "  ${BOLD}MCPs locales:${NC}"
+    if python3 -c "from mcp.server.fastmcp import FastMCP" &>/dev/null 2>&1; then
+        echo -e "  ${GREEN}${BOLD}MCPs Python:${NC} FastMCP SDK listo"
+    else
+        echo -e "  ${YELLOW}${BOLD}MCPs Python:${NC} FastMCP SDK no instalado"
+        warnings=$((warnings + 1))
+    fi
+    if python3 -c "import psycopg2" &>/dev/null 2>&1; then
+        echo -e "  ${GREEN}${BOLD}Postgres:${NC} psycopg2 listo"
+    else
+        echo -e "  ${YELLOW}${BOLD}Postgres:${NC} psycopg2 no instalado, postgres MCP no funcionará"
+    fi
+    if command -v tesseract &>/dev/null; then
+        echo -e "  ${GREEN}${BOLD}OCR:${NC} tesseract-ocr listo"
+    else
+        echo -e "  ${YELLOW}${BOLD}OCR:${NC} tesseract-ocr no encontrado, ocr MCP no funcionará"
+    fi
+    if command -v chromium-browser &>/dev/null || command -v chromium &>/dev/null || command -v google-chrome &>/dev/null; then
+        echo -e "  ${GREEN}${BOLD}Puppeteer:${NC} Chromium listo"
+    else
+        echo -e "  ${YELLOW}${BOLD}Puppeteer:${NC} Chromium no encontrado, puppeteer MCP no funcionará"
+    fi
+    success "Instalación verificada — todo en orden"
     fi
 }
 
@@ -616,6 +668,7 @@ main() {
     install_git
 
     setup_env
+    install_system_deps
     install_python_deps
     cache_npm_mcps
     setup_opencode_config
