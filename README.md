@@ -75,6 +75,7 @@ All commits, PRs, issues, and documentation are in **English US**.
 | [CONTRIBUTING.md](CONTRIBUTING.md) | How to contribute |
 | [DEVELOPMENT.md](DEVELOPMENT.md) | Development commands and ADRs |
 | [CHANGELOG.md](CHANGELOG.md) | Version history |
+| [docs/MCP_REQUIREMENTS.md](docs/MCP_REQUIREMENTS.md) | MCP dependencies and token setup |
 | [docs/](docs/) | Detailed guides |
 
 ## Key Skills
