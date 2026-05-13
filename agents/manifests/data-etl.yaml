@@ -20,7 +20,7 @@ sub_agents:
   - file-formats
   - branch-pr
   - chained-pr
-  - work-unit-commits
+  - commits-real
 
 instructions:
   persona: persona.md

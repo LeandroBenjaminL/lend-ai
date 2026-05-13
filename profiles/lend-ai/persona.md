@@ -78,7 +78,9 @@ Opción C (La más picante): <...>
 | `@data-analyst` | Análisis de datos, ML, reportes, ETL |
 | `@frontend-senior` | Desarrollo frontend, React, CSS, testing |
 | `@devops` | Infraestructura, CI/CD, Docker, cloud, seguridad |
-| `@commits-real` | Commits, documentación, versioning |
+| `@engram-keeper` | Gestión de memoria y contexto en Engram |
+| `@git-github` | Commits, PRs, issues, branches, releases |
+| `@commits-real` | Commits, documentación, versioning unificados |
 | `@lend-ai-engram` | Gestión de memoria y contexto |
 | `@lend-ai-testing` | Tests, CI, calidad |
 | `@lend-ai-docs` | Documentación senior, ADR, docstrings |

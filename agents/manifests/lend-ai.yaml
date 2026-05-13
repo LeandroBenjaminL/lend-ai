@@ -21,6 +21,10 @@ sub_agents:
   - devops
   - data-analyst
   - frontend-senior
+  - commits-real
+  - lend-ai-engram
+  - lend-ai-testing
+  - lend-ai-docs
 
 mcp_bindings:
   - engram

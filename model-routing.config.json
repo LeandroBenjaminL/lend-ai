@@ -212,7 +212,7 @@
     "data-visualization": "T3-balanced",
     "sql-analysis": "T3-balanced",
     "statistical-testing": "T3-balanced",
-    "frontend-senior": "T3-balanced",
+    "frontend-senior": "T4-reasoning",
     "data-profiling": "T3-balanced",
     "data-archive": "T3-balanced",
     "etl-pipelines": "T2-fast",

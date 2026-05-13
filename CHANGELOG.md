@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.4.0] - 2026-05-13
+
+### Changed
+- lend-ai sub_agents sincronizados: 9 agentes (se agregó commits-real, lend-ai-engram, lend-ai-testing, lend-ai-docs)
+- frontend-mentor unificado con frontend-senior: se eliminó la duplicación, frontend-senior ahora tiene MCPs y sub-agentes completos
+- frontend-senior promovido a T4-reasoning en model-router
+- data-design, data-etl, data-reporter: sub-agentes actualizados (referencias a deprecados reemplazadas)
+
+### Removed
+- Skills deprecadas eliminadas: work-unit-commits, comment-writer, cognitive-doc-design
+- Manifests y directorios de agentes deprecados removidos
+- frontend-mentor.yaml eliminado (unificado con frontend-senior)
+
+### Fixed
+- 0 referencias rotas a sub-agentes en health check
+- Arquitectura de agentes: 100 agentes, 77 válidos, 46 warnings (solo MCPs en hojas)
+
 ## [0.3.0] - 2026-05-10
 
 ### Added

@@ -10,7 +10,7 @@ mcp_bindings:
 
 sub_agents:
   - skill-creator
-  - cognitive-doc-design
+  - lend-ai-docs
   - data-question
 
 instructions:

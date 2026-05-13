@@ -14,7 +14,7 @@ sub_agents:
   - reporting
   - streamlit
   - data-visualization
-  - comment-writer
+  - commits-real
 
 instructions:
   persona: persona.md
