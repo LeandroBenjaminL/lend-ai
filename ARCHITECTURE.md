@@ -84,6 +84,35 @@ lend-ai (orchestrator)
 
 Ver `model-routing.config.json` y `scripts/model-commands.py`.
 
+### Model Profiles (Preset System)
+
+| Profile | Default Tier | Use |
+|---------|-------------|-----|
+| `free` | T3-balanced | Todo gratis, máximo ahorro |
+| `balanced` | T3-balanced | Mayormente gratis, premium cuando vale la pena (activo) |
+| `fast` | T2-fast | Rápido y barato, para tareas simples |
+| `power` | T5-deep | Máxima potencia, reasoning profundo |
+| `reasoning` | T4-reasoning | Para tareas que requieren razonamiento |
+
+Cada profile puede tener overrides por skill. Ver `model-routing.config.json` → `profiles`.
+
+### Backup & Recovery
+
+- **Pre-commit hook**: GGA (Gentleman Git Audit) ejecuta review de código antes de cada commit
+- **Model routing config**: respaldado en `model-routing.config.json` con schema validation
+- **Agent manifests**: versionados en git, cada cambio deja trail en CHANGELOG
+- **Engram**: memoria persistente con SQLite+FTS5, journal WAL, auto-checkpoint
+
+## Shared Protocols
+
+| Protocol | File | Purpose |
+|----------|------|---------|
+| Skill Resolver | `skills/_shared/skill-resolver.md` | Cómo inyectar skills en sub-agentes |
+| Sub-agent Context | `skills/_shared/subagent-context.md` | Quién lee/escribe qué en cada fase |
+| SDD Phase Common | `skills/_shared/sdd-phase-common.md` | Protocolo común para todas las fases SDD |
+| Engram Convention | `skills/_shared/engram-convention.md` | Naming y recovery de artifacts |
+| Persistence Contract | `skills/_shared/persistence-contract.md` | Modos de artifact store |
+
 ## Key technical decisions
 
 | Decision | Chosen | Alternatives |

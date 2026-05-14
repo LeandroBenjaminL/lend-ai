@@ -1,6 +1,6 @@
 # Skill Resolver — Universal Protocol
 
-Any agent that **delegates work to sub-agents** MUST follow this protocol to resolve and inject relevant skills. This applies to the ATL orchestrator, judgment-day, pr-review, and ANY future skill or workflow that launches sub-agents.
+Any agent that **delegates work to sub-agents** MUST follow this protocol to resolve and inject relevant skills. This applies to the lend-ai orchestrator, judgment-day, pr-review, and ANY future skill or workflow that launches sub-agents.
 
 ## Why This Exists
 
@@ -45,10 +45,11 @@ Use the `Trigger` field in the registry's User Skills table to match. Skills who
 |-----------------|------------------------------------------|
 | Create a PR | "PR", "pull request" |
 | Write/review code | The specific framework/language |
-| Create Jira tickets | "Jira", "epic", "task" |
-| Write Notion docs | "Notion", "RFC", "PRD" |
-| Write comments | "comment" |
-| Run tests | "test", "vitest", "pytest", "playwright" |
+| Create issues | "issue", "bug", "feature" |
+| Write documentation | "docs", "README", "ADR" |
+| Write comments/reviews | "comment", "review" |
+| Run tests | "test", "vitest", "pytest" |
+| Commit changes | "commit", "conventional commit" |
 
 ### Step 3: Inject into Sub-Agent Prompt
 
@@ -74,8 +75,6 @@ Read these files for project-specific patterns:
 - {path1} — {notes}
 - {path2} — {notes}
 ```
-
-Project conventions are short references (paths + notes), so passing them is cheap. The sub-agent reads them only if relevant to its task.
 
 ## Token Budget
 
@@ -108,7 +107,6 @@ This prevents silent degradation where the orchestrator forgets skills after com
 
 ## Integration Points
 
-- **ATL Orchestrator**: follows this protocol for ALL delegations (SDD and non-SDD)
+- **lend-ai orchestrator**: follows this protocol for ALL delegations (SDD and non-SDD)
 - **judgment-day**: follows this protocol before launching Judge A, Judge B, and Fix Agent
-- **pr-review**: already has internal skill loading — should migrate to this protocol for consistency
 - **Any future skill that delegates**: MUST reference this protocol

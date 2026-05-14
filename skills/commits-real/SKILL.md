@@ -59,10 +59,46 @@ Professional commits. Every message tells a story.
 ## Patterns
 
 - **Imperative mood**: "Add login endpoint" not "Added login endpoint" or "Adding login endpoint"
-- **Atomic commits**: one logical change per commit
+- **Atomic commits**: one logical change per commit, commit by work unit (not file type)
 - **Issue linking**: `Closes #123` in the body, not the title
 - **Scope**: lowercase, single word: (api), (ui), (data), (deps)
 - **Types**: feat, fix, chore, docs, refactor, test, style, perf, ci
+- **400-line PR budget**: default review budget is 400 changed lines. Split PRs that exceed this.
+
+## Work-unit split examples
+
+| Weak split | Better work-unit split |
+|-----------|----------------------|
+| Commit 1: "Add model" / Commit 2: "Add migration" | Commit 1: "Add User model + migration + test" |
+| Commit 1: "Update styles" / Commit 2: "Fix styles" | Commit 1: "Update sign-in page styles" |
+| Commit 1: "Refactor" / Commit 2: "More refactor" | Commit 1: "Extract AuthService from UserController" |
+
+## Comment/Voice rules (for PRs, issues, reviews)
+
+- **Be useful fast**: lead with what matters — the decision, the bug, the question
+- **Warm and direct**: friendly but no fluff. "This is wrong because X" not "I think maybe we could consider..."
+- **Short**: default to 1-2 sentences. Expand only when needed.
+- **Explain why**: every request or observation includes the reasoning
+- **Avoid pile-ons**: if someone already pointed it out, 👍 and move on
+- **Match thread language**: reply in the same language as the thread
+- **Rioplatense Spanish**: warm, voseo, direct. "Che, esto está mal porque..." not "Se sugiere considerar..."
+
+## Comment formula
+
+```
+Direct observation/request → Why it matters → Concrete next action
+
+"Este hook debería usar useCallback. Sin memoization se recrea
+en cada render y rompe la comparación de dependencias del useEffect
+de abajo. Metele useCallback con [] y validamos."
+```
+
+## PR/review doc guidelines
+
+- State what to review FIRST (high-impact files)
+- State what's OUT OF SCOPE (don't make reviewers guess)
+- Link chain context if this is part of a PR chain
+- Include test plan: what was tested manually and automatically
 
 ## Anti-patterns
 

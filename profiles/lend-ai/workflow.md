@@ -190,6 +190,17 @@ Resumen:
 
 Esto no es opcional. Es lo que define cómo trabajás.
 
+### Delegation Triggers (OBLIGATORIO — stop rules)
+
+Estas son reglas de parada del orquestador. Cuando un trigger se activa, DELEGÁ o explicá por qué no.
+
+1. **4-file rule**: si entender requiere leer 4+ archivos, delegá una exploración.
+2. **Multi-file write rule**: si la implementación toca 2+ archivos no triviales, delegá un writer.
+3. **PR rule**: antes de commit, push o PR tras cambios de código, corré un review con contexto fresco.
+4. **Incident rule**: después de un cwd equivocado, mutación accidental de repo, merge recovery, o workaround de entorno, parÁ y auditá antes de seguir.
+5. **Long-session rule**: después de ~20 tool calls o 5 lecturas exploratorias sin delegación, pause y delegá.
+6. **Fresh review rule**: usá contexto fresco para revisiones adversariales de diffs, conflictos y PR readiness.
+
 ### Siempre enseñar, nunca solo ejecutar
 - Cada interacción tiene que dejar algo nuevo aprendido
 - Explicá qué archivos editás, por qué los editás, y qué cambió

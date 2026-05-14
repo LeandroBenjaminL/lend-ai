@@ -1,5 +1,34 @@
 # Changelog
 
+## [0.5.0] - 2026-05-14
+
+### Added
+- **Skill Resolver Protocol** (`skills/_shared/skill-resolver.md`): inyección de compact rules en sub-agentes, feedback loop, compaction-safe
+- **Sub-agent Context Protocol** (`skills/_shared/subagent-context.md`): quién lee/escribe en cada fase SDD, artifact store modes, TDD forwarding
+- **SDD Phase Common Protocol** (`skills/_shared/sdd-phase-common.md`): return envelope, artifact persistence, workload guard
+- **Output Style** (`profiles/lend-ai/output-style.md`): response length contract, core principle, behavior rules
+- **Persona Scope**: separación explícita entre tono de chat y artefactos generados
+- **Delegation Triggers**: 6 reglas de parada (4-file rule, multi-file write, PR rule, incident, long-session, fresh review)
+- **Proactive Save Triggers**: 11 categorías donde mem_save es obligatorio sin que el usuario lo pida
+- **Cognitive Load Patterns** en lend-ai-docs: lead with answer, progressive disclosure, chunking, signposting, recognition over recall, review empathy
+- **Comment/Voice Rules** en commits-real: work-unit splits, comment formula, PR review doc guidelines
+- **Review Workload Forecast** en sdd-tasks: guard lines, delivery strategies (4 modos)
+- **Decision Gates + Compliance Matrix** en sdd-verify: veredict PASS/PASS WITH WARNINGS/FAIL
+- **Preset System** documentado en ARCHITECTURE (4 profiles + model routing)
+
+### Changed
+- `profiles/lend-ai/persona.md`: agregado Persona Scope + Contextual Skill Loading
+- `profiles/lend-ai/workflow.md`: agregados 6 Delegation Triggers
+- `skills/engram-memory-system/SKILL.md`: agregados Proactive Save Triggers
+- `skills/commits-real/SKILL.md`: agregados work-unit splits, voice rules, comment formula, PR budget
+- `skills/lend-ai-docs/SKILL.md`: agregados cognitive load patterns, default doc shape
+- `skills/sdd-tasks/SKILL.md`: agregados Review Workload Forecast, delivery strategies
+- `skills/sdd-verify/SKILL.md`: agregados decision gates, compliance matrix, return envelope
+- `ARCHITECTURE.md`: agregados preset system, backup, shared protocols
+
+### Inspired by
+- [Gentle-AI](https://github.com/Gentleman-Programming/gentle-ai) — SDD orchestrator protocol, persona scope, skill resolver, delegation triggers, workload guard
+
 ## [0.4.0] - 2026-05-13
 
 ### Changed

@@ -36,12 +36,50 @@ Verificación SDD. Un spec solo está cumplido cuando hay un test que pasó.
 3. ELEGIR → confirmación
 
 4. HACER
-   ├── Correr test suite completo
-   ├── Verificar cada escenario de los specs contra la implementación
-   ├── Si hay escenarios sin test → crearlos
-   ├── Si hay tests que fallan → diagnosticar y corregir
-   ├── Documentar: scenarios PASS/FAIL, cobertura, issues encontrados
-   └── Decidir: ¿aprobado, aprobado con warnings, o rechazado?
+    ├── Correr test suite completo
+    ├── Verificar cada escenario de los specs contra la implementación
+    ├── Si hay escenarios sin test → crearlos
+    ├── Si hay tests que fallan → diagnosticar y corregir
+    ├── Documentar: scenarios PASS/FAIL, cobertura, issues encontrados
+    └── Decidir: ¿aprobado, aprobado con warnings, o rechazado?
+
+### Decision Gates
+
+Antes de emitir veredicto, pasá por estos gates:
+
+| Gate | Pregunta | Si falla |
+|------|----------|----------|
+| **Spec coverage** | ¿Cada escenario del spec tiene un test que pasa? | FAIL |
+| **No regressions** | ¿Tests que antes pasaban siguen pasando? | FAIL |
+| **Edge cases** | ¿Se testearon casos borde (empty, null, max, timeout)? | WARNING |
+| **Error handling** | ¿Errores esperados tienen comportamiento definido y testeado? | WARNING |
+| **Perf baseline** | ¿No hay regresión de performance > 20%? | WARNING |
+
+### Compliance Matrix
+
+```markdown
+| Spec Scenario | Test | Status | Notes |
+|--------------|------|--------|-------|
+| {scenario 1} | {test name} | PASS / FAIL / WARNING | ... |
+| {scenario 2} | {test name} | PASS / FAIL / WARNING | ... |
+```
+
+### Veredict
+
+- **PASS**: todos los gates críticos aprobados, 0 FAIL
+- **PASS WITH WARNINGS**: gates no críticos con warnings, documentados
+- **FAIL**: cualquier gate crítico fallido. No se puede mergear.
+
+### Return Envelope
+
+```markdown
+**Status**: success | partial | blocked
+**Veredict**: PASS | PASS WITH WARNINGS | FAIL
+**Summary**: 1-2 sentence summary
+**Artifacts**: Engram `sdd/{change-name}/verify-report`
+**Risks**: risks found or None
+**Skill Resolution**: injected | fallback-registry | fallback-path | none
+```
 
 5. VERIFICAR
    ├── Todos los escenarios critical tienen test que pasa

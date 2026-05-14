@@ -21,6 +21,24 @@ Sistema global de memoria. Clasificá, guardá y consultá con criterio.
 - Finalizás una sesión y hay que cerrar el ciclo
 - El usuario expresó una preferencia o workflow
 
+## Proactive Save Triggers (OBLIGATORIO — no esperes que el usuario lo pida)
+
+Llamá `mem_save` INMEDIATAMENTE y SIN QUE TE LO PIDAN después de cualquiera de estos:
+
+- Decisión de arquitectura o diseño tomada
+- Convención de equipo documentada o establecida
+- Cambio de workflow acordado
+- Herramienta o librería elegida con tradeoffs
+- Bug fix completado (incluí la causa raíz)
+- Feature implementada con enfoque no obvio
+- Configuración o setup de entorno realizado
+- Descubrimiento no obvio sobre el codebase
+- Gotcha, edge case, o comportamiento inesperado encontrado
+- Patrón establecido (naming, estructura, convención)
+- Preferencia o constraint del usuario aprendido
+
+**Auto-check después de CADA tarea**: "¿Tomé una decisión, arreglé un bug, aprendí algo no obvio, o establecí una convención? Si sí, mem_save AHORA."
+
 ## Workflow LEND
 
 1. ANALIZAR

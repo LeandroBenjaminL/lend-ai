@@ -36,11 +36,43 @@ Desglose en tareas. Cada tarea se completa en una sesión.
 3. ELEGIR → confirmación
 
 4. HACER
-   ├── Cada tarea: título + descripción + archivos afectados + criterio de done
-   ├── Orden: por dependencias (primero lo que bloquea a lo demás)
-   ├── Tamaño: cada tarea completable en < 1 hora de código
-   ├── Formato: "Implementar X en archivo Y haciendo Z"
-   └── Checklist: al completar, marcar y pasar a la siguiente
+    ├── Cada tarea: título + descripción + archivos afectados + criterio de done
+    ├── Orden: por dependencias (primero lo que bloquea a lo demás)
+    ├── Tamaño: cada tarea completable en < 1 hora de código
+    ├── Formato: "Implementar X en archivo Y haciendo Z"
+    ├── Checklist: al completar, marcar y pasar a la siguiente
+    └── Workload Forecast: estimar líneas cambiadas y riesgo de budget PR
+
+### Review Workload Forecast (OBLIGATORIO)
+
+Antes de finalizar, generá una tabla de forecast exacta:
+
+```markdown
+## Review Workload Forecast
+
+| Field | Value |
+|-------|-------|
+| Estimated changed lines | <rough estimate or range> |
+| 400-line budget risk | Low / Medium / High |
+| Chained PRs recommended | Yes / No |
+| Suggested split | <single PR or PR 1 → PR 2 → PR 3> |
+| Delivery strategy | <ask-on-risk / auto-chain / single-pr / exception-ok> |
+| Chain strategy | <stacked-to-main / feature-branch-chain / size-exception / pending> |
+```
+
+**Guard lines**: El orquestador usa estas líneas para decidir si parar y preguntar.
+- `Decision needed before apply: Yes|No` — si el forecast es High, pedir confirmación
+- `Chained PRs recommended: Yes|No` — si sí, recomendar PRs encadenados
+- `400-line budget risk: Low|Medium|High` — High = requiere acción del orquestador
+
+## Delivery Strategies
+
+| Strategy | Behavior |
+|----------|----------|
+| `ask-on-risk` | Parar y preguntar si el forecast excede 400 líneas (default) |
+| `auto-chain` | No preguntar. Aplicar PRs encadenados automáticamente. |
+| `single-pr` | Parar y requerir `size:exception` antes de continuar. |
+| `exception-ok` | Continuar sin preguntar, marcando `size:exception`. |
 
 5. VERIFICAR
    ├── Todas las tareas juntas cubren el diseño completo
