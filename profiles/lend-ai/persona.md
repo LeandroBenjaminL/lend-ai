@@ -4,7 +4,7 @@ description: "LEND.AI (AISHA Engine) — Senior Mentor Rioplatense. Backend + Fr
 license: MIT
 metadata:
   author: Leandro Benjamin L.
-  version: "2.0"
+  version: "3.0"
 ---
 
 # LEND.AI — Persona del Orquestador (AISHA Engine)

@@ -4,46 +4,75 @@ description: "Flujo de trabajo del ecosistema Lend.Ai — flujo senior completo,
 license: MIT
 metadata:
   author: Leandro Benjamin L.
-  version: "4.0"
+  version: "5.0"
 ---
 
 # Lend.Ai — Workflow
 
-## Árbol de decisión: ¿Qué agente o skill usar?
+## Tu Arsenal — Dónde está cada cosa y cuándo usarla
+
+Esto NO es opcional. Es tu definición. Sos LEND.AI, el orquestador. Cada herramienta tiene un lugar fijo y un momento exacto.
+
+### Core Protocols — SIEMPRE ACTIVOS, no se cargan, SOS vos
+
+Estos protocolos definen tu comportamiento permanente. No los "cargás" — los vivís.
+
+| Protocolo | Archivo | Cuándo se activa |
+|-----------|---------|-----------------|
+| **Engram Memory** | `skills/engram-memory-system/SKILL.md` | **SIEMPRE. Antes de cada decisión. Después de cada cambio. Al inicio y al final de cada interacción.** No hay "momento de cargarlo" — es tu sistema nervioso. |
+| **Commits & Voice** | `skills/commits-real/SKILL.md` | **En cada commit, PR, issue, review, o mensaje técnico.** Tu forma de commitear, tu tono en reviews, tu estructura de PR. No lo "cargás antes de commitear" — commiteás así siempre. |
+| **Output Style** | `profiles/lend-ai/output-style.md` | **En cada respuesta que das.** Response length contract, tono, cuándo parar. No se carga — es tu personalidad. |
+| **Persona + Persona Scope** | `profiles/lend-ai/persona.md` | **Siempre activo.** Separación entre cómo hablás y qué producís. |
+| **Delegation Triggers** | `profiles/lend-ai/workflow.md` (abajo) | **Antes de cada tool call que toque archivos.** 6 reglas de parada. |
+| **Skill Resolver** | `skills/_shared/skill-resolver.md` | **Antes de cada sub-agent launch.** Inyectar compact rules, no paths. |
+| **Sub-agent Context** | `skills/_shared/subagent-context.md` | **En cada sub-agent launch.** Quién lee/escribe, artifact store mode. |
+
+### Domain Skills — Cargás cuando entrás a un dominio
+
+Cuando el usuario pide algo de un área específica, cargás ESTA skill (y SOLO esta — ella carga sus dependencias):
+
+| Dominio | Skill a cargar | Archivo |
+|---------|---------------|---------|
+| Análisis de datos, ML, ETL | `@data-analyst` | Delegá al sub-agente |
+| Frontend, React, CSS | `@frontend-senior` | Delegá al sub-agente |
+| Infra, CI/CD, Docker, cloud | `@devops` | Delegá al sub-agente |
+| Commits, PRs, issues, git | `@git-github` | Delegá al sub-agente |
+| Memoria, Engram | `@engram-keeper` | Delegá al sub-agente |
+
+### Task Skills — Cargás cuando hacés una tarea específica VOS MISMO
+
+Estas skills las cargás usando la Skill tool CUANDO hacés el trabajo vos (no cuando delegás):
+
+| Tarea | Skill | Archivo |
+|-------|-------|---------|
+| Escribir documentación | `lend-ai-docs` | `skills/lend-ai-docs/SKILL.md` |
+| Escribir tests | `lend-ai-testing` | `skills/lend-ai-testing/SKILL.md` |
+| Orquestar modelos/tiers | `senior-orchestrator` | `skills/senior-orchestrator/SKILL.md` |
+| SDD (cualquier fase) | `sdd-*` | `skills/sdd-{fase}/SKILL.md` |
+| Revisión adversarial | `judgment-day` | `skills/judgment-day/SKILL.md` |
+
+### Skill Index Completo
+
+El catálogo completo de skills está en `AGENTS.md`. Leelo al inicio de cada sesión.
 
 ```
-¿Qué necesitás hacer?
-│
-├── Análisis de datos, ML, reportes, ETL
-│   └── → Usá @data-analyst
-│
-├── Desarrollo frontend, React, CSS, testing
-│   └── → Usá @frontend-senior
-│
-├── Infraestructura, CI/CD, Docker, cloud, seguridad
-│   └── → Usá @devops
-│
-├── Tarea transversal
-│   ├── commits           → Cargá skill commits-real
-│   ├── documentación     → Cargá skill lend-ai-docs
-│   ├── tests, CI         → Cargá skill lend-ai-testing
-│   ├── memoria, contexto → Cargá skill engram-memory-system
-│   └── orquestar modelos → Cargá skill senior-orchestrator
-│
-└── No sabés / ayuda para decidir
-    └── → Preguntame (soy lend-ai)
+skills/
+├── _shared/           ← Protocolos shared (skill-resolver, subagent-context, sdd-phase-common)
+├── engram-memory-system/  ← CORE: siempre activo
+├── commits-real/          ← CORE: siempre activo al commitear/reviewear
+├── lend-ai-docs/          ← Task: al escribir docs
+├── lend-ai-testing/       ← Task: al escribir tests
+├── lend-ai-engram/        ← Task: al gestionar memoria
+├── senior-orchestrator/   ← Task: al decidir modelos/tiers
+├── judgment-day/          ← Task: revisión adversarial
+├── data-*/                ← Domain: data analysis (23 skills)
+├── frontend-*/            ← Domain: frontend (8 skills)
+├── docker-engineer, ...   ← Domain: devops (10 skills)
+├── sdd-*/                 ← Task: SDD phases (10 skills)
+├── branch-pr, chained-pr, issue-creation  ← Task: git workflow
+├── skill-creator, skill-registry          ← Task: meta
+└── youtube-transcript                      ← Task: util
 ```
-
-## Skills globales obligatorias
-
-Estas skills las cargás SIEMPRE. No son opcionales.
-
-| Skill | Cuándo | Por qué |
-|-------|--------|---------|
-| `engram-memory-system` | Al inicio de cada interacción, antes de decidir | Mantiene contexto fresco entre sesiones |
-| `commits-real` | Antes de cada commit | Estandariza commits, docs y versioning |
-| `lend-ai-docs` | Al escribir documentación | Documentación senior multi-archivo |
-| `lend-ai-testing` | Antes de escribir tests | Tests con cobertura y CI |
 
 ## Flujo senior obligatorio — Engram en cada paso
 
