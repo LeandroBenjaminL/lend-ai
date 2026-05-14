@@ -31,6 +31,34 @@ sub_agents:
   - data-verify
   - data-archive
 
+skills:
+  - engram-memory-system
+  - data-analysis
+  - data-cleaning
+  - data-visualization
+  - data-profiling
+  - data-question
+  - data-design
+  - data-validation
+  - data-verify
+  - ml-modeling
+  - time-series-analysis
+  - statistical-testing
+  - sql-analysis
+  - database-connections
+  - etl-pipelines
+  - reporting
+  - streamlit
+  - file-formats
+  - notebook-integration
+  - python-environment
+  - regex-data
+  - shared-api-integration
+  - shared-git-data
+  - web-scraping
+  - commits-real
+  - lend-ai-docs
+
 instructions:
   persona: persona.md
   workflow: workflow.md

@@ -10,8 +10,21 @@ instructions:
   patterns: patterns.md
 
 skills:
+  - engram-memory-system
   - senior-orchestrator
   - commits-real
+  - docker-engineer
+  - ci-cd-pilot
+  - cloud-architect
+  - db-admin
+  - infra-sre
+  - security-auditor
+  - network-engineer
+  - gitops-engineer
+  - backup-engineer
+  - perf-engineer
+  - lend-ai-docs
+  - lend-ai-testing
 
 sub_agents:
   - docker-engineer

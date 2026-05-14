@@ -24,6 +24,20 @@ sub_agents:
   - build-master
   - content-docs
 
+skills:
+  - engram-memory-system
+  - frontend-react-development
+  - frontend-css-styling
+  - frontend-type-script
+  - frontend-api-integration
+  - frontend-state-management
+  - frontend-testing
+  - frontend-responsive-design
+  - frontend-web-performance
+  - commits-real
+  - lend-ai-docs
+  - lend-ai-testing
+
 instructions:
   persona: persona.md
   workflow: workflow.md
