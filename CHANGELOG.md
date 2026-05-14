@@ -1,6 +1,25 @@
 # Changelog
 
-## [0.5.0] - 2026-05-14
+## [0.5.1] - 2026-05-14
+
+### Added
+- **Strict TDD Module** (`skills/sdd-apply/strict-tdd.md`): Three Laws, RED-GREEN-REFACTOR-TRIANGULATE, TDD evidence table, test layer selection
+- **Apply-Progress MERGE Protocol**: prevents batch-N from destroying batch-(N-1) work
+- **Workload Enforcement**: sdd-apply gate checks Review Workload Forecast before writing code
+- **Chain Strategy Support** in sdd-apply: stacked-to-main, feature-branch-chain
+- **Decision Gates** in chained-pr: 4 conditions → stacked PRs, feature branch chain, or size:exception
+- **Chain Context template** in chained-pr: dependency diagram, review budget, PR ordering
+
+### Changed
+- `sdd-apply/SKILL.md`: 48→160 lines with ORCHESTRATOR GATE, persistence contract, TDD gate, chain strategies
+- `sdd-archive/SKILL.md`: 48→120 lines with pre-flight check, archive report template, return envelope
+- `chained-pr/SKILL.md`: 53→105 lines with activation contract, two chain strategies, output contract
+- Orchestrator YAMLs: skills wired (data-analyst: 0→25, frontend-senior: 0→12, devops: 2→15)
+- Agent personas: Arsenal sections added to all 5 orchestrator sub-agents
+
+### Fixed
+- data-analyst + frontend-senior YAMLs had zero skills declared (personas referenced them but YAML didn't)
+- README + AGENTS.md synced to v0.5.0 with updated stats, architecture, shared protocols
 
 ### Added
 - **Skill Resolver Protocol** (`skills/_shared/skill-resolver.md`): inyección de compact rules en sub-agentes, feedback loop, compaction-safe
