@@ -12,29 +12,45 @@ Naming convention:
 
 ## How to use
 
-1. Check the **Trigger** column to find the skill matching your task
-2. Load the skill by reading the SKILL.md file at the indicated path
+Each orchestrator agent has an **Arsenal** section in its persona/workflow that maps:
+- **Core Protocols**: always-on (Engram, Persona Scope, Output Style, Delegation Triggers)
+- **Domain Sub-agents**: when to spawn each one
+- **Task Skills**: when to load each one, with exact file path
+
+1. Check your persona's Arsenal section first — it tells you what to load and when
+2. Sub-agents receive `## Project Standards (auto-resolved)` injected by the orchestrator (see `skills/_shared/skill-resolver.md`)
 3. Follow ALL the patterns and rules in the loaded skill
-4. Multiple skills can be applied simultaneously
+4. Engram is ALWAYS on — consult before deciding, save after every change
 
 ## Ecosystem Agents
 
 | Agent | Role | Primary | Sub-agents |
 |--------|-----|---------|-------------|
-| `lend-ai` | General ecosystem orchestrator | ✅ | data-analyst, frontend-senior, devops, git-github, commits-real, lend-ai-engram, lend-ai-testing |
-| `data-analyst` | Data analysis, ML, EDA, reporting | ❌ (sub) | data-explorer, data-modeler, data-reporter, etc. |
-| `frontend-senior` | Frontend development, React, CSS, testing | ❌ (sub) | framework-architect, ui-crafter, styling-engineer, etc. |
+| `lend-ai` | General ecosystem orchestrator | ✅ | data-analyst, frontend-senior, devops, git-github, engram-keeper, commits-real, lend-ai-engram, lend-ai-testing, lend-ai-docs |
+| `data-analyst` | Data analysis, ML, EDA, reporting | ❌ (sub) | data-question, data-design, data-explorer, data-analysis, data-cleaning, data-modeler, data-reporter, data-verify, data-archive |
+| `frontend-senior` | Frontend development, React, CSS, testing | ❌ (sub) | framework-architect, ui-crafter, styling-engineer, data-flow, api-consumer, realtime-engineer, quality-guardian, perf-a11y, build-master, content-docs |
 | `devops` | DevOps, infrastructure, CI/CD, security, cloud, SRE | ❌ (sub) | docker-engineer, ci-cd-pilot, cloud-architect, db-admin, infra-sre, security-auditor, network-engineer, gitops-engineer, backup-engineer, perf-engineer |
-| `git-github` | Commits, PRs, issues, branches, releases, versioning, Git, GitHub | ❌ (sub) | commits-real, branch-pr, chained-pr, issue-creation, gitops-engineer, shared-git-data |
-| `engram-keeper` | Memory keeper — organizes, consolidates, audits Engram constantly | ❌ (sub) | engram-memory-system, lend-ai-engram |
+| `git-github` | Commits, PRs, issues, branches, releases, versioning, Git, GitHub | ❌ (sub) | commits-real, branch-pr, chained-pr, issue-creation, gitops-engineer |
+| `engram-keeper` | Memory keeper — organizes, consolidates, audits Engram constantly | ❌ (sub) | lend-ai-engram |
+
+## Shared Protocols (all orchestrators)
+
+| Protocol | File | Purpose |
+|----------|------|---------|
+| `skill-resolver` | `skills/_shared/skill-resolver.md` | Inject compact rules into sub-agent prompts, feedback loop |
+| `subagent-context` | `skills/_shared/subagent-context.md` | Who reads/writes in each SDD phase, artifact store modes |
+| `sdd-phase-common` | `skills/_shared/sdd-phase-common.md` | Return envelope, artifact persistence, workload guard, topic keys |
+| `engram-convention` | `skills/_shared/engram-convention.md` | Topic key naming, recovery protocol |
+| `persistence-contract` | `skills/_shared/persistence-contract.md` | Artifact store mode resolution |
 
 ## Global Skills (lend-ai orchestrator)
 
 | Skill | Trigger | Ruta |
 |-------|---------|------|
-| `lend-ai-persona` | Al iniciar sesión — identidad AISHA Engine, tono rioplatense, LEND-Protocol, Menú del Senior | [`profiles/lend-ai/persona.md`](profiles/lend-ai/persona.md) |
-| `lend-ai-workflow` | Al planificar trabajo, definir flujo — reglas de comportamiento senior, skills globales obligatorias | [`profiles/lend-ai/workflow.md`](profiles/lend-ai/workflow.md) |
-| `engram-memory-system` | Al clasificar, organizar y guardar memoria en Engram — árbol de clasificación, topic_keys, scope | [`skills/engram-memory-system/SKILL.md`](skills/engram-memory-system/SKILL.md) |
+| `lend-ai-persona` | Siempre activo — identidad AISHA Engine, Persona Scope, tono rioplatense, Menú del Senior | [`profiles/lend-ai/persona.md`](profiles/lend-ai/persona.md) |
+| `lend-ai-workflow` | Siempre activo — delegation triggers, skill arsenal, método de enseñanza | [`profiles/lend-ai/workflow.md`](profiles/lend-ai/workflow.md) |
+| `lend-ai-output-style` | Siempre activo — response length contract, core principle, behavior rules | [`profiles/lend-ai/output-style.md`](profiles/lend-ai/output-style.md) |
+| `engram-memory-system` | **SIEMPRE ACTIVO** — proactive save triggers, session close, What/Why/Where/Learned | [`skills/engram-memory-system/SKILL.md`](skills/engram-memory-system/SKILL.md) |
 | `senior-orchestrator` | Al orquestar modelos, decidir tiers, planear arquitectura | [`skills/senior-orchestrator/SKILL.md`](skills/senior-orchestrator/SKILL.md) |
 
 ## Data Analysis Skills (data-analyst)

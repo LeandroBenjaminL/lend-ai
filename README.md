@@ -2,7 +2,7 @@
 
 > Unified AI agent ecosystem: Data Analysis, Frontend Development, DevOps, and Git/GitHub. Running on OpenCode with a hierarchical skill system, sub-agents, and tiered models (T1-T5) for cost-quality optimization.
 
-Lend.Ai is a production-grade AI agent ecosystem that orchestrates **103 agents**, **73 skills**, and **16 MCPs** across four domains. It runs on [OpenCode](https://opencode.ai) and provides a senior mentor experience with automatic personality loading, memory persistence via Engram, and a spec-driven development (SDD) workflow.
+Lend.Ai is a production-grade AI agent ecosystem that orchestrates **100 agents**, **70 skills**, and **17 MCPs** across four domains. It runs on [OpenCode](https://opencode.ai) and provides a senior mentor experience with automatic personality loading, memory persistence via Engram, and a spec-driven development (SDD) workflow.
 
 ## Quick Install
 
@@ -21,25 +21,30 @@ chmod +x install.sh && ./install.sh
 ## Architecture
 
 ```
-lend-ai (orchestrator)
-├── data-analyst         → data analysis, ML, ETL, reporting
-├── frontend-senior      → React, TypeScript, CSS, testing
-├── devops               → infrastructure, CI/CD, cloud, security
-└── git-github           → commits, PRs, issues, releases
+lend-ai (orchestrator — 9 direct sub-agents)
+├── data-analyst         → data analysis, ML, ETL, reporting (9 sub-agents)
+├── frontend-senior      → React, TypeScript, CSS, testing (10 sub-agents)
+├── devops               → infrastructure, CI/CD, cloud, security (10 sub-agents)
+├── git-github           → commits, PRs, issues, releases (5 sub-agents)
+├── engram-keeper        → persistent memory management
+├── commits-real         → unified commits, docs, versioning
+├── lend-ai-engram       → memory context management
+├── lend-ai-testing      → tests, CI, coverage
+└── lend-ai-docs         → Google-style docstrings, ADR, architecture docs
 ```
 
-Each domain agent has specialized sub-agents and skills with the **LEND Protocol**: Analyze → Offer options → Choose → Execute → Verify.
+Each orchestrator has an explicit **Arsenal** mapping: Core Protocols (always-on), Domain Sub-agents (when to spawn), and Task Skills (when to load, with exact file paths).
 
 ## Stats
 
 | Metric | Value |
 |--------|-------|
-| Agents | 103 |
-| Skills | 73 (all with LEND Protocol) |
-| Agent configs | 75 in opencode.json |
-| MCPs | 16 |
-| Tests | 62 passing |
-| CI | Green |
+| Version | v0.5.0 |
+| Agents | 100 |
+| Skills | 70 (all with LEND Protocol) |
+| Shared Protocols | 5 (skill-resolver, subagent-context, sdd-phase-common, engram-convention, persistence-contract) |
+| MCPs | 17 |
+| Commits | 3-level ceremony (direct, quick PR, full review) |
 
 ## Stack
 
@@ -77,6 +82,17 @@ All commits, PRs, issues, and documentation are in **English US**.
 | [CHANGELOG.md](CHANGELOG.md) | Version history |
 | [docs/MCP_REQUIREMENTS.md](docs/MCP_REQUIREMENTS.md) | MCP dependencies and token setup |
 | [docs/](docs/) | Detailed guides |
+
+## Key Protocols
+
+| Protocol | File | Purpose |
+|----------|------|---------|
+| **Persona Scope** | `profiles/lend-ai/persona.md` | Separates chat tone from generated artifacts |
+| **Skill Resolver** | `skills/_shared/skill-resolver.md` | Injects compact rules into sub-agent prompts |
+| **Sub-agent Context** | `skills/_shared/subagent-context.md` | Who reads/writes in each SDD phase |
+| **SDD Phase Common** | `skills/_shared/sdd-phase-common.md` | Return envelope, persistence, workload guard |
+| **Delegation Triggers** | `profiles/lend-ai/workflow.md` | 6 mandatory stop rules for the orchestrator |
+| **Output Style** | `profiles/lend-ai/output-style.md` | Response length contract and tone rules |
 
 ## Key Skills
 
