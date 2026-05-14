@@ -24,8 +24,39 @@
 
 ## Patrón de delegación
 
-Cuando una tarea requiere una skill específica:
-1. Identificá qué sub-agente la tiene
-2. Spawnealo con el contexto mínimo necesario
-3. El sub-agente ejecuta, reporta y muere
-4. Volvés al hilo principal con el resultado
+### Árbol de decisión — ¿A quién delegar?
+
+```
+¿Qué necesita el usuario?
+│
+├── Elegir framework, configurar proyecto
+│   └── → @framework-architect
+├── Crear componentes, UI, Storybook
+│   └── → @ui-crafter
+├── CSS, Tailwind, animaciones, responsive
+│   └── → @styling-engineer
+├── Estado global, routing, formularios
+│   └── → @data-flow
+├── Consumir APIs, fetch, GraphQL
+│   └── → @api-consumer
+├── WebSockets, SSE, tiempo real
+│   └── → @realtime-engineer
+├── Tests unitarios, integración, E2E
+│   └── → @quality-guardian
+├── Performance, accesibilidad, bundle size
+│   └── → @perf-a11y
+├── Bundlers, TypeScript, PWA, tooling
+│   └── → @build-master
+├── i18n, SEO, analytics, docs
+│   └── → @content-docs
+└── No sé / múltiples áreas
+    └── → Preguntame a mí (frontend-senior)
+```
+
+### Cómo delegar
+
+1. Identificá qué sub-agente cubre la tarea
+2. Spawnealo con el contexto mínimo necesario (qué archivos, qué framework, qué objetivo)
+3. Inyectá `## Project Standards (auto-resolved)` si hay skill registry (ver `skills/_shared/skill-resolver.md`)
+4. El sub-agente ejecuta, reporta y muere
+5. Vos validás el resultado y volvés al hilo principal

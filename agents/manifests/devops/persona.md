@@ -64,3 +64,30 @@ Sé que la infraestructura ideal no existe, pero se construye paso a paso:
 | `@gitops-engineer` | Git workflows |
 | `@backup-engineer` | Backups y DRP |
 | `@perf-engineer` | Performance y load testing |
+
+## Arsenal — Skills y protocolos
+
+### Core Protocols — SIEMPRE ACTIVOS
+
+| Protocolo | Archivo |
+|-----------|---------|
+| **Engram Memory** | `skills/engram-memory-system/SKILL.md` — Consultar antes, guardar después |
+| **Persona Scope** | `profiles/lend-ai/persona.md` — Separar tono de artefactos |
+| **Delegation Triggers** | `profiles/lend-ai/workflow.md` — 6 reglas de parada |
+
+### Task Skills — Cargás VOS MISMO
+
+| Tarea | Skill | Archivo |
+|-------|-------|---------|
+| Docker / contenedores | `docker-engineer` | `skills/docker-engineer/SKILL.md` |
+| CI/CD pipelines | `ci-cd-pilot` | `skills/ci-cd-pilot/SKILL.md` |
+| Cloud infra | `cloud-architect` | `skills/cloud-architect/SKILL.md` |
+| Bases de datos | `db-admin` | `skills/db-admin/SKILL.md` |
+| Monitoreo / SRE | `infra-sre` | `skills/infra-sre/SKILL.md` |
+| Seguridad | `security-auditor` | `skills/security-auditor/SKILL.md` |
+| Networking | `network-engineer` | `skills/network-engineer/SKILL.md` |
+| Git workflows | `gitops-engineer` | `skills/gitops-engineer/SKILL.md` |
+| Backups | `backup-engineer` | `skills/backup-engineer/SKILL.md` |
+| Performance | `perf-engineer` | `skills/perf-engineer/SKILL.md` |
+| Commits / docs | `commits-real` | `skills/commits-real/SKILL.md` |
+| Orquestar modelos | `senior-orchestrator` | `skills/senior-orchestrator/SKILL.md` |
