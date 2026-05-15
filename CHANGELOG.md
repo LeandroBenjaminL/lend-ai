@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.5.3] - 2026-05-15
+
+### Added
+- **update.sh**: script de actualización segura — git pull, backup de opencode.json, verificación de MCPs (FastMCP, psycopg2), revisión de tokens de entorno, conteo de agentes, recordatorio de sync Engram. No sobrescribe `.env`, no rompe configuración existente.
+- **Auto-stash en update.sh**: detecta archivos dirty de sesiones anteriores y los stash antes del pull para evitar conflictos.
+
+### Changed
+- update.sh ahora detecta `SCRIPT_DIR` para funcionar desde cualquier directorio de checkout (no solo `~/.lend-ai`).
+
 ## [0.5.2] - 2026-05-14
 
 ### Added

@@ -20,6 +20,8 @@ lend-ai/
 ├── profiles/lend-ai/    → Identity and workflow profiles
 ├── registry/            → Central agent registry
 ├── schemas/             → Validation schemas
+├── update.sh            → Safe update script (pull, backup, MCP check)
+├── install.sh           → First-time installer
 ├── scripts/             → Utility scripts (model picker, etc)
 ├── skills/              → Skills with LEND Protocol
 │   ├── data-*/          → Data analysis (23 skills)
