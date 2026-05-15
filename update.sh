@@ -119,6 +119,7 @@ if [ -f "${OPENCODE_CONFIG}" ]; then
 fi
 
 cp "${LEND_AI_HOME}/opencode.json" "${OPENCODE_CONFIG}"
+sed -i "s|{LEND_AI_HOME}|${LEND_AI_HOME}|g" "${OPENCODE_CONFIG}"
 success "opencode.json actualizado en ~/.config/opencode/"
 
 # ============================================================================
