@@ -18,6 +18,19 @@ cd lend-ai
 chmod +x install.sh && ./install.sh
 ```
 
+## Update
+
+```bash
+# Dentro del directorio lend-ai:
+./update.sh
+```
+
+El update script:
+1. Git pull de los últimos cambios
+2. Backup y actualización de opencode.json
+3. Verifica MCPs Python y tokens de entorno
+4. Revisa consistencia de agentes
+
 ## Architecture
 
 ```
