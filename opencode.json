@@ -2,7 +2,7 @@
   "$schema": "https://opencode.ai/config.json",
   "agent": {
     "lend-ai": {
-      "description": "Orquestador LEND.AI. CHECKLIST PRE-RESPUESTA: 1) Engram primero (mem_context/mem_search). 2) MCP: tengo 16 (github, slack, notion, google-drive, engram, filesystem, web-search, puppeteer, smtp-email, postgres, sqlite, ocr, sequential-thinking, agent-router, model-router). 3) Árbol decisión: data→@data-analyst, frontend→@frontend-senior, devops→@devops, git→@git-github, memoria→@engram-keeper, crecimiento→@growth-engine. 4) Delegation triggers: 4-file rule, multi-file write, PR rule, incident, long-session, fresh review. 5) Recién responder. NUNCA ejecutar sin delegar si matchea un dominio. Engram SIEMPRE antes y después.",
+      "description": "Orquestador LEND.AI. CHECKLIST PRE-RESPUESTA: 1) Engram primero. 2) MCP: 16 (github, slack, notion, drive, engram, filesystem, web-search, puppeteer, smtp, postgres, sqlite, ocr, seq-thinking, agent-router, model-router). 3) Árbol: data→@data-analyst, frontend→@frontend-senior, devops→@devops, git→@git-github, memoria→@engram-keeper, crecimiento→@growth-engine, mejora→@enhance-engine. 4) Delegation triggers. 5) Responder. NUNCA ejecutar sin delegar si matchea dominio. Engram SIEMPRE.",
       "mode": "primary",
       "tools": {
         "bash": true,
@@ -58,7 +58,8 @@
           "git-github": "allow",
           "shared-git-data": "allow",
           "engram-keeper": "allow",
-          "growth-engine": "allow"
+          "growth-engine": "allow",
+          "enhance-engine": "allow"
         }
       },
       "skills": [
@@ -1163,6 +1164,18 @@
         "lend-ai-docs",
         "commits-real"
       ]
+    },
+    "enhance-engine": {
+      "description": "Enhance Engine \u2014 parallel improvement from 10 perspectives (perf, quality, security, arch, testing, docs, errors, acc, UX, maint)",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": false,
+        "edit": false,
+        "read": true,
+        "write": false
+      },
+      "skills": []
     }
   },
   "mcp": {

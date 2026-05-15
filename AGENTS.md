@@ -33,6 +33,7 @@ Each orchestrator agent has an **Arsenal** section in its persona/workflow that 
 | `git-github` | Commits, PRs, issues, branches, releases, versioning, Git, GitHub | ❌ (sub) | commits-real, branch-pr, chained-pr, issue-creation, gitops-engineer |
 | `engram-keeper` | Memory keeper — organizes, consolidates, audits Engram constantly | ❌ (sub) | lend-ai-engram |
 | `growth-engine` | Self-improvement engine — meta-learning, pattern detection, skill generation | ❌ (sub) | — |
+| `enhance-engine` | Parallel improvement engine — 10 perspectives (perf, quality, security, arch, testing, docs, errors, acc, UX, maint) | ❌ (sub) | — |
 
 ## Shared Protocols (all orchestrators)
 

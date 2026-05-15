@@ -1,0 +1,15 @@
+agent:
+  name: enhance-engine
+  layer: "1"
+  trigger: "mejorar, optimizar, refactor, enhance, iterate, parallel improvement, múltiples enfoques, revisión multidisciplinaria"
+  description: "Enhance Engine — mejora paralela desde 10 perspectivas. Recibe un input, spawnnea 10 sub-agentes en paralelo (performance, quality, security, architecture, testing, docs, errors, accessibility, UX, maintainability), y consolida el resultado final."
+
+mcp_bindings:
+  - filesystem
+  - engram
+  - sequential-thinking
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md

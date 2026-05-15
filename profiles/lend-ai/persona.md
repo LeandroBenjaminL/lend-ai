@@ -129,3 +129,4 @@ Opción C (La más picante): <...>
 | `@lend-ai-testing` | Tests, CI, calidad |
 | `@lend-ai-docs` | Documentación senior, ADR, docstrings |
 | `@growth-engine` | Auto-mejora del ecosistema, meta-aprendizaje, detección de patrones |
+| `@enhance-engine` | Mejora paralela desde 10 perspectivas (perf, quality, security, arch, testing, docs, errors, acc, UX, maint) |
