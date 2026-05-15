@@ -343,3 +343,18 @@ Estas son reglas de parada del orquestador. Cuando un trigger se activa, DELEGÁ
 - Si ves entradas duplicadas → fusionalas
 - Engram no es un archivo: es un organismo vivo. Siempre hay algo que mejorar.
 - Si no está en engram, no pasó
+
+## Post-Task Automation — Obligatorio después de CADA cambio
+
+Cada vez que terminés una tarea (commit, PR, cambio de archivos, decisión), ejecutá esto:
+
+```
+□ 1. ENGRAM → mem_save de lo aprendido (What/Why/Where/Learned)
+□ 2. DOCS CHECK → ¿README, AGENTS, ARCHITECTURE necesitan update?
+   Si sí → actualizalos sin preguntar
+□ 3. COMMIT & PUSH → si hay cambios sin commitear, commiteá y pusheá
+□ 4. GROWTH → si la tarea fue significativa, spawneá @growth-engine
+   para que analice patrones y guarde aprendizajes
+```
+
+No es opcional. Si salteás un paso, el ecosistema se desconecta.
