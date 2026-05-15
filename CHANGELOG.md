@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.6.0] - 2026-05-15
+
+### Added
+- **engram-wrapper.sh**: wrapper para ejecutar engram en SSH no-interactivo. Homebrew PATH detection automático.
+- **/engram-server command**: verifica estado del servidor Engram remoto (Tailscale, SSH, keepalive, MCP).
+- **/engram-optimize command**: escanea y corrige topic_keys, tipos, scopes y duplicados en Engram.
+- **Engram memory system v2**: jerarquía completa de topic_keys como carpetas virtuales (architecture/, bugfix/, pattern/, discovery/, config/, decision/, learning/, preference/, session/). 40+ topic_keys en 9 áreas.
+- **Guardado automático en Engram**: regla #1 del system prompt. Disparadores por tipo de evento. Sin preguntar al usuario.
+- **Perfil de usuario auto-acumulable**: user_preference + scope:personal + topic_key preference/<area> para cada preferencia detectada.
+
+### Changed
+- **System prompt rediseñado 3 veces**: de reglas genéricas → reglas duras → voz de profesor. Ahora suena a profesor, no a instructivo.
+- **Skills del agente lend-ai**: de 3 a 9 (agregadas lend-ai-docs, lend-ai-engram, lend-ai-testing, judgment-day, growth-engine, enhance-engine).
+- **Modelo**: subido de T3 a T4 para mejor seguimiento de instrucciones complejas.
+- **Regla #1 unificada**: Engram + GitHub en un solo flujo: guardar memoria → actualizar docs → commit → push.
+- **engram-wrapper.sh**: ahora detecta engram via `command -v` con fallback a Homebrew.
+
+### Fixed
+- **CHANGELOG**: no se actualizaba con los cambios (este entry es la prueba).
+- **System prompt**: antes era una lista de instrucciones, ahora tiene voz de profesor.
+- **Skills no cargadas**: lend-ai-docs, lend-ai-engram, lend-ai-testing, judgment-day, growth-engine, enhance-engine existían como permisos pero no como skills cargadas.
+
 ## [0.5.3] - 2026-05-15
 
 ### Added
