@@ -15,7 +15,19 @@ set -euo pipefail
 # Config
 # ============================================================================
 
-LEND_AI_HOME="${LEND_AI_HOME:-${HOME}/.lend-ai}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+LEND_AI_HOME="${LEND_AI_HOME:-}"
+if [ -z "${LEND_AI_HOME}" ]; then
+    if [ -d "${HOME}/.lend-ai" ]; then
+        LEND_AI_HOME="${HOME}/.lend-ai"
+    elif [ -f "${SCRIPT_DIR}/opencode.json" ]; then
+        LEND_AI_HOME="${SCRIPT_DIR}"
+    else
+        echo "No se encuentra LEND.AI. Especificá LEND_AI_HOME o ejecutá install.sh primero."
+        echo "  curl -sL https://raw.githubusercontent.com/LeandroBenjaminL/lend-ai/main/install.sh | bash"
+        exit 1
+    fi
+fi
 OPENCODE_CONFIG="${HOME}/.config/opencode/opencode.json"
 OPENCODE_BACKUP="${HOME}/.config/opencode/opencode.json.backup.$(date +%Y%m%d-%H%M%S)"
 LEND_ENV="${LEND_AI_HOME}/.env"
@@ -65,15 +77,11 @@ info "Commit:       ${CURRENT_COMMIT}"
 # ============================================================================
 
 if ! git diff --quiet HEAD 2>/dev/null; then
-    warn "Tenés cambios locales sin commitear."
-    git status --short
+    warn "Tenés cambios locales sin commitear (archivos de otra sesión):"
+    git status --short | head -10
     echo ""
-    read -rp "¿Commitear y pushear antes de actualizar? (y/N): " CONFIRM
-    if [ "$CONFIRM" = "y" ] || [ "$CONFIRM" = "Y" ]; then
-        git add -A
-        git commit -m "wip: pending changes before update $(date +%Y-%m-%d)" || true
-        git push || warn "No se pudo pushear (podés hacerlo después)"
-    fi
+    info "Se van a stash para que el pull sea limpio."
+    git stash --include-untracked || true
 fi
 
 # ============================================================================
