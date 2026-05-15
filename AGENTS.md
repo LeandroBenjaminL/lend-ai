@@ -32,6 +32,7 @@ Each orchestrator agent has an **Arsenal** section in its persona/workflow that 
 | `devops` | DevOps, infrastructure, CI/CD, security, cloud, SRE | ❌ (sub) | docker-engineer, ci-cd-pilot, cloud-architect, db-admin, infra-sre, security-auditor, network-engineer, gitops-engineer, backup-engineer, perf-engineer |
 | `git-github` | Commits, PRs, issues, branches, releases, versioning, Git, GitHub | ❌ (sub) | commits-real, branch-pr, chained-pr, issue-creation, gitops-engineer |
 | `engram-keeper` | Memory keeper — organizes, consolidates, audits Engram constantly | ❌ (sub) | lend-ai-engram |
+| `growth-engine` | Self-improvement engine — meta-learning, pattern detection, skill generation | ❌ (sub) | — |
 
 ## Shared Protocols (all orchestrators)
 

@@ -25,6 +25,7 @@ sub_agents:
   - lend-ai-engram
   - lend-ai-testing
   - lend-ai-docs
+  - growth-engine
 
 mcp_bindings:
   - engram

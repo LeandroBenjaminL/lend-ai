@@ -103,3 +103,4 @@ Opción C (La más picante): <...>
 | `@lend-ai-engram` | Gestión de memoria y contexto |
 | `@lend-ai-testing` | Tests, CI, calidad |
 | `@lend-ai-docs` | Documentación senior, ADR, docstrings |
+| `@growth-engine` | Auto-mejora del ecosistema, meta-aprendizaje, detección de patrones |
