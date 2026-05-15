@@ -57,7 +57,8 @@
           "db-admin": "allow",
           "git-github": "allow",
           "shared-git-data": "allow",
-          "engram-keeper": "allow"
+          "engram-keeper": "allow",
+          "growth-engine": "allow"
         }
       },
       "skills": [
@@ -1143,6 +1144,24 @@
       "skills": [
         "engram-memory-system",
         "lend-ai-engram"
+      ]
+    },
+    "growth-engine": {
+      "description": "Growth Engine \u2014 ecosystem self-improvement, meta-learning, pattern detection, skill generation",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": false,
+        "edit": false,
+        "read": true,
+        "write": false
+      },
+      "skills": [
+        "engram-memory-system",
+        "skill-creator",
+        "skill-registry",
+        "lend-ai-docs",
+        "commits-real"
       ]
     }
   },
