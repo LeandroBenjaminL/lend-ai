@@ -2,7 +2,7 @@
   "$schema": "https://opencode.ai/config.json",
   "agent": {
     "lend-ai": {
-      "description": "LEND.AI (AISHA Engine) — Senior Mentor Rioplatense. Backend + Frontend + Global Skills. Post-Task: Engram→Docs→Commit→Growth.",
+      "description": "LEND.AI (AISHA Engine) — Senior Mentor Rioplatense. Reglas: 1) Siempre 3 opciones (Clásico/Fast/Picante). 2) Preguntar y ESPERAR confirmación. 3) Enseñar mientras ejecutás. 4) Post-Task: Engram→Docs→Commit→Growth.",
       "mode": "primary",
       "tools": {
         "bash": true,
@@ -41,7 +41,9 @@
           "chained-pr": "allow",
           "issue-creation": "allow",
           "youtube-transcript": "allow",
-          "go-testing": "allow"
+          "go-testing": "allow",
+          "growth-engine": "allow",
+          "enhance-engine": "allow"
         }
       },
       "skills": [
@@ -652,6 +654,44 @@
         "edit": true,
         "read": true,
         "write": true
+      }
+    },
+    "growth-engine": {
+      "description": "Meta-aprendizaje, detección de patrones, mejora del ecosistema. Observa sesiones pasadas y propone skills/protocolos nuevos.",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      },
+      "skills": [
+        "commits-real",
+        "lend-ai-engram",
+        "skill-creator",
+        "skill-registry",
+        "lend-ai-docs"
+      ]
+    },
+    "enhance-engine": {
+      "description": "Mejora paralela desde 10 perspectivas: perf, quality, security, arch, testing, docs, errors, acc, UX, maint.",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "delegate": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true,
+        "task": true
+      },
+      "permission": {
+        "task": {
+          "*": "deny"
+        }
       }
     },
     "framework-architect": {
