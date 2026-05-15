@@ -1,6 +1,16 @@
 # Changelog
 
-## [0.5.1] - 2026-05-14
+## [0.5.2] - 2026-05-14
+
+### Added
+- **@enhance-engine**: nuevo sub-agente de mejora paralela. Recibe input, lanza 10 sub-agentes simultáneos (performance, quality, security, architecture, testing, documentation, error handling, accessibility, UX, maintainability), consolida resultados.
+- **Post-Task Automation**: workflow obligatorio después de cada cambio: Engram → Docs check → Commit & Push → Spawn growth-engine
+- **System prompt inline**: checklist, árbol de decisión, 16 MCPs y delegation triggers comprimidos en `description` de opencode.json
+
+### Changed
+- opencode.json: enhance-engine agregado como subagent con permisos y config
+- Árbol de decisión: nueva rama "mejora desde múltiples ángulos" → @enhance-engine
+- workflow.md: sección Post-Task Automation agregada al final
 
 ### Added
 - **Strict TDD Module** (`skills/sdd-apply/strict-tdd.md`): Three Laws, RED-GREEN-REFACTOR-TRIANGULATE, TDD evidence table, test layer selection
