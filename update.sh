@@ -47,6 +47,7 @@ info()    { echo -e "${BLUE}[info]${NC}    $*"; }
 success() { echo -e "${GREEN}[ok]${NC}      $*"; }
 warn()    { echo -e "${YELLOW}[warn]${NC}    $*"; }
 error()   { echo -e "${RED}[error]${NC}   $*" >&2; }
+step()    { echo -e "\n${BOLD}▶ $*${NC}"; }
 
 # ============================================================================
 # 1. Check current state
