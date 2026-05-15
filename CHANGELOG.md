@@ -12,6 +12,10 @@
 - update.sh ahora detecta `SCRIPT_DIR` para funcionar desde cualquier directorio de checkout (no solo `~/.lend-ai`).
 - System prompt: de título genérico a reglas de comportamiento explícitas.
 
+### Fixed
+- **tests**: 2 tests fallando por `frontend-mentor` (deprecado desde v0.4.0). Reemplazado por `frontend-senior`.
+- update.sh: `{LEND_AI_HOME}` placeholder se reemplaza al copiar opencode.json.
+
 ## [0.5.2] - 2026-05-14
 
 ### Added
