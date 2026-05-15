@@ -2,7 +2,7 @@
   "$schema": "https://opencode.ai/config.json",
   "agent": {
     "lend-ai": {
-      "description": "Orquestador LEND.AI. GATES: 1) Frenar: si vago, pedí claridad. 2) Menú Senior: 3 opciones SIEMPRE con pros/contras. 3) Preguntar y ESPERAR. 4) Enseñar mientras ejecutás. 5) Exigir precisión. CHECKLIST: 1) Engram. 2) MCPs (16). 3) Árbol decisión (data, frontend, devops, git, memoria, growth, enhance). 4) Delegation triggers. 5) Menú 3 opciones. 6) Preguntar. 7) Responder. 8) Enseñar. 9) Engram. Enseñanza > ejecución.",
+      "description": "LEND.AI (AISHA Engine) — Senior Mentor Rioplatense. Backend + Frontend + Global Skills.",
       "mode": "primary",
       "tools": {
         "bash": true,
@@ -41,36 +41,17 @@
           "chained-pr": "allow",
           "issue-creation": "allow",
           "youtube-transcript": "allow",
-          "go-testing": "allow",
-          "devops": "allow",
-          "engram-memory-system": "allow",
-          "lend-ai-persona": "allow",
-          "docker-engineer": "allow",
-          "ci-cd-pilot": "allow",
-          "cloud-architect": "allow",
-          "infra-sre": "allow",
-          "security-auditor": "allow",
-          "network-engineer": "allow",
-          "gitops-engineer": "allow",
-          "backup-engineer": "allow",
-          "perf-engineer": "allow",
-          "db-admin": "allow",
-          "git-github": "allow",
-          "shared-git-data": "allow",
-          "engram-keeper": "allow",
-          "growth-engine": "allow",
-          "enhance-engine": "allow"
+          "go-testing": "allow"
         }
       },
       "skills": [
         "lend-ai-persona",
-        "engram-memory-system",
         "senior-orchestrator",
         "commits-real"
       ]
     },
     "data-analyst": {
-      "description": "Profesor senior de data science \u2014 an\u00e1lisis, ML, ETL, reportes",
+      "description": "Profesor senior de data science — análisis, ML, ETL, reportes",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -148,7 +129,7 @@
       }
     },
     "frontend-senior": {
-      "description": "Mentor senior de frontend \u2014 React, TypeScript, CSS, testing",
+      "description": "Mentor senior de frontend — React, TypeScript, CSS, testing",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -203,7 +184,7 @@
       }
     },
     "data-explorer": {
-      "description": "EDA, profiling y an\u00e1lisis exploratorio",
+      "description": "EDA, profiling y análisis exploratorio",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -239,7 +220,7 @@
       }
     },
     "data-etl": {
-      "description": "Pipelines ETL y automatizaci\u00f3n",
+      "description": "Pipelines ETL y automatización",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -262,7 +243,7 @@
       }
     },
     "data-validation": {
-      "description": "Validaci\u00f3n y calidad de datos",
+      "description": "Validación y calidad de datos",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -273,7 +254,7 @@
       }
     },
     "data-question": {
-      "description": "Definir preguntas de negocio, hip\u00f3tesis y objetivos",
+      "description": "Definir preguntas de negocio, hipótesis y objetivos",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -284,7 +265,7 @@
       }
     },
     "data-design": {
-      "description": "Dise\u00f1ar estrategia de an\u00e1lisis, elegir enfoque",
+      "description": "Diseñar estrategia de análisis, elegir enfoque",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -295,7 +276,7 @@
       }
     },
     "data-verify": {
-      "description": "Verificar resultados del an\u00e1lisis",
+      "description": "Verificar resultados del análisis",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -331,7 +312,7 @@
       }
     },
     "data-analysis": {
-      "description": "An\u00e1lisis con Pandas/NumPy",
+      "description": "Análisis con Pandas/NumPy",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -343,7 +324,7 @@
       }
     },
     "data-profiling": {
-      "description": "Profiling autom\u00e1tico con ydata-profiling",
+      "description": "Profiling automático con ydata-profiling",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -367,7 +348,7 @@
       }
     },
     "reporting": {
-      "description": "Generaci\u00f3n de reportes HTML, PDF, Markdown",
+      "description": "Generación de reportes HTML, PDF, Markdown",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -391,7 +372,7 @@
       }
     },
     "data-visualization": {
-      "description": "Gr\u00e1ficos con Matplotlib, Seaborn, Plotly",
+      "description": "Gráficos con Matplotlib, Seaborn, Plotly",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -415,7 +396,7 @@
       }
     },
     "statistical-testing": {
-      "description": "Tests estad\u00edsticos con SciPy",
+      "description": "Tests estadísticos con SciPy",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -451,7 +432,7 @@
       }
     },
     "file-formats": {
-      "description": "Lectura/escritura de m\u00faltiples formatos",
+      "description": "Lectura/escritura de múltiples formatos",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -474,7 +455,7 @@
       }
     },
     "notebook-integration": {
-      "description": "Integraci\u00f3n con Jupyter notebooks",
+      "description": "Integración con Jupyter notebooks",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -485,7 +466,7 @@
       }
     },
     "python-environment": {
-      "description": "Gesti\u00f3n de entornos Python",
+      "description": "Gestión de entornos Python",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -518,7 +499,7 @@
       }
     },
     "web-scraping": {
-      "description": "Extracci\u00f3n de datos de sitios web",
+      "description": "Extracción de datos de sitios web",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -540,7 +521,7 @@
       }
     },
     "commits-real": {
-      "description": "Commits, documentaci\u00f3n y versioning unificados",
+      "description": "Commits, documentación y versioning unificados",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -551,7 +532,7 @@
       }
     },
     "lend-ai-engram": {
-      "description": "Gestor de memoria del ecosistema \u2014 estructura, guarda y consulta Engram",
+      "description": "Gestor de memoria del ecosistema — estructura, guarda y consulta Engram",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -562,7 +543,7 @@
       }
     },
     "lend-ai-testing": {
-      "description": "Guardi\u00e1n de calidad \u2014 tests unitarios, CI, cobertura",
+      "description": "Guardián de calidad — tests unitarios, CI, cobertura",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -573,7 +554,7 @@
       }
     },
     "lend-ai-docs": {
-      "description": "Est\u00e1ndar de documentaci\u00f3n senior \u2014 multi-archivo, Google-style docstrings, ADR",
+      "description": "Estándar de documentación senior — multi-archivo, Google-style docstrings, ADR",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -584,7 +565,7 @@
       }
     },
     "judgment-day": {
-      "description": "Revisi\u00f3n adversarial: dos jueces ciegos",
+      "description": "Revisión adversarial: dos jueces ciegos",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -619,7 +600,7 @@
       }
     },
     "branch-pr": {
-      "description": "Creaci\u00f3n de PRs con issue-first",
+      "description": "Creación de PRs con issue-first",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -641,7 +622,7 @@
       }
     },
     "issue-creation": {
-      "description": "Creaci\u00f3n de issues en GitHub",
+      "description": "Creación de issues en GitHub",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -781,7 +762,7 @@
       }
     },
     "content-docs": {
-      "description": "Documentaci\u00f3n y contenido",
+      "description": "Documentación y contenido",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -897,285 +878,6 @@
         "write": true,
         "skill": true
       }
-    },
-    "devops": {
-      "description": "Senior DevOps Mentor \u2014 infraestructura, CI/CD, Docker, cloud, seguridad, monitoreo, SRE",
-      "mode": "subagent",
-      "hidden": true,
-      "tools": {
-        "bash": true,
-        "delegate": true,
-        "edit": true,
-        "read": true,
-        "write": true,
-        "skill": true,
-        "task": true
-      },
-      "skills": [
-        "commits-real",
-        "senior-orchestrator"
-      ],
-      "permission": {
-        "task": {
-          "*": "deny",
-          "commits-real": "allow",
-          "lend-ai-engram": "allow",
-          "lend-ai-testing": "allow",
-          "lend-ai-docs": "allow",
-          "docker-engineer": "allow",
-          "ci-cd-pilot": "allow",
-          "cloud-architect": "allow",
-          "db-admin": "allow",
-          "infra-sre": "allow",
-          "security-auditor": "allow",
-          "network-engineer": "allow",
-          "gitops-engineer": "allow",
-          "backup-engineer": "allow",
-          "perf-engineer": "allow"
-        }
-      }
-    },
-    "docker-engineer": {
-      "description": "Docker, contenedores, K8s",
-      "mode": "subagent",
-      "hidden": true,
-      "tools": {
-        "bash": true,
-        "edit": true,
-        "read": true,
-        "write": true,
-        "skill": true
-      },
-      "skills": [
-        "docker-engineer"
-      ]
-    },
-    "ci-cd-pilot": {
-      "description": "CI/CD pipelines",
-      "mode": "subagent",
-      "hidden": true,
-      "tools": {
-        "bash": true,
-        "edit": true,
-        "read": true,
-        "write": true,
-        "skill": true
-      },
-      "skills": [
-        "ci-cd-pilot"
-      ]
-    },
-    "cloud-architect": {
-      "description": "Cloud infrastructure (AWS/GCP/Azure)",
-      "mode": "subagent",
-      "hidden": true,
-      "tools": {
-        "bash": true,
-        "edit": true,
-        "read": true,
-        "write": true,
-        "skill": true
-      },
-      "skills": [
-        "cloud-architect"
-      ]
-    },
-    "db-admin": {
-      "description": "Administraci\u00f3n de bases de datos",
-      "mode": "subagent",
-      "hidden": true,
-      "tools": {
-        "bash": true,
-        "edit": true,
-        "read": true,
-        "write": true,
-        "skill": true
-      },
-      "skills": [
-        "db-admin"
-      ]
-    },
-    "infra-sre": {
-      "description": "Monitoreo, alertas, SRE",
-      "mode": "subagent",
-      "hidden": true,
-      "tools": {
-        "bash": true,
-        "edit": true,
-        "read": true,
-        "write": true,
-        "skill": true
-      },
-      "skills": [
-        "infra-sre"
-      ]
-    },
-    "security-auditor": {
-      "description": "Seguridad y auditor\u00eda",
-      "mode": "subagent",
-      "hidden": true,
-      "tools": {
-        "bash": true,
-        "edit": true,
-        "read": true,
-        "write": true,
-        "skill": true
-      },
-      "skills": [
-        "security-auditor"
-      ]
-    },
-    "network-engineer": {
-      "description": "Networking, DNS, proxies",
-      "mode": "subagent",
-      "hidden": true,
-      "tools": {
-        "bash": true,
-        "edit": true,
-        "read": true,
-        "write": true,
-        "skill": true
-      },
-      "skills": [
-        "network-engineer"
-      ]
-    },
-    "gitops-engineer": {
-      "description": "Git workflows y automation",
-      "mode": "subagent",
-      "hidden": true,
-      "tools": {
-        "bash": true,
-        "edit": true,
-        "read": true,
-        "write": true,
-        "skill": true
-      },
-      "skills": [
-        "gitops-engineer"
-      ]
-    },
-    "backup-engineer": {
-      "description": "Backups y disaster recovery",
-      "mode": "subagent",
-      "hidden": true,
-      "tools": {
-        "bash": true,
-        "edit": true,
-        "read": true,
-        "write": true,
-        "skill": true
-      },
-      "skills": [
-        "backup-engineer"
-      ]
-    },
-    "perf-engineer": {
-      "description": "Performance y load testing",
-      "mode": "subagent",
-      "hidden": true,
-      "tools": {
-        "bash": true,
-        "edit": true,
-        "read": true,
-        "write": true,
-        "skill": true
-      },
-      "skills": [
-        "perf-engineer"
-      ]
-    },
-    "lend-ai-persona": {
-      "description": "Personalidad LEND.AI (AISHA Engine) \u2014 identidad, tono rioplatense, LEND-Protocol",
-      "mode": "subagent",
-      "hidden": true,
-      "tools": {
-        "bash": false,
-        "edit": false,
-        "read": false,
-        "write": false
-      }
-    },
-    "git-github": {
-      "description": "Ingeniero Git/GitHub \u2014 commits, PRs, issues, branches, releases, versionado",
-      "mode": "subagent",
-      "hidden": true,
-      "tools": {
-        "bash": true,
-        "delegate": true,
-        "edit": true,
-        "read": true,
-        "write": true,
-        "skill": true,
-        "task": true
-      },
-      "skills": [
-        "commits-real",
-        "branch-pr",
-        "chained-pr",
-        "issue-creation",
-        "gitops-engineer",
-        "shared-git-data"
-      ],
-      "permission": {
-        "task": {
-          "*": "deny",
-          "commits-real": "allow",
-          "branch-pr": "allow",
-          "chained-pr": "allow",
-          "issue-creation": "allow",
-          "gitops-engineer": "allow",
-          "shared-git-data": "allow",
-          "lend-ai-engram": "allow",
-          "lend-ai-testing": "allow",
-          "lend-ai-docs": "allow"
-        }
-      }
-    },
-    "engram-keeper": {
-      "description": "Engram Keeper \u2014 guardian of ecosystem memory. Organizes, consolidates, maintains context.",
-      "mode": "subagent",
-      "hidden": true,
-      "tools": {
-        "bash": false,
-        "edit": false,
-        "read": true,
-        "write": false
-      },
-      "skills": [
-        "engram-memory-system",
-        "lend-ai-engram"
-      ]
-    },
-    "growth-engine": {
-      "description": "Growth Engine \u2014 ecosystem self-improvement, meta-learning, pattern detection, skill generation",
-      "mode": "subagent",
-      "hidden": true,
-      "tools": {
-        "bash": false,
-        "edit": false,
-        "read": true,
-        "write": false
-      },
-      "skills": [
-        "engram-memory-system",
-        "skill-creator",
-        "skill-registry",
-        "lend-ai-docs",
-        "commits-real"
-      ]
-    },
-    "enhance-engine": {
-      "description": "Enhance Engine \u2014 parallel improvement from 10 perspectives (perf, quality, security, arch, testing, docs, errors, acc, UX, maint)",
-      "mode": "subagent",
-      "hidden": true,
-      "tools": {
-        "bash": false,
-        "edit": false,
-        "read": true,
-        "write": false
-      },
-      "skills": []
     }
   },
   "mcp": {

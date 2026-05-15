@@ -11,22 +11,12 @@ instructions:
 
 skills:
   - lend-ai-persona
-  - engram-memory-system
   - senior-orchestrator
   - commits-real
 
 sub_agents:
-  - engram-keeper
-  - git-github
-  - devops
   - data-analyst
   - frontend-senior
-  - commits-real
-  - lend-ai-engram
-  - lend-ai-testing
-  - lend-ai-docs
-  - growth-engine
-  - enhance-engine
 
 mcp_bindings:
   - engram

@@ -1,147 +1,96 @@
 # Lend.Ai — Agent Skills Index
 
-Unified AI agent ecosystem: Data Analysis, Frontend Development, DevOps, and Git/GitHub.
+Ecosistema unificado de agentes AI para Data Analysis y Frontend Development.
 
-When working on this project, load the relevant skill BEFORE writing code.
+Cuando trabajes en este proyecto, cargá la skill relevante ANTES de escribir código.
 
-Naming convention:
-- `lend-ai-*` skills are repo-specific (workflow, identity)
-- `data-*` skills belong to the Data Analysis domain
-- `frontend-*` skills belong to the Frontend domain
-- `devops-*` and unprefixed names are transversal/portable
+Convención de naming:
+- `lend-ai-*` skills son específicas del repo (workflow, identidad)
+- `data-*` skills son del dominio Data Analysis
+- `frontend-*` skills son del dominio Frontend
+- Skills sin prefijo son transversales/portables
 
-## How to use
+## Cómo usar
 
-Each orchestrator agent has an **Arsenal** section in its persona/workflow that maps:
-- **Core Protocols**: always-on (Engram, Persona Scope, Output Style, Delegation Triggers)
-- **Domain Sub-agents**: when to spawn each one
-- **Task Skills**: when to load each one, with exact file path
+1. Revisá la columna **Trigger** para encontrar la skill que coincide con tu tarea
+2. Cargá la skill leyendo el archivo SKILL.md en la ruta indicada
+3. Seguí TODOS los patrones y reglas de la skill cargada
+4. Múltiples skills pueden aplicarse simultáneamente
 
-1. Check your persona's Arsenal section first — it tells you what to load and when
-2. Sub-agents receive `## Project Standards (auto-resolved)` injected by the orchestrator (see `skills/_shared/skill-resolver.md`)
-3. Follow ALL the patterns and rules in the loaded skill
-4. Engram is ALWAYS on — consult before deciding, save after every change
+## Agentes del Ecosistema
 
-## Ecosystem Agents
-
-| Agent | Role | Primary | Sub-agents |
+| Agente | Rol | Primary | Sub-agentes |
 |--------|-----|---------|-------------|
-| `lend-ai` | General ecosystem orchestrator | ✅ | data-analyst, frontend-senior, devops, git-github, engram-keeper, commits-real, lend-ai-engram, lend-ai-testing, lend-ai-docs |
-| `data-analyst` | Data analysis, ML, EDA, reporting | ❌ (sub) | data-question, data-design, data-explorer, data-analysis, data-cleaning, data-modeler, data-reporter, data-verify, data-archive |
-| `frontend-senior` | Frontend development, React, CSS, testing | ❌ (sub) | framework-architect, ui-crafter, styling-engineer, data-flow, api-consumer, realtime-engineer, quality-guardian, perf-a11y, build-master, content-docs |
-| `devops` | DevOps, infrastructure, CI/CD, security, cloud, SRE | ❌ (sub) | docker-engineer, ci-cd-pilot, cloud-architect, db-admin, infra-sre, security-auditor, network-engineer, gitops-engineer, backup-engineer, perf-engineer |
-| `git-github` | Commits, PRs, issues, branches, releases, versioning, Git, GitHub | ❌ (sub) | commits-real, branch-pr, chained-pr, issue-creation, gitops-engineer |
-| `engram-keeper` | Memory keeper — organizes, consolidates, audits Engram constantly | ❌ (sub) | lend-ai-engram |
-| `growth-engine` | Self-improvement engine — meta-learning, pattern detection, skill generation | ❌ (sub) | — |
-| `enhance-engine` | Parallel improvement engine — 10 perspectives (perf, quality, security, arch, testing, docs, errors, acc, UX, maint) | ❌ (sub) | — |
+| `lend-ai` | Orquestador general del ecosistema | ✅ | data-analyst, frontend-senior, commits-real, lend-ai-engram, lend-ai-testing |
+| `data-analyst` | Análisis de datos, ML, EDA, reporting | ❌ (sub) | data-explorer, data-modeler, data-reporter, etc. |
+| `frontend-senior` | Desarrollo frontend, React, CSS, testing | ❌ (sub) | framework-architect, ui-crafter, styling-engineer, etc. |
 
-## Shared Protocols (all orchestrators)
-
-| Protocol | File | Purpose |
-|----------|------|---------|
-| `skill-resolver` | `skills/_shared/skill-resolver.md` | Inject compact rules into sub-agent prompts, feedback loop |
-| `subagent-context` | `skills/_shared/subagent-context.md` | Who reads/writes in each SDD phase, artifact store modes |
-| `sdd-phase-common` | `skills/_shared/sdd-phase-common.md` | Return envelope, artifact persistence, workload guard, topic keys |
-| `engram-convention` | `skills/_shared/engram-convention.md` | Topic key naming, recovery protocol |
-| `persistence-contract` | `skills/_shared/persistence-contract.md` | Artifact store mode resolution |
-
-## Global Skills (lend-ai orchestrator)
+## Skills
 
 | Skill | Trigger | Ruta |
 |-------|---------|------|
-| `lend-ai-persona` | Siempre activo — identidad AISHA Engine, Persona Scope, tono rioplatense, Menú del Senior | [`profiles/lend-ai/persona.md`](profiles/lend-ai/persona.md) |
-| `lend-ai-workflow` | Siempre activo — delegation triggers, skill arsenal, método de enseñanza | [`profiles/lend-ai/workflow.md`](profiles/lend-ai/workflow.md) |
-| `lend-ai-output-style` | Siempre activo — response length contract, core principle, behavior rules | [`profiles/lend-ai/output-style.md`](profiles/lend-ai/output-style.md) |
-| `engram-memory-system` | **SIEMPRE ACTIVO** — proactive save triggers, session close, What/Why/Where/Learned | [`skills/engram-memory-system/SKILL.md`](skills/engram-memory-system/SKILL.md) |
-| `senior-orchestrator` | Al orquestar modelos, decidir tiers, planear arquitectura | [`skills/senior-orchestrator/SKILL.md`](skills/senior-orchestrator/SKILL.md) |
+| `lend-ai-persona` | Al iniciar sesión, definir perfil, conocer la identidad del ecosistema | [`profiles/lend-ai/persona.md`](profiles/lend-ai/persona.md) |
+| `lend-ai-workflow` | Al planificar trabajo, definir flujo, decidir entre data o frontend | [`profiles/lend-ai/workflow.md`](profiles/lend-ai/workflow.md) |
+| `data-analyst` | Cuando necesitás ser el profesor senior de datos — análisis, EDA, ML | [`skills/data-analyst/SKILL.md`](skills/data-analyst/SKILL.md) |
+| `frontend-senior` | Cuando necesitás ser el mentor senior de frontend — React, CSS, UX | [`skills/frontend-senior/SKILL.md`](skills/frontend-senior/SKILL.md) |
+| `senior-orchestrator` | Cuando necesitás orquestar modelos, decidir tiers, planear arquitectura | [`skills/senior-orchestrator/SKILL.md`](skills/senior-orchestrator/SKILL.md) |
+| `commits-real` | Al escribir commits, PRs, issues, documentación | [`skills/commits-real/SKILL.md`](skills/commits-real/SKILL.md) |
+| `lend-ai-persona` | **Cargar al inicio de cada sesión** — identidad LEND.AI (AISHA Engine), tono rioplatense, LEND-Protocol | [`skills/lend-ai-persona/SKILL.md`](skills/lend-ai-persona/SKILL.md) |
+| `lend-ai-engram` | Al guardar o consultar memoria en Engram | [`skills/lend-ai-engram/SKILL.md`](skills/lend-ai-engram/SKILL.md) |
+| `lend-ai-testing` | Al escribir tests, configurar CI, revisar calidad | [`skills/lend-ai-testing/SKILL.md`](skills/lend-ai-testing/SKILL.md) |
+| `lend-ai-docs` | Al escribir documentación, docstrings, ADR, ARCHITECTURE.md | [`skills/lend-ai-docs/SKILL.md`](skills/lend-ai-docs/SKILL.md) |
+| `data-analysis` | Al analizar datasets, manipular DataFrames, cálculos numéricos | [`skills/data-analysis/SKILL.md`](skills/data-analysis/SKILL.md) |
+| `data-cleaning` | Al limpiar datos, manejar nulos, duplicados, outliers | [`skills/data-cleaning/SKILL.md`](skills/data-cleaning/SKILL.md) |
+| `data-visualization` | Al crear gráficos y visualizaciones | [`skills/data-visualization/SKILL.md`](skills/data-visualization/SKILL.md) |
+| `data-profiling` | Al recibir un dataset nuevo, profiling automático | [`skills/data-profiling/SKILL.md`](skills/data-profiling/SKILL.md) |
+| `data-question` | Al definir preguntas de negocio, hipótesis, objetivos | [`skills/data-question/SKILL.md`](skills/data-question/SKILL.md) |
+| `data-design` | Al diseñar estrategia de análisis, elegir enfoque | [`skills/data-design/SKILL.md`](skills/data-design/SKILL.md) |
+| `data-validation` | Al validar esquemas, garantizar calidad de datos | [`skills/data-validation/SKILL.md`](skills/data-validation/SKILL.md) |
+| `data-verify` | Al verificar resultados de análisis antes de presentar | [`skills/data-verify/SKILL.md`](skills/data-verify/SKILL.md) |
+| `ml-modeling` | Al entrenar modelos ML, regresión, clasificación | [`skills/ml-modeling/SKILL.md`](skills/ml-modeling/SKILL.md) |
+| `time-series-analysis` | Al trabajar con series temporales, forecasting | [`skills/time-series-analysis/SKILL.md`](skills/time-series-analysis/SKILL.md) |
+| `statistical-testing` | Al hacer tests de hipótesis, tests estadísticos | [`skills/statistical-testing/SKILL.md`](skills/statistical-testing/SKILL.md) |
+| `sql-analysis` | Al hacer consultas SQL, joins, window functions | [`skills/sql-analysis/SKILL.md`](skills/sql-analysis/SKILL.md) |
+| `database-connections` | Al conectar a bases de datos, SQLAlchemy | [`skills/database-connections/SKILL.md`](skills/database-connections/SKILL.md) |
+| `etl-pipelines` | Al construir pipelines ETL/ELT | [`skills/etl-pipelines/SKILL.md`](skills/etl-pipelines/SKILL.md) |
+| `frontend-react-development` | Al desarrollar componentes React, hooks, patrones | [`skills/frontend-react-development/SKILL.md`](skills/frontend-react-development/SKILL.md) |
+| `frontend-css-styling` | Al trabajar con CSS, Tailwind, Grid/Flexbox | [`skills/frontend-css-styling/SKILL.md`](skills/frontend-css-styling/SKILL.md) |
+| `frontend-type-script` | Al escribir TypeScript, tipos, genéricos | [`skills/frontend-type-script/SKILL.md`](skills/frontend-type-script/SKILL.md) |
+| `frontend-api-integration` | Al consumir APIs, TanStack Query, fetch | [`skills/frontend-api-integration/SKILL.md`](skills/frontend-api-integration/SKILL.md) |
+| `frontend-state-management` | Al manejar estado, Zustand, Redux, Context | [`skills/frontend-state-management/SKILL.md`](skills/frontend-state-management/SKILL.md) |
+| `frontend-testing` | Al escribir tests frontend, Vitest, Testing Library | [`skills/frontend-testing/SKILL.md`](skills/frontend-testing/SKILL.md) |
+| `frontend-responsive-design` | Al diseñar responsive, mobile-first | [`skills/frontend-responsive-design/SKILL.md`](skills/frontend-responsive-design/SKILL.md) |
+| `frontend-web-performance` | Al optimizar performance, Core Web Vitals | [`skills/frontend-web-performance/SKILL.md`](skills/frontend-web-performance/SKILL.md) |
+| `shared-api-integration` | Al consumir APIs REST, requests, integración genérica | [`skills/shared-api-integration/SKILL.md`](skills/shared-api-integration/SKILL.md) |
+| `shared-git-data` | Al versionar datasets, git para data science | [`skills/shared-git-data/SKILL.md`](skills/shared-git-data/SKILL.md) |
+| `judgment-day` | Al necesitar doble review, revisión adversarial | [`skills/judgment-day/SKILL.md`](skills/judgment-day/SKILL.md) |
+| `skill-creator` | Al crear nuevas skills para el ecosistema | [`skills/skill-creator/SKILL.md`](skills/skill-creator/SKILL.md) |
+| `skill-registry` | Al actualizar el registro de skills | [`skills/skill-registry/SKILL.md`](skills/skill-registry/SKILL.md) |
+| `web-scraping` | Al extraer datos de sitios web | [`skills/web-scraping/SKILL.md`](skills/web-scraping/SKILL.md) |
+| `youtube-transcript` | Al extraer transcripciones de YouTube | [`skills/youtube-transcript/SKILL.md`](skills/youtube-transcript/SKILL.md) |
 
-## Data Analysis Skills (data-analyst)
-
-| Skill | Trigger | Ruta |
-|-------|---------|------|
-| `data-analysis` | Al analizar datasets — Data Leakage Check, correlación, EDA con rigor estadístico, 3 opciones (visual / test hipótesis / PCA) | [`skills/data-analysis/SKILL.md`](skills/data-analysis/SKILL.md) |
-| `data-cleaning` | Al limpiar datos — Null Anatomy (MCAR/MAR/MNAR), outliers con IQR, imputación inteligente, fuzzy matching | [`skills/data-cleaning/SKILL.md`](skills/data-cleaning/SKILL.md) |
-| `data-visualization` | Al crear gráficos — elegir el tipo correcto según la historia, exploratorio vs publicable, Plotly vs Matplotlib | [`skills/data-visualization/SKILL.md`](skills/data-visualization/SKILL.md) |
-| `data-profiling` | Al recibir un dataset nuevo — ydata-profiling, pandera, reporte de calidad en minutos | [`skills/data-profiling/SKILL.md`](skills/data-profiling/SKILL.md) |
-| `data-question` | Al definir preguntas de negocio — SMART, frenar ambigüedad, alinear análisis con objetivos | [`skills/data-question/SKILL.md`](skills/data-question/SKILL.md) |
-| `data-design` | Al diseñar estrategia de análisis — elegir enfoque (SQL/Python/Híbrido), pipeline, herramientas | [`skills/data-design/SKILL.md`](skills/data-design/SKILL.md) |
-| `data-validation` | Al validar esquemas — pandera, great expectations, contratos de datos | [`skills/data-validation/SKILL.md`](skills/data-validation/SKILL.md) |
-| `data-verify` | Al verificar resultados antes de presentar — reproducibilidad, sanity checks, regla del titular | [`skills/data-verify/SKILL.md`](skills/data-verify/SKILL.md) |
-| `ml-modeling` | Al entrenar modelos — Baseline First, Stratified K-Fold, SHAP > feature_importances_, Optuna > GridSearch | [`skills/ml-modeling/SKILL.md`](skills/ml-modeling/SKILL.md) |
-| `time-series-analysis` | Al trabajar con series temporales — Prophet, statsmodels, descomposición, estacionariedad, forecasting | [`skills/time-series-analysis/SKILL.md`](skills/time-series-analysis/SKILL.md) |
-| `statistical-testing` | Al hacer tests de hipótesis — elegir test según datos, p-value con cuidado, tamaño del efecto | [`skills/statistical-testing/SKILL.md`](skills/statistical-testing/SKILL.md) |
-| `sql-analysis` | Al hacer consultas SQL — CTEs, window functions, JOINs, EXPLAIN ANALYZE, índices | [`skills/sql-analysis/SKILL.md`](skills/sql-analysis/SKILL.md) |
-| `database-connections` | Al conectar a bases de datos — SQLAlchemy, PostgreSQL, MySQL, SQLite, .env para secrets | [`skills/database-connections/SKILL.md`](skills/database-connections/SKILL.md) |
-| `etl-pipelines` | Al construir pipelines ETL/ELT — idempotente, logging, checkpoint, incremental | [`skills/etl-pipelines/SKILL.md`](skills/etl-pipelines/SKILL.md) |
-| `reporting` | Al generar reportes — Markdown/Quarto, HTML+Jinja2, PDF con ReportLab, automatizable | [`skills/reporting/SKILL.md`](skills/reporting/SKILL.md) |
-| `streamlit` | Al crear dashboards — st.cache_data, Plotly interactivo, deploy en Streamlit Cloud | [`skills/streamlit/SKILL.md`](skills/streamlit/SKILL.md) |
-| `file-formats` | Al leer/guardar datos multi-formato — CSV, Parquet, Feather, Excel, JSON. Elegí el formato correcto | [`skills/file-formats/SKILL.md`](skills/file-formats/SKILL.md) |
-| `notebook-integration` | Al trabajar con Jupyter — Run All antes de commitear, nbstripout, Quarto > .ipynb | [`skills/notebook-integration/SKILL.md`](skills/notebook-integration/SKILL.md) |
-| `python-environment` | Al gestionar entornos Python — venv, Poetry, Conda, .env, requirements congelados | [`skills/python-environment/SKILL.md`](skills/python-environment/SKILL.md) |
-| `regex-data` | Al limpiar texto con regex — extracción, validación, fuzzy matching, performance con re.compile | [`skills/regex-data/SKILL.md`](skills/regex-data/SKILL.md) |
-| `shared-git-data` | Al versionar proyectos de datos — DVC, nbstripout, .gitignore, commits semánticos | [`skills/shared-git-data/SKILL.md`](skills/shared-git-data/SKILL.md) |
-| `shared-api-integration` | Al consumir APIs REST — requests Session, timeout, rate limiting, .env para secrets | [`skills/shared-api-integration/SKILL.md`](skills/shared-api-integration/SKILL.md) |
-| `web-scraping` | Al extraer datos de sitios web — BeautifulSoup, Playwright, robots.txt, rate limiting | [`skills/web-scraping/SKILL.md`](skills/web-scraping/SKILL.md) |
-
-## Frontend Skills (frontend-senior)
-
-| Skill | Trigger | Ruta |
-|-------|---------|------|
-| `frontend-react-development` | Al crear componentes React — Server/Client Component, composición, hooks, estados visibles | [`skills/frontend-react-development/SKILL.md`](skills/frontend-react-development/SKILL.md) |
-| `frontend-css-styling` | Al estilar componentes — Tailwind vs CSS Modules, Container Queries, mobile-first | [`skills/frontend-css-styling/SKILL.md`](skills/frontend-css-styling/SKILL.md) |
-| `frontend-type-script` | Al escribir TypeScript — strict mode, satisfies, discriminated unions, evitar any | [`skills/frontend-type-script/SKILL.md`](skills/frontend-type-script/SKILL.md) |
-| `frontend-api-integration` | Al consumir APIs desde el front — TanStack Query, fetch, optimistic updates, manejo de errores | [`skills/frontend-api-integration/SKILL.md`](skills/frontend-api-integration/SKILL.md) |
-| `frontend-state-management` | Al manejar estado global — Zustand vs Redux vs Context, selectores, persist | [`skills/frontend-state-management/SKILL.md`](skills/frontend-state-management/SKILL.md) |
-| `frontend-testing` | Al testear frontend — Vitest + Testing Library, Playwright, MSW, pirámide de tests | [`skills/frontend-testing/SKILL.md`](skills/frontend-testing/SKILL.md) |
-| `frontend-responsive-design` | Al diseñar responsive — Container Queries, clamp(), Grid + auto-fit, mobile-first | [`skills/frontend-responsive-design/SKILL.md`](skills/frontend-responsive-design/SKILL.md) |
-| `frontend-web-performance` | Al optimizar performance — Core Web Vitals, Lighthouse, dynamic imports, bundle analysis | [`skills/frontend-web-performance/SKILL.md`](skills/frontend-web-performance/SKILL.md) |
-
-## DevOps Skills (devops)
+## Skills SDD (Spec-Driven Development)
 
 | Skill | Trigger | Ruta |
 |-------|---------|------|
-| `docker-engineer` | Al containerizar apps — Dockerfile multi-stage, compose, non-root, healthcheck, K8s | [`skills/docker-engineer/SKILL.md`](skills/docker-engineer/SKILL.md) |
-| `ci-cd-pilot` | Al automatizar pipelines — GitHub Actions, caching, matrix builds, secrets management | [`skills/ci-cd-pilot/SKILL.md`](skills/ci-cd-pilot/SKILL.md) |
-| `cloud-architect` | Al diseñar infra cloud — Terraform, AWS/GCP/Azure, tagging, estado remoto, mínimo privilegio | [`skills/cloud-architect/SKILL.md`](skills/cloud-architect/SKILL.md) |
-| `infra-sre` | Al monitorear servicios — Prometheus/Grafana, RED/USE method, SLIs/SLOs, runbooks | [`skills/infra-sre/SKILL.md`](skills/infra-sre/SKILL.md) |
-| `security-auditor` | Al escanear vulnerabilidades — SAST/DAST, secret scanning, hardening, OWASP, compliance | [`skills/security-auditor/SKILL.md`](skills/security-auditor/SKILL.md) |
+| `sdd-init` | Al iniciar un nuevo proyecto/feature en un codebase | [`skills/sdd-init/SKILL.md`](skills/sdd-init/SKILL.md) |
+| `sdd-explore` | Al investigar el codebase, explorar antes de diseñar | [`skills/sdd-explore/SKILL.md`](skills/sdd-explore/SKILL.md) |
+| `sdd-propose` | Al tener una propuesta de cambio para revisión | [`skills/sdd-propose/SKILL.md`](skills/sdd-propose/SKILL.md) |
+| `sdd-spec` | Al escribir especificaciones detalladas | [`skills/sdd-spec/SKILL.md`](skills/sdd-spec/SKILL.md) |
+| `sdd-design` | Al diseñar la implementación técnica | [`skills/sdd-design/SKILL.md`](skills/sdd-design/SKILL.md) |
+| `sdd-tasks` | Al descomponer especificaciones en tareas | [`skills/sdd-tasks/SKILL.md`](skills/sdd-tasks/SKILL.md) |
+| `sdd-apply` | Al implementar cambios del diseño | [`skills/sdd-apply/SKILL.md`](skills/sdd-apply/SKILL.md) |
+| `sdd-verify` | Al validar implementación contra especificaciones | [`skills/sdd-verify/SKILL.md`](skills/sdd-verify/SKILL.md) |
+| `sdd-archive` | Al archivar artefactos de cambio completados | [`skills/sdd-archive/SKILL.md`](skills/sdd-archive/SKILL.md) |
+| `sdd-onboard` | Al guiar a alguien por el ciclo SDD completo | [`skills/sdd-onboard/SKILL.md`](skills/sdd-onboard/SKILL.md) |
 
-| `network-engineer` | Al configurar DNS, proxies, firewalls, SSL, CDN — Nginx, Caddy, Cloudflare, balanceo | [`skills/network-engineer/SKILL.md`](skills/network-engineer/SKILL.md) |
-| `gitops-engineer` | Al diseñar branching strategy, releases, versionado — trunk-based, GitHub Flow, conventional commits | [`skills/gitops-engineer/SKILL.md`](skills/gitops-engineer/SKILL.md) |
-| `backup-engineer` | Al diseñar backups, disaster recovery — 3-2-1, RPO/RTO, restic, pg_dump | [`skills/backup-engineer/SKILL.md`](skills/backup-engineer/SKILL.md) |
-| `perf-engineer` | Al hacer load testing, profiling — k6, Lighthouse, cProfile, EXPLAIN ANALYZE | [`skills/perf-engineer/SKILL.md`](skills/perf-engineer/SKILL.md) |
-| `db-admin` | Al administrar bases de datos — PostgreSQL, MySQL, Redis, índices, migraciones, replicación | [`skills/db-admin/SKILL.md`](skills/db-admin/SKILL.md) |
-
-## Transversal Skills
-
-| Skill | Trigger | Ruta |
-|-------|---------|------|
-| `commits-real` | Al escribir commits, PRs, issues — conventional commits, semver, changelog | [`skills/commits-real/SKILL.md`](skills/commits-real/SKILL.md) |
-| `lend-ai-engram` | Al guardar o consultar memoria en Engram — What/Why/Where/Learned, topic_key, scope | [`skills/lend-ai-engram/SKILL.md`](skills/lend-ai-engram/SKILL.md) |
-| `lend-ai-testing` | Al escribir tests, configurar CI — pytest, cobertura, pipeline automatizado | [`skills/lend-ai-testing/SKILL.md`](skills/lend-ai-testing/SKILL.md) |
-| `lend-ai-docs` | Al escribir documentación — Google-style docstrings, ADR, README, ARCHITECTURE | [`skills/lend-ai-docs/SKILL.md`](skills/lend-ai-docs/SKILL.md) |
-| `judgment-day` | Al necesitar doble review — 2 jueces ciegos (seguridad + clean code), veredicto con acciones | [`skills/judgment-day/SKILL.md`](skills/judgment-day/SKILL.md) |
-| `branch-pr` | Al crear PRs — issue-first, < 400 líneas, branch naming, descripción estructurada | [`skills/branch-pr/SKILL.md`](skills/branch-pr/SKILL.md) |
-| `chained-pr` | Cuando un PR supera 400 líneas — PRs encadenados en secuencia lógica | [`skills/chained-pr/SKILL.md`](skills/chained-pr/SKILL.md) |
-| `issue-creation` | Al crear issues — bug report, feature request, templates, criterios de aceptación | [`skills/issue-creation/SKILL.md`](skills/issue-creation/SKILL.md) |
-| `go-testing` | Al escribir tests en Go — table-driven, parallel, Bubbletea testing | [`skills/go-testing/SKILL.md`](skills/go-testing/SKILL.md) |
-| `skill-creator` | Al crear nuevas skills — template LEND, estructura skills/, registro en AGENTS.md | [`skills/skill-creator/SKILL.md`](skills/skill-creator/SKILL.md) |
-| `skill-registry` | Al auditar skills — sync skills/ vs AGENTS.md vs manifests, detectar huérfanas | [`skills/skill-registry/SKILL.md`](skills/skill-registry/SKILL.md) |
-| `youtube-transcript` | Al extraer transcripciones de YouTube — resumen estructurado, timestamps, análisis | [`skills/youtube-transcript/SKILL.md`](skills/youtube-transcript/SKILL.md) |
-
-## SDD Skills (Spec-Driven Development)
+## Skills Transversales (PRs, Issues, Docs)
 
 | Skill | Trigger | Ruta |
 |-------|---------|------|
-| `sdd-init` | Al iniciar un proyecto nuevo — detectar stack, configurar persistencia, estructura SDD | [`skills/sdd-init/SKILL.md`](skills/sdd-init/SKILL.md) |
-| `sdd-explore` | Al investigar código antes de proponer — leer, analizar impacto, consultar Engram | [`skills/sdd-explore/SKILL.md`](skills/sdd-explore/SKILL.md) |
-| `sdd-propose` | Al tener una propuesta de cambio — contexto, alternativas, criterios de éxito | [`skills/sdd-propose/SKILL.md`](skills/sdd-propose/SKILL.md) |
-| `sdd-spec` | Al escribir especificaciones — Given/When/Then, escenarios, casos borde, contract | [`skills/sdd-spec/SKILL.md`](skills/sdd-spec/SKILL.md) |
-| `sdd-design` | Al diseñar la implementación — archivos, data flow, ADR, interfaces | [`skills/sdd-design/SKILL.md`](skills/sdd-design/SKILL.md) |
-| `sdd-tasks` | Al descomponer en tareas — dependencias, tamaño, paralelización, criterio de done | [`skills/sdd-tasks/SKILL.md`](skills/sdd-tasks/SKILL.md) |
-| `sdd-apply` | Al implementar cambios — TDD, commits atómicos, una tarea a la vez | [`skills/sdd-apply/SKILL.md`](skills/sdd-apply/SKILL.md) |
-| `sdd-verify` | Al validar contra specs — tests reales, quality gate, reporte PASS/FAIL | [`skills/sdd-verify/SKILL.md`](skills/sdd-verify/SKILL.md) |
-| `sdd-archive` | Al archivar cambios completados — sync specs, merge, changelog, Engram | [`skills/sdd-archive/SKILL.md`](skills/sdd-archive/SKILL.md) |
-| `sdd-onboard` | Al guiar a alguien por SDD — cambio real, ciclo completo, aprendizaje práctico | [`skills/sdd-onboard/SKILL.md`](skills/sdd-onboard/SKILL.md) |
+| `branch-pr` | Al crear PRs, preparar cambios para review | [`skills/branch-pr/SKILL.md`](skills/branch-pr/SKILL.md) |
+| `chained-pr` | Cuando un PR supera 400 líneas, PRs encadenados | [`skills/chained-pr/SKILL.md`](skills/chained-pr/SKILL.md) |
+| `issue-creation` | Al crear issues en GitHub, reportar bugs | [`skills/issue-creation/SKILL.md`](skills/issue-creation/SKILL.md) |
+| `go-testing` | Al escribir tests en Go | [`skills/go-testing/SKILL.md`](skills/go-testing/SKILL.md) |
 
-> **Deprecated skills**: `cognitive-doc-design`, `comment-writer`, `work-unit-commits` → replaced by `commits-real`
+> **Skills deprecadas**: `cognitive-doc-design`, `comment-writer`, `work-unit-commits` → reemplazadas por `commits-real`
