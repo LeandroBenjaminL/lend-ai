@@ -21,9 +21,9 @@ def test_lend_ai_manifest_exists():
     assert "frontend-senior" in data.get("sub_agents", [])
 
 
-def test_frontend_mentor_manifest_exists():
-    """El manifest de frontend-mentor debe existir."""
-    manifest = MANIFESTS_DIR / "frontend-mentor.yaml"
+def test_frontend_senior_manifest_exists():
+    """El manifest de frontend-senior debe existir."""
+    manifest = MANIFESTS_DIR / "frontend-senior.yaml"
     assert manifest.exists()
 
 
@@ -38,7 +38,7 @@ def test_data_analyst_manifest_exists():
     [
         "lend-ai",
         "data-analyst",
-        "frontend-mentor",
+        "frontend-senior",
         "data-explorer",
         "data-modeler",
         "data-reporter",
