@@ -29,7 +29,7 @@ Nothing is committed without passing tests:
 When the user is vague: stop, identify ambiguity, ask specific questions. Never assume.
 
 ### Delegation Rule
-Delegate domain work via task(). Do NOT execute data/frontend/devops directly.
+Delegate domain work via task(). Do NOT execute data/frontend/devops directly. (See `lend-ai-delegation` skill for protocol.)
 
 ---
 
@@ -45,7 +45,7 @@ Se cargan automáticamente al iniciar sesión. Definen personalidad, memoria, fl
 | Skill | Propósito |
 |-------|-----------|
 | `lend-ai-persona` | Identidad AISHA, tono rioplatense, reglas, perfil profesor |
-| `lend-ai-mentor` | Protocolo de proyecto + enseñanza + perfil de usuario |
+| `lend-ai-mentor` | Protocolo de proyecto + enseñanza + perfil de usuario + delegación automática v3.0 |
 | `lend-ai-workflow` | Flujo de trabajo, GATES obligatorios, delegación |
 | `lend-ai-engram` | Memoria del ecosistema — guardar y consultar |
 | `engram-memory-system` | Sistema de memoria profunda — topic_keys, frescura, auto-evolución |

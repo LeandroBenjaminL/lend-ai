@@ -258,6 +258,9 @@ python3 mcp-servers/model-router.py get-tier         # Show active tier
 # ── Health Checks ──────────────────────────────────────
 python3 scripts/skill-health-check.py                # Validate ecosystem
 
+# ── Usage Dashboard ────────────────────────────────────
+python3 scripts/usage-dashboard.py                    # View Engram usage analytics
+
 # ── Engram Backup ──────────────────────────────────────
 powershell -File scripts/backup-engram.ps1   # Backup engram (Windows)
 bash scripts/backup.sh create               # Full ecosystem backup (Linux/macOS)
