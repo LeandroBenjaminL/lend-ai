@@ -166,11 +166,10 @@ if (Test-Path $sourceConfig) {
     # Copy with path replacements for Windows
     $config = Get-Content $sourceConfig -Raw | ConvertFrom-Json
 
-    # Replace Linux paths with Windows paths in MCP commands
+    # Replace placeholders with Windows paths and escape backslashes
     $configStr = Get-Content $sourceConfig -Raw
-    $configStr = $configStr -replace '/home/lea/', "$env:USERPROFILE\"
-    $configStr = $configStr -replace '/home/linuxbrew/.linuxbrew/bin/', "$InstallDir\bin\"
-    $configStr = $configStr -replace '/usr/bin/python3', 'python'
+    $escapedDir = $repoPath -replace '\\', '\\'
+    $configStr = $configStr -replace '{LEND_AI_HOME}', $escapedDir
 
     # Create backup if exists
     if (Test-Path $opencodeConfig) {

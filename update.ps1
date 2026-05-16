@@ -65,8 +65,9 @@ if (Test-Path $OPENCODE_CONFIG) {
     info "Backup creado: $backupFile"
 }
 
+$escdir = $InstallDir -replace '\\','\\'
 $configStr = Get-Content "$InstallDir\opencode.json" -Raw
-$configStr = $configStr -replace '{LEND_AI_HOME}', $InstallDir
+$configStr = $configStr -replace '{LEND_AI_HOME}', $escdir
 Set-Content $OPENCODE_CONFIG $configStr -Encoding UTF8
 success "opencode.json actualizado en $OPENCODE_CONFIG"
 
