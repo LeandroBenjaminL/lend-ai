@@ -38,7 +38,6 @@ def _get_manifest_names() -> set[str]:
 
 
 class TestOpencodeManifestConsistency:
-
     def test_all_opencode_agents_have_manifests(self):
         """Cada agente en opencode.json tiene su manifest YAML."""
         opencode_agents = _get_opencode_agents()
@@ -46,9 +45,7 @@ class TestOpencodeManifestConsistency:
 
         agents_expected = opencode_agents - SKILLS_WITHOUT_MANIFEST
         missing = agents_expected - manifest_names
-        assert not missing, (
-            f"Agentes en opencode.json sin manifest YAML: {sorted(missing)}"
-        )
+        assert not missing, f"Agentes en opencode.json sin manifest YAML: {sorted(missing)}"
 
     def test_all_manifests_have_opencode_agents(self):
         """Cada manifest YAML tiene su agente en opencode.json."""
@@ -57,9 +54,7 @@ class TestOpencodeManifestConsistency:
 
         manifest_expected = manifest_names - SKILLS_WITHOUT_MANIFEST
         missing = manifest_expected - opencode_agents
-        assert not missing, (
-            f"Manifests sin agente en opencode.json (huerfanos): {sorted(missing)}"
-        )
+        assert not missing, f"Manifests sin agente en opencode.json (huerfanos): {sorted(missing)}"
 
     def test_opencode_json_is_valid(self):
         """opencode.json es JSON valido."""

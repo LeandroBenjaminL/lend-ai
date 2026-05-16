@@ -169,7 +169,9 @@ class TestManifestIntegrity:
 
                 instr_path = profiles_dir / "lend-ai" / filename
                 if not instr_path.exists():
-                    errors.append(f"{name}: falta archivo '{filename}' en {profiles_dir / 'lend-ai'}")
+                    errors.append(
+                        f"{name}: falta archivo '{filename}' en {profiles_dir / 'lend-ai'}"
+                    )
 
         assert not errors, (
             f"Se encontraron {len(errors)} problemas con archivos de instructions:\n"

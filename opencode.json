@@ -1285,6 +1285,14 @@
         "@modelcontextprotocol/server-puppeteer"
       ]
     },
+    "chrome-devtools": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "chrome-devtools-mcp"
+      ]
+    },
     "web-search": {
       "type": "local",
       "command": [
@@ -1337,13 +1345,6 @@
         "C:\\Users\\leand\\.lend-ai\\repo\\mcp-servers\\smtp-wrapper.ps1"
       ]
     },
-    "postgres": {
-      "type": "local",
-      "command": [
-        "C:\\Users\\leand\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\Users\\leand\\.lend-ai\\repo\\mcp-servers\\postgres-server.py"
-      ]
-    },
     "ocr": {
       "type": "local",
       "command": [
@@ -1365,24 +1366,7 @@
         "C:\\Users\\leand\\.lend-ai\\repo\\mcp-servers\\model-router.py"
       ]
     },
-    "sqlite": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "mcp-sqlite-server",
-        "C:\\Users\\leand\\.lend-ai\\repo\\data\\analisis.db"
-      ]
-    },
-    "mysql": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "@berthojoris/mcp-mysql-server"
-      ],
-      "enabled": false
-    }
+
   },
   "plugin": [
     "opencode-sdd-engram-manage",

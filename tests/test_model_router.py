@@ -152,7 +152,10 @@ class TestRouterTierManagement:
     """Tests de gestión de tiers (set-tier, get-tier)."""
 
     @pytest.mark.slow
-    @pytest.mark.skipif(sys.platform == "win32", reason="model-router writes to /tmp, not available on Windows")
+    @pytest.mark.skipif(
+        sys.platform == "win32",
+        reason="model-router writes to /tmp, not available on Windows",
+    )
     def test_router_set_and_get_tier(self, model_router_script: Path) -> None:
         """`set-tier T4` y después `get-tier` devuelve T4-reasoning."""
         # Setear
