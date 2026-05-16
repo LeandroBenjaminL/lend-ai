@@ -25,9 +25,19 @@ log = logging.getLogger("model-router")
 # ── Rutas ────────────────────────────────────────────────────────────────────
 
 _BASE_DIR_DEFAULT = Path(__file__).resolve().parent.parent
-BASE_DIR = Path(os.environ.get("DATA_ANALYST_HOME", str(_BASE_DIR_DEFAULT)))
+BASE_DIR = Path(
+    os.environ.get(
+        "LEND_AI_HOME",
+        os.environ.get("DATA_ANALYST_HOME", str(_BASE_DIR_DEFAULT)),
+    )
+)
 MODELS_JSON = BASE_DIR / "models.json"
-ACTIVE_TIER_FILE = Path(os.environ.get("DATA_ANALYST_TIER_FILE", "/tmp/opencode-active-tier.json"))
+ACTIVE_TIER_FILE = Path(
+    os.environ.get(
+        "MODEL_ROUTER_TIER_FILE",
+        str(Path.home() / ".lend-ai" / "active-tier.json"),
+    )
+)
 DEFAULT_TIER = "T3-balanced"
 
 
@@ -104,14 +114,14 @@ _SKILL_TO_AGENT_MAP: dict[str, str] = {
     "reporting": "data-reporter",
     "etl-pipelines": "data-etl",
     "sql-analysis": "data-etl",
-    "api-integration": "data-etl",
+    "shared-api-integration": "data-etl",
     "web-scraping": "data-etl",
     "database-connections": "data-etl",
     "data-validation": "data-validation",
     "notebook-integration": "data-explorer",
     "file-formats": "data-etl",
     "python-environment": "data-archive",
-    "git-data": "data-archive",
+    "shared-git-data": "data-archive",
     "regex-data": "data-cleaning",
     "streamlit": "data-reporter",
     "statistical-testing": "data-modeler",
@@ -120,10 +130,6 @@ _SKILL_TO_AGENT_MAP: dict[str, str] = {
     "data-archive": "data-archive",
     "data-design": "data-design",
     "data-question": "data-question",
-    "cognitive-doc-design": "sdd-design",
-    "comment-writer": "data-reporter",
-    "work-unit-commits": "data-etl",
-    "go-testing": "data-verify",
     "branch-pr": "data-etl",
     "chained-pr": "data-etl",
     "issue-creation": "data-archive",

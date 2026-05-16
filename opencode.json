@@ -1268,7 +1268,7 @@
         "npx",
         "-y",
         "@modelcontextprotocol/server-filesystem",
-        "C:\\Users\\leand\\.lend-ai\\repo"
+        "{LEND_AI_HOME}"
       ]
     },
     "puppeteer": {
@@ -1318,45 +1318,43 @@
     "notion": {
       "type": "local",
       "command": [
-        "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-        "-File",
-        "C:\\Users\\leand\\.lend-ai\\repo\\mcp-servers\\notion-wrapper.ps1"
+        "bash",
+        "{LEND_AI_HOME}/mcp-servers/notion-wrapper.sh"
       ]
     },
     "smtp-email": {
       "type": "local",
       "command": [
-        "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-        "-File",
-        "C:\\Users\\leand\\.lend-ai\\repo\\mcp-servers\\smtp-wrapper.ps1"
+        "bash",
+        "{LEND_AI_HOME}/mcp-servers/smtp-wrapper.sh"
       ]
     },
     "postgres": {
       "type": "local",
       "command": [
-        "C:\\Users\\leand\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\Users\\leand\\.lend-ai\\repo\\mcp-servers\\postgres-server.py"
+        "python3",
+        "{LEND_AI_HOME}/mcp-servers/postgres-server.py"
       ]
     },
     "ocr": {
       "type": "local",
       "command": [
-        "C:\\Users\\leand\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\Users\\leand\\.lend-ai\\repo\\mcp-servers\\ocr-server.py"
+        "python3",
+        "{LEND_AI_HOME}/mcp-servers/ocr-server.py"
       ]
     },
     "agent-router": {
       "type": "local",
       "command": [
-        "C:\\Users\\leand\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\Users\\leand\\.lend-ai\\repo\\mcp-servers\\agent-router.py"
+        "python3",
+        "{LEND_AI_HOME}/mcp-servers/agent-router.py"
       ]
     },
     "model-router": {
       "type": "local",
       "command": [
-        "C:\\Users\\leand\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\Users\\leand\\.lend-ai\\repo\\mcp-servers\\model-router.py"
+        "python3",
+        "{LEND_AI_HOME}/mcp-servers/model-router.py"
       ]
     },
     "sqlite": {
@@ -1365,7 +1363,7 @@
         "npx",
         "-y",
         "mcp-sqlite-server",
-        "C:\\Users\\leand\\.lend-ai\\repo\\data\\analisis.db"
+        "{LEND_AI_HOME}/data/analisis.db"
       ]
     },
     "mysql": {

@@ -212,7 +212,6 @@
     "data-visualization": "T3-balanced",
     "sql-analysis": "T3-balanced",
     "statistical-testing": "T3-balanced",
-    "frontend-senior": "T4-reasoning",
     "data-profiling": "T3-balanced",
     "data-archive": "T3-balanced",
     "etl-pipelines": "T2-fast",
@@ -223,8 +222,6 @@
     "database-connections": "T2-fast",
     "web-scraping": "T2-fast",
     "notebook-integration": "T3-balanced",
-    "git-data": "T2-fast",
-    "api-integration": "T2-fast",
     "data-analysis": "T3-balanced",
     "streamlit": "T3-balanced",
     "data-question": "T3-balanced",
@@ -235,7 +232,17 @@
     "data-design": "T5-deep",
     "data-verify": "T5-deep",
     "judgment-day": "T5-deep",
-    "skill-creator": "T5-deep"
+    "skill-creator": "T5-deep",
+    "docker-engineer": "T2-fast",
+    "ci-cd-pilot": "T2-fast",
+    "cloud-architect": "T4-reasoning",
+    "db-admin": "T3-balanced",
+    "infra-sre": "T3-balanced",
+    "security-auditor": "T4-reasoning",
+    "network-engineer": "T3-balanced",
+    "gitops-engineer": "T2-fast",
+    "backup-engineer": "T2-fast",
+    "perf-engineer": "T3-balanced"
   },
   "overrides": {
     "skills": {
@@ -248,7 +255,10 @@
       "lend-ai-docs": "T3-balanced",
       "lend-ai-engram": "T2-fast",
       "lend-ai-testing": "T3-balanced",
-      "judgment-day": "T5-deep"
+      "judgment-day": "T5-deep",
+      "devops": "T4-reasoning",
+      "frontend-senior": "T4-reasoning",
+      "engram-keeper": "T2-fast"
     }
   }
 }

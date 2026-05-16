@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Agent Router — MCP Server para el ecosistema Data Analyst.
+Agent Router — MCP Server para el ecosistema Lend.Ai.
 
 Enruta tareas al agente correcto según manifests YAML, resuelve tiers
 y modelos vía model-router, y expone herramientas de consulta e inventario.
@@ -42,7 +42,12 @@ except ImportError:
 # ── Constantes ───────────────────────────────────────────────────────────────
 
 _MANIFESTS_DIR_DEFAULT = Path(__file__).resolve().parent.parent / "agents" / "manifests"
-MANIFESTS_DIR = Path(os.environ.get("DATA_ANALYST_MANIFESTS_DIR", str(_MANIFESTS_DIR_DEFAULT)))
+MANIFESTS_DIR = Path(
+    os.environ.get(
+        "LEND_AI_MANIFESTS_DIR",
+        os.environ.get("DATA_ANALYST_MANIFESTS_DIR", str(_MANIFESTS_DIR_DEFAULT)),
+    )
+)
 
 _BASE_DIR = Path(__file__).resolve().parent
 MODEL_ROUTER = _BASE_DIR / "model-router.py"
