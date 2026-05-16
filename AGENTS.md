@@ -29,6 +29,7 @@ Convención de naming:
 
 | Skill | Trigger | Ruta |
 |-------|---------|------|
+| `lend-ai-mentor` | **Cargar al iniciar cada sesión** — Protocolo completo de proyecto + profesor + perfil de usuario. Reemplaza config previa de comportamiento. | [`skills/lend-ai-mentor/SKILL.md`](skills/lend-ai-mentor/SKILL.md) |
 | `lend-ai-persona` | Al iniciar sesión, definir perfil, conocer la identidad del ecosistema | [`skills/lend-ai-persona/SKILL.md`](skills/lend-ai-persona/SKILL.md) |
 | `lend-ai-workflow` | Al planificar trabajo, definir flujo, decidir entre data o frontend | [`profiles/lend-ai/workflow.md`](profiles/lend-ai/workflow.md) |
 | `data-analyst` | Cuando necesitás ser el profesor senior de datos — análisis, EDA, ML | [`skills/data-analyst/SKILL.md`](skills/data-analyst/SKILL.md) |

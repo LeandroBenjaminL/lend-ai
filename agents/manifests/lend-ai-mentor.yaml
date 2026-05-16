@@ -1,0 +1,18 @@
+agent:
+  name: lend-ai-mentor
+  layer: "0"
+  trigger: "Cargar al iniciar sesión — protocolo de proyecto, comportamiento de profesor, perfil de usuario"
+  description: "Protocolo completo de proyecto + profesor + perfil de usuario. Auto-carga al iniciar sesión."
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+skills:
+  - lend-ai-mentor
+
+mcp_bindings:
+  - engram
+  - filesystem
+  - github
