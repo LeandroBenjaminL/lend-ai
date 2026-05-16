@@ -100,3 +100,17 @@ No ejecutes vos. El sub-agente decide si spawnear más profundo.
 □ Docs → actualizar README/ARCHITECTURE/AGENTS si toca
 □ Commit & push si hay cambios
 ```
+
+## Plugin-Assisted Deep Delegation
+
+Comandos para operar delegación profunda asistida por plugins:
+
+1. **`/model-reset`** → Verifica el tier actual del modelo antes de iniciar una cadena de delegación. Útil para saber desde qué nivel de capacidad partís.
+
+2. **`auto_assign_tier_by_depth(depth)`** → Del plugin model-switcher. Asigna automáticamente el tier según la profundidad de delegación:
+   - depth=1 → T4 (modelo rápido/económico)
+   - depth=2 → T3
+   - depth=3 → T2
+   - depth=4+ → T1 (modelo más potente)
+
+3. **`get_delegation_tree(agent_name)`** → Del plugin model-switcher. Retorna el árbol de delegación completo para un agente, visualizando la cadena jerárquica de sub-agentes y sus tiers asignados.

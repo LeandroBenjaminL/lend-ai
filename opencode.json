@@ -277,7 +277,11 @@
           "notebook-integration": "allow",
           "lend-ai-engram": "allow"
         }
-      }
+      },
+      "skills": [
+        "data-analysis",
+        "data-profiling"
+      ]
     },
     "data-modeler": {
       "description": "Modelado ML, feature engineering, tuning",
@@ -302,7 +306,12 @@
           "statistical-testing": "allow",
           "lend-ai-engram": "allow"
         }
-      }
+      },
+      "skills": [
+        "ml-modeling",
+        "time-series-analysis",
+        "statistical-testing"
+      ]
     },
     "data-reporter": {
       "description": "Reportes, visualizaciones y dashboards — spawnea sub-agentes de reporte",
@@ -328,7 +337,12 @@
           "commits-real": "allow",
           "lend-ai-engram": "allow"
         }
-      }
+      },
+      "skills": [
+        "reporting",
+        "data-visualization",
+        "streamlit"
+      ]
     },
     "data-etl": {
       "description": "Pipelines ETL y automatización — spawnea sub-agentes de extracción/transformación",
@@ -358,7 +372,15 @@
           "commits-real": "allow",
           "lend-ai-engram": "allow"
         }
-      }
+      },
+      "skills": [
+        "etl-pipelines",
+        "sql-analysis",
+        "database-connections",
+        "shared-api-integration",
+        "web-scraping",
+        "file-formats"
+      ]
     },
     "data-cleaning": {
       "description": "Limpieza y preprocesamiento de datos",
@@ -478,7 +500,12 @@
         "write": true,
         "skill": true,
         "task": true
-      }
+      },
+      "skills": [
+        "data-analysis",
+        "data-design",
+        "data-question"
+      ]
     },
     "data-analysis": {
       "description": "Análisis con Pandas/NumPy — puede spawnear sub-agentes de profiling y validación",
@@ -503,7 +530,12 @@
           "data-visualization": "allow",
           "lend-ai-engram": "allow"
         }
-      }
+      },
+      "skills": [
+        "data-analysis",
+        "data-cleaning",
+        "data-validation"
+      ]
     },
     "data-profiling": {
       "description": "Profiling automático con ydata-profiling",
@@ -515,7 +547,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "data-profiling"
+      ]
     },
     "ml-modeling": {
       "description": "Machine Learning con Scikit-learn, XGBoost — spawnea data-cleaning y validación",
@@ -539,7 +574,12 @@
           "data-validation": "allow",
           "lend-ai-engram": "allow"
         }
-      }
+      },
+      "skills": [
+        "ml-modeling",
+        "data-cleaning",
+        "data-validation"
+      ]
     },
     "reporting": {
       "description": "Generación de reportes HTML, PDF, Markdown",
@@ -551,7 +591,11 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "reporting",
+        "data-visualization"
+      ]
     },
     "streamlit": {
       "description": "Dashboards interactivos con Streamlit",
@@ -563,7 +607,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "streamlit"
+      ]
     },
     "data-visualization": {
       "description": "Gráficos con Matplotlib, Seaborn, Plotly — spawnea sub-agentes de reporte",
@@ -586,7 +633,10 @@
           "data-reporter": "allow",
           "lend-ai-engram": "allow"
         }
-      }
+      },
+      "skills": [
+        "data-visualization"
+      ]
     },
     "time-series-analysis": {
       "description": "Series temporales y forecasting",
@@ -598,7 +648,11 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "time-series-analysis",
+        "statistical-testing"
+      ]
     },
     "statistical-testing": {
       "description": "Tests estadísticos con SciPy",
@@ -610,7 +664,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "statistical-testing"
+      ]
     },
     "docker-engineer": {
       "description": "Ingeniero de contenedores — Docker, Compose, K8s — spawnea perf y seguridad",
@@ -634,7 +691,10 @@
           "security-auditor": "allow",
           "lend-ai-engram": "allow"
         }
-      }
+      },
+      "skills": [
+        "docker-engineer"
+      ]
     },
     "ci-cd-pilot": {
       "description": "CI/CD pipelines — GitHub Actions, Jenkins — spawnea gitops y perf",
@@ -658,7 +718,11 @@
           "perf-engineer": "allow",
           "lend-ai-engram": "allow"
         }
-      }
+      },
+      "skills": [
+        "ci-cd-pilot",
+        "gitops-engineer"
+      ]
     },
     "cloud-architect": {
       "description": "Arquitectura cloud — AWS, GCP, Azure — spawnea seguridad y perf",
@@ -682,7 +746,10 @@
           "perf-engineer": "allow",
           "lend-ai-engram": "allow"
         }
-      }
+      },
+      "skills": [
+        "cloud-architect"
+      ]
     },
     "db-admin": {
       "description": "Administración de bases de datos — PostgreSQL, MySQL, SQLite — spawnea database-connections",
@@ -705,7 +772,11 @@
           "database-connections": "allow",
           "lend-ai-engram": "allow"
         }
-      }
+      },
+      "skills": [
+        "db-admin",
+        "database-connections"
+      ]
     },
     "infra-sre": {
       "description": "Infraestructura y SRE — monitoreo, alertas, escalado",
@@ -717,7 +788,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "infra-sre"
+      ]
     },
     "security-auditor": {
       "description": "Seguridad y auditoría — hardening, compliance, pentest",
@@ -729,7 +803,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "security-auditor"
+      ]
     },
     "network-engineer": {
       "description": "Redes — DNS, VPN, load balancing, firewalls",
@@ -741,7 +818,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "network-engineer"
+      ]
     },
     "gitops-engineer": {
       "description": "GitOps — ArgoCD, Flux, despliegues declarativos",
@@ -753,7 +833,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "gitops-engineer"
+      ]
     },
     "backup-engineer": {
       "description": "Backups y recuperación — estrategias, automatización, restauración",
@@ -765,7 +848,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "backup-engineer"
+      ]
     },
     "perf-engineer": {
       "description": "Performance engineering — profiling, tuning, benchmarks",
@@ -777,7 +863,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "perf-engineer"
+      ]
     },
     "sql-analysis": {
       "description": "Consultas SQL, joins, window functions",
@@ -789,7 +878,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "sql-analysis"
+      ]
     },
     "database-connections": {
       "description": "Conexiones a bases de datos",
@@ -801,7 +893,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "database-connections"
+      ]
     },
     "file-formats": {
       "description": "Lectura/escritura de múltiples formatos",
@@ -824,7 +919,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "etl-pipelines"
+      ]
     },
     "notebook-integration": {
       "description": "Integración con Jupyter notebooks",
@@ -1128,7 +1226,12 @@
           "frontend-type-script": "allow",
           "lend-ai-engram": "allow"
         }
-      }
+      },
+      "skills": [
+        "frontend-react-development",
+        "frontend-css-styling",
+        "frontend-type-script"
+      ]
     },
     "styling-engineer": {
       "description": "CSS y estilos — spawnea sub-agentes de CSS y responsive",
@@ -1152,7 +1255,11 @@
           "frontend-responsive-design": "allow",
           "lend-ai-engram": "allow"
         }
-      }
+      },
+      "skills": [
+        "frontend-css-styling",
+        "frontend-responsive-design"
+      ]
     },
     "data-flow": {
       "description": "Manejo de datos y estado frontend — spawnea sub-agentes de estado y APIs",
@@ -1176,7 +1283,11 @@
           "frontend-api-integration": "allow",
           "lend-ai-engram": "allow"
         }
-      }
+      },
+      "skills": [
+        "frontend-state-management",
+        "frontend-api-integration"
+      ]
     },
     "api-consumer": {
       "description": "Consumo de APIs frontend — spawnea sub-agentes de APIs",
@@ -1200,7 +1311,11 @@
           "shared-api-integration": "allow",
           "lend-ai-engram": "allow"
         }
-      }
+      },
+      "skills": [
+        "frontend-api-integration",
+        "shared-api-integration"
+      ]
     },
     "realtime-engineer": {
       "description": "WebSockets y tiempo real — spawnea sub-agentes de APIs",
@@ -1223,7 +1338,10 @@
           "frontend-api-integration": "allow",
           "lend-ai-engram": "allow"
         }
-      }
+      },
+      "skills": [
+        "frontend-api-integration"
+      ]
     },
     "quality-guardian": {
       "description": "Testing y calidad frontend — spawnea sub-agentes de testing",
@@ -1247,7 +1365,10 @@
           "e2e-testing": "allow",
           "lend-ai-engram": "allow"
         }
-      }
+      },
+      "skills": [
+        "frontend-testing"
+      ]
     },
     "perf-a11y": {
       "description": "Performance y accesibilidad — spawnea sub-agentes de web performance",
@@ -1270,7 +1391,10 @@
           "frontend-web-performance": "allow",
           "lend-ai-engram": "allow"
         }
-      }
+      },
+      "skills": [
+        "frontend-web-performance"
+      ]
     },
     "build-master": {
       "description": "Build y tooling — spawnea sub-agentes de Docker, CI/CD y TS",
@@ -1295,7 +1419,12 @@
           "frontend-type-script": "allow",
           "lend-ai-engram": "allow"
         }
-      }
+      },
+      "skills": [
+        "docker-engineer",
+        "ci-cd-pilot",
+        "frontend-type-script"
+      ]
     },
     "content-docs": {
       "description": "Documentación y contenido — spawnea sub-agentes de docs y commits",
@@ -1341,7 +1470,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "frontend-react-development"
+      ]
     },
     "frontend-css-styling": {
       "description": "CSS moderno y Tailwind",
@@ -1353,7 +1485,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "frontend-css-styling"
+      ]
     },
     "frontend-type-script": {
       "description": "TypeScript 5.x strict",
@@ -1365,7 +1500,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "frontend-type-script"
+      ]
     },
     "frontend-api-integration": {
       "description": "TanStack Query, fetch, Axios",
@@ -1377,7 +1515,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "frontend-api-integration"
+      ]
     },
     "frontend-state-management": {
       "description": "Zustand, Redux, Context",
@@ -1389,7 +1530,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "frontend-state-management"
+      ]
     },
     "frontend-testing": {
       "description": "Vitest, Testing Library",
@@ -1401,7 +1545,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "frontend-testing"
+      ]
     },
     "frontend-responsive-design": {
       "description": "Mobile-first, Container Queries",
@@ -1413,7 +1560,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "frontend-responsive-design"
+      ]
     },
     "frontend-web-performance": {
       "description": "Core Web Vitals, Lighthouse",
@@ -1425,7 +1575,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "frontend-web-performance"
+      ]
     },
     "sdd-init": {
       "description": "Iniciar un nuevo proyecto/feature en un codebase",
@@ -1437,7 +1590,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "sdd-init"
+      ]
     },
     "sdd-explore": {
       "description": "Investigar el codebase, explorar antes de diseñar",
@@ -1449,7 +1605,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "sdd-explore"
+      ]
     },
     "sdd-propose": {
       "description": "Tener una propuesta de cambio para revisión",
@@ -1461,7 +1620,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "sdd-propose"
+      ]
     },
     "sdd-spec": {
       "description": "Escribir especificaciones detalladas",
@@ -1473,7 +1635,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "sdd-spec"
+      ]
     },
     "sdd-design": {
       "description": "Diseñar la implementación técnica",
@@ -1485,7 +1650,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "sdd-design"
+      ]
     },
     "sdd-tasks": {
       "description": "Descomponer especificaciones en tareas",
@@ -1497,7 +1665,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "sdd-tasks"
+      ]
     },
     "sdd-apply": {
       "description": "Implementar cambios del diseño",
@@ -1509,7 +1680,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "sdd-apply"
+      ]
     },
     "sdd-verify": {
       "description": "Validar implementación contra especificaciones",
@@ -1521,7 +1695,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "sdd-verify"
+      ]
     },
     "sdd-archive": {
       "description": "Archivar artefactos de cambio completados",
@@ -1533,7 +1710,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "sdd-archive"
+      ]
     },
     "sdd-onboard": {
       "description": "Guiar a alguien por el ciclo SDD completo",
@@ -1545,7 +1725,10 @@
         "read": true,
         "write": true,
         "skill": true
-      }
+      },
+      "skills": [
+        "sdd-onboard"
+      ]
     }
   },
   "mcp": {

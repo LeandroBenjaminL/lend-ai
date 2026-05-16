@@ -89,3 +89,19 @@ No preguntes — delegá directamente cuando:
 - Verificá que completó lo pedido
 - Guardá en Engram: qué se delegó, a quién, resultado
 - Si el resultado necesita iteración, re-delegá
+
+### Plugin Integration
+
+| Plugin | Rol en Deep Delegation |
+|--------|----------------------|
+| opencode-subagent-statusline | Muestra el árbol jerárquico de sub-agentes activos (lend-ai » data-analyst » data-explorer) |
+| opencode-dynamic-context-pruning | Poda contexto automáticamente después de cada nivel de delegación para mantener el budget de tokens |
+| opencode-vibeguard | Warnnea si una cadena de delegación supera los 3-4 niveles de profundidad |
+| opencode-sdd-engram-manage | Registra cada decisión de profundidad en Engram para trazabilidad |
+| model-switcher-plugin (local) | Auto-asigna tiers según profundidad: nivel 1=T4, nivel 2=T3, nivel 3=T2, nivel 4+=T1 |
+
+- **opencode-subagent-statusline**: Renderiza el árbol de delegación activo en la línea de estado, mostrando la jerarquía completa de sub-agentes en ejecución.
+- **opencode-dynamic-context-pruning**: Después de cada nivel de delegación, elimina contexto innecesario para evitar saturar el budget de tokens en cadenas profundas.
+- **opencode-vibeguard**: Monitorea la profundidad de la cadena de delegación y emite una advertencia si se exceden los límites recomendados (3-4 niveles).
+- **opencode-sdd-engram-manage**: Persiste cada decisión de spawn y profundidad en Engram, permitiendo trazabilidad completa de las cadenas de delegación.
+- **model-switcher-plugin (local)**: Asigna dinámicamente el tier del modelo según la profundidad actual de la delegación, optimizando costo y capacidad.
