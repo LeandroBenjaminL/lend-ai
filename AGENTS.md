@@ -101,7 +101,6 @@ Cada sesión sigue este pipeline. NO saltees pasos.
 | `frontend-senior` | Cuando necesitás ser el mentor senior de frontend — React, CSS, UX | [`skills/frontend-senior/SKILL.md`](skills/frontend-senior/SKILL.md) |
 | `senior-orchestrator` | Cuando necesitás orquestar modelos, decidir tiers, planear arquitectura | [`skills/senior-orchestrator/SKILL.md`](skills/senior-orchestrator/SKILL.md) |
 | `commits-real` | Al escribir commits, PRs, issues, documentación | [`skills/commits-real/SKILL.md`](skills/commits-real/SKILL.md) |
-| `lend-ai-persona` | **Cargar al inicio de cada sesión** — identidad LEND.AI (AISHA Engine), tono rioplatense, LEND-Protocol | [`skills/lend-ai-persona/SKILL.md`](skills/lend-ai-persona/SKILL.md) |
 | `lend-ai-engram` | Al guardar o consultar memoria en Engram | [`skills/lend-ai-engram/SKILL.md`](skills/lend-ai-engram/SKILL.md) |
 | `lend-ai-testing` | Al escribir tests, configurar CI, revisar calidad | [`skills/lend-ai-testing/SKILL.md`](skills/lend-ai-testing/SKILL.md) |
 | `lend-ai-docs` | Al escribir documentación, docstrings, ADR, ARCHITECTURE.md | [`skills/lend-ai-docs/SKILL.md`](skills/lend-ai-docs/SKILL.md) |
@@ -166,7 +165,7 @@ Cada sesión sigue este pipeline. NO saltees pasos.
 | Skill | Trigger | Ruta |
 |-------|---------|------|
 | `branch-pr` | Al crear PRs, preparar cambios para review | [`skills/branch-pr/SKILL.md`](skills/branch-pr/SKILL.md) |
-| `chained-pr` | Cuando un PR supera 400 líneas, PRs encadenados | [`skills/chained-pr/SKILL.md`](skills/chained-pr/SKILL.md) |
+| `chained-pr` | Cuando un PR supera 300 líneas, PRs encadenados | [`skills/chained-pr/SKILL.md`](skills/chained-pr/SKILL.md) |
 | `issue-creation` | Al crear issues en GitHub, reportar bugs | [`skills/issue-creation/SKILL.md`](skills/issue-creation/SKILL.md) |
 | `go-testing` | Al escribir tests en Go | [`skills/go-testing/SKILL.md`](skills/go-testing/SKILL.md) |
 
