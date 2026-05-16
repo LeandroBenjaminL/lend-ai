@@ -36,20 +36,15 @@ info "Lend.Ai home: $InstallDir"
 info "Branch:       $currentBranch"
 info "Commit:       $currentCommit"
 
-$status = & git status --porcelain
-if ($status) {
-    warn "Tienes cambios locales sin commitear:"
-    $status | ForEach-Object { Write-Host "  $_" }
-    info "Se van a stash para que el pull sea limpio."
-    & git stash --include-untracked 2>$null
-}
-
 step "Pulling latest changes..."
 
-& git pull origin $currentBranch 2>&1 | Out-Null
+$env:GIT_TERMINAL_PROMPT = "0"
+& git pull --rebase --autostash origin $currentBranch 2>&1 | Out-Null
 $gitExitCode = $LASTEXITCODE
 if ($gitExitCode -ne 0) {
     error "Git pull fallo (exit code: $gitExitCode)."
+    info "Esto puede pasar si hay conflictos con cambios locales."
+    info "Resolved los conflictos y reintenta."
     Pop-Location
     exit 1
 }
