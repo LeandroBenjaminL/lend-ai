@@ -1262,23 +1262,6 @@
         "@modelcontextprotocol/server-sequential-thinking"
       ]
     },
-    "filesystem": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "@modelcontextprotocol/server-filesystem",
-        "{LEND_AI_HOME}"
-      ]
-    },
-    "puppeteer": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "@modelcontextprotocol/server-puppeteer"
-      ]
-    },
     "web-search": {
       "type": "local",
       "command": [
@@ -1299,14 +1282,6 @@
       "type": "remote",
       "url": "https://mcp.context7.com/mcp"
     },
-    "slack": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "@jtalk22/slack-mcp"
-      ]
-    },
     "google-drive": {
       "type": "local",
       "command": [
@@ -1317,11 +1292,10 @@
     },
     "notion": {
       "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "easy-notion-mcp"
-      ]
+      "command": ["npx", "-y", "easy-notion-mcp"],
+      "env": {
+        "NOTION_TOKEN": "${NOTION_TOKEN}"
+      }
     },
     "ocr": {
       "type": "local",

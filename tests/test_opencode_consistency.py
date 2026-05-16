@@ -70,6 +70,6 @@ class TestOpencodeManifestConsistency:
             data = json.load(f)
         mcps = data.get("mcp", {})
 
-        required = {"engram", "filesystem", "github", "agent-router", "model-router"}
+        required = {"engram", "github", "agent-router", "model-router"}
         for mcp in required:
             assert mcp in mcps, f"MCP '{mcp}' no encontrado en opencode.json"
