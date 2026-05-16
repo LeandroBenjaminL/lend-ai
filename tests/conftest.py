@@ -25,7 +25,7 @@ def get_agent_field(data: dict, field: str):
 
 # ── Rutas base ───────────────────────────────────────────────────────────────
 
-REPO_ROOT = Path(__file__).resolve().parent.parent  # tests/ -> data-analyst-ecosystem/
+REPO_ROOT = Path(__file__).resolve().parent.parent  # tests/ -> lend-ai/
 
 
 @pytest.fixture
@@ -57,6 +57,12 @@ def models_json_path() -> Path:
 def skills_dir() -> Path:
     """Path al directorio de skills."""
     return REPO_ROOT / "skills"
+
+
+@pytest.fixture
+def profiles_dir() -> Path:
+    """Path al directorio de profiles."""
+    return REPO_ROOT / "profiles"
 
 
 @pytest.fixture

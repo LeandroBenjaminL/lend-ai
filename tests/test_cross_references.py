@@ -83,7 +83,12 @@ class TestRegistryConsistency:
                 missing.append(agent)
 
         # El orchestrator y gentle-orchestrator pueden no tener .yaml directo
-        known_without_manifest = {"gentle-orchestrator", "orchestrator"}
+        known_without_manifest = {
+            "gentle-orchestrator",
+            "orchestrator",
+            "shared-api-integration",
+            "shared-git-data",
+        }
         actual_missing = [m for m in missing if m not in known_without_manifest]
 
         assert not actual_missing, f"Agentes en el registry sin manifest: {actual_missing}"

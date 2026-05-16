@@ -9,9 +9,6 @@ mcp_bindings:
   - context7
 
 sub_agents:
-  - react-development
-  - astro-development
-  - next-js
 
 instructions:
   persona: persona.md

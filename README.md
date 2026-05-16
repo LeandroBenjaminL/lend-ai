@@ -1,33 +1,57 @@
 # Lend.Ai
 
-> Unified AI agent ecosystem: Data Analysis, Frontend Development, DevOps, and Git/GitHub. Running on OpenCode with a hierarchical skill system, sub-agents, and tiered models (T1-T5) for cost-quality optimization.
+[![CI](https://github.com/LeandroBenjaminL/lend-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/LeandroBenjaminL/lend-ai/actions/workflows/ci.yml)
 
-Lend.Ai is a production-grade AI agent ecosystem that orchestrates **100 agents**, **70 skills**, and **17 MCPs** across four domains. It runs on [OpenCode](https://opencode.ai) and provides a senior mentor experience with automatic personality loading, memory persistence via Engram, and a spec-driven development (SDD) workflow.
+> Unified AI agent ecosystem: Data Analysis, Frontend Development, DevOps, and SDD. Running on OpenCode with a hierarchical skill system, sub-agents, and tiered models (T1-T5) for cost-quality optimization.
+
+Lend.Ai is a production-grade AI agent ecosystem that orchestrates **88 agents**, **73 skills**, and **17 MCPs** across four domains. It runs on [OpenCode](https://opencode.ai) and provides a senior mentor experience with automatic personality loading, memory persistence via Engram, and a spec-driven development (SDD) workflow.
+
+## CI Rule
+
+**Tests must pass before push or merge.** If `ci.yml` fails, fix the issue before pushing.
+
+```bash
+# Run tests locally before pushing
+pip install -r requirements.txt
+pytest tests/ -v
+```
 
 ## Quick Install
 
+**Linux / macOS:**
 ```bash
 curl -sL https://raw.githubusercontent.com/LeandroBenjaminL/lend-ai/main/install.sh | bash
 ```
 
-Or manually:
+**Windows (PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/LeandroBenjaminL/lend-ai/main/install.ps1 | iex
+```
 
+Or manually:
 ```bash
 git clone https://github.com/LeandroBenjaminL/lend-ai.git
 cd lend-ai
-chmod +x install.sh && ./install.sh
+./install.sh        # Linux/macOS
+./install.ps1       # Windows
 ```
 
 ## Update
 
+**Linux / macOS:**
 ```bash
-# Dentro del directorio lend-ai:
 ./update.sh
 ```
 
-El update script:
-1. Git pull de los últimos cambios
-2. Backup y actualización de opencode.json
+**Windows:**
+```powershell
+./update.ps1
+```
+
+The update script:
+1. Stashes local changes automatically
+2. Pulls the latest version
+3. Backs up and updates opencode.json
 3. Verifica MCPs Python y tokens de entorno
 4. Revisa consistencia de agentes
 
@@ -38,7 +62,6 @@ lend-ai (orchestrator — 13 direct sub-agents)
 ├── data-analyst         → data analysis, ML, ETL, reporting (9 sub-agents)
 ├── frontend-senior      → React, TypeScript, CSS, testing (10 sub-agents)
 ├── devops               → infrastructure, CI/CD, cloud, security (10 sub-agents)
-├── git-github           → commits, PRs, issues, releases (5 sub-agents)
 ├── engram-keeper        → persistent memory management
 ├── commits-real         → unified commits, docs, versioning
 ├── lend-ai-engram       → memory context management
@@ -57,11 +80,12 @@ Each orchestrator has an explicit **Arsenal** mapping: Core Protocols (always-on
 
 | Metric | Value |
 |--------|-------|
-| Version | v0.6.2 |
-| Agents | 105+ |
-| Skills | 75+ (all with LEND Protocol) |
-| Shared Protocols | 5 (skill-resolver, subagent-context, sdd-phase-common, engram-convention, persistence-contract) |
-| MCPs | 16 |
+| Version | v0.7.0 |
+| Agents | 88 |
+| Skills | 73 (all with LEND Protocol) |
+| Shared Protocols | 5 |
+| MCPs | 17 |
+| CI | Passing required before push |
 | Commits | 3-level ceremony (direct, quick PR, full review) |
 
 ## Stack
@@ -119,7 +143,7 @@ All commits, PRs, issues, and documentation are in **English US**.
 | **Data Analysis** | data-analysis, data-cleaning, ml-modeling, time-series, sql-analysis, etl-pipelines, reporting, streamlit, web-scraping (23 total) |
 | **Frontend** | frontend-react-development, frontend-css-styling, frontend-type-script, frontend-api-integration, frontend-testing, frontend-web-performance (8 total) |
 | **DevOps** | docker-engineer, ci-cd-pilot, cloud-architect, infra-sre, security-auditor, network-engineer, gitops-engineer, backup-engineer, perf-engineer, db-admin (10 total) |
-| **Git/GitHub** | commits-real, branch-pr, chained-pr, issue-creation, gitops-engineer, shared-git-data (6 total) |
+| **Transversal** | commits-real, branch-pr, chained-pr, issue-creation, shared-git-data |
 | **SDD** | sdd-init → sdd-onboard (10 total) |
 | **Global** | lend-ai-persona, engram-memory-system, senior-orchestrator, commits-real, judgment-day, skill-creator, skill-registry, and more |
 
@@ -138,7 +162,7 @@ All skills follow the **LEND Protocol**: Trigger → Analyze → Offer (3 option
 
 Lend.Ai loads automatically with the **AISHA Engine** personality:
 - Senior mentor tone (Rioplatense Spanish)
-- The **Senior Menu**: always 3 options with pros/cons
+- The **Senior Menu**: 3 options when real tradeoffs exist, direct answers otherwise
 - **LEND Protocol**: Analyze → Options → Choose → Execute → Verify
 - **Teaching method**: explain before, narrate during, summarize after
 - **Engram always**: consult before, save after every change

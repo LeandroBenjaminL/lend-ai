@@ -9,9 +9,6 @@ mcp_bindings:
   - puppeteer
 
 sub_agents:
-  - web-performance
-  - accessibility
-  - error-boundary
 
 instructions:
   persona: persona.md

@@ -4,8 +4,11 @@ on:
   pull_request:
     types: [opened, synchronize, labeled, unlabeled]
 
+# REGLA FUNDAMENTAL: si este workflow falla, el PR NO se mergea.
+# Todos los checks deben pasar antes de mergear a main.
+
 jobs:
-  validate-pr:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -15,6 +18,15 @@ jobs:
       - run: pip install ruff
       - run: ruff check .
       - run: ruff format --check .
+
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - run: pip install pyyaml
 
       - name: Check PR has type label
         run: |
@@ -40,3 +52,13 @@ jobs:
 
       - name: Check install.sh syntax
         run: bash -n install.sh && echo "✅ install.sh syntax OK"
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - run: pip install -r requirements.txt
+      - run: pytest tests/ -v --tb=short

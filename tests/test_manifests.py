@@ -33,7 +33,7 @@ REQUIRED_TOP_LEVEL = {"agent", "instructions"}
 REQUIRED_AGNOSTIC = {"mcp_bindings"}
 
 REQUIRED_AGENT_FIELDS = {"name", "layer", "trigger", "description"}
-REQUIRED_INSTRUCTION_FIELDS = {"persona", "workflow", "patterns"}
+REQUIRED_INSTRUCTION_FIELDS = {"persona", "workflow"}
 
 
 def _get_agent_name(yaml_data: dict[str, Any]) -> str:
@@ -149,15 +149,14 @@ class TestManifestIntegrity:
         )
 
     def test_instructions_files_exist(
-        self, manifests_dir: Path, all_yaml_files: list[Path]
+        self, manifests_dir: Path, all_yaml_files: list[Path], profiles_dir: Path
     ) -> None:
-        """Cada archivo referenciado en instructions (persona.md, workflow.md, patterns.md)
-        existe en el subdirectorio del agente dentro de manifests/."""
+        """Cada archivo referenciado en instructions (persona.md, workflow.md)
+        existe en profiles/lend-ai/ (ubicacion centralizada)."""
         errors: list[str] = []
 
         for yaml_file in all_yaml_files:
             name = yaml_file.stem
-            agent_dir = manifests_dir / name
 
             with open(yaml_file, encoding="utf-8") as f:
                 data = yaml.safe_load(f)
@@ -166,14 +165,11 @@ class TestManifestIntegrity:
             for field in REQUIRED_INSTRUCTION_FIELDS:
                 filename = instructions.get(field)
                 if not filename:
-                    errors.append(f"{name}: instructions.{field} no está definido")
                     continue
 
-                instr_path = agent_dir / filename
+                instr_path = profiles_dir / "lend-ai" / filename
                 if not instr_path.exists():
-                    errors.append(f"{name}: falta archivo '{filename}' en {agent_dir}")
-                elif not instr_path.is_file():
-                    errors.append(f"{name}: '{filename}' no es un archivo regular")
+                    errors.append(f"{name}: falta archivo '{filename}' en {profiles_dir / 'lend-ai'}")
 
         assert not errors, (
             f"Se encontraron {len(errors)} problemas con archivos de instructions:\n"

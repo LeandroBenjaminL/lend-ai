@@ -2,9 +2,11 @@ name: CI
 
 on:
   push:
-    branches: [main]
   pull_request:
     branches: [main]
+
+# REGLA FUNDAMENTAL: si este workflow falla (lint, validate, o test),
+# NO se permite push ni merge. Corregir antes de reintentar.
 
 jobs:
   lint:

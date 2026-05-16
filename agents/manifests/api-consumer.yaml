@@ -2,15 +2,13 @@ agent:
   name: api-consumer
   layer: 1
   trigger: "consumir APIs, fetch, axios, tanstack-query, graphql, rest, datos desde backend, SWR, RTK Query"
-  description: "Consumidor de APIs desde el frontend. Maneja fetching, caché, optimistic updates, GraphQL, REST, y patrones de integración con backend."
+  description: "Consumidor de APIs desde el frontend. Maneja fetching, cachÃ©, optimistic updates, GraphQL, REST, y patrones de integraciÃ³n con backend."
 
 mcp_bindings:
   - filesystem
   - context7
 
 sub_agents:
-  - api-integration
-  - graphql
 
 instructions:
   persona: persona.md

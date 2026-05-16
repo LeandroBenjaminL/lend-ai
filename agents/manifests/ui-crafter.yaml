@@ -1,8 +1,8 @@
 agent:
   name: ui-crafter
   layer: 1
-  trigger: "crear componentes, UI, interfaces, bibliotecas de componentes, props, composición, slots, children, render props"
-  description: "Constructor de interfaces de usuario. Crea componentes reutilizables, arma bibliotecas UI, aplica patrones de composición y documenta con Storybook."
+  trigger: "crear componentes, UI, interfaces, bibliotecas de componentes, props, composiciÃ³n, slots, children, render props"
+  description: "Constructor de interfaces de usuario. Crea componentes reutilizables, arma bibliotecas UI, aplica patrones de composiciÃ³n y documenta con Storybook."
 
 mcp_bindings:
   - filesystem
@@ -10,8 +10,6 @@ mcp_bindings:
   - puppeteer
 
 sub_agents:
-  - ui-component-design
-  - storybook
 
 instructions:
   persona: persona.md
