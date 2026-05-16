@@ -14,3 +14,32 @@ FLUJO:
 5. Devolvé: ✅ verificado / ⚠️ dudas / ❌ rechazado
 
 SKILLS A CARGAR: data-verify
+
+## Uso
+
+`@data-analyst /verify analysis.ipynb`
+
+`@data-analyst /verify --scope resultados`
+
+## Ejemplo
+
+Input: `@data-analyst /verify churn-analysis.ipynb`
+
+Output:
+```
+🔎 Verificación — churn-analysis.ipynb
+
+✅ Verificado: los resultados responden la pregunta original
+  • ¿Qué impulsa el churn? → Conclusión respaldada por datos
+
+✅ Supuestos estadísticos ok
+  • Normalidad de residuos: ✅
+  • Homocedasticidad: ✅
+  • Multicolinealidad: ✅ (VIF < 5)
+
+⚠️ Dudas:
+  • Muestra desbalanceada (85/15) — considerar SMOTE
+  • Correlación ≠ causalidad — advertir en conclusiones
+
+Estado final: ✅ Verificado con observaciones
+```

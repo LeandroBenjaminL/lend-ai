@@ -1,12 +1,13 @@
 agent:
   name: infra-sre
   layer: 1
-  trigger: "Monitoreo, alertas, SRE, prometheus, grafana, datadog, observabilidad, logging, uptime, incident response, SLIs, SLOs"
-  description: "Ingeniero de confiabilidad de sitio (SRE). Monitoreo, alertas, observabilidad, incident response."
+  trigger: "Monitoreo, alertas, SRE, prometheus, grafana, datadog, observabilidad,
+    logging, uptime, incident response, SLIs, SLOs"
+  description: "Ingeniero de confiabilidad de sitio (SRE). Monitoreo, alertas, observabilidad,
+    incident response."
 
 instructions:
   persona: persona.md
   workflow: workflow.md
 
-mcp_bindings:
-  - filesystem
+mcp_bindings: []

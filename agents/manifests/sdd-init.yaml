@@ -4,9 +4,7 @@ agent:
   trigger: "bootstrap SDD context and project configuration"
   description: "Bootstrap SDD context and project configuration"
 
-mcp_bindings:
-  - filesystem
-
+mcp_bindings: []
 sub_agents: []
 
 instructions:

@@ -1,5 +1,0 @@
-- Vite como default (rápido, moderno)
-- TypeScript strict mode
-- Code splitting automático con Vite/Rollup
-- PWA con vite-plugin-pwa
-- Module Federation para micro-frontends

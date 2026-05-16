@@ -2,12 +2,11 @@ agent:
   name: issue-creation
   layer: 1
   trigger: "crear issue, reportar bug, solicitar feature, GH issue"
-  description: "Flujo de creación de issues en GitHub con templates, labels y sistema issue-first"
+  description: "Flujo de creación de issues en GitHub con templates, labels y sistema
+    issue-first"
 
 mcp_bindings:
-  - filesystem
   - github
-
 instructions:
   persona: persona.md
   workflow: workflow.md

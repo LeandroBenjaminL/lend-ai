@@ -1,13 +1,12 @@
 agent:
   name: realtime-engineer
   layer: 1
-  trigger: "websockets, SSE, server-sent events, polling, tiempo real, datos en vivo, socket.io, rxjs"
-  description: "Especialista en datos en tiempo real. Websockets, SSE, polling, y patrones de comunicaciÃ³n bidireccional entre frontend y backend."
+  trigger: "websockets, SSE, server-sent events, polling, tiempo real, datos en vivo,
+    socket.io, rxjs"
+  description: "Especialista en datos en tiempo real. Websockets, SSE, polling, y
+    patrones de comunicaciÃ³n bidireccional entre frontend y backend."
 
-mcp_bindings:
-  - filesystem
-  - puppeteer
-
+mcp_bindings: []
 sub_agents:
 
 instructions:

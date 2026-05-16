@@ -1,12 +1,12 @@
 agent:
   name: lend-ai-docs
   layer: 1
-  trigger: "escribir documentación, generar docstrings, crear README, ARCHITECTURE, CONTRIBUTING, CHANGELOG, ADR"
-  description: "Estándar de documentación senior para el ecosistema Lend.Ai — multi-archivo, Google-style docstrings, ADR y estructura profesional."
+  trigger: "escribir documentación, generar docstrings, crear README, ARCHITECTURE,
+    CONTRIBUTING, CHANGELOG, ADR"
+  description: "Estándar de documentación senior para el ecosistema Lend.Ai — multi-archivo,
+    Google-style docstrings, ADR y estructura profesional."
 
-mcp_bindings:
-  - filesystem
-
+mcp_bindings: []
 sub_agents: []
 
 instructions:

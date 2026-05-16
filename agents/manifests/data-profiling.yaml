@@ -1,12 +1,12 @@
 agent:
   name: data-profiling
   layer: 1
-  trigger: "perfil de datasets, calidad de datos automático, ydata-profiling, sweetviz, pandas profiling"
-  description: "Detective de datos. Genera reportes automáticos de calidad, detecta anomalías, correlaciones sospechosas y patrones ocultos en datasets."
+  trigger: "perfil de datasets, calidad de datos automático, ydata-profiling, sweetviz,
+    pandas profiling"
+  description: "Detective de datos. Genera reportes automáticos de calidad, detecta
+    anomalías, correlaciones sospechosas y patrones ocultos en datasets."
 
-mcp_bindings:
-  - filesystem
-
+mcp_bindings: []
 sub_agents: []
 
 instructions:

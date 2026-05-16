@@ -4,9 +4,7 @@ agent:
   trigger: "write detailed specifications from proposals"
   description: "Write detailed specifications from proposals"
 
-mcp_bindings:
-  - filesystem
-
+mcp_bindings: []
 sub_agents: []
 
 instructions:

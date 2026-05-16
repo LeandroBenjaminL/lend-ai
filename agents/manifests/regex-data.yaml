@@ -1,12 +1,13 @@
 agent:
   name: regex-data
   layer: 1
-  trigger: "expresiones regulares, limpiar strings, extraer patrones (emails, teléfonos, fechas, precios), validar formatos, pandas str"
-  description: "Artesano de regex. Escribe, documenta y aplica expresiones regulares sobre columnas de texto en DataFrames. Extrae información, valida formatos y normaliza strings con pandas str."
+  trigger: "expresiones regulares, limpiar strings, extraer patrones (emails, teléfonos,
+    fechas, precios), validar formatos, pandas str"
+  description: "Artesano de regex. Escribe, documenta y aplica expresiones regulares
+    sobre columnas de texto en DataFrames. Extrae información, valida formatos y normaliza
+    strings con pandas str."
 
-mcp_bindings:
-  - filesystem
-
+mcp_bindings: []
 sub_agents: []
 
 instructions:

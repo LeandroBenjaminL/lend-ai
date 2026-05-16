@@ -1,15 +1,13 @@
 agent:
   name: etl-pipelines
   layer: 1
-  trigger: "pipelines ETL, extracción, transformación, carga, procesamiento batch, automatizar flujos de datos, ETL, ELT"
-  description: "Ingeniero de datos. Diseña y ejecuta pipelines ETL/ELT. Extrae de múltiples fuentes, transforma en batch, carga a destino con atomicidad."
+  trigger: "pipelines ETL, extracción, transformación, carga, procesamiento batch,
+    automatizar flujos de datos, ETL, ELT"
+  description: "Ingeniero de datos. Diseña y ejecuta pipelines ETL/ELT. Extrae de
+    múltiples fuentes, transforma en batch, carga a destino con atomicidad."
 
 mcp_bindings:
-  - filesystem
-  - sqlite
-  - mysql
   - context7
-
 sub_agents:
   - data-etl
 

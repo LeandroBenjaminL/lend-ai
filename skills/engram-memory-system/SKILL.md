@@ -1,6 +1,6 @@
 ---
 name: engram-memory-system
-description: "Skill global de gestión de memoria — clasifica, organiza y decide el mejor sistema de almacenamiento para cada tipo de conocimiento en Engram."
+description: "Trigger: When you need to save, consult, classify, or organize memory in Engram. Skill global de gestion de memoria — clasifica, organiza y decide el mejor sistema de almacenamiento para cada tipo de conocimiento en Engram."
 license: MIT
 metadata:
   author: Leandro Benjamin L.
@@ -9,9 +9,9 @@ metadata:
 
 # Sistema de Memoria Engram
 
-Cargá esta skill cuando estés por guardar o consultar memoria en Engram.
+Carga esta skill cuando estes por guardar o consultar memoria en Engram.
 
-## ⚠️ REGLA DE ORO
+## [REGLAS] REGLA DE ORO
 
 **Guardá SIN PREGUNTAR.** No le preguntes al usuario "¿guardo esto?". Guardalo. Siempre.
 
@@ -136,17 +136,31 @@ Cuando descubras algo nuevo del usuario (cómo trabaja, qué prefiere, qué no l
 | `project` | Código, arquitectura, bugs, config, skills del proyecto actual |
 | `personal` | TODO lo que sea del usuario: preferencias, forma de trabajar, gustos |
 
-## Cuándo NO guardar
+## LEND Workflow
 
-- ❌ Cada comando que ejecutaste (no es un log)
-- ❌ Trivialidades (instalaciones de paquetes obvias)
-- ❌ Info que ya está en el código (para eso está el repo)
-- ❌ Lo mismo dos veces (usá topic_key para upsert)
+### 1. ANALIZAR
+Antes de actuar, consultar Engram: mem_context para contexto reciente, mem_search para decisiones previas. Identificar si la informacion es nueva o existente.
 
-## Cuándo consultar (antes de actuar)
+### 2. OFRECER/DELEGAR
+Decidir el tipo de almacenamiento segun el arbol de tipos. Elegir topic_key y scope apropiados.
 
-- ✅ Al empezar sesión: `mem_context` o `mem_search`
-- ✅ Antes de decisiones importantes: `mem_search "tema"`
-- ✅ Cuando un error parece conocido: `mem_search type:bugfix`
-- ✅ Cuando no recordás una preferencia: `mem_search scope:personal`
-- ✅ Antes de crear algo nuevo: ver si ya hay patrones similares
+### 3. HACER
+Guardar sin preguntar (REGLA DE ORO). Usar mem_save con el formato estructurado: What, Why, Where, Learned.
+
+### 4. VERIFICAR
+Confirmar que el dato quedo registrado. Si hay conflictos, usar mem_judge. Al finalizar sesion, usar mem_session_summary.
+
+## Cuando NO guardar
+
+- Cada comando que ejecutaste (no es un log)
+- Trivialidades (instalaciones de paquetes obvias)
+- Info que ya esta en el codigo (para eso esta el repo)
+- Lo mismo dos veces (usa topic_key para upsert)
+
+## Cuando consultar (antes de actuar)
+
+- Al empezar sesion: `mem_context` o `mem_search`
+- Antes de decisiones importantes: `mem_search "tema"`
+- Cuando un error parece conocido: `mem_search type:bugfix`
+- Cuando no recordas una preferencia: `mem_search scope:personal`
+- Antes de crear algo nuevo: ver si ya hay patrones similares

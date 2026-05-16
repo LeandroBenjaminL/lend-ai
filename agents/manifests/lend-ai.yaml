@@ -2,7 +2,8 @@ agent:
   name: lend-ai
   layer: "0"
   trigger: "Orquestar el ecosistema, decidir entre data y frontend, planificar arquitectura"
-  description: "LEND.AI (AISHA Engine) — Senior Mentor Rioplatense. Backend + Frontend + Global Skills. LEND-Protocol."
+  description: "LEND.AI (AISHA Engine) — Senior Mentor Rioplatense. Backend + Frontend
+    + Global Skills. LEND-Protocol."
 
 instructions:
   persona: persona.md
@@ -32,8 +33,6 @@ sub_agents:
 mcp_bindings:
   - engram
   - sequential-thinking
-  - filesystem
   - github
   - notion
-  - slack
   - google-drive

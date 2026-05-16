@@ -4,9 +4,7 @@ agent:
   trigger: "investigate codebase and think through ideas"
   description: "Investigate codebase and think through ideas"
 
-mcp_bindings:
-  - filesystem
-
+mcp_bindings: []
 sub_agents: []
 
 instructions:

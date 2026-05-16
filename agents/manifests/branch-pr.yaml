@@ -2,12 +2,11 @@ agent:
   name: branch-pr
   layer: 1
   trigger: "crear pull request, abrir PR, preparar cambios para review"
-  description: "Flujo de creación de PRs siguiendo el sistema issue-first con templates y labels"
+  description: "Flujo de creación de PRs siguiendo el sistema issue-first con templates
+    y labels"
 
 mcp_bindings:
-  - filesystem
   - github
-
 sub_agents: []
 
 instructions:

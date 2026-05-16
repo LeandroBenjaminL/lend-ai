@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.8.0] - 2026-05-16
+
+### Added
+- **lend-ai-delegation skill**: nuevo skill con árbol de delegación completo, 6 triggers automáticos, mecanismo task() + agent-router MCP. Registrado en opencode.json skills array.
+- **Delegación automática**: la description del orquestador ahora fuerza delegación sin preguntar para cada dominio.
+- **18 commands expandidos**: api-fetch, archive, clean, design, eda, forecast, health, judgment, new-project, pipeline, profile, question, report, scrape, sql, validate, verify, viz — todos con ## Uso y ## Ejemplo.
+
+### Changed
+- **System prompt** (description): completamente reescrito. De "preguntar antes de ejecutar" a "DELEGATE FIRST". Mapeo explícito dominio→task() para data-analyst, frontend-senior, devops, commits-real, engram-keeper, sdd-*. Referencia a agent-router MCP resolve_task(). Voz rioplatense preservada.
+- **lend-ai-mentor SKILL.md**: v3.0 — "Preguntá SOLO si hay ambigüedad o tradeoffs reales. Para tareas de dominio claro, delegá automáticamente." Ya no bloquea la delegación.
+- **senior-orchestrator SKILL.md**: workflow rediseñado: ANALIZAR → DELEGAR (no preguntar) → HACER → ITERAR. Incluye llamadas a task() y agent-router MCP.
+- **6 skills arregladas**: frontend-e2e-testing (frontmatter agregado), lend-ai-persona, data-analyst, frontend-senior, engram-memory-system, content-engine (Trigger keywords + LEND Workflow agregados, emojis removidos).
+- **skill-registry**: referencia .atl/skill-registry.md → registry/AGENT_REGISTRY.md.
+
+### Removed
+- **79 patterns.md huérfanos**: eliminados de todos los directorios de instructiones (no referenciados por ningún manifest desde que se removió el campo references).
+- **111 referencias MCP rotas**: filesystem, docker, mysql, sqlite, postgres, puppeteer, slack, smtp-email removidos de 75 manifests.
+
+### Fixed
+- **Delegación bloqueada**: lend-ai-mentor ya no dice "preguntar antes de cada acción". senior-orchestrator ya no dice "el usuario confirma" antes de delegar.
+
 ## [0.7.0] - 2026-05-16
 
 ### Added

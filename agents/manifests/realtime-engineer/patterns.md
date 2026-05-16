@@ -1,4 +1,0 @@
-- WebSocket para bidireccional (chat, colaboración)
-- SSE para notificaciones server→client
-- Polling como fallback o para datos no críticos
-- Heartbeat para mantener conexión viva

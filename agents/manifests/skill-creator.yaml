@@ -1,12 +1,12 @@
 agent:
   name: skill-creator
   layer: 1
-  trigger: "crear skill nueva, agregar instrucciones IA, documentar patrones, crear SKILL.md"
-  description: "Crea nuevas skills para el ecosistema de agentes siguiendo el estándar Agent Skills"
+  trigger: "crear skill nueva, agregar instrucciones IA, documentar patrones, crear
+    SKILL.md"
+  description: "Crea nuevas skills para el ecosistema de agentes siguiendo el estándar
+    Agent Skills"
 
-mcp_bindings:
-  - filesystem
-
+mcp_bindings: []
 sub_agents: []
 
 instructions:

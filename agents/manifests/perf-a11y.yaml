@@ -1,13 +1,12 @@
 agent:
   name: perf-a11y
   layer: 1
-  trigger: "performance, Core Web Vitals, Lighthouse, accesibilidad, WCAG, ARIA, screen readers, bundle size, lazy loading, error boundary"
-  description: "Especialista en performance y accesibilidad web. Optimiza Core Web Vitals, Lighthouse scores, WCAG compliance, y manejo de errores."
+  trigger: "performance, Core Web Vitals, Lighthouse, accesibilidad, WCAG, ARIA, screen
+    readers, bundle size, lazy loading, error boundary"
+  description: "Especialista en performance y accesibilidad web. Optimiza Core Web
+    Vitals, Lighthouse scores, WCAG compliance, y manejo de errores."
 
-mcp_bindings:
-  - filesystem
-  - puppeteer
-
+mcp_bindings: []
 sub_agents:
 
 instructions:

@@ -1,13 +1,13 @@
 agent:
   name: data-flow
   layer: 1
-  trigger: "estado global, estado local, store, zustand, redux, context, routing, navegaciÃ³n, formularios, validaciÃ³n"
-  description: "Arquitecto de datos del frontend. Maneja estado global y local, routing, formularios complejos y validaciÃ³n del lado cliente."
+  trigger: "estado global, estado local, store, zustand, redux, context, routing,
+    navegaciÃ³n, formularios, validaciÃ³n"
+  description: "Arquitecto de datos del frontend. Maneja estado global y local, routing,
+    formularios complejos y validaciÃ³n del lado cliente."
 
 mcp_bindings:
-  - filesystem
   - context7
-
 sub_agents:
 
 instructions:

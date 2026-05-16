@@ -1,4 +1,0 @@
-- Estado global solo para datos compartidos
-- React Context para estado simple, Zustand/Redux para complejo
-- React Hook Form + Zod para formularios
-- TanStack Router o React Router para navegación

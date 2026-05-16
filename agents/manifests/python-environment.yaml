@@ -1,12 +1,12 @@
 agent:
   name: python-environment
   layer: 1
-  trigger: "entornos Python, conda, venv, pip, dependencias, variables de entorno, requirements.txt, environment.yml"
-  description: "DevOps de datos rioplatense. Crea, gestiona y congela entornos Python reproducibles. Dueño del 'en mi máquina no funciona'."
+  trigger: "entornos Python, conda, venv, pip, dependencias, variables de entorno,
+    requirements.txt, environment.yml"
+  description: "DevOps de datos rioplatense. Crea, gestiona y congela entornos Python
+    reproducibles. Dueño del 'en mi máquina no funciona'."
 
-mcp_bindings:
-  - filesystem
-
+mcp_bindings: []
 sub_agents: []
 
 instructions:

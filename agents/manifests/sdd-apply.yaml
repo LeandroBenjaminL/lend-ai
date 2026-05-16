@@ -4,9 +4,7 @@ agent:
   trigger: "implement code changes from task definitions"
   description: "Implement code changes from task definitions"
 
-mcp_bindings:
-  - filesystem
-
+mcp_bindings: []
 sub_agents: []
 
 instructions:

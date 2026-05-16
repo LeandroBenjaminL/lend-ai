@@ -1,12 +1,12 @@
 agent:
   name: data-question
   layer: 0.5  # strategist-level
-  trigger: "definir preguntas de negocio, hipótesis, objetivos del análisis, clarificar qué descubrir"
-  description: "Consultor analítico. Clarifica preguntas de negocio, define hipótesis, alinea expectativas antes de tocar datos."
+  trigger: "definir preguntas de negocio, hipótesis, objetivos del análisis, clarificar
+    qué descubrir"
+  description: "Consultor analítico. Clarifica preguntas de negocio, define hipótesis,
+    alinea expectativas antes de tocar datos."
 
-mcp_bindings:
-  - filesystem
-
+mcp_bindings: []
 sub_agents: []
 
 instructions:

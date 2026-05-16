@@ -1,12 +1,12 @@
 agent:
   name: content-docs
   layer: 1
-  trigger: "i18n, internacionalizaciÃ³n, traducciones, SEO, meta tags, Open Graph, analytics, documentaciÃ³n, changelog, commits, versionado"
-  description: "Estratega de contenido y documentaciÃ³n. Maneja internacionalizaciÃ³n, SEO, analytics, documentaciÃ³n de componentes y convenciones de proyecto."
+  trigger: "i18n, internacionalizaciÃ³n, traducciones, SEO, meta tags, Open Graph,
+    analytics, documentaciÃ³n, changelog, commits, versionado"
+  description: "Estratega de contenido y documentaciÃ³n. Maneja internacionalizaciÃ³n,
+    SEO, analytics, documentaciÃ³n de componentes y convenciones de proyecto."
 
-mcp_bindings:
-  - filesystem
-
+mcp_bindings: []
 sub_agents:
 
 instructions:

@@ -4,9 +4,7 @@ agent:
   trigger: "create change proposals from explorations"
   description: "Create change proposals from explorations"
 
-mcp_bindings:
-  - filesystem
-
+mcp_bindings: []
 sub_agents: []
 
 instructions:

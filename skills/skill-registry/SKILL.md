@@ -2,7 +2,7 @@
 name: skill-registry
 description: >
   Gestiona el registro central de skills — sync skills/ con AGENTS.md y
-  .atl/skill-registry.md, detecta skills huérfanas o faltantes.
+  registry/AGENT_REGISTRY.md, detecta skills huérfanas o faltantes.
   Trigger: "update skills", "skill registry", "actualizar skills", o después de instalar/remover skills.
 license: MIT
 metadata:
@@ -41,7 +41,7 @@ Registro de skills. Que no haya skills huérfanas ni manifiestos rotos.
    ├── skills/ vs AGENTS.md: agregar skills faltantes a la tabla
    ├── AGENTS.md vs skills/: marcar skills deprecadas que ya no existen
    ├── skills/ vs manifests: skills sin manifest → agregar a known_without_manifest
-   ├── Guardar reporte en .atl/skill-registry.md
+    ├── Guardar reporte en registry/AGENT_REGISTRY.md
    └── Guardar en engram el resultado de la auditoría
 
 5. VERIFICAR

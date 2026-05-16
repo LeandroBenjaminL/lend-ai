@@ -1,14 +1,13 @@
 agent:
   name: db-admin
   layer: 1
-  trigger: "Base de datos, PostgreSQL, MySQL, Redis, SQLite, migraciones, índices, query optimization, backup de base de datos, esquemas"
-  description: "Administrador de bases de datos. PostgreSQL, MySQL, Redis, SQLite — esquemas, migraciones, performance."
+  trigger: "Base de datos, PostgreSQL, MySQL, Redis, SQLite, migraciones, índices,
+    query optimization, backup de base de datos, esquemas"
+  description: "Administrador de bases de datos. PostgreSQL, MySQL, Redis, SQLite
+    — esquemas, migraciones, performance."
 
 instructions:
   persona: persona.md
   workflow: workflow.md
 
-mcp_bindings:
-  - filesystem
-  - postgres
-  - sqlite
+mcp_bindings: []

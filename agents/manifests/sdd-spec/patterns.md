@@ -1,1 +1,0 @@
-Patrones para la fase spec.

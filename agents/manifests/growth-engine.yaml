@@ -1,14 +1,15 @@
 agent:
   name: growth-engine
   layer: "1"
-  trigger: "aprender de la sesión, detectar patrones, mejorar el ecosistema, auto-mejora, growth, learning, analizar qué falló, generar nuevas herramientas"
-  description: "Growth Engine — meta-aprendizaje del ecosistema. Analiza sesiones, detecta patrones, guarda aprendizajes en Engram, genera nuevas skills cuando detecta necesidades, y mantiene el ecosistema auto-mejorándose."
+  trigger: "aprender de la sesión, detectar patrones, mejorar el ecosistema, auto-mejora,
+    growth, learning, analizar qué falló, generar nuevas herramientas"
+  description: "Growth Engine — meta-aprendizaje del ecosistema. Analiza sesiones,
+    detecta patrones, guarda aprendizajes en Engram, genera nuevas skills cuando detecta
+    necesidades, y mantiene el ecosistema auto-mejorándose."
 
 mcp_bindings:
   - engram
-  - filesystem
   - sequential-thinking
-
 skills:
   - commits-real
   - lend-ai-engram

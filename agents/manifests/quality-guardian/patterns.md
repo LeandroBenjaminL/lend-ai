@@ -1,4 +1,0 @@
-- Testing Library para tests de componentes (desde el usuario)
-- Playwright para E2E (más moderno, más rápido)
-- Mocks mínimos, prefiere datos reales
-- CI: tests en cada PR

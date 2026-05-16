@@ -1,4 +1,0 @@
-- TanStack Query para REST (caché automática)
-- Apollo/urql para GraphQL
-- Custom hooks para encapsular lógica de fetching
-- Error boundaries para fallos de red

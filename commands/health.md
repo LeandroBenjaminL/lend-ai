@@ -21,3 +21,27 @@ REGLAS:
 - No modifiques nada — solo reportá
 - Mostrá ✅ pasa / ❌ falla / ⚠️ warning
 - Si todo está bien, decilo con confianza
+
+## Uso
+
+`/health`
+
+`/health --verbose`
+
+## Ejemplo
+
+Input: `/health`
+
+Output:
+```
+🏥 Health Check — LEND.AI Ecosystem
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ Config JSON válido
+✅ Skills cargadas (42/42)
+✅ Sub-agentes con tools correctas
+✅ MCPs configurados (4/4)
+⚠️ data-validation no está en tabla de delegación
+✅ 6 sub-agentes con tools consistentes
+
+Estado general: ✅ OK (1 warning)
+```

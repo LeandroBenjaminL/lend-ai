@@ -1,16 +1,12 @@
 agent:
   name: data-etl
   layer: 1
-  trigger: "construir pipelines ETL, automatizar procesos, extraer datos, transformar, cargar, procesamiento por lotes"
-  description: "Ingeniero de datos. DiseÃ±a y ejecuta pipelines ETL/ELT para mover y transformar datos entre sistemas."
+  trigger: "construir pipelines ETL, automatizar procesos, extraer datos, transformar,
+    cargar, procesamiento por lotes"
+  description: "Ingeniero de datos. DiseÃ±a y ejecuta pipelines ETL/ELT para mover
+    y transformar datos entre sistemas."
 
-mcp_bindings:
-  - docker
-  - filesystem
-  - mysql
-  - puppeteer
-  - sqlite
-
+mcp_bindings: []
 sub_agents:
   - etl-pipelines
   - sql-analysis

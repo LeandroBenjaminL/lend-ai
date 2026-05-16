@@ -1,13 +1,13 @@
 agent:
   name: docker-engineer
   layer: 1
-  trigger: "Docker, Docker Compose, contenedores, imágenes, registries, orquestación, swarm, kubernetes, Dockerfile, compose.yml"
-  description: "Ingeniero de contenedores. Docker, Compose, registries, K8s y toda la arquitectura de contenedores."
+  trigger: "Docker, Docker Compose, contenedores, imágenes, registries, orquestación,
+    swarm, kubernetes, Dockerfile, compose.yml"
+  description: "Ingeniero de contenedores. Docker, Compose, registries, K8s y toda
+    la arquitectura de contenedores."
 
 instructions:
   persona: persona.md
   workflow: workflow.md
 
-mcp_bindings:
-  - filesystem
-  - docker
+mcp_bindings: []

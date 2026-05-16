@@ -163,6 +163,7 @@ class TestSkillsConsistency:
             "shared-git-data",
             # Skills without agent manifest (loaded via opencode.json skills array)
             "lend-ai-mentor",
+            "lend-ai-delegation",
             # Orchestrators
             "senior-orchestrator",
         }

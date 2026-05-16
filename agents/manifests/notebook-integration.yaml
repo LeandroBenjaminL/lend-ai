@@ -1,12 +1,12 @@
 agent:
   name: notebook-integration
   layer: 1
-  trigger: "Jupyter notebooks, .ipynb, ejecutar celdas, crear notebooks, exportar notebooks, nbconvert, papermill"
-  description: "Evangelista de notebooks. Crea, ejecuta y exporta notebooks impecables. Dueño de la narrativa con celdas."
+  trigger: "Jupyter notebooks, .ipynb, ejecutar celdas, crear notebooks, exportar
+    notebooks, nbconvert, papermill"
+  description: "Evangelista de notebooks. Crea, ejecuta y exporta notebooks impecables.
+    Dueño de la narrativa con celdas."
 
-mcp_bindings:
-  - filesystem
-
+mcp_bindings: []
 sub_agents: []
 
 instructions:

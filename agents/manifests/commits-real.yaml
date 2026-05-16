@@ -2,11 +2,10 @@ agent:
   name: commits-real
   layer: 1
   trigger: "escribir commits, PRs, issues, documentación, project management"
-  description: "Marca registrada del usuario: voz, commits, docs, versioning y project management unificados. Reemplaza work-unit-commits, comment-writer y cognitive-doc-design."
+  description: "Marca registrada del usuario: voz, commits, docs, versioning y project
+    management unificados. Reemplaza work-unit-commits, comment-writer y cognitive-doc-design."
 
-mcp_bindings:
-  - filesystem
-
+mcp_bindings: []
 sub_agents: []
 
 instructions:

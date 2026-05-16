@@ -1,13 +1,13 @@
 agent:
   name: web-scraping
   layer: 1
-  trigger: "scrapear sitios web, extraer datos de HTML, BeautifulSoup, Selenium, Scrapy, automatizar navegación, web scraping, puppeteer"
-  description: "Especialista en extracción web. Navega, parsea y extrae datos de sitios web con las herramientas adecuadas para cada caso. Respeta robots.txt, aplica rate limiting y prefiere APIs antes que scraping."
+  trigger: "scrapear sitios web, extraer datos de HTML, BeautifulSoup, Selenium, Scrapy,
+    automatizar navegación, web scraping, puppeteer"
+  description: "Especialista en extracción web. Navega, parsea y extrae datos de sitios
+    web con las herramientas adecuadas para cada caso. Respeta robots.txt, aplica
+    rate limiting y prefiere APIs antes que scraping."
 
-mcp_bindings:
-  - puppeteer
-  - filesystem
-
+mcp_bindings: []
 sub_agents: []
 
 instructions:

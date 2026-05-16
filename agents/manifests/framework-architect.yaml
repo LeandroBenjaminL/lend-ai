@@ -1,13 +1,13 @@
 agent:
   name: framework-architect
   layer: 1
-  trigger: "elegir framework, configurar proyecto, arquitectura de app, estructura de carpetas, Server Components, routing de framework"
-  description: "Arquitecto de frameworks frontend. Decide y configura el stack: React, Astro, Next.js, Vue, Nuxt. Optimiza la estructura del proyecto."
+  trigger: "elegir framework, configurar proyecto, arquitectura de app, estructura
+    de carpetas, Server Components, routing de framework"
+  description: "Arquitecto de frameworks frontend. Decide y configura el stack: React,
+    Astro, Next.js, Vue, Nuxt. Optimiza la estructura del proyecto."
 
 mcp_bindings:
-  - filesystem
   - context7
-
 sub_agents:
 
 instructions:

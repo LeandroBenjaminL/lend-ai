@@ -1,13 +1,13 @@
 agent:
   name: data-archive
   layer: 0.5
-  trigger: "documentar proyecto, versionar, cerrar proyecto, archivar anÃ¡lisis, dejar ordenado"
-  description: "Archivero de proyectos. Documenta, versiona y cierra proyectos de datos para que el futuro yo no sufra."
+  trigger: "documentar proyecto, versionar, cerrar proyecto, archivar anÃ¡lisis, dejar
+    ordenado"
+  description: "Archivero de proyectos. Documenta, versiona y cierra proyectos de
+    datos para que el futuro yo no sufra."
 
 mcp_bindings:
-  - filesystem
   - google-drive
-
 sub_agents:
   - python-environment
   - issue-creation

@@ -4,9 +4,7 @@ agent:
   trigger: "archive completed change artifacts"
   description: "Archive completed change artifacts"
 
-mcp_bindings:
-  - filesystem
-
+mcp_bindings: []
 sub_agents: []
 
 instructions:

@@ -1,17 +1,15 @@
 agent:
   name: data-analysis
   layer: 1
-  trigger: "analizar datasets, manipular DataFrames, cálculos numéricos con Python, NumPy, Pandas"
-  description: "Analista de datos senior. Carga, explora y transforma datos tabulares. Dueño del análisis exploratorio."
+  trigger: "analizar datasets, manipular DataFrames, cálculos numéricos con Python,
+    NumPy, Pandas"
+  description: "Analista de datos senior. Carga, explora y transforma datos tabulares.
+    Dueño del análisis exploratorio."
 
 mcp_bindings:
   - context7
-  - filesystem
-  - mysql
   - ocr
-  - sqlite
   - web-search
-
 sub_agents:
   - data-profiling
   - data-validation

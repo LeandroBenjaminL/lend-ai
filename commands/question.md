@@ -14,3 +14,30 @@ FLUJO:
 5. Devolvé especificación clara del problema
 
 SKILLS A CARGAR: data-question
+
+## Uso
+
+`@data-analyst /question "What drives customer churn?"`
+
+`@data-analyst /question "Which products have the highest margin?"`
+
+## Ejemplo
+
+Input: `@data-analyst /question "What drives customer churn?"`
+
+Output:
+```
+🎯 Pregunta SMART
+
+Específica: ¿Qué factores (demográficos, comportamiento, soporte)
+            predicen el churn de clientes en los próximos 90 días?
+
+Métrica: Tasa de churn = clientes perdidos / clientes totales
+
+Hipótesis:
+  H1: Clientes con menos de 3 logins/semana tienen mayor churn
+  H2: Tickets de soporte sin resolver >48h → churn +40%
+  H3: Descuento inicial >30% atrae clientes menos leales
+
+Éxito: Modelo con AUC > 0.80 en validación
+```

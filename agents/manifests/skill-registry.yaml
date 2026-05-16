@@ -5,9 +5,7 @@ agent:
   description: "Escanea skills, escribe .atl/skill-registry.md y persiste en Engram"
 
 mcp_bindings:
-  - filesystem
   - engram
-
 sub_agents: []
 
 instructions:

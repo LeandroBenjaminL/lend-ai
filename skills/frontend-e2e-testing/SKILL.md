@@ -1,7 +1,16 @@
+---
+name: frontend-e2e-testing
+description: "Trigger: When user asks about E2E testing, Playwright, Cypress, or end-to-end test automation. Testing End-to-End de aplicaciones frontend. Pruebas de flujos completos multi-pagina con navegador real."
+license: MIT
+metadata:
+  author: Leandro Benjamin L.
+  version: "1.0"
+---
+
 # E2E Testing
 
-## Descripción
-Testing End-to-End de aplicaciones frontend. Pruebas de flujos completos multi-página con navegador real.
+## Descripcion
+Testing End-to-End de aplicaciones frontend. Pruebas de flujos completos multi-pagina con navegador real.
 
 ## Tecnologías
 - **Playwright**: Multi-browser (Chromium, Firefox, WebKit), mobile emulation, network intercept
@@ -36,8 +45,22 @@ await page.route('**/api/users', async (route) => {
 });
 ```
 
+## LEND Workflow
+
+### 1. ANALIZAR
+Identificar flujos criticos que requieren E2E. Elegir herramienta (Playwright multi-browser vs Cypress developer-friendly). Revisar tests existentes.
+
+### 2. OFRECER/DELEGAR
+Decidir enfoque: E2E completo vs integracion. Determinar browsers objetivo y datos de prueba.
+
+### 3. HACER
+Escribir tests con data-testid, mocks de API, y parallel execution. Estructurar en flujos de usuario completos.
+
+### 4. VERIFICAR
+Correr en CI contra entorno controlado. Validar que flujos criticos pasan. Guardar patrones en Engram.
+
 ## Consideraciones
-- E2E tests son lentos — solo para flujos críticos
-- Usá data-testid en lugar de clases CSS frágiles
-- Corré en CI contra un entorno controlado
+- E2E tests son lentos — solo para flujos criticos
+- Usa data-testid en lugar de clases CSS fragiles
+- Corre en CI contra un entorno controlado
 - Parallel execution para acelerar

@@ -2,11 +2,10 @@ agent:
   name: data-verify
   layer: 0.5
   trigger: "verificar resultados, revisar análisis, validar conclusiones, sanity checks"
-  description: "Revisor de análisis. Verifica que los resultados sean correctos, consistentes y respondan la pregunta original."
+  description: "Revisor de análisis. Verifica que los resultados sean correctos, consistentes
+    y respondan la pregunta original."
 
-mcp_bindings:
-  - filesystem
-
+mcp_bindings: []
 sub_agents:
   - data-validation
   - go-testing

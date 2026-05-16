@@ -24,3 +24,30 @@ REGLAS:
 - No modificues archivos del proyecto
 - Si el dataset es grande (>100K filas), sampleá 10K
 - Devolvé el resumen en una tabla clara
+
+## Uso
+
+`@data-analyst /eda dataset.csv`
+
+`@data-analyst /eda clientes.xlsx --target churn`
+
+## Ejemplo
+
+Input: `@data-analyst /eda ventas.csv`
+
+Output:
+```
+📊 EDA — ventas.csv (5000 filas × 12 columnas)
+
+Distribuciones:
+• precio: media=150.3, mediana=85.0, min=5, max=9900 → sesgo derecho
+• cantidad: media=3.2, mediana=2, rango [1-50]
+
+Nulos: región (12%), descuento (8%)
+
+Correlaciones destacadas:
+• precio × cantidad: -0.31 (a mayor precio, menos unidades)
+• precio × ingresos: 0.72 (fuerte positiva)
+
+Outliers: 23 filas fuera de rango IQR (0.5%)
+```

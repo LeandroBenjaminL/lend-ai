@@ -1,9 +1,11 @@
 ---
 name: content-engine
 description: >
+  Trigger: After significant sessions, when you need to analyze Engram,
+  track improvements, update docs, or generate LinkedIn content.
   Meta-skill que analiza Engram, trackea mejoras en proyectos,
-  actualiza documentación y genera contenido para LinkedIn.
-  Se ejecuta después de sesiones significativas.
+  actualiza documentacion y genera contenido para LinkedIn.
+  Se ejecuta despues de sesiones significativas.
 license: MIT
 metadata:
   author: Leandro Benjamin L.
@@ -12,11 +14,25 @@ metadata:
 
 # Content Engine
 
-## Propósito
+## Proposito
 
-Analizar Engram constantemente para entender qué se hizo, detectar patrones de mejora, mantener la documentación al día, y generar contenido profesional (LinkedIn posts, case studies, tips técnicos).
+Analizar Engram constantemente para entender que se hizo, detectar patrones de mejora, mantener la documentacion al dia, y generar contenido profesional (LinkedIn posts, case studies, tips tecnicos).
 
-## Ciclo
+## LEND Workflow
+
+### 1. ANALIZAR
+Leer Engram: mem_context, mem_search, git log. Identificar mejoras, bugs fixeados, aprendizajes, cambios de arquitectura.
+
+### 2. OFRECER/DELEGAR
+Decidir que accion tomar: documentar, generar contenido, o ambos. Elegir formato segun el tipo de logro.
+
+### 3. HACER
+Ejecutar la documentacion o creacion de contenido. Actualizar CHANGELOG, AGENTS.md, README, ARCHITECTURE si corresponde.
+
+### 4. VERIFICAR
+Guardar todo en Engram: que se documento, que contenido se creo, ideas pendientes. Preguntar antes de publicar.
+
+### Ciclo (alternativo)
 
 ```
 1. LEER ENGRAM

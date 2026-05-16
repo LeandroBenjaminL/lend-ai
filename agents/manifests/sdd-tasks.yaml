@@ -4,9 +4,7 @@ agent:
   trigger: "break down specs and designs into implementation tasks"
   description: "Break down specs and designs into implementation tasks"
 
-mcp_bindings:
-  - filesystem
-
+mcp_bindings: []
 sub_agents: []
 
 instructions:

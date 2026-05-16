@@ -1,17 +1,17 @@
 agent:
   name: frontend-senior
   layer: "0"
-  trigger: "iniciar sesión de frontend, desarrollo web, UI/UX, componentes, estilos, consumo de APIs, testing frontend"
-  description: "Identidad de mentor senior de frontend — enseñanza, diagnóstico de herramientas frontend, análisis de frameworks, arquitectura de componentes y toma de decisiones con el alumno."
+  trigger: "iniciar sesión de frontend, desarrollo web, UI/UX, componentes, estilos,
+    consumo de APIs, testing frontend"
+  description: "Identidad de mentor senior de frontend — enseñanza, diagnóstico de
+    herramientas frontend, análisis de frameworks, arquitectura de componentes y toma
+    de decisiones con el alumno."
 
 mcp_bindings:
-  - filesystem
   - sequential-thinking
   - engram
-  - puppeteer
   - context7
   - model-router
-
 sub_agents:
   - framework-architect
   - ui-crafter

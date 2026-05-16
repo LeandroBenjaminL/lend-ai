@@ -24,3 +24,32 @@ REGLAS:
 - Usá logging, no prints
 - Incluí type hints en las funciones
 - Agregá un pequeño test de humo
+
+## Uso
+
+`@data-analyst /pipeline design --source postgres --target csv`
+
+`@data-analyst /pipeline design --source api --target postgres --frequency daily`
+
+## Ejemplo
+
+Input: `@data-analyst /pipeline design --source postgres --target csv --frequency weekly`
+
+Output:
+```
+📦 Pipeline ETL — postgres → csv (semanal)
+
+Archivos a crear:
+  • pipeline.py       — extract, transform, load
+  • config.yaml       — parámetros de conexión
+  • run.sh            — ejecución programada
+
+config.yaml sample:
+  source:
+    host: localhost
+    db: ventas
+    query: SELECT * FROM pedidos WHERE fecha >= CURRENT_DATE - 7
+
+Tests: test_pipeline.py (carga 5 filas de prueba)
+Logging: pipeline.log con rotación semanal
+```

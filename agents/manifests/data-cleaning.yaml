@@ -2,13 +2,11 @@ agent:
   name: data-cleaning
   layer: 1
   trigger: "limpiar datos, manejar nulos, duplicados, outliers, preparar datasets"
-  description: "Especialista en limpieza de datos. Elimina duplicados, imputa nulos, detecta outliers, normaliza formatos."
+  description: "Especialista en limpieza de datos. Elimina duplicados, imputa nulos,
+    detecta outliers, normaliza formatos."
 
 mcp_bindings:
-  - filesystem
   - ocr
-  - sqlite
-
 sub_agents:
   - data-validation
   - regex-data

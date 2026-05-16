@@ -1,12 +1,13 @@
 agent:
   name: network-engineer
   layer: 1
-  trigger: "Networking, DNS, proxy, load balancer, nginx, caddy, cloudflare, SSL, TLS, certificados, firewall, VPC, subnets"
-  description: "Ingeniero de redes. DNS, proxies, load balancers, firewalls, certificados y toda la capa de red."
+  trigger: "Networking, DNS, proxy, load balancer, nginx, caddy, cloudflare, SSL,
+    TLS, certificados, firewall, VPC, subnets"
+  description: "Ingeniero de redes. DNS, proxies, load balancers, firewalls, certificados
+    y toda la capa de red."
 
 instructions:
   persona: persona.md
   workflow: workflow.md
 
-mcp_bindings:
-  - filesystem
+mcp_bindings: []

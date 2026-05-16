@@ -40,3 +40,36 @@ REGLAS:
 - Preguntá antes de crear archivos
 - No sobrescribas directorios existentes
 - Explicá para qué sirve cada carpeta/archivo
+
+## Uso
+
+`/new-project lending-model`
+
+`/new-project customer-churn --source postgres --type classification`
+
+## Ejemplo
+
+Input: `/new-project churn-predictor`
+
+Output:
+```
+🚀 Proyecto creado: churn-predictor/
+
+churn-predictor/
+├── data/raw/          # Lectura de DB -> raw
+├── data/processed/    # Datos limpios
+├── notebooks/         # EDA + modelado
+├── src/
+│   ├── etl.py         # Extracción desde DB
+│   ├── features.py    # Feature engineering
+│   └── viz.py         # Visualizaciones
+├── tests/
+├── reports/
+├── .env               # Variables de entorno
+├── .gitignore
+└── README.md
+
+✅ git init
+✅ Entorno virtual creado
+✅ pandas, scikit-learn, matplotlib instalados
+```

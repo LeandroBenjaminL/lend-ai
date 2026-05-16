@@ -1,13 +1,12 @@
 agent:
   name: styling-engineer
   layer: 1
-  trigger: "estilos, CSS, layouts, Tailwind, animaciones, responsive, themes, diseÃ±o visual, colores, tipografÃ­a"
-  description: "Ingeniero de estilos y diseÃ±o visual. Domina CSS moderno, Tailwind, animaciones, responsive design, sistemas de temas y layouts."
+  trigger: "estilos, CSS, layouts, Tailwind, animaciones, responsive, themes, diseÃ±o
+    visual, colores, tipografÃ­a"
+  description: "Ingeniero de estilos y diseÃ±o visual. Domina CSS moderno, Tailwind,
+    animaciones, responsive design, sistemas de temas y layouts."
 
-mcp_bindings:
-  - filesystem
-  - puppeteer
-
+mcp_bindings: []
 sub_agents:
 
 instructions:

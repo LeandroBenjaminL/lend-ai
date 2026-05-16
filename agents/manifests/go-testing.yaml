@@ -2,11 +2,10 @@ agent:
   name: go-testing
   layer: 1
   trigger: "escribir tests Go, testing en Go, teatest, cobertura Go"
-  description: "Patrones de testing en Go incluyendo TUI con Bubbletea, table-driven tests y golden files"
+  description: "Patrones de testing en Go incluyendo TUI con Bubbletea, table-driven
+    tests y golden files"
 
-mcp_bindings:
-  - filesystem
-
+mcp_bindings: []
 sub_agents: []
 
 instructions:

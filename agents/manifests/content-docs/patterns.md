@@ -1,4 +1,0 @@
-- i18next / next-intl para React/Next
-- next-seo o react-helmet para meta tags
-- Structured data (JSON-LD) para rich snippets
-- Conventional commits para changelog automático

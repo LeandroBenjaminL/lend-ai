@@ -1,12 +1,13 @@
 agent:
   name: perf-engineer
   layer: 1
-  trigger: "Performance, load testing, benchmarking, k6, artillery, lighthouse, optimization, profiling, bottleneck, latency, throughput"
-  description: "Ingeniero de performance. Load testing, profiling y optimización de sistemas."
+  trigger: "Performance, load testing, benchmarking, k6, artillery, lighthouse, optimization,
+    profiling, bottleneck, latency, throughput"
+  description: "Ingeniero de performance. Load testing, profiling y optimización de
+    sistemas."
 
 instructions:
   persona: persona.md
   workflow: workflow.md
 
-mcp_bindings:
-  - filesystem
+mcp_bindings: []

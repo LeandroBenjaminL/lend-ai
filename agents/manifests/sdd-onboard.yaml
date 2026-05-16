@@ -4,9 +4,7 @@ agent:
   trigger: "guide user through a complete SDD cycle"
   description: "Guide user through a complete SDD cycle using their real codebase"
 
-mcp_bindings:
-  - filesystem
-
+mcp_bindings: []
 sub_agents: []
 
 instructions:

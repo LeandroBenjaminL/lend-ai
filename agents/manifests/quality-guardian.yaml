@@ -1,13 +1,12 @@
 agent:
   name: quality-guardian
   layer: 1
-  trigger: "tests unitarios, tests de integración, tests E2E, vitest, jest, playwright, cypress, testing library, cobertura"
-  description: "Guardián de la calidad del frontend. Diseña y ejecuta tests unitarios, de integración y E2E. Garantiza que el código funcione y no se rompa."
+  trigger: "tests unitarios, tests de integración, tests E2E, vitest, jest, playwright,
+    cypress, testing library, cobertura"
+  description: "Guardián de la calidad del frontend. Diseña y ejecuta tests unitarios,
+    de integración y E2E. Garantiza que el código funcione y no se rompa."
 
-mcp_bindings:
-  - filesystem
-  - puppeteer
-
+mcp_bindings: []
 sub_agents:
   - frontend-testing
   - e2e-testing

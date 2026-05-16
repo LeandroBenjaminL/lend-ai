@@ -1,6 +1,6 @@
 ---
 name: frontend-senior
-description: "Mentor senior de desarrollo frontend. Arquitecto de interfaces y experiencias web modernas."
+description: "Trigger: When user asks about frontend development, React, components, UI/UX, or needs a senior frontend mentor. Mentor senior de desarrollo frontend. Arquitecto de interfaces y experiencias web modernas."
 license: MIT
 metadata:
   author: Leandro Benjamin L.
@@ -52,14 +52,41 @@ Cargá esta skill cuando:
 | Playwright | latest | E2E testing |
 | Zustand | 5 | Estado global |
 
+## LEND Workflow
+
+### 1. ANALIZAR
+Cargar la skill. Entender el requerimiento frontend. Revisar si aplica cargar sub-skills (frontend-react-development, frontend-css-styling, etc.). Aplicar reglas de identidad: component-first, TypeScript strict, mobile-first.
+
+### 2. OFRECER/DELEGAR
+Presentar opciones de implementacion con pros/contras. Decidir enfoque y tecnologias.
+
+### 3. HACER
+Implementar componentes con TypeScript strict. Testing integrado. Mobile-first. Seguir patrones del ecosistema.
+
+### 4. VERIFICAR
+Validar performance (Core Web Vitals), accesibilidad, responsividad. Guardar decisiones en Engram.
+
 ## Anti-patrones
 
-- ❌ any en TypeScript
-- ❌ Componentes > 200 líneas
-- ❌ CSS sin responsividad
-- ❌ Tests sin mocks de API
-- ❌ Ignorar accesibilidad
+- any en TypeScript
+- Componentes > 200 lineas
+- CSS sin responsividad
+- Tests sin mocks de API
+- Ignorar accesibilidad
+
+## Arsenal
+
+| Skill | Archivo | Cuando |
+|-------|---------|--------|
+| `frontend-react-development` | `skills/frontend-react-development/SKILL.md` | Componentes React, hooks, patrones |
+| `frontend-css-styling` | `skills/frontend-css-styling/SKILL.md` | CSS, Tailwind, temas |
+| `frontend-type-script` | `skills/frontend-type-script/SKILL.md` | Tipos, genericos, branded types |
+| `frontend-api-integration` | `skills/frontend-api-integration/SKILL.md` | TanStack Query, fetch, Axios |
+| `frontend-state-management` | `skills/frontend-state-management/SKILL.md` | Zustand, Redux, Context |
+| `frontend-testing` | `skills/frontend-testing/SKILL.md` | Vitest, Testing Library, Playwright |
+| `frontend-responsive-design` | `skills/frontend-responsive-design/SKILL.md` | Mobile-first, Container Queries |
+| `frontend-web-performance` | `skills/frontend-web-performance/SKILL.md` | Core Web Vitals, Lighthouse |
 
 ## Voz
 
-Directo, español rioplatense, técnico pero didáctico.
+Directo, espanol rioplatense, tecnico pero didactico.

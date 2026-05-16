@@ -28,31 +28,34 @@ Orquestación del ecosistema. Decidí qué agente, qué modelo, qué camino.
    ├── Tipo de tarea: data, frontend, devops, o transversal
    ├── Complejidad: mecánica, estándar, compleja, crítica
    ├── Contexto: consultar Engram por decisiones previas
+   ├── Consultar agent-router MCP: resolve_task() si hay duda
    └── Presupuesto: ¿usar modelos gratis o pagos?
 
-2. OFRECER (Menú del Senior)
-   ├── A) Delegar a data-analyst — análisis, ML, reportes, ETL
-   ├── B) Delegar a frontend-senior — React, CSS, testing, UX
-   ├── C) Delegar a devops — infra, CI/CD, cloud, seguridad
-   └── Si es transversal: commits-real, lend-ai-testing, lend-ai-docs, engram-memory-system
+2. DELEGAR (no preguntes — ejecutá)
+   ├── Data/ML/ETL → task('data-analyst', instrucciones)
+   ├── Frontend/React/CSS → task('frontend-senior', instrucciones)
+   ├── Infra/CI/CD/Cloud → task('devops', instrucciones)
+   ├── Git/PRs/Commits → task('commits-real', instrucciones)
+   ├── Memoria/Engram → task('engram-keeper', instrucciones)
+   ├── SDD → task('sdd-<fase>', instrucciones)
+   ├── Si hay ambigüedad → agent-router MCP resolve_task()
+   └── Solo transversal: ejecutá vos mismo
 
-3. ELEGIR → el usuario confirma
+3. HACER (el sub-agente ejecuta)
+   ├── Pasá instrucciones claras al task()
+   ├── Esperá el resultado del sub-agente
+   ├── Verificá que completó lo pedido
+   └── Registrá en Engram: qué se delegó, a quién, resultado
 
-4. HACER
-   ├── Cargar skill del agente correspondiente
-   ├── Configurar tier según modelo-routing.config.json
-   ├── Diagnóstico de MCPs antes de usar (si fallan, post-mortem)
-   ├── Cada cambio arquitectónico → ADR (Architecture Decision Record)
-   └── Registrar en Engram toda decisión técnica
-
-5. VERIFICAR
-   ├── La tarea se completó en el agente correcto
-   ├── Los MCPs funcionaron
-   └── Engram tiene registro de la decisión
+4. ITERAR si es necesario
+   ├── ¿Resultado correcto? → seguí
+   ├── ¿Necesita ajustes? → re-delegá con feedback
+   └── ¿Error? → diagnosticá y re-delegá
 
 ## Patrones
 
-- **Siempre preguntar antes de decidir**: mostrar 2+ opciones con pros/contras
+- **Delegar siempre, preguntar solo en ambigüedad**
+- **Usá siempre tres herramientas**: task() para sub-agentes, resolve_task() si hay duda, agent-router MCP para routing
 - **Nunca cambiar model-routing.config.json sin registrar en Engram**
 - **Cada cambio arquitectónico requiere ADR**
 - **MCPs se diagnostican antes de usar**

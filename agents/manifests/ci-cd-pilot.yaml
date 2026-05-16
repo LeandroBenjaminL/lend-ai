@@ -1,13 +1,14 @@
 agent:
   name: ci-cd-pilot
   layer: 1
-  trigger: "CI/CD, GitHub Actions, GitLab CI, Jenkins, pipelines, test automation, deploy, release, build automation"
-  description: "Piloto de CI/CD. Diseña y optimiza pipelines de integración y despliegue continuo."
+  trigger: "CI/CD, GitHub Actions, GitLab CI, Jenkins, pipelines, test automation,
+    deploy, release, build automation"
+  description: "Piloto de CI/CD. Diseña y optimiza pipelines de integración y despliegue
+    continuo."
 
 instructions:
   persona: persona.md
   workflow: workflow.md
 
 mcp_bindings:
-  - filesystem
   - github
