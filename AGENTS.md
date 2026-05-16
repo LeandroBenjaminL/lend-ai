@@ -31,6 +31,14 @@ When the user is vague: stop, identify ambiguity, ask specific questions. Never 
 ### Delegation Rule
 Delegate domain work via task(). Do NOT execute data/frontend/devops directly. (See `lend-ai-delegation` skill for protocol.)
 
+### Rule of Auto-Improvement (THE BRAIN GROWS)
+You must constantly evolve the system:
+1. **Auto-read at session start**: mem_context + mem_search topic_key:preference/* + mem_search topic_key:skill/mini/* + mem_search topic_key:pattern/*
+2. **Auto-save after every action**: mem_save with type + topic_key + What/Why/Where/Learned
+3. **Mini-skills**: store reusable micro-patterns in Engram with topic_key `skill/mini/<name>`, type `pattern`
+4. **Preference consolidation**: every user preference → scope:personal, topic_key `preference/<area>`
+5. **5-session review**: growth-engine reviews Engram patterns and proposes new skills
+
 ---
 
 # Lend.Ai — Agent Skills Index
@@ -74,13 +82,14 @@ Ver tabla completa en [`skills/`](skills/) o en [`opencode.json`](opencode.json)
 Cada interacción sigue EXACTAMENTE este pipeline. No omitas pasos.
 
 ```
-1. INICIAR → mem_context + mem_search "user profile" + preguntar si hay dudas
+0. AUTO-READ → mem_context + mem_search "preference/*" + mem_search "skill/mini/*" + mem_search "pattern/*"
+1. INICIAR → preguntar si hay dudas
 2. ANALIZAR → entender problema + evaluar tradeoffs + ¿ambigüedad? → PREGUNTAR
 3. EJECUTAR → delegar si es N2/N3 + enseñar (QUÉ/POR QUÉ/PATRÓN) + mem_save todo
 4. DOCS   → ¿cambió estructura/feature/decisión? → update AGENTS/ADR/README
 5. TEST   → ¿existen? → run → ¿verde? → si no, arreglar. ¿no existen? → crear.
 6. COMMIT → modo humano + max 300 líneas + mem_save
-7. CERRAR → mem_session_summary + preferencias aprendidas
+7. CERRAR → mem_session_summary + preferencias + mini-skills aprendidas
 ```
 
 ## Convención de naming
@@ -91,10 +100,11 @@ Cada interacción sigue EXACTAMENTE este pipeline. No omitas pasos.
 
 ## Cómo usar
 
-1. Revisá la columna **Trigger** para encontrar la skill que coincide con tu tarea
-2. Cargá la skill leyendo el archivo SKILL.md en la ruta indicada
-3. Seguí TODOS los patrones y reglas de la skill cargada
-4. Múltiples skills pueden aplicarse simultáneamente
+1. Las N1 skills (lend-ai-persona, lend-ai-mentor, etc.) se cargan AUTOMÁTICAMENTE al iniciar sesión vía `opencode.json`
+2. Para skills de dominio (data-*, frontend-*), revisá el **Trigger** y el agente delegado las carga automáticamente
+3. Si necesitás detalle adicional de una skill, leé el archivo `SKILL.md` en la ruta indicada
+4. Seguí TODOS los patrones y reglas de cada skill aplicable
+5. Múltiples skills pueden combinarse simultáneamente
 
 ## Skills
 

@@ -4,7 +4,7 @@
 
 > Unified AI agent ecosystem: Data Analysis, Frontend Development, DevOps, and SDD. Running on OpenCode with a hierarchical skill system, sub-agents, and tiered models (T1-T5) for cost-quality optimization.
 
-Lend.Ai is a production-grade AI agent ecosystem that orchestrates **88 agents**, **73 skills**, and **10 MCPs** across four domains. It runs on [OpenCode](https://opencode.ai) and provides a senior mentor experience with automatic personality loading, memory persistence via Engram, and a spec-driven development (SDD) workflow.
+Lend.Ai is a production-grade AI agent ecosystem that orchestrates **88 agents**, **73 skills**, and **10 MCPs** across four domains. It runs on [OpenCode](https://opencode.ai) and provides a senior mentor experience with automatic personality loading, memory persistence via Engram (with auto-improvement and mini-skills), and a spec-driven development (SDD) workflow.
 
 ## CI Rule
 

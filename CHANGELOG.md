@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.9.0] - 2026-05-16
+
+### Added
+- **Auto-Improvement System**: nueva Rule of Auto-Improvement (THE BRAIN GROWS) en AGENTS.md con 5 mecanismos — auto-read al iniciar sesión, auto-save después de cada acción, mini-skills en Engram, consolidación de preferencias, y review cada 5 sesiones via growth-engine.
+- **Mini-Skills**: micro-patrones reutilizables guardados en Engram con `topic_key: skill/mini/<name>`, `type: pattern`. Se cargan automáticamente al iniciar cada sesión via auto-read. Si se usan 3+ veces → promovidas a skill formal.
+- **Auto-read al iniciar sesión**: paso 0 del flujo obligatorio. Carga en paralelo: contexto de sesiones (mem_context), preferencias del usuario (preference/*), mini-skills (skill/mini/*), patrones del proyecto (pattern/*).
+- **Context Efficiency Protocol**: guías para minimizar tool calls — lecturas paralelas, delegar exploración a task("explore"), consolidar saves de Engram, pensar antes de llamar.
+- **Preference consolidation**: cada preferencia del usuario se guarda con `scope:personal`, `topic_key: preference/<area>` para que persista entre sesiones y se cargue automáticamente.
+
+### Changed
+- **AGENTS.md**: flujo de sesión ahora incluye paso 0 AUTO-READ. Sección "Cómo usar" corregida: skills N1 se cargan automáticamente via opencode.json (no manualmente). Nueva regla #7 de Auto-Improvement.
+- **lend-ai-engram SKILL.md**: v3.1 — agregadas secciones AUTO-READ, EFICIENCIA DE CONTEXTO, Mini-Skills. Nuevo trigger de auto-save para mini-skills.
+- **engram-memory-system SKILL.md**: v2.1 — agregado AUTO-READ obligatorio al iniciar sesión. Nuevo topic_key `skill/mini/<name>`. Agregada mini-skills evolution.
+
+### Fixed
+- **AGENTS.md skill loading**: las instrucciones decían "cargá la skill leyendo SKILL.md" pero las skills N1 se cargan automáticamente via opencode.json. Corregido para reflejar el comportamiento real.
+
 ## [0.8.0] - 2026-05-16
 
 ### Added

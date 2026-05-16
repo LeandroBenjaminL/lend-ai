@@ -17,6 +17,17 @@ Carga esta skill cuando estes por guardar o consultar memoria en Engram.
 
 Si no estás seguro del proyecto, pensalo 2 segundos. Si aún así no sabés, preguntá. Pero no preguntes "¿lo guardo?", preguntá "¿en qué proyecto?".
 
+## AUTO-READ (OBLIGATORIO al iniciar sesión)
+
+Antes de cualquier acción, ejecutá en paralelo:
+1. `mem_context` → últimas sesiones, contexto fresco
+2. `mem_search topic_key:preference/*` scope:personal → preferencias del user
+3. `mem_search topic_key:skill/mini/*` → mini-skills del proyecto
+4. `mem_search topic_key:pattern/*` → patrones del proyecto
+
+Propósito: que cada sesión arranque sabiendo quién es el user, qué le gusta,
+qué mini-skills están disponibles, y qué patrones aplican.
+
 ## Jerarquía de topic_key (carpetas virtuales)
 
 ```
@@ -38,6 +49,7 @@ topic_key = <area>/<subarea>
 | `pattern/git` | Patrones de git y PRs | `pattern/git` |
 | `pattern/workflow` | Patrones de flujo de trabajo | `pattern/workflow` |
 | `pattern/architecture` | Patrones arquitectónicos | `pattern/architecture` |
+| `skill/mini/<name>` | Mini-skills (micro-patrones reutilizables) | `skill/mini/commit-format` |
 | `discovery/tool` | Descubrimientos sobre herramientas | `discovery/tool` |
 | `discovery/workflow` | Descubrimientos sobre procesos | `discovery/workflow` |
 | `discovery/ecosystem` | Descubrimientos sobre el ecosistema | `discovery/ecosystem` |
@@ -159,10 +171,16 @@ El sistema de memoria NO es estático. Evoluciona solo:
 - Si un patrón de bugfix se repite → proponer test o guardia automática
 - Si una preferencia del user aparece 2+ veces → consolidar en el perfil
 
+### Mini-skills evolution
+- Un `skill/mini/<name>` se usa 1-2 veces → sigue siendo mini
+- Se usa 3+ veces → considerar skill formal en `skills/<name>/SKILL.md`
+- Se vuelve crítico → agregarlo a `opencode.json` skills del agente correspondiente
+
 ### Crecimiento autónomo
 - Cada 5 sesiones: el `growth-engine` revisa patrones en Engram y propone nuevas skills
 - Si un discovery se vuelve recurrente → convertirlo en pattern
 - Si un pattern se vuelve estándar → proponer skill formal
+- Las mini-skills viejas (>5 sesiones sin uso) → archivar o eliminar
 
 ### Frescura de la memoria
 - mem_context al iniciar sesión (siempre)
@@ -179,8 +197,8 @@ El sistema de memoria NO es estático. Evoluciona solo:
 
 ## Cuando consultar (antes de actuar)
 
-- Al empezar sesion: `mem_context` o `mem_search`
+- Al empezar sesion: `mem_context` + `mem_search topic_key:preference/*` + `mem_search topic_key:skill/mini/*` + `mem_search topic_key:pattern/*`
 - Antes de decisiones importantes: `mem_search "tema"`
 - Cuando un error parece conocido: `mem_search type:bugfix`
-- Cuando no recordas una preferencia: `mem_search scope:personal`
-- Antes de crear algo nuevo: ver si ya hay patrones similares
+- Cuando no recordas una preferencia: `mem_search scope:personal topic_key:preference/*`
+- Antes de crear algo nuevo: ver si ya hay patrones similares o mini-skills aplicables
