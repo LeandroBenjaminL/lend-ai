@@ -241,6 +241,14 @@
     "skills": {
       "ml-modeling": "T5-deep"
     },
-    "agents": {}
+    "agents": {
+      "content-engine": "T3-balanced",
+      "growth-engine": "T3-balanced",
+      "enhance-engine": "T3-balanced",
+      "lend-ai-docs": "T3-balanced",
+      "lend-ai-engram": "T2-fast",
+      "lend-ai-testing": "T3-balanced",
+      "judgment-day": "T5-deep"
+    }
   }
 }

@@ -68,6 +68,7 @@ Convención de naming:
 | `skill-registry` | Al actualizar el registro de skills | [`skills/skill-registry/SKILL.md`](skills/skill-registry/SKILL.md) |
 | `web-scraping` | Al extraer datos de sitios web | [`skills/web-scraping/SKILL.md`](skills/web-scraping/SKILL.md) |
 | `youtube-transcript` | Al extraer transcripciones de YouTube | [`skills/youtube-transcript/SKILL.md`](skills/youtube-transcript/SKILL.md) |
+| `content-engine` | Al analizar progreso, generar contenido para LinkedIn, documentar mejoras | [`skills/content-engine/SKILL.md`](skills/content-engine/SKILL.md) |
 
 ## Skills SDD (Spec-Driven Development)
 

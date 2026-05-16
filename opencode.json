@@ -43,7 +43,8 @@
           "youtube-transcript": "allow",
           "go-testing": "allow",
           "growth-engine": "allow",
-          "enhance-engine": "allow"
+          "enhance-engine": "allow",
+          "content-engine": "allow"
         }
       },
       "skills": [
@@ -699,6 +700,23 @@
           "*": "deny"
         }
       }
+    },
+    "content-engine": {
+      "description": "Analiza Engram, trackea mejoras, actualiza documentación y genera contenido para LinkedIn.",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      },
+      "skills": [
+        "lend-ai-docs",
+        "commits-real",
+        "lend-ai-engram"
+      ]
     },
     "framework-architect": {
       "description": "Arquitectura frontend",

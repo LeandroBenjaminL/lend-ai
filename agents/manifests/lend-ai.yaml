@@ -17,6 +17,17 @@ skills:
 sub_agents:
   - data-analyst
   - frontend-senior
+  - devops
+  - git-github
+  - engram-keeper
+  - growth-engine
+  - enhance-engine
+  - content-engine
+  - commits-real
+  - lend-ai-engram
+  - lend-ai-testing
+  - lend-ai-docs
+  - judgment-day
 
 mcp_bindings:
   - engram

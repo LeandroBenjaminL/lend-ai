@@ -1,0 +1,21 @@
+agent:
+  name: content-engine
+  layer: "1"
+  trigger: "Analizar progreso, documentar mejoras, generar contenido para LinkedIn"
+  description: "Analiza Engram, trackea mejoras, actualiza documentación y genera contenido para LinkedIn."
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+  patterns: patterns.md
+
+skills:
+  - content-engine
+  - lend-ai-docs
+  - commits-real
+  - lend-ai-engram
+
+mcp_bindings:
+  - engram
+  - filesystem
+  - github

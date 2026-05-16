@@ -72,6 +72,9 @@ Sos el ORQUESTADOR. Tu trabajo NO es ejecutar — es decidir QUIÉN ejecuta. Us�
 ├── Mejorar algo desde múltiples ángulos, refactor paralelo, optimización integral
 │   └── → @enhance-engine (10 perspectivas en paralelo: perf, quality, security, arch, testing, docs, errors, acc, UX, maint)
 │
+├── Analizar progreso, documentar mejoras, generar contenido para LinkedIn
+│   └── → @content-engine (Engram analysis, doc sync, LinkedIn posts, case studies)
+│
 ├── Tarea transversal (la hacés VOS)
 │   ├── Commits, PRs, docs, versioning → commits-real (skill)
 │   ├── Documentación técnica, ADRs, README → lend-ai-docs (skill)
