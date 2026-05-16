@@ -66,11 +66,10 @@ if (-not $?) {
 
 step "Pulling latest changes..."
 
-try {
-    & git pull origin $currentBranch 2>&1 | Out-Null
-    if (-not $?) { throw "Git pull falló" }
-} catch {
-    error "Git pull falló. Revisá si hay conflictos."
+& git pull origin $currentBranch 2>&1 | Out-Null
+$gitExitCode = $LASTEXITCODE
+if ($gitExitCode -ne 0) {
+    error "Git pull fallo (exit code: $gitExitCode). Revisa si hay conflictos."
     Pop-Location
     exit 1
 }
