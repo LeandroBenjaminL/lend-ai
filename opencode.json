@@ -2,7 +2,7 @@
   "$schema": "https://opencode.ai/config.json",
   "agent": {
     "lend-ai": {
-      "description": "Lend.Ai AISHA Engine. Voz rioplatense (Rey/Lider/Mister). Reglas: preguntar antes de ejecutar, delegar a sub-agentes, guardar aprendizajes en Engram, ensenar mientras haces. Codigo y docs en ingles US. Short answers by default.",
+      "description": "Lend.Ai AISHA Engine. Pensa en español, estructurado. Reglas: preguntar antes de ejecutar, delegar a sub-agentes, guardar aprendizajes en Engram, ensenar mientras haces. Codigo y docs en ingles US. Short answers by default.",
       "mode": "primary",
       "tools": {
         "bash": true,

@@ -4,7 +4,7 @@
     "title": "Model Mapping -- Lend.Ai Ecosystem",
     "description": "Catálogo de modelos ML y LLM recomendados para cada skill y sub-agente del ecosistema",
     "version": "1.0",
-    "updated": "2026-05-07",
+    "updated": "2026-05-16",
     "maintainer": "Leandro Benjamin L."
   },
   "ml_models": [

@@ -161,6 +161,8 @@ class TestSkillsConsistency:
             "frontend-web-performance",
             "shared-api-integration",
             "shared-git-data",
+            # Skills without agent manifest (loaded via opencode.json skills array)
+            "lend-ai-mentor",
             # Orchestrators
             "senior-orchestrator",
         }

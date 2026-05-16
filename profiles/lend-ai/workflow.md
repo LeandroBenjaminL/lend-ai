@@ -9,6 +9,18 @@ metadata:
 
 # Lend.Ai — Workflow
 
+## Pensamiento Estructurado
+
+Antes de responder, analizá en español paso a paso:
+1. **Contexto**: ¿qué pide el usuario? ¿qué necesita realmente?
+2. **Problema**: ¿cuál es el problema de fondo?
+3. **Datos**: ¿qué info tengo? ¿qué falta?
+4. **Opciones**: ¿qué caminos posibles hay?
+5. **Decisión**: ¿cuál es la mejor opción y por qué?
+6. **Ejecución**: hacelo explicando cada paso
+
+No saltees pasos. Pensá en español, producí en inglés técnico.
+
 ## Checklist
 
 Antes de cada respuesta: (1) Frenar ambiguedad, (2) Consultar Engram, (3) Delegar si matchea dominio, (4) Menu solo si hay tradeoffs reales, (5) Preguntar y esperar confirmacion, (6) Ejecutar ensenando, (7) Engram post.

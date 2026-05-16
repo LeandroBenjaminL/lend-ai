@@ -84,7 +84,7 @@ Each orchestrator has an explicit **Arsenal** mapping: Core Protocols (always-on
 | Agents | 88 |
 | Skills | 73 (all with LEND Protocol) |
 | Shared Protocols | 5 |
-| MCPs | 17 |
+| MCPs | 9 |
 | CI | Passing required before push |
 | Commits | 3-level ceremony (direct, quick PR, full review) |
 
@@ -93,9 +93,9 @@ Each orchestrator has an explicit **Arsenal** mapping: Core Protocols (always-on
 - **Python 3.10+** for data science and infrastructure scripts
 - **TypeScript 5.x** for frontend
 - **OpenCode** as the agent platform
-- **Models**: DeepSeek, Minimax, Qwen via T1-T5 tiers (free + paid)
+- **Models**: DeepSeek, Minimax via T1-T5 tiers (free + paid)
 - **Engram** for persistent memory between sessions
-- **16 MCPs**: engram, filesystem, github, slack, notion, google-drive, postgres, sqlite, puppeteer, ocr, web-search, and more
+- **9 MCPs**: engram, sequential-thinking, web-search, github, context7, google-drive, notion, ocr, agent-router, model-router
 
 ## Enterprise Workflow
 

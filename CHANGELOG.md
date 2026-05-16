@@ -1,5 +1,32 @@
 # Changelog
 
+## [0.7.0] - 2026-05-16
+
+### Added
+- **Pre-push hook**: tests corren automáticamente antes de cada push. `feat(git): pre-push hook runs tests before push, fix model-router tier dir`
+- **.gitattributes**: normalización de line endings para multiplataforma.
+
+### Changed
+- **System prompt**: comprimido de 731 a ~500 chars. Skills reducidas de 9 a 5. Perfiles comprimidos. Token overhead reducido ~40%.
+- **MCPs final**: se eliminaron filesystem, puppeteer, slack, postgres, mysql, sqlite, smtp-email. Quedan 9 MCPs: engram, sequential-thinking, web-search, github, context7, google-drive, notion, ocr, agent-router, model-router.
+- **Permissions**: todos los domain agents pasaron de `* deny` a `* allow` para delegación sin fricción.
+- **Sub-agent types**: `* allow` en lugar de lista manual de 30+ tipos.
+- **Notion MCP**: reemplazado wrapper PowerShell por `npx easy-notion-mcp` directo.
+- **Installers**: escaping de backslashes fix para Windows, placeholder `{LEND_AI_HOME}` para paths dinámicos.
+
+### Fixed
+- **model-router.py**: tier directory detection for agent manifests.
+- **pre-push hook**: executable permissions for Linux (`chmod +x`).
+
+## [0.6.3] - 2026-05-16
+
+### Added
+- **CI enforcement**: `ci.yml` — tests must pass before push or merge. `pytest tests/ -v` mandatory gate.
+
+### Fixed
+- **Ruff E501**: line too long en test files corregidos.
+- **Manifests huérfanos**: 11 manifests y 24 directorios stub removidos.
+
 ## [0.6.2] - 2026-05-16
 
 ### Changed
