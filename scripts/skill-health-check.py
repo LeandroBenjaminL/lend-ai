@@ -16,8 +16,7 @@ SKILLS_DIR = REPO_ROOT / "skills"
 MANIFESTS_DIR = REPO_ROOT / "agents" / "manifests"
 OPENCODE_JSON = REPO_ROOT / "opencode.json"
 
-N1_REQUIRED = {"lend-ai-engram", "commits-real",
-               "lend-ai-testing", "lend-ai-docs"}
+N1_REQUIRED = {"lend-ai-engram", "commits-real", "lend-ai-testing", "lend-ai-docs"}
 
 # Skills that live outside skills/ dir (e.g. profiles/)
 NON_SKILL_DIR_EXCEPTIONS = {"lend-ai-workflow"}
@@ -60,8 +59,7 @@ def get_section(text: str, heading: str) -> str:
     return "\n".join(lines[start:end])
 
 
-def check_skill_bi_directional(agents_skills: set[str],
-                               disk_skills: set[str]):
+def check_skill_bi_directional(agents_skills: set[str], disk_skills: set[str]):
     global errors
     pass_count = 0
     fail_count = 0
@@ -95,6 +93,7 @@ def check_skill_bi_directional(agents_skills: set[str],
 def check_manifests() -> tuple[int, int, list[str]]:
     global errors
     import yaml
+
     yaml_files = sorted(MANIFESTS_DIR.glob("*.yaml"))
     required_fields = ["agent.name", "agent.layer", "agent.description"]
     total = len(yaml_files)
@@ -176,8 +175,7 @@ def main():
     sdd_section = get_section(agents_md_text, r"Skills SDD \(Spec-Driven Development\)")
     sdd_table = extract_skill_names_from_md(sdd_section)
 
-    trans_section = get_section(agents_md_text,
-                                r"Skills Transversales \(PRs, Issues, Docs\)")
+    trans_section = get_section(agents_md_text, r"Skills Transversales \(PRs, Issues, Docs\)")
     trans_table = extract_skill_names_from_md(trans_section)
 
     all_agents_skills = skills_table | sdd_table | trans_table
@@ -192,25 +190,28 @@ def main():
 
     print("=== SKILL HEALTH CHECK ===")
     pass_b, fail_b, orphans, missing = check_skill_bi_directional(
-        all_agents_skills, disk_skills_raw)
+        all_agents_skills, disk_skills_raw
+    )
 
     print("\n=== MANIFEST CHECK ===")
     total_manifests, broken_manifests, broken_list = check_manifests()
 
     print("\n=== OPENCODE.JSON AGENT CROSS-REFERENCE ===")
-    total_json_agents, unmatched_json, unmatched_list = check_opencode_json_agents(
-        OPENCODE_JSON)
+    total_json_agents, unmatched_json, unmatched_list = check_opencode_json_agents(OPENCODE_JSON)
 
     check_n1_skills(agents_md_text)
 
     status = "[PASS]" if errors == 0 else "[FAIL]"
 
     print("\n=== SUMMARY ===")
-    print(f"Skills: {total_disk} total, {len(missing)} missing from disk, "
-          f"{len(orphans)} orphans (no AGENTS.md entry)")
+    print(
+        f"Skills: {total_disk} total, {len(missing)} missing from disk, "
+        f"{len(orphans)} orphans (no AGENTS.md entry)"
+    )
     print(f"Manifests: {total_manifests} total, {broken_manifests} broken")
-    print(f"opencode.json agents: {total_json_agents} total, "
-          f"{unmatched_json} missing YAML manifests")
+    print(
+        f"opencode.json agents: {total_json_agents} total, {unmatched_json} missing YAML manifests"
+    )
     print(f"Status: {status}")
 
     sys.exit(1 if errors else 0)

@@ -12,6 +12,7 @@ BOX_W = 60
 
 HDR = "#" * BOX_W
 
+
 def fmt_box(title: str) -> str:
     return f"\n{HDR}\n  {title}\n{HDR}\n"
 
@@ -28,6 +29,7 @@ def try_query(db, sql, params=()):
 
 def build_report(db):
     output = []
+
     def out(line=""):
         output.append(line)
 
@@ -146,9 +148,7 @@ def main():
         sys.exit(1)
 
     # Check if observations table exists
-    cursor = db.execute(
-        "SELECT name FROM sqlite_master WHERE type='table' AND name='observations'"
-    )
+    cursor = db.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='observations'")
     if not cursor.fetchone():
         print(fmt_box("LEND.AI USAGE DASHBOARD"))
         print("  Engram database structure unknown - run after some sessions")

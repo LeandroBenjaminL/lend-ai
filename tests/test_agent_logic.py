@@ -113,9 +113,7 @@ class TestN1SkillsCompleteness:
 
     def test_n1_skills_complete(self):
         opencode = _load_opencode()
-        lend_ai_skills = set(
-            opencode.get("agent", {}).get("lend-ai", {}).get("skills", [])
-        )
+        lend_ai_skills = set(opencode.get("agent", {}).get("lend-ai", {}).get("skills", []))
         n1_skills = self._extract_n1_skills()
 
         known_missing_allowed = {"lend-ai-workflow"}
@@ -223,8 +221,6 @@ class TestDocsRules:
             content = path.read_text(encoding="utf-8").lower()
 
             if "docs review" not in content:
-                errors.append(
-                    f"{rel_path} no contiene 'docs review' (post-task docs check)"
-                )
+                errors.append(f"{rel_path} no contiene 'docs review' (post-task docs check)")
 
         assert not errors, "\n".join(errors)
