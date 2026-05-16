@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.6.2] - 2026-05-16
+
+### Changed
+- **System prompt**: de 2119 chars narrativos a 731 chars de checklist ejecutable. 7 pasos obligatorios: Engram, Preguntar, Esperar, 3 Opciones, Enseñar, Ejecutar, Cerrar. Sin párrafos explicativos — solo pasos que no se pueden saltar.
+
 ## [0.6.1] - 2026-05-16
 
 ### Added
