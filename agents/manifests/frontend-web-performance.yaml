@@ -1,0 +1,12 @@
+agent:
+  name: frontend-web-performance
+  layer: 1
+  trigger: "performance web, Core Web Vitals, Lighthouse, carga, bundle, lazy loading, optimización"
+  description: "Especialista en performance web. Core Web Vitals, Lighthouse, optimización de carga y bundles."
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+
+mcp_bindings: []
+sub_agents: []

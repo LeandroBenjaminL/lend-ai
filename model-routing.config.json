@@ -258,7 +258,21 @@
       "judgment-day": "T5-deep",
       "devops": "T4-reasoning",
       "frontend-senior": "T4-reasoning",
-      "engram-keeper": "T2-fast"
+      "engram-keeper": "T2-fast",
+      "data-explorer": "T3-balanced",
+      "data-modeler": "T4-reasoning",
+      "data-analysis": "T3-balanced",
+      "data-profiling": "T2-fast",
+      "ml-modeling": "T4-reasoning",
+      "time-series-analysis": "T4-reasoning",
+      "statistical-testing": "T2-fast",
+      "notebook-integration": "T1-ultra-fast",
+      "docker-engineer": "T2-fast",
+      "ci-cd-pilot": "T2-fast",
+      "cloud-architect": "T4-reasoning",
+      "db-admin": "T3-balanced",
+      "ui-crafter": "T3-balanced",
+      "framework-architect": "T4-reasoning"
     }
   }
 }

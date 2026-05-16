@@ -8,6 +8,7 @@ agent:
 
 mcp_bindings: []
 sub_agents:
+  - frontend-web-performance
 
 instructions:
   persona: persona.md

@@ -10,4 +10,7 @@ instructions:
   persona: persona.md
   workflow: workflow.md
 
+sub_agents:
+  - perf-engineer
+  - security-auditor
 mcp_bindings: []

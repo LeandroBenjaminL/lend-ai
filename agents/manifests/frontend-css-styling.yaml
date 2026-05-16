@@ -1,0 +1,12 @@
+agent:
+  name: frontend-css-styling
+  layer: 1
+  trigger: "CSS, estilos, Tailwind, diseño visual, animaciones, temas, colores, tipografía, layout"
+  description: "Especialista en CSS moderno. Tailwind, CSS Modules, animaciones y diseño responsivo."
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+
+mcp_bindings: []
+sub_agents: []

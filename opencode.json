@@ -260,10 +260,23 @@
       "hidden": true,
       "tools": {
         "bash": true,
+        "delegate": true,
+        "delegation_list": true,
+        "delegation_read": true,
         "edit": true,
         "read": true,
+        "task": true,
         "write": true,
         "skill": true
+      },
+      "permission": {
+        "task": {
+          "*": "allow",
+          "data-analysis": "allow",
+          "data-profiling": "allow",
+          "notebook-integration": "allow",
+          "lend-ai-engram": "allow"
+        }
       }
     },
     "data-modeler": {
@@ -272,34 +285,79 @@
       "hidden": true,
       "tools": {
         "bash": true,
+        "delegate": true,
+        "delegation_list": true,
+        "delegation_read": true,
         "edit": true,
         "read": true,
+        "task": true,
         "write": true,
         "skill": true
+      },
+      "permission": {
+        "task": {
+          "*": "allow",
+          "ml-modeling": "allow",
+          "time-series-analysis": "allow",
+          "statistical-testing": "allow",
+          "lend-ai-engram": "allow"
+        }
       }
     },
     "data-reporter": {
-      "description": "Reportes, visualizaciones y dashboards",
+      "description": "Reportes, visualizaciones y dashboards — spawnea sub-agentes de reporte",
       "mode": "subagent",
       "hidden": true,
       "tools": {
         "bash": true,
+        "delegate": true,
+        "delegation_list": true,
+        "delegation_read": true,
         "edit": true,
         "read": true,
+        "task": true,
         "write": true,
         "skill": true
+      },
+      "permission": {
+        "task": {
+          "*": "allow",
+          "reporting": "allow",
+          "streamlit": "allow",
+          "data-visualization": "allow",
+          "commits-real": "allow",
+          "lend-ai-engram": "allow"
+        }
       }
     },
     "data-etl": {
-      "description": "Pipelines ETL y automatización",
+      "description": "Pipelines ETL y automatización — spawnea sub-agentes de extracción/transformación",
       "mode": "subagent",
       "hidden": true,
       "tools": {
         "bash": true,
+        "delegate": true,
+        "delegation_list": true,
+        "delegation_read": true,
         "edit": true,
         "read": true,
+        "task": true,
         "write": true,
         "skill": true
+      },
+      "permission": {
+        "task": {
+          "*": "allow",
+          "etl-pipelines": "allow",
+          "sql-analysis": "allow",
+          "web-scraping": "allow",
+          "database-connections": "allow",
+          "file-formats": "allow",
+          "branch-pr": "allow",
+          "chained-pr": "allow",
+          "commits-real": "allow",
+          "lend-ai-engram": "allow"
+        }
       }
     },
     "data-cleaning": {
@@ -336,36 +394,76 @@
       }
     },
     "data-design": {
-      "description": "Diseñar estrategia de análisis, elegir enfoque",
+      "description": "Diseñar estrategia de análisis, elegir enfoque — spawnea skills y documentación",
       "mode": "subagent",
       "hidden": true,
       "tools": {
         "bash": true,
+        "delegate": true,
+        "delegation_list": true,
+        "delegation_read": true,
         "edit": true,
         "read": true,
+        "task": true,
         "write": true
+      },
+      "permission": {
+        "task": {
+          "*": "allow",
+          "skill-creator": "allow",
+          "lend-ai-docs": "allow",
+          "data-question": "allow",
+          "lend-ai-engram": "allow"
+        }
       }
     },
     "data-verify": {
-      "description": "Verificar resultados del análisis",
+      "description": "Verificar resultados del análisis — spawnea validación y revisión adversaria",
       "mode": "subagent",
       "hidden": true,
       "tools": {
         "bash": true,
+        "delegate": true,
+        "delegation_list": true,
+        "delegation_read": true,
         "edit": true,
         "read": true,
+        "task": true,
         "write": true
+      },
+      "permission": {
+        "task": {
+          "*": "allow",
+          "data-validation": "allow",
+          "go-testing": "allow",
+          "judgment-day": "allow",
+          "lend-ai-engram": "allow"
+        }
       }
     },
     "data-archive": {
-      "description": "Documentar, versionar y cerrar proyectos",
+      "description": "Documentar, versionar y cerrar proyectos — spawnea issues, skills y envs",
       "mode": "subagent",
       "hidden": true,
       "tools": {
         "bash": true,
+        "delegate": true,
+        "delegation_list": true,
+        "delegation_read": true,
         "edit": true,
         "read": true,
+        "task": true,
         "write": true
+      },
+      "permission": {
+        "task": {
+          "*": "allow",
+          "python-environment": "allow",
+          "issue-creation": "allow",
+          "skill-registry": "allow",
+          "commits-real": "allow",
+          "lend-ai-engram": "allow"
+        }
       }
     },
     "data-orchestrator": {
@@ -383,15 +481,28 @@
       }
     },
     "data-analysis": {
-      "description": "Análisis con Pandas/NumPy",
+      "description": "Análisis con Pandas/NumPy — puede spawnear sub-agentes de profiling y validación",
       "mode": "subagent",
       "hidden": true,
       "tools": {
         "bash": true,
+        "delegate": true,
+        "delegation_list": true,
+        "delegation_read": true,
         "edit": true,
         "read": true,
+        "task": true,
         "write": true,
         "skill": true
+      },
+      "permission": {
+        "task": {
+          "*": "allow",
+          "data-profiling": "allow",
+          "data-validation": "allow",
+          "data-visualization": "allow",
+          "lend-ai-engram": "allow"
+        }
       }
     },
     "data-profiling": {
@@ -407,15 +518,27 @@
       }
     },
     "ml-modeling": {
-      "description": "Machine Learning con Scikit-learn, XGBoost",
+      "description": "Machine Learning con Scikit-learn, XGBoost — spawnea data-cleaning y validación",
       "mode": "subagent",
       "hidden": true,
       "tools": {
         "bash": true,
+        "delegate": true,
+        "delegation_list": true,
+        "delegation_read": true,
         "edit": true,
         "read": true,
+        "task": true,
         "write": true,
         "skill": true
+      },
+      "permission": {
+        "task": {
+          "*": "allow",
+          "data-cleaning": "allow",
+          "data-validation": "allow",
+          "lend-ai-engram": "allow"
+        }
       }
     },
     "reporting": {
@@ -443,15 +566,26 @@
       }
     },
     "data-visualization": {
-      "description": "Gráficos con Matplotlib, Seaborn, Plotly",
+      "description": "Gráficos con Matplotlib, Seaborn, Plotly — spawnea sub-agentes de reporte",
       "mode": "subagent",
       "hidden": true,
       "tools": {
         "bash": true,
+        "delegate": true,
+        "delegation_list": true,
+        "delegation_read": true,
         "edit": true,
         "read": true,
+        "task": true,
         "write": true,
         "skill": true
+      },
+      "permission": {
+        "task": {
+          "*": "allow",
+          "data-reporter": "allow",
+          "lend-ai-engram": "allow"
+        }
       }
     },
     "time-series-analysis": {
@@ -479,51 +613,98 @@
       }
     },
     "docker-engineer": {
-      "description": "Ingeniero de contenedores — Docker, Compose, K8s",
+      "description": "Ingeniero de contenedores — Docker, Compose, K8s — spawnea perf y seguridad",
       "mode": "subagent",
       "hidden": true,
       "tools": {
         "bash": true,
+        "delegate": true,
+        "delegation_list": true,
+        "delegation_read": true,
         "edit": true,
         "read": true,
+        "task": true,
         "write": true,
         "skill": true
+      },
+      "permission": {
+        "task": {
+          "*": "allow",
+          "perf-engineer": "allow",
+          "security-auditor": "allow",
+          "lend-ai-engram": "allow"
+        }
       }
     },
     "ci-cd-pilot": {
-      "description": "CI/CD pipelines — GitHub Actions, Jenkins, automatización",
+      "description": "CI/CD pipelines — GitHub Actions, Jenkins — spawnea gitops y perf",
       "mode": "subagent",
       "hidden": true,
       "tools": {
         "bash": true,
+        "delegate": true,
+        "delegation_list": true,
+        "delegation_read": true,
         "edit": true,
         "read": true,
+        "task": true,
         "write": true,
         "skill": true
+      },
+      "permission": {
+        "task": {
+          "*": "allow",
+          "gitops-engineer": "allow",
+          "perf-engineer": "allow",
+          "lend-ai-engram": "allow"
+        }
       }
     },
     "cloud-architect": {
-      "description": "Arquitectura cloud — AWS, GCP, Azure, serverless",
+      "description": "Arquitectura cloud — AWS, GCP, Azure — spawnea seguridad y perf",
       "mode": "subagent",
       "hidden": true,
       "tools": {
         "bash": true,
+        "delegate": true,
+        "delegation_list": true,
+        "delegation_read": true,
         "edit": true,
         "read": true,
+        "task": true,
         "write": true,
         "skill": true
+      },
+      "permission": {
+        "task": {
+          "*": "allow",
+          "security-auditor": "allow",
+          "perf-engineer": "allow",
+          "lend-ai-engram": "allow"
+        }
       }
     },
     "db-admin": {
-      "description": "Administración de bases de datos — PostgreSQL, MySQL, SQLite",
+      "description": "Administración de bases de datos — PostgreSQL, MySQL, SQLite — spawnea database-connections",
       "mode": "subagent",
       "hidden": true,
       "tools": {
         "bash": true,
+        "delegate": true,
+        "delegation_list": true,
+        "delegation_read": true,
         "edit": true,
         "read": true,
+        "task": true,
         "write": true,
         "skill": true
+      },
+      "permission": {
+        "task": {
+          "*": "allow",
+          "database-connections": "allow",
+          "lend-ai-engram": "allow"
+        }
       }
     },
     "infra-sre": {
@@ -901,121 +1082,242 @@
       ]
     },
     "framework-architect": {
-      "description": "Arquitectura frontend",
+      "description": "Arquitectura frontend — spawnea sub-agentes de React, estado, APIs",
       "mode": "subagent",
       "hidden": true,
       "tools": {
         "bash": true,
+        "delegate": true,
+        "delegation_list": true,
+        "delegation_read": true,
         "edit": true,
         "read": true,
+        "task": true,
         "write": true
+      },
+      "permission": {
+        "task": {
+          "*": "allow",
+          "frontend-react-development": "allow",
+          "frontend-state-management": "allow",
+          "frontend-api-integration": "allow",
+          "lend-ai-engram": "allow"
+        }
       }
     },
     "ui-crafter": {
-      "description": "Componentes UI reutilizables",
+      "description": "Componentes UI reutilizables — spawnea sub-agentes de React, CSS, TS",
       "mode": "subagent",
       "hidden": true,
       "tools": {
         "bash": true,
+        "delegate": true,
+        "delegation_list": true,
+        "delegation_read": true,
         "edit": true,
         "read": true,
+        "task": true,
         "write": true,
         "skill": true
+      },
+      "permission": {
+        "task": {
+          "*": "allow",
+          "frontend-react-development": "allow",
+          "frontend-css-styling": "allow",
+          "frontend-type-script": "allow",
+          "lend-ai-engram": "allow"
+        }
       }
     },
     "styling-engineer": {
-      "description": "CSS y estilos",
+      "description": "CSS y estilos — spawnea sub-agentes de CSS y responsive",
       "mode": "subagent",
       "hidden": true,
       "tools": {
         "bash": true,
+        "delegate": true,
+        "delegation_list": true,
+        "delegation_read": true,
         "edit": true,
         "read": true,
+        "task": true,
         "write": true,
         "skill": true
+      },
+      "permission": {
+        "task": {
+          "*": "allow",
+          "frontend-css-styling": "allow",
+          "frontend-responsive-design": "allow",
+          "lend-ai-engram": "allow"
+        }
       }
     },
     "data-flow": {
-      "description": "Manejo de datos y estado frontend",
+      "description": "Manejo de datos y estado frontend — spawnea sub-agentes de estado y APIs",
       "mode": "subagent",
       "hidden": true,
       "tools": {
         "bash": true,
+        "delegate": true,
+        "delegation_list": true,
+        "delegation_read": true,
         "edit": true,
         "read": true,
+        "task": true,
         "write": true,
         "skill": true
+      },
+      "permission": {
+        "task": {
+          "*": "allow",
+          "frontend-state-management": "allow",
+          "frontend-api-integration": "allow",
+          "lend-ai-engram": "allow"
+        }
       }
     },
     "api-consumer": {
-      "description": "Consumo de APIs frontend",
+      "description": "Consumo de APIs frontend — spawnea sub-agentes de APIs",
       "mode": "subagent",
       "hidden": true,
       "tools": {
         "bash": true,
+        "delegate": true,
+        "delegation_list": true,
+        "delegation_read": true,
         "edit": true,
         "read": true,
+        "task": true,
         "write": true,
         "skill": true
+      },
+      "permission": {
+        "task": {
+          "*": "allow",
+          "frontend-api-integration": "allow",
+          "shared-api-integration": "allow",
+          "lend-ai-engram": "allow"
+        }
       }
     },
     "realtime-engineer": {
-      "description": "WebSockets y tiempo real",
+      "description": "WebSockets y tiempo real — spawnea sub-agentes de APIs",
       "mode": "subagent",
       "hidden": true,
       "tools": {
         "bash": true,
+        "delegate": true,
+        "delegation_list": true,
+        "delegation_read": true,
         "edit": true,
         "read": true,
+        "task": true,
         "write": true,
         "skill": true
+      },
+      "permission": {
+        "task": {
+          "*": "allow",
+          "frontend-api-integration": "allow",
+          "lend-ai-engram": "allow"
+        }
       }
     },
     "quality-guardian": {
-      "description": "Testing y calidad frontend",
+      "description": "Testing y calidad frontend — spawnea sub-agentes de testing",
       "mode": "subagent",
       "hidden": true,
       "tools": {
         "bash": true,
+        "delegate": true,
+        "delegation_list": true,
+        "delegation_read": true,
         "edit": true,
         "read": true,
+        "task": true,
         "write": true,
         "skill": true
+      },
+      "permission": {
+        "task": {
+          "*": "allow",
+          "frontend-testing": "allow",
+          "e2e-testing": "allow",
+          "lend-ai-engram": "allow"
+        }
       }
     },
     "perf-a11y": {
-      "description": "Performance y accesibilidad",
+      "description": "Performance y accesibilidad — spawnea sub-agentes de web performance",
       "mode": "subagent",
       "hidden": true,
       "tools": {
         "bash": true,
+        "delegate": true,
+        "delegation_list": true,
+        "delegation_read": true,
         "edit": true,
         "read": true,
+        "task": true,
         "write": true,
         "skill": true
+      },
+      "permission": {
+        "task": {
+          "*": "allow",
+          "frontend-web-performance": "allow",
+          "lend-ai-engram": "allow"
+        }
       }
     },
     "build-master": {
-      "description": "Build y tooling",
+      "description": "Build y tooling — spawnea sub-agentes de Docker, CI/CD y TS",
       "mode": "subagent",
       "hidden": true,
       "tools": {
         "bash": true,
+        "delegate": true,
+        "delegation_list": true,
+        "delegation_read": true,
         "edit": true,
         "read": true,
+        "task": true,
         "write": true,
         "skill": true
+      },
+      "permission": {
+        "task": {
+          "*": "allow",
+          "docker-engineer": "allow",
+          "ci-cd-pilot": "allow",
+          "frontend-type-script": "allow",
+          "lend-ai-engram": "allow"
+        }
       }
     },
     "content-docs": {
-      "description": "Documentación y contenido",
+      "description": "Documentación y contenido — spawnea sub-agentes de docs y commits",
       "mode": "subagent",
       "hidden": true,
       "tools": {
         "bash": true,
+        "delegate": true,
+        "delegation_list": true,
+        "delegation_read": true,
         "edit": true,
         "read": true,
+        "task": true,
         "write": true
+      },
+      "permission": {
+        "task": {
+          "*": "allow",
+          "lend-ai-docs": "allow",
+          "commits-real": "allow",
+          "lend-ai-engram": "allow"
+        }
       }
     },
     "e2e-testing": {
@@ -1302,27 +1604,32 @@
     "ocr": {
       "type": "local",
       "command": [
-        "python3",
-        "{LEND_AI_HOME}/mcp-servers/ocr-server.py"
+        "python",
+        "C:/Users/leand/Documents/PROYECTOS/lend-ai/mcp-servers/ocr-server.py"
       ]
     },
     "agent-router": {
       "type": "local",
       "command": [
-        "python3",
-        "{LEND_AI_HOME}/mcp-servers/agent-router.py"
+        "python",
+        "C:/Users/leand/Documents/PROYECTOS/lend-ai/mcp-servers/agent-router.py"
       ]
     },
     "model-router": {
       "type": "local",
       "command": [
-        "python3",
-        "{LEND_AI_HOME}/mcp-servers/model-router.py"
+        "python",
+        "C:/Users/leand/Documents/PROYECTOS/lend-ai/mcp-servers/model-router.py"
       ]
     }
   },
   "plugin": [
     "opencode-sdd-engram-manage",
-    "opencode-subagent-statusline"
+    "opencode-subagent-statusline",
+    "opencode-vibeguard",
+    "opencode-dynamic-context-pruning",
+    "opencode-notificator",
+    "opencode-shell-strategy",
+    "opencode-wakatime"
   ]
 }

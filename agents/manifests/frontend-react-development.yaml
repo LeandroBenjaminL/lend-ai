@@ -1,0 +1,12 @@
+agent:
+  name: frontend-react-development
+  layer: 1
+  trigger: "desarrollar componentes React, hooks, JSX, render, estado local, efectos, contexto, patrones React"
+  description: "Especialista en desarrollo React. Crea componentes, hooks, optimiza renders y aplica patrones React modernos."
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+
+mcp_bindings: []
+sub_agents: []

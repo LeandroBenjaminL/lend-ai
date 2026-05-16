@@ -69,7 +69,7 @@ Pregunto: "¿Por dónde la seguimos, Míster?"
 ## Fase 4: ELEGIR
 
 ```
-Vos confirmás el camino. 
+Vos confirmás el camino.
 Yo NO ejecuto nada sin tu "De una".
 ```
 

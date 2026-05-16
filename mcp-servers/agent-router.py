@@ -425,6 +425,142 @@ def resolve_task(task_description: str, agents_yaml_path: str = "") -> str:
 
 
 @mcp.tool()
+def resolve_task_deep(
+    task_description: str,
+    max_depth: int = 3,
+    agents_yaml_path: str = "",
+) -> str:
+    """
+    Encuentra el mejor agente para una tarea y resuelve recursivamente
+    toda su cadena de sub-agentes (árbol de delegación profundo).
+
+    Cada agente en el árbol incluye: nombre, layer, tier, modelo,
+    descripción, trigger, y sus sub-agentes resueltos recursivamente
+    hasta max_depth niveles de profundidad.
+
+    Args:
+        task_description: Descripción en lenguaje natural de la tarea.
+        max_depth: Profundidad máxima de resolución recursiva (default: 3).
+                   Depth=1 resuelve solo el agente principal.
+                   Depth=2 incluye sub-agentes directos.
+                   Depth=3 incluye sub-sub-agentes (default).
+        agents_yaml_path: Ruta al directorio de manifests YAML.
+                          Si se omite, usa la ruta por defecto.
+
+    Returns:
+        JSON con el árbol de delegación completo.
+    """
+
+    def _resolve_recursive(agent_name: str, depth: int, visited: set[str]) -> dict[str, Any] | None:
+        """Resuelve un agente y sus sub-agentes recursivamente."""
+        if agent_name in visited:
+            return None
+        visited.add(agent_name)
+
+        data = ALL_AGENTS.get(agent_name)
+        if data is None:
+            return None
+
+        agent_info = data.get("agent", {})
+        routing = _resolve_model_router(agent_name)
+
+        node = {
+            "name": agent_name,
+            "layer": agent_info.get("layer", "?"),
+            "tier": routing["tier"],
+            "model": routing["model"],
+            "description": agent_info.get("description", ""),
+            "trigger": agent_info.get("trigger", ""),
+            "mcp_bindings": data.get("mcp_bindings", []),
+            "sub_agents": [],
+        }
+
+        if depth < max_depth:
+            subs = data.get("sub_agents", [])
+            if isinstance(subs, list):
+                for sub_name in subs:
+                    sub_node = _resolve_recursive(sub_name, depth + 1, visited)
+                    if sub_node:
+                        node["sub_agents"].append(sub_node)
+
+        return node
+
+    # Determinar directorio de manifests
+    if agents_yaml_path and agents_yaml_path.strip():
+        target_dir = Path(agents_yaml_path)
+        if not target_dir.is_dir():
+            return json.dumps(
+                {"error": f"El directorio '{agents_yaml_path}' no existe."},
+                ensure_ascii=False,
+                indent=2,
+            )
+    else:
+        target_dir = MANIFESTS_DIR
+
+    # Cargar agents
+    agents: dict[str, dict[str, Any]] = {}
+    for yaml_path in _list_yaml_files(target_dir):
+        try:
+            data = _load_yaml(yaml_path)
+            name = _get_agent_name(data)
+            if name:
+                agents[name] = data
+        except Exception as e:
+            log.warning("Error cargando %s: %s", yaml_path.name, e)
+
+    if not agents:
+        return json.dumps(
+            {"error": "No se encontraron agentes."},
+            ensure_ascii=False,
+            indent=2,
+        )
+
+    # Score: mismo algoritmo que resolve_task
+    task_tokens = _tokenize(task_description)
+    scored: list[tuple[str, float]] = []
+    for name, data in agents.items():
+        trigger = data.get("agent", {}).get("trigger", "")
+        trigger_tokens = _tokenize(trigger)
+        if not trigger_tokens:
+            scored.append((name, 0.0))
+            continue
+        matches = len(task_tokens & trigger_tokens)
+        score = matches / len(trigger_tokens)
+        if trigger.lower() in task_description.lower():
+            score = max(score, 0.9)
+        if name.lower() in task_description.lower():
+            score = min(score + 0.3, 1.0)
+        scored.append((name, score))
+
+    scored.sort(key=lambda x: (-x[1], x[0]))
+    if not scored or scored[0][1] == 0.0:
+        return json.dumps(
+            {
+                "task": task_description,
+                "error": "No se encontró agente para esta tarea.",
+                "results": [],
+                "depth": max_depth,
+            },
+            ensure_ascii=False,
+            indent=2,
+        )
+
+    top_name = scored[0][0]
+    tree = _resolve_recursive(top_name, 1, set())
+
+    return json.dumps(
+        {
+            "task": task_description,
+            "depth": max_depth,
+            "tree": tree,
+            "total_agents_evaluated": len(agents),
+        },
+        ensure_ascii=False,
+        indent=2,
+    )
+
+
+@mcp.tool()
 def get_agents_by_mcp(mcp_name: str) -> str:
     """
     Devuelve todos los agentes que tienen un MCP específico en sus bindings.

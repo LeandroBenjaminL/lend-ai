@@ -1,0 +1,12 @@
+agent:
+  name: shared-api-integration
+  layer: 1
+  trigger: "APIs REST, requests HTTP, integración servicios externos, autenticación, paginación"
+  description: "Especialista en consumo de APIs REST con Python. Requests, HTTPX, auth, rate limiting."
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+
+mcp_bindings: []
+sub_agents: []

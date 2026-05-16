@@ -9,6 +9,9 @@ agent:
 mcp_bindings:
   - context7
 sub_agents:
+  - frontend-react-development
+  - frontend-css-styling
+  - frontend-type-script
 
 instructions:
   persona: persona.md

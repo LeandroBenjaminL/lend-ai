@@ -10,5 +10,8 @@ instructions:
   persona: persona.md
   workflow: workflow.md
 
+sub_agents:
+  - gitops-engineer
+  - perf-engineer
 mcp_bindings:
   - github

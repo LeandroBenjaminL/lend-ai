@@ -1,0 +1,12 @@
+agent:
+  name: frontend-api-integration
+  layer: 1
+  trigger: "consumir APIs, TanStack Query, fetch, Axios, SWR, datos remotos, caché, sincronización"
+  description: "Especialista en integración de APIs frontend. TanStack Query, fetch, caché optimista y sincronización."
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+
+mcp_bindings: []
+sub_agents: []

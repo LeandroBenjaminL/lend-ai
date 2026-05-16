@@ -1,0 +1,12 @@
+agent:
+  name: frontend-type-script
+  layer: 1
+  trigger: "TypeScript, tipos, genéricos, interfaces, tipos estrictos, tipado, definiciones de tipo"
+  description: "Especialista en TypeScript. Tipos estrictos, genéricos, interfaces y configuración TS."
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+
+mcp_bindings: []
+sub_agents: []

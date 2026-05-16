@@ -384,14 +384,14 @@ verify_mcps() {
         local gh_token notion_token
         gh_token=$(grep "^GITHUB_TOKEN=" "$env_file" 2>/dev/null | cut -d= -f2 | tr -d '"' 2>/dev/null || echo "")
         notion_token=$(grep "^NOTION_TOKEN=" "$env_file" 2>/dev/null | cut -d= -f2 | tr -d '"' 2>/dev/null || echo "")
-        
+
         if [ -n "$gh_token" ]; then
             echo -e "  ${GREEN}✅${NC} GITHUB_TOKEN configurado — github MCP OK"
             mcp_ok=$((mcp_ok + 1))
         else
             echo -e "  ${YELLOW}⚠️${NC} GITHUB_TOKEN vacío — github MCP necesita token"
         fi
-        
+
         if [ -n "$notion_token" ]; then
             echo -e "  ${GREEN}✅${NC} NOTION_TOKEN configurado — notion MCP OK"
             mcp_ok=$((mcp_ok + 1))

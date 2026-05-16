@@ -1,0 +1,12 @@
+agent:
+  name: frontend-state-management
+  layer: 1
+  trigger: "estado global, Zustand, Redux, Context, estado local, stores, persistencia, estado derivado"
+  description: "Especialista en manejo de estado frontend. Zustand, Redux, Context API y stores complejas."
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+
+mcp_bindings: []
+sub_agents: []

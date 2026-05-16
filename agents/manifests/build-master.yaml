@@ -9,6 +9,9 @@ agent:
 mcp_bindings:
   - context7
 sub_agents:
+  - docker-engineer
+  - ci-cd-pilot
+  - frontend-type-script
 
 instructions:
   persona: persona.md

@@ -26,18 +26,59 @@ if importlib.util.find_spec("PIL") is None:
     print("❌ Pillow not installed. Run: pip install pillow")
     sys.exit(1)
 
-TESSERACT_CMD = "tesseract"
-TESSDATA_PREFIX = "/usr/share/tesseract/tessdata"
+
+def _find_tesseract() -> tuple[str, str]:
+    """Find tesseract executable and tessdata directory (cross-platform)."""
+    tesseract_cmd = "tesseract.exe" if sys.platform == "win32" else "tesseract"
+    tessdata_prefix = ""
+
+    candidates = []
+    if sys.platform == "win32":
+        candidates = [
+            Path("C:/Program Files/Tesseract-OCR/tesseract.exe"),
+            Path("C:/Program Files (x86)/Tesseract-OCR/tesseract.exe"),
+            Path(os.environ.get("PROGRAMFILES", "")) / "Tesseract-OCR/tesseract.exe",
+            Path(os.environ.get("PROGRAMFILES(X86)", "")) / "Tesseract-OCR/tesseract.exe",
+        ]
+        tessdata_candidates = [
+            Path("C:/Program Files/Tesseract-OCR/tessdata"),
+            Path("C:/Program Files (x86)/Tesseract-OCR/tessdata"),
+        ]
+        for td in tessdata_candidates:
+            if td.is_dir():
+                tessdata_prefix = str(td)
+                break
+    else:
+        candidates = [
+            Path("/usr/bin/tesseract"),
+            Path("/usr/local/bin/tesseract"),
+        ]
+        unix_prefixes = ["/usr/share/tesseract/tessdata", "/usr/share/tessdata"]
+        for td in unix_prefixes:
+            if Path(td).is_dir():
+                tessdata_prefix = td
+                break
+
+    resolved_cmd = tesseract_cmd
+    for c in candidates:
+        if c.is_file():
+            resolved_cmd = str(c)
+            break
+
+    return resolved_cmd, tessdata_prefix
+
+
+_TESSERACT_CMD, _TESSDATA_PREFIX = _find_tesseract()
 
 
 def _run_tesseract(image_path: str, lang: str = "eng") -> str:
     """Run tesseract on an image and return stdout text."""
     env = os.environ.copy()
-    if os.path.isdir(TESSDATA_PREFIX):
-        env["TESSDATA_PREFIX"] = TESSDATA_PREFIX
+    if _TESSDATA_PREFIX:
+        env["TESSDATA_PREFIX"] = _TESSDATA_PREFIX
 
     result = subprocess.run(
-        [TESSERACT_CMD, image_path, "stdout", "-l", lang],
+        [_TESSERACT_CMD, image_path, "stdout", "-l", lang],
         capture_output=True,
         text=True,
         timeout=30,
@@ -49,11 +90,11 @@ def _run_tesseract(image_path: str, lang: str = "eng") -> str:
 def _run_tesseract_tsv(image_path: str, lang: str = "eng") -> str:
     """Run tesseract with tsv output for detailed results."""
     env = os.environ.copy()
-    if os.path.isdir(TESSDATA_PREFIX):
-        env["TESSDATA_PREFIX"] = TESSDATA_PREFIX
+    if _TESSDATA_PREFIX:
+        env["TESSDATA_PREFIX"] = _TESSDATA_PREFIX
 
     result = subprocess.run(
-        [TESSERACT_CMD, image_path, "stdout", "-l", lang, "--psm", "3"],
+        [_TESSERACT_CMD, image_path, "stdout", "-l", lang, "--psm", "3"],
         capture_output=True,
         text=True,
         timeout=30,
@@ -103,7 +144,7 @@ def ocr_supported_languages() -> str:
     """List all languages available for OCR in your tesseract installation."""
     try:
         result = subprocess.run(
-            [TESSERACT_CMD, "--list-langs"], capture_output=True, text=True, timeout=10
+            [_TESSERACT_CMD, "--list-langs"], capture_output=True, text=True, timeout=10
         )
         if result.returncode != 0:
             return f"Error: {result.stderr.strip()}"
@@ -137,8 +178,8 @@ def ocr_image_details(image_path: str, lang: str = "eng") -> str:
     try:
         # Use tesseract to get confidence
         env = os.environ.copy()
-        if os.path.isdir(TESSDATA_PREFIX):
-            env["TESSDATA_PREFIX"] = TESSDATA_PREFIX
+        if os.path.isdir(_TESSDATA_PREFIX):
+            env["TESSDATA_PREFIX"] = _TESSDATA_PREFIX
 
         full_text = _run_tesseract(str(path.resolve()), lang)
 

@@ -27,24 +27,62 @@ Antes de cada respuesta: (1) Frenar ambiguedad, (2) Consultar Engram, (3) Delega
 
 No asumas. No ejecutes sin preguntar. Short answers by default.
 
-## Delegation Tree
+## Delegation Tree (Recursive — Spawning en Cadena)
+
+Cada agente spawnea sub-agentes, que a su vez spawnen sub-sub-agentes.
+La delegación es RECURSIVA, no plana. Usá `resolve_task_deep()` del agent-router
+MCP para obtener el árbol completo de delegación para cualquier tarea.
 
 ```
-Data/ML/ETL     → @data-analyst
-Frontend/React  → @frontend-senior
-Infra/CI/CD     → @devops
-Git/PRs/commits → @commits-real @branch-pr @chained-pr @issue-creation
-Memoria/Engram  → @engram-keeper
-Auto-mejora     → @growth-engine
-Mejora paralela → @enhance-engine
-Contenido/LinkedIn → @content-engine
-SDD             → sdd-init..sdd-archive
-Docs           → lend-ai-docs (skill)
-Tests          → lend-ai-testing (skill)
-Model routing  → senior-orchestrator (skill)
+                                ┌─ data-question
+                                ├─ data-design
+                    ┌─ data- ───├─ data-explorer ───┬─ data-analysis ───┬─ data-profiling
+                    │ analyst   │                    │                   └─ data-validation
+                    │           ├─ data-modeler ────┬─ ml-modeling
+                    │           │                    ├─ time-series-analysis
+                    │           │                    └─ statistical-testing
+                    │           ├─ data-reporter ───┬─ reporting
+                    │           │                    ├─ streamlit
+                    │           │                    └─ data-visualization
+                    │           └─ data-verify ─────┬─ data-validation
+                    │                                ├─ judgment-day
+lend-ai ────────────┼─ frontend- ─┬─ framework-architect ─┬─ frontend-react-development
+(ORCHESTRATOR)      │ senior      │                        ├─ frontend-state-management
+                    │             │                        └─ frontend-api-integration
+                    │             ├─ ui-crafter ───────────┬─ frontend-react-development
+                    │             │                         ├─ frontend-css-styling
+                    │             │                         └─ frontend-type-script
+                    │             ├─ quality-guardian ─────┬─ frontend-testing
+                    │             │                         └─ e2e-testing
+                    │             ├─ build-master ─────────┬─ docker-engineer
+                    │             │                         ├─ ci-cd-pilot
+                    │             │                         └─ frontend-type-script
+                    │             └─ content-docs ─────────┬─ lend-ai-docs
+                    │                                       └─ commits-real
+                    │
+                    ├─ devops ─────┬─ docker-engineer ─────┬─ perf-engineer
+                    │              │                        └─ security-auditor
+                    │              ├─ ci-cd-pilot ─────────┬─ gitops-engineer
+                    │              │                        └─ perf-engineer
+                    │              ├─ cloud-architect ─────┬─ security-auditor
+                    │              │                        └─ perf-engineer
+                    │              ├─ db-admin ────────────└─ database-connections
+                    │              └─ ...otros DevOps subs
+                    │
+                    ├─ engram-keeper → lend-ai-engram
+                    ├─ growth-engine → meta-learning
+                    ├─ enhance-engine → 10 perspectivas paralelas
+                    └─ content-engine → LinkedIn content
 ```
 
-**Regla**: Si matchea dominio, DELEGA. No ejecutes vos.
+**Regla de oro**: Si matchea dominio y es complejo → DELEGÁ EN CADENA.
+No ejecutes vos. El sub-agente decide si spawnear más profundo.
+
+**Detección de profundidad:**
+1. **Simple** (T1-T2): resolvelo vos mismo, no spawnees
+2. **Medio** (T3): spawné 1 sub-agente
+3. **Complejo** (T4): spawné árbol de 2 niveles
+4. **Crítico** (T5): spawné árbol completo 3+ niveles, usá resolve_task_deep()
 
 ## Delegation Triggers
 

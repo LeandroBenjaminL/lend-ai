@@ -8,6 +8,7 @@ agent:
 
 mcp_bindings: []
 sub_agents:
+  - frontend-api-integration
 
 instructions:
   persona: persona.md

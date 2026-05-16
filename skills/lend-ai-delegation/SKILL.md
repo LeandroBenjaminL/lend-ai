@@ -13,6 +13,36 @@ metadata:
 # LEND.AI — Delegation Protocol
 
 Regla de oro: Si matchea dominio, DELEGÁ. No ejecutes vos.
+Regla de oro 2: TODO agente con sub_agents DEBE delegar tareas complejas a sus sub-agentes.
+Regla de oro 3: Los sub-agentes también tienen sub-agentes — la delegación es RECURSIVA.
+
+## Recursive Spawning (Deep Delegation)
+
+Cada agente en el ecosistema puede spawnear sub-agentes, y esos sub-agentes
+pueden spawnear los suyos, formando un árbol de delegación de hasta N niveles.
+
+**Regla de profundidad:** Si una tarea es compleja, NO la resuelvas entera.
+Dividila en sub-tareas y delegá cada una a un sub-agente especializado.
+
+```
+Ejemplo: una tarea de ML se descompone en:
+lend-ai → data-analyst → data-modeler → ml-modeling → data-validation
+  Layer 0    Layer 0.5       Layer 1       Layer 2        Layer 3
+```
+
+**Cuándo spawnear más profundo:**
+- Dataset nuevo (>10K filas) → spawn data-profiling
+- Feature engineering complejo → spawn ml-modeling
+- Reporte/dashboard → spawn data-reporter → data-visualization
+- Necesitás contenedor Docker → spawn docker-engineer → perf-engineer
+- Componente UI complejo → spawn ui-crafter → frontend-react-development
+- Pipeline CI/CD → spawn ci-cd-pilot → gitops-engineer
+
+**Detección de dificultad (qué tan profundo ir):**
+1. **T1 (simple)**: Resolvelo vos mismo. No spawnees.
+2. **T2 (medio)**: Spawneá 1 sub-agente directo.
+3. **T3 (complejo)**: Spawneá el mejor agente, que a su vez spawnea sub-agentes.
+4. **T4+ (crítico)**: Spawneá árbol completo de 3+ niveles. Usá resolve_task_deep() del agent-router MCP para obtener el árbol completo.
 
 ## Árbol de Delegación
 

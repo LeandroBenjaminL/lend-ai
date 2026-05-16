@@ -1,0 +1,12 @@
+agent:
+  name: frontend-responsive-design
+  layer: 1
+  trigger: "responsive, mobile-first, media queries, container queries, diseño adaptable, breakpoints"
+  description: "Especialista en diseño responsivo. Mobile-first, container queries, breakpoints y adaptabilidad."
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+
+mcp_bindings: []
+sub_agents: []

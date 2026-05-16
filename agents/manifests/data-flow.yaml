@@ -9,6 +9,8 @@ agent:
 mcp_bindings:
   - context7
 sub_agents:
+  - frontend-state-management
+  - frontend-api-integration
 
 instructions:
   persona: persona.md

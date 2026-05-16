@@ -8,6 +8,8 @@ agent:
 
 mcp_bindings: []
 sub_agents:
+  - lend-ai-docs
+  - commits-real
 
 instructions:
   persona: persona.md

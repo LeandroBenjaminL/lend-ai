@@ -956,6 +956,114 @@
           "T3-balanced",
           "T5-deep"
         ]
+      },
+      {
+        "agent": "data-analysis",
+        "role": "Análisis con Pandas/NumPy — sub-agente de data-explorer",
+        "recommended": "DeepSeek Medium",
+        "alternatives": ["Minimax", "DeepSeek Pro"],
+        "reason": "Manipulación de datos del día a día. T3 default, escala si es análisis muy complejo",
+        "tier": "T3-balanced",
+        "tier_range": ["T2-fast", "T4-reasoning"]
+      },
+      {
+        "agent": "data-profiling",
+        "role": "Profiling automático con ydata-profiling",
+        "recommended": "Minimax",
+        "alternatives": ["Minimax Free"],
+        "reason": "Tarea mecánica: generar reporte de profiling. No necesita razonamiento",
+        "tier": "T2-fast",
+        "tier_range": ["T1-ultra-fast", "T2-fast"]
+      },
+      {
+        "agent": "ml-modeling",
+        "role": "Machine Learning con Scikit-learn, XGBoost — sub-agente de data-modeler",
+        "recommended": "DeepSeek Medium",
+        "alternatives": ["DeepSeek Pro", "DeepSeek Pro Max"],
+        "reason": "Entrenamiento de modelos. T3 default, escala a T4-T5 si el modelo es crítico",
+        "tier": "T3-balanced",
+        "tier_range": ["T3-balanced", "T5-deep"]
+      },
+      {
+        "agent": "time-series-analysis",
+        "role": "Series temporales y forecasting — sub-agente de data-modeler",
+        "recommended": "DeepSeek Pro",
+        "alternatives": ["DeepSeek Medium", "DeepSeek Pro Max"],
+        "reason": "Forecasting y estacionalidad requieren razonamiento estructurado",
+        "tier": "T4-reasoning",
+        "tier_range": ["T3-balanced", "T5-deep"]
+      },
+      {
+        "agent": "statistical-testing",
+        "role": "Tests estadísticos con SciPy — sub-agente de data-modeler",
+        "recommended": "Minimax",
+        "alternatives": ["Minimax Free", "DeepSeek Medium"],
+        "reason": "Tests con hipótesis definidas. T2-T3 según complejidad",
+        "tier": "T2-fast",
+        "tier_range": ["T1-ultra-fast", "T3-balanced"]
+      },
+      {
+        "agent": "notebook-integration",
+        "role": "Integración con Jupyter notebooks — sub-agente de data-explorer",
+        "recommended": "Minimax Free",
+        "alternatives": ["Minimax"],
+        "reason": "Tarea mecánica de integración/formato",
+        "tier": "T1-ultra-fast",
+        "tier_range": ["T1-ultra-fast", "T2-fast"]
+      },
+      {
+        "agent": "docker-engineer",
+        "role": "Ingeniero de contenedores — Docker, Compose, K8s",
+        "recommended": "Minimax",
+        "alternatives": ["DeepSeek Medium"],
+        "reason": "Tareas procedurales de Docker. T2 default, T3 si require diseño de infra",
+        "tier": "T2-fast",
+        "tier_range": ["T1-ultra-fast", "T3-balanced"]
+      },
+      {
+        "agent": "ci-cd-pilot",
+        "role": "CI/CD pipelines — GitHub Actions, Jenkins",
+        "recommended": "Minimax",
+        "alternatives": ["DeepSeek Medium"],
+        "reason": "Pipelines con lógica definida. T2 default",
+        "tier": "T2-fast",
+        "tier_range": ["T1-ultra-fast", "T3-balanced"]
+      },
+      {
+        "agent": "cloud-architect",
+        "role": "Arquitectura cloud — AWS, GCP, Azure",
+        "recommended": "DeepSeek Pro",
+        "alternatives": ["DeepSeek Medium"],
+        "reason": "Arquitectura cloud requiere pensamiento estructurado",
+        "tier": "T4-reasoning",
+        "tier_range": ["T3-balanced", "T5-deep"]
+      },
+      {
+        "agent": "db-admin",
+        "role": "Administración de bases de datos",
+        "recommended": "DeepSeek Medium",
+        "alternatives": ["Minimax", "DeepSeek Pro"],
+        "reason": "Tareas mixtas: consultas simples a optimización compleja",
+        "tier": "T3-balanced",
+        "tier_range": ["T2-fast", "T4-reasoning"]
+      },
+      {
+        "agent": "ui-crafter",
+        "role": "Componentes UI reutilizables",
+        "recommended": "DeepSeek Medium",
+        "alternatives": ["DeepSeek Pro"],
+        "reason": "Diseño de componentes con patrones de composición",
+        "tier": "T3-balanced",
+        "tier_range": ["T2-fast", "T4-reasoning"]
+      },
+      {
+        "agent": "framework-architect",
+        "role": "Arquitectura frontend",
+        "recommended": "DeepSeek Pro",
+        "alternatives": ["DeepSeek Medium"],
+        "reason": "Decisiones de arquitectura frontend",
+        "tier": "T4-reasoning",
+        "tier_range": ["T3-balanced", "T5-deep"]
       }
     ],
     "_sdd_subagents": {

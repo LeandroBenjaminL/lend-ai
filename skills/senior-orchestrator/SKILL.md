@@ -52,10 +52,39 @@ Orquestación del ecosistema. Decidí qué agente, qué modelo, qué camino.
    ├── ¿Necesita ajustes? → re-delegá con feedback
    └── ¿Error? → diagnosticá y re-delegá
 
+## Deep Delegation (Recursive Spawning)
+
+**Nuevo: resolve_task_deep()** — Usá esta herramienta del agent-router MCP
+para resolver tareas con árbol de delegación completo (3+ niveles de profundidad).
+
+### Flujo de delegación profunda
+
+```
+Tarea compleja
+  → resolve_task_deep("descripción", max_depth=3)
+    → Devuelve árbol: agente → sub-agentes → sub-sub-agentes
+  → Spawneá el agente raíz con instrucciones
+    → El agente spawnea sub-agentes según la dificultad
+      → Los sub-agentes spawnean más sub-agentes si es necesario
+```
+
+### Reglas de profundidad por capa
+
+| Layer | Rol | Puede spawnear |
+|-------|-----|----------------|
+| 0 | Orquestador (lend-ai) | Layer 0.5: data-analyst, frontend-senior, devops |
+| 0.5 | Domain supervisors | Layer 1: data-explorer, data-modeler, docker-engineer |
+| 1 | Especialistas | Layer 2: data-analysis, ml-modeling, perf-engineer |
+| 2+ | Deep specialists | Layer 3: data-profiling, data-validation, statistical-testing |
+
+**Regla**: Si un agente tiene `sub_agents` en su manifest YAML y la
+sub-tarea es lo suficientemente compleja → DEBE delegar. No ejecutar directamente.
+
 ## Patrones
 
 - **Delegar siempre, preguntar solo en ambigüedad**
-- **Usá siempre tres herramientas**: task() para sub-agentes, resolve_task() si hay duda, agent-router MCP para routing
+- **Usá siempre cuatro herramientas**: task() para sub-agentes, resolve_task() si hay duda, resolve_task_deep() para árbol completo, agent-router MCP para routing
+- **Siempre delegá profundo**: si una tarea es compleja, no la resuelvas vos. Spawneá el árbol completo.
 - **Nunca cambiar model-routing.config.json sin registrar en Engram**
 - **Cada cambio arquitectónico requiere ADR**
 - **MCPs se diagnostican antes de usar**

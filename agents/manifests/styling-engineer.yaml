@@ -8,6 +8,8 @@ agent:
 
 mcp_bindings: []
 sub_agents:
+  - frontend-css-styling
+  - frontend-responsive-design
 
 instructions:
   persona: persona.md
