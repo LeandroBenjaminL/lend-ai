@@ -34,7 +34,7 @@ El update script:
 ## Architecture
 
 ```
-lend-ai (orchestrator — 9 direct sub-agents)
+lend-ai (orchestrator — 13 direct sub-agents)
 ├── data-analyst         → data analysis, ML, ETL, reporting (9 sub-agents)
 ├── frontend-senior      → React, TypeScript, CSS, testing (10 sub-agents)
 ├── devops               → infrastructure, CI/CD, cloud, security (10 sub-agents)
@@ -43,7 +43,12 @@ lend-ai (orchestrator — 9 direct sub-agents)
 ├── commits-real         → unified commits, docs, versioning
 ├── lend-ai-engram       → memory context management
 ├── lend-ai-testing      → tests, CI, coverage
-└── lend-ai-docs         → Google-style docstrings, ADR, architecture docs
+├── lend-ai-docs         → Google-style docstrings, ADR, architecture docs
+├── growth-engine        → meta-learning, pattern detection, ecosystem improvement
+├── enhance-engine       → parallel improvement from 10 perspectives
+├── content-engine       → Engram analysis, doc sync, LinkedIn content
+├── lend-ai-mentor       → project protocol + professor behavior + user profile
+└── judgment-day         → adversarial code review
 ```
 
 Each orchestrator has an explicit **Arsenal** mapping: Core Protocols (always-on), Domain Sub-agents (when to spawn), and Task Skills (when to load, with exact file paths).
@@ -52,11 +57,11 @@ Each orchestrator has an explicit **Arsenal** mapping: Core Protocols (always-on
 
 | Metric | Value |
 |--------|-------|
-| Version | v0.5.0 |
-| Agents | 100 |
-| Skills | 70 (all with LEND Protocol) |
+| Version | v0.6.2 |
+| Agents | 105+ |
+| Skills | 75+ (all with LEND Protocol) |
 | Shared Protocols | 5 (skill-resolver, subagent-context, sdd-phase-common, engram-convention, persistence-contract) |
-| MCPs | 17 |
+| MCPs | 16 |
 | Commits | 3-level ceremony (direct, quick PR, full review) |
 
 ## Stack

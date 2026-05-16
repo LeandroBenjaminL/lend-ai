@@ -21,9 +21,13 @@ Convención de naming:
 
 | Agente | Rol | Primary | Sub-agentes |
 |--------|-----|---------|-------------|
-| `lend-ai` | Orquestador general del ecosistema | ✅ | data-analyst, frontend-senior, commits-real, lend-ai-engram, lend-ai-testing |
+| `lend-ai` | Orquestador general del ecosistema | ✅ | data-analyst, frontend-senior, devops, git-github, engram-keeper, growth-engine, enhance-engine, content-engine, lend-ai-mentor, commits-real, lend-ai-engram, lend-ai-testing, lend-ai-docs, judgment-day |
 | `data-analyst` | Análisis de datos, ML, EDA, reporting | ❌ (sub) | data-explorer, data-modeler, data-reporter, etc. |
 | `frontend-senior` | Desarrollo frontend, React, CSS, testing | ❌ (sub) | framework-architect, ui-crafter, styling-engineer, etc. |
+| `growth-engine` | Meta-aprendizaje, detección de patrones, mejora del ecosistema | ❌ (sub) | — |
+| `enhance-engine` | Mejora paralela desde 10 perspectivas | ❌ (sub) | — |
+| `content-engine` | Analiza Engram, trackea mejoras, genera contenido para LinkedIn | ❌ (sub) | — |
+| `lend-ai-mentor` | Protocolo de proyecto + profesor + perfil de usuario | ❌ (sub) | — |
 
 ## Skills
 

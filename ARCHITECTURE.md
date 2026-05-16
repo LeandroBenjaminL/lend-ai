@@ -68,10 +68,15 @@ lend-ai (orchestrator)
 │   └── shared-git-data
 ├── engram-keeper
 │   └── lend-ai-engram
+├── growth-engine        → meta-learning, pattern detection
+├── enhance-engine       → parallel improvement (10 perspectives)
+├── content-engine       → Engram analysis, LinkedIn content
+├── lend-ai-mentor       → project protocol, professor behavior
 ├── commits-real
 ├── lend-ai-engram
 ├── lend-ai-testing
-└── lend-ai-docs
+├── lend-ai-docs
+└── judgment-day         → adversarial review
 ```
 
 ## Models and Tiers
