@@ -2,7 +2,7 @@
   "$schema": "https://opencode.ai/config.json",
   "agent": {
     "lend-ai": {
-      "description": "CHECKLIST PRE-VUELO — saltar un paso es fallar.\n\n□ 1. ENGRAM: mem_context. mem_search 'Leandro perfil'. Si no hay perfil, CREALO.\n□ 2. PREGUNTAR: mínimo 3 preguntas antes de escribir código o ejecutar comandos.\n□ 3. ESPERAR: no seguir sin confirmación del usuario.\n□ 4. 3 OPCIONES: Clásico / Fast-Track / Picante. Cada una con pros y contras.\n□ 5. ENSEÑAR: explicá QUÉ, POR QUÉ y el PATRÓN. Verificá si entiende.\n□ 6. EJECUTAR: con enseñanza constante.\n□ 7. CERRAR: Engram save (What/Why/Where/Learned). Docs update. User profile update. Commit & push. Push Engram.\n\nVOZ: Trato Míster. Directo rioplatense. Expresiones: metele mecha, dale, fijate, che, tranqui. Técnico en inglés. NUNCA: 'es importante destacar', 'cabe mencionar'.",
+      "description": "Orquestador del ecosistema Lend.Ai (AISHA Engine).\n\nChecklist:\n□ 1. FRENAR → si el usuario es vago, pará y pedí claridad\n□ 2. CONSULTAR ENGRAM → mem_context + mem_search\n□ 3. REVISAR MCPs → ¿tengo la herramienta?\n□ 4. SKILL LOADING → si hay skill que cubre, cargala\n□ 5. DELEGATION CHECK → domain match? delegá al sub-agente\n□ 6. MENÚ DEL SENIOR → solo si hay tradeoffs reales (no siempre)\n□ 7. PREGUNTAR Y ESPERAR → no ejecutes sin confirmación\n□ 8. EJECUTAR ENSEÑANDO → explicá QUÉ, POR QUÉ, PATRÓN\n□ 9. ENGRAM POST → mem_save de lo aprendido\n\nVOZ: Trato Míster/Líder/Rey. Directo rioplatense. Expresiones: metele mecha, dale, fijate, che, tranqui. Técnico en inglés. NUNCA: 'es importante destacar', 'cabe mencionar'.",
       "mode": "primary",
       "tools": {
         "bash": true,
@@ -20,6 +20,8 @@
           "*": "deny",
           "data-analyst": "allow",
           "frontend-senior": "allow",
+          "devops": "allow",
+          "engram-keeper": "allow",
           "commits-real": "allow",
           "lend-ai-engram": "allow",
           "lend-ai-testing": "allow",
@@ -193,6 +195,69 @@
           "e2e-testing": "allow"
         }
       }
+    },
+    "devops": {
+      "description": "Senior DevOps Mentor — infraestructura, CI/CD, Docker, cloud, seguridad, monitoreo, SRE",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "delegate": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true,
+        "task": true
+      },
+      "skills": [
+        "commits-real",
+        "docker-engineer",
+        "ci-cd-pilot",
+        "cloud-architect",
+        "db-admin",
+        "infra-sre",
+        "security-auditor",
+        "network-engineer",
+        "gitops-engineer",
+        "backup-engineer",
+        "perf-engineer",
+        "lend-ai-docs",
+        "lend-ai-testing"
+      ],
+      "permission": {
+        "task": {
+          "*": "deny",
+          "commits-real": "allow",
+          "lend-ai-engram": "allow",
+          "lend-ai-testing": "allow",
+          "lend-ai-docs": "allow",
+          "docker-engineer": "allow",
+          "ci-cd-pilot": "allow",
+          "cloud-architect": "allow",
+          "db-admin": "allow",
+          "infra-sre": "allow",
+          "security-auditor": "allow",
+          "network-engineer": "allow",
+          "gitops-engineer": "allow",
+          "backup-engineer": "allow",
+          "perf-engineer": "allow"
+        }
+      }
+    },
+    "engram-keeper": {
+      "description": "Engram Keeper — guardian de la memoria del ecosistema. Organiza, consolida y mantiene el contexto entre sesiones.",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": false,
+        "edit": false,
+        "read": true,
+        "write": false,
+        "skill": true
+      },
+      "skills": [
+        "lend-ai-engram"
+      ]
     },
     "data-explorer": {
       "description": "EDA, profiling y análisis exploratorio",
@@ -408,6 +473,126 @@
     },
     "statistical-testing": {
       "description": "Tests estadísticos con SciPy",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
+    },
+    "docker-engineer": {
+      "description": "Ingeniero de contenedores — Docker, Compose, K8s",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
+    },
+    "ci-cd-pilot": {
+      "description": "CI/CD pipelines — GitHub Actions, Jenkins, automatización",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
+    },
+    "cloud-architect": {
+      "description": "Arquitectura cloud — AWS, GCP, Azure, serverless",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
+    },
+    "db-admin": {
+      "description": "Administración de bases de datos — PostgreSQL, MySQL, SQLite",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
+    },
+    "infra-sre": {
+      "description": "Infraestructura y SRE — monitoreo, alertas, escalado",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
+    },
+    "security-auditor": {
+      "description": "Seguridad y auditoría — hardening, compliance, pentest",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
+    },
+    "network-engineer": {
+      "description": "Redes — DNS, VPN, load balancing, firewalls",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
+    },
+    "gitops-engineer": {
+      "description": "GitOps — ArgoCD, Flux, despliegues declarativos",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
+    },
+    "backup-engineer": {
+      "description": "Backups y recuperación — estrategias, automatización, restauración",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
+    },
+    "perf-engineer": {
+      "description": "Performance engineering — profiling, tuning, benchmarks",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -944,6 +1129,126 @@
         "write": true,
         "skill": true
       }
+    },
+    "sdd-init": {
+      "description": "Iniciar un nuevo proyecto/feature en un codebase",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
+    },
+    "sdd-explore": {
+      "description": "Investigar el codebase, explorar antes de diseñar",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
+    },
+    "sdd-propose": {
+      "description": "Tener una propuesta de cambio para revisión",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
+    },
+    "sdd-spec": {
+      "description": "Escribir especificaciones detalladas",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
+    },
+    "sdd-design": {
+      "description": "Diseñar la implementación técnica",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
+    },
+    "sdd-tasks": {
+      "description": "Descomponer especificaciones en tareas",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
+    },
+    "sdd-apply": {
+      "description": "Implementar cambios del diseño",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
+    },
+    "sdd-verify": {
+      "description": "Validar implementación contra especificaciones",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
+    },
+    "sdd-archive": {
+      "description": "Archivar artefactos de cambio completados",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
+    },
+    "sdd-onboard": {
+      "description": "Guiar a alguien por el ciclo SDD completo",
+      "mode": "subagent",
+      "hidden": true,
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "read": true,
+        "write": true,
+        "skill": true
+      }
     }
   },
   "mcp": {
@@ -969,7 +1274,7 @@
         "npx",
         "-y",
         "@modelcontextprotocol/server-filesystem",
-        "{LEND_AI_HOME}"
+        "C:\\Users\\leand\\.lend-ai\\repo"
       ]
     },
     "puppeteer": {
@@ -1019,43 +1324,45 @@
     "notion": {
       "type": "local",
       "command": [
-        "bash",
-        "{LEND_AI_HOME}/mcp-servers/notion-wrapper.sh"
+        "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-File",
+        "C:\\Users\\leand\\.lend-ai\\repo\\mcp-servers\\notion-wrapper.ps1"
       ]
     },
     "smtp-email": {
       "type": "local",
       "command": [
-        "bash",
-        "{LEND_AI_HOME}/mcp-servers/smtp-wrapper.sh"
+        "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-File",
+        "C:\\Users\\leand\\.lend-ai\\repo\\mcp-servers\\smtp-wrapper.ps1"
       ]
     },
     "postgres": {
       "type": "local",
       "command": [
-        "python3",
-        "{LEND_AI_HOME}/mcp-servers/postgres-server.py"
+        "C:\\Users\\leand\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
+        "C:\\Users\\leand\\.lend-ai\\repo\\mcp-servers\\postgres-server.py"
       ]
     },
     "ocr": {
       "type": "local",
       "command": [
-        "python3",
-        "{LEND_AI_HOME}/mcp-servers/ocr-server.py"
+        "C:\\Users\\leand\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
+        "C:\\Users\\leand\\.lend-ai\\repo\\mcp-servers\\ocr-server.py"
       ]
     },
     "agent-router": {
       "type": "local",
       "command": [
-        "python3",
-        "{LEND_AI_HOME}/mcp-servers/agent-router.py"
+        "C:\\Users\\leand\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
+        "C:\\Users\\leand\\.lend-ai\\repo\\mcp-servers\\agent-router.py"
       ]
     },
     "model-router": {
       "type": "local",
       "command": [
-        "python3",
-        "{LEND_AI_HOME}/mcp-servers/model-router.py"
+        "C:\\Users\\leand\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
+        "C:\\Users\\leand\\.lend-ai\\repo\\mcp-servers\\model-router.py"
       ]
     },
     "sqlite": {
@@ -1064,7 +1371,7 @@
         "npx",
         "-y",
         "mcp-sqlite-server",
-        "{LEND_AI_HOME}/data/analisis.db"
+        "C:\\Users\\leand\\.lend-ai\\repo\\data\\analisis.db"
       ]
     },
     "mysql": {

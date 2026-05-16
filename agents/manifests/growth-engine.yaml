@@ -10,13 +10,12 @@ mcp_bindings:
   - sequential-thinking
 
 skills:
-  - engram-memory-system
+  - commits-real
+  - lend-ai-engram
   - skill-creator
   - skill-registry
   - lend-ai-docs
-  - commits-real
 
 instructions:
   persona: persona.md
   workflow: workflow.md
-  patterns: patterns.md

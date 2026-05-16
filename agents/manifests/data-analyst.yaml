@@ -32,7 +32,7 @@ sub_agents:
   - data-archive
 
 skills:
-  - engram-memory-system
+  - commits-real
   - data-analysis
   - data-cleaning
   - data-visualization
@@ -47,19 +47,16 @@ skills:
   - sql-analysis
   - database-connections
   - etl-pipelines
-  - reporting
-  - streamlit
   - file-formats
   - notebook-integration
   - python-environment
-  - regex-data
-  - shared-api-integration
   - shared-git-data
+  - shared-api-integration
   - web-scraping
-  - commits-real
-  - lend-ai-docs
+  - regex-data
+  - reporting
+  - streamlit
 
 instructions:
   persona: persona.md
   workflow: workflow.md
-  patterns: patterns.md

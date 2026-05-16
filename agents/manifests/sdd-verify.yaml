@@ -12,4 +12,3 @@ sub_agents: []
 instructions:
   persona: persona.md
   workflow: workflow.md
-  patterns: patterns.md

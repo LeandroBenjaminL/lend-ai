@@ -7,10 +7,8 @@ agent:
 instructions:
   persona: persona.md
   workflow: workflow.md
-  patterns: patterns.md
 
 skills:
-  - engram-memory-system
   - lend-ai-engram
 
 mcp_bindings:

@@ -7,11 +7,8 @@ agent:
 instructions:
   persona: persona.md
   workflow: workflow.md
-  patterns: patterns.md
 
 skills:
-  - engram-memory-system
-  - senior-orchestrator
   - commits-real
   - docker-engineer
   - ci-cd-pilot

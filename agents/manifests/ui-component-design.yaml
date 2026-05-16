@@ -7,6 +7,5 @@ agent:
 instructions:
   persona: persona.md
   workflow: workflow.md
-  patterns: patterns.md
 
 mcp_bindings: []

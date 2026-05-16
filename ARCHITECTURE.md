@@ -5,13 +5,12 @@
 ```
 lend-ai/
 ├── agents/manifests/    → YAML manifests for each agent
-│   ├── lend-ai/         → Main orchestrator
-│   ├── data-analyst/    → Data agent
-│   ├── frontend-senior/ → Agente frontend
-│   ├── devops/         → DevOps agent
-│   ├── git-github/      → Git/GitHub agent
-│   ├── engram-keeper/    → Memory keeper
-│   └── ... (100+ agentes)
+│   ├── lend-ai.yaml     → Main orchestrator
+│   ├── data-analyst.yaml → Data agent
+│   ├── frontend-senior.yaml → Frontend agent
+│   ├── devops.yaml      → DevOps agent
+│   ├── engram-keeper.yaml → Memory keeper
+│   └── ... (88+ agent manifests)
 ├── commands/            → Slash command documentation
 ├── data/                → Analysis data (gitignored)
 ├── docs/                → Guides and detailed documentation
@@ -20,13 +19,15 @@ lend-ai/
 ├── profiles/lend-ai/    → Identity and workflow profiles
 ├── registry/            → Central agent registry
 ├── schemas/             → Validation schemas
-├── update.sh            → Safe update script (pull, backup, MCP check)
-├── install.sh           → First-time installer
+├── update.sh            → Safe update script (Linux/macOS)
+├── update.ps1           → Safe update script (Windows)
+├── install.sh           → First-time installer (Linux/macOS)
+├── install.ps1          → First-time installer (Windows)
 ├── scripts/             → Utility scripts (model picker, etc)
 ├── skills/              → Skills with LEND Protocol
 │   ├── data-*/          → Data analysis (23 skills)
 │   ├── frontend-*/      → Frontend (8 skills)
-│   ├── docker-engineer… → DevOps (5 skills)
+│   ├── docker-engineer… → DevOps (10 skills)
 │   ├── sdd-*/           → SDD (10 skills)
 │   ├── commits-real,…   → Transversales (12 skills)
 │   └── lend-ai-*/       → Skills del ecosistema
@@ -59,13 +60,6 @@ lend-ai (orchestrator)
 │   ├── gitops-engineer
 │   ├── backup-engineer
 │   └── perf-engineer
-├── git-github
-│   ├── commits-real
-│   ├── branch-pr
-│   ├── chained-pr
-│   ├── issue-creation
-│   ├── gitops-engineer
-│   └── shared-git-data
 ├── engram-keeper
 │   └── lend-ai-engram
 ├── growth-engine        → meta-learning, pattern detection

@@ -12,4 +12,3 @@ mcp_bindings:
 instructions:
   persona: persona.md
   workflow: workflow.md
-  patterns: patterns.md

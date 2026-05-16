@@ -25,7 +25,7 @@ sub_agents:
   - content-docs
 
 skills:
-  - engram-memory-system
+  - commits-real
   - frontend-react-development
   - frontend-css-styling
   - frontend-type-script
@@ -34,11 +34,9 @@ skills:
   - frontend-testing
   - frontend-responsive-design
   - frontend-web-performance
-  - commits-real
-  - lend-ai-docs
-  - lend-ai-testing
+  - shared-git-data
+  - shared-api-integration
 
 instructions:
   persona: persona.md
   workflow: workflow.md
-  patterns: patterns.md

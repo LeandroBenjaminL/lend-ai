@@ -21,9 +21,11 @@ Convención de naming:
 
 | Agente | Rol | Primary | Sub-agentes |
 |--------|-----|---------|-------------|
-| `lend-ai` | Orquestador general del ecosistema | ✅ | data-analyst, frontend-senior, devops, git-github, engram-keeper, growth-engine, enhance-engine, content-engine, lend-ai-mentor, commits-real, lend-ai-engram, lend-ai-testing, lend-ai-docs, judgment-day |
-| `data-analyst` | Análisis de datos, ML, EDA, reporting | ❌ (sub) | data-explorer, data-modeler, data-reporter, etc. |
-| `frontend-senior` | Desarrollo frontend, React, CSS, testing | ❌ (sub) | framework-architect, ui-crafter, styling-engineer, etc. |
+| `lend-ai` | Orquestador general del ecosistema (AISHA Engine) | ✅ | data-analyst, frontend-senior, devops, engram-keeper, growth-engine, enhance-engine, content-engine, commits-real, lend-ai-engram, lend-ai-testing, lend-ai-docs, judgment-day |
+| `data-analyst` | Análisis de datos, ML, EDA, reporting | ❌ (sub) | data-question, data-design, data-explorer, data-analysis, data-cleaning, data-modeler, data-reporter, data-verify, data-archive |
+| `frontend-senior` | Desarrollo frontend, React, CSS, testing | ❌ (sub) | framework-architect, ui-crafter, styling-engineer, data-flow, api-consumer, realtime-engineer, quality-guardian, perf-a11y, build-master, content-docs |
+| `devops` | Infraestructura, CI/CD, Docker, cloud, seguridad | ❌ (sub) | docker-engineer, ci-cd-pilot, cloud-architect, db-admin, infra-sre, security-auditor, network-engineer, gitops-engineer, backup-engineer, perf-engineer |
+| `engram-keeper` | Memoria del ecosistema (Engram) | ❌ (sub) | lend-ai-engram |
 | `growth-engine` | Meta-aprendizaje, detección de patrones, mejora del ecosistema | ❌ (sub) | — |
 | `enhance-engine` | Mejora paralela desde 10 perspectivas | ❌ (sub) | — |
 | `content-engine` | Analiza Engram, trackea mejoras, genera contenido para LinkedIn | ❌ (sub) | — |
@@ -68,6 +70,16 @@ Convención de naming:
 | `frontend-web-performance` | Al optimizar performance, Core Web Vitals | [`skills/frontend-web-performance/SKILL.md`](skills/frontend-web-performance/SKILL.md) |
 | `shared-api-integration` | Al consumir APIs REST, requests, integración genérica | [`skills/shared-api-integration/SKILL.md`](skills/shared-api-integration/SKILL.md) |
 | `shared-git-data` | Al versionar datasets, git para data science | [`skills/shared-git-data/SKILL.md`](skills/shared-git-data/SKILL.md) |
+| `docker-engineer` | Al trabajar con Docker, contenedores, K8s | [`skills/docker-engineer/SKILL.md`](skills/docker-engineer/SKILL.md) |
+| `ci-cd-pilot` | Al configurar CI/CD, pipelines, automatización | [`skills/ci-cd-pilot/SKILL.md`](skills/ci-cd-pilot/SKILL.md) |
+| `cloud-architect` | Al diseñar arquitectura cloud, AWS, GCP, Azure | [`skills/cloud-architect/SKILL.md`](skills/cloud-architect/SKILL.md) |
+| `db-admin` | Al administrar bases de datos, PostgreSQL, MySQL | [`skills/db-admin/SKILL.md`](skills/db-admin/SKILL.md) |
+| `infra-sre` | Al manejar infraestructura, monitoreo, SRE | [`skills/infra-sre/SKILL.md`](skills/infra-sre/SKILL.md) |
+| `security-auditor` | Al auditar seguridad, hardening, compliance | [`skills/security-auditor/SKILL.md`](skills/security-auditor/SKILL.md) |
+| `network-engineer` | Al configurar redes, DNS, VPN, firewalls | [`skills/network-engineer/SKILL.md`](skills/network-engineer/SKILL.md) |
+| `gitops-engineer` | Al implementar GitOps, ArgoCD, Flux | [`skills/gitops-engineer/SKILL.md`](skills/gitops-engineer/SKILL.md) |
+| `backup-engineer` | Al diseñar estrategias de backup y recuperación | [`skills/backup-engineer/SKILL.md`](skills/backup-engineer/SKILL.md) |
+| `perf-engineer` | Al optimizar performance, profiling, tuning | [`skills/perf-engineer/SKILL.md`](skills/perf-engineer/SKILL.md) |
 | `judgment-day` | Al necesitar doble review, revisión adversarial | [`skills/judgment-day/SKILL.md`](skills/judgment-day/SKILL.md) |
 | `skill-creator` | Al crear nuevas skills para el ecosistema | [`skills/skill-creator/SKILL.md`](skills/skill-creator/SKILL.md) |
 | `skill-registry` | Al actualizar el registro de skills | [`skills/skill-registry/SKILL.md`](skills/skill-registry/SKILL.md) |

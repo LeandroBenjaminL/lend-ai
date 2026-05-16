@@ -270,4 +270,5 @@ Write-Host "  PROXIMOS PASOS:" -ForegroundColor Yellow
 Write-Host "  1. Cerrar y reabrir PowerShell"
 Write-Host "  2. Ejecutar: engram version"
 Write-Host "  3. Abrir opencode y probar: /mem-search test"
+Write-Host "  4. Para actualizar: ./update.ps1"
 Write-Host ""

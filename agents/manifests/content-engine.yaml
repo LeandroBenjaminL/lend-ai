@@ -7,7 +7,6 @@ agent:
 instructions:
   persona: persona.md
   workflow: workflow.md
-  patterns: patterns.md
 
 skills:
   - content-engine

@@ -7,18 +7,24 @@ agent:
 instructions:
   persona: persona.md
   workflow: workflow.md
-  patterns: patterns.md
 
 skills:
+  - lend-ai-mentor
   - lend-ai-persona
   - senior-orchestrator
   - commits-real
+  - lend-ai-docs
+  - lend-ai-engram
+  - lend-ai-testing
+  - judgment-day
+  - growth-engine
+  - enhance-engine
+  - content-engine
 
 sub_agents:
   - data-analyst
   - frontend-senior
   - devops
-  - git-github
   - engram-keeper
   - growth-engine
   - enhance-engine
