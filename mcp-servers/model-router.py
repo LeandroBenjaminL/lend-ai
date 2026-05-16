@@ -262,12 +262,17 @@ mcp = FastMCP(
     "model-router",
     instructions="""MCP server que resuelve qué modelo LLM usar según skill, agente o tarea.
 
-Tiers disponibles:
-- T1-ultra-fast: Minimax Free (tareas mecánicas)
-- T2-fast: Minimax (tareas simples)
-- T3-balanced: DeepSeek Medium (default)
-- T4-reasoning: DeepSeek Pro (razonamiento estructurado)
-- T5-deep: DeepSeek Pro Max (máxima complejidad)
+Tiers disponibles (de más barato a más caro):
+- T1-lectura: Qwen3.6 Plus Free (lectura, exploración, profiling) — gratis
+- T2-cotidiano: Big Pickle (daily, commits, ETL simple) — gratis
+- T3-balanced: MiniMax Free (default balanceado) — gratis
+- T4-complejo: DeepSeek V4 Flash (tareas complejas, ML, análisis) — $0.14
+- T5-arquitectura: DeepSeek V4 Pro (arquitectura, diseño crítico) — $1.69
+
+FLUJO RECOMENDADO antes de delegar:
+1. resolve_skill("skill-name") → obtener tier y modelo
+2. Si el tier no es el adecuado, set_skill_tier("skill", "T4-complejo")
+3. Delegar con task()
 """,
 )
 

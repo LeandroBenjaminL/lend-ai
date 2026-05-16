@@ -4,275 +4,164 @@
   "active_profile": "balanced",
   "default_tier": "T3-balanced",
   "profiles": {
-    "free": {
-      "description": "Todo gratis - máximo ahorro",
-      "default_tier": "T3-balanced",
-      "overrides": {}
-    },
-    "balanced": {
-      "description": "Balanceado - mayormente gratis, premium cuando vale la pena",
+    "eco": {
+      "description": "Máximo ahorro - todo gratis, nada de pago",
       "default_tier": "T3-balanced",
       "overrides": {
-        "ml-modeling": "T5-deep",
-        "data-design": "T5-deep",
-        "data-verify": "T5-deep",
-        "judgment-day": "T5-deep"
+        "ml-modeling": "T3-balanced",
+        "data-design": "T3-balanced",
+        "data-verify": "T3-balanced",
+        "judgment-day": "T3-balanced",
+        "skill-creator": "T3-balanced",
+        "cloud-architect": "T3-balanced",
+        "devops": "T3-balanced",
+        "frontend-senior": "T3-balanced",
+        "data-modeler": "T3-balanced"
       }
     },
-    "fast": {
-      "description": "Rápido y barato - para tareas simples",
-      "default_tier": "T2-fast",
+    "balanced": {
+      "description": "Default recomendado - gratis en daily, paga solo cuando vale la pena",
+      "default_tier": "T3-balanced",
+      "overrides": {
+        "ml-modeling": "T5-arquitectura",
+        "data-design": "T5-arquitectura",
+        "data-verify": "T5-arquitectura",
+        "judgment-day": "T5-arquitectura",
+        "skill-creator": "T4-complejo",
+        "cloud-architect": "T5-arquitectura",
+        "devops": "T4-complejo",
+        "frontend-senior": "T4-complejo",
+        "data-modeler": "T4-complejo",
+        "lend-ai-engram": "T1-lectura",
+        "engram-keeper": "T1-lectura",
+        "data-profiling": "T1-lectura",
+        "data-explorer": "T1-lectura"
+      }
+    },
+    "rapido": {
+      "description": "Rápido y barato - para tareas simples del día a día",
+      "default_tier": "T2-cotidiano",
       "overrides": {}
     },
     "power": {
-      "description": "Máxima potencia - reasoning profundo",
-      "default_tier": "T5-deep",
+      "description": "Máxima potencia - razonamiento profundo en todo",
+      "default_tier": "T5-arquitectura",
       "overrides": {}
-    },
-    "reasoning": {
-      "description": "Para tareas que requieren reasoning",
-      "default_tier": "T4-reasoning",
-      "overrides": {
-        "ml-modeling": "T5-deep",
-        "data-design": "T5-deep",
-        "data-verify": "T5-deep",
-        "skill-creator": "T5-deep"
-      }
     }
   },
   "tiers": {
-    "free-big-pickle": {
+    "T1-lectura": {
+      "model": "qwen3.6-plus-free",
+      "provider": "opencode",
+      "description": "Qwen3.6 Plus Free - Gratis, 1M context, reasoning. Para LECTURA y exploración.",
+      "cost": "free",
+      "context": 1000000,
+      "reasoning": true
+    },
+    "T2-cotidiano": {
       "model": "big-pickle",
       "provider": "opencode",
-      "description": "Big Pickle - Gratis, 200K context, reasoning",
-      "cost": "free",
-      "context": 200000,
-      "reasoning": true
-    },
-    "free-minimax-free": {
-      "model": "minimax-m2.5-free",
-      "provider": "opencode",
-      "description": "MiniMax Free - Gratis, 200K context",
-      "cost": "free",
-      "context": 200000,
-      "reasoning": true
-    },
-    "free-hy3-preview": {
-      "model": "hy3-preview-free",
-      "provider": "opencode",
-      "description": "Hy3 Preview Free - Gratis, 256K context, reasoning",
-      "cost": "free",
-      "context": 256000,
-      "reasoning": true
-    },
-    "free-nemotron-super-free": {
-      "model": "nemotron-3-super-free",
-      "provider": "nvidia",
-      "description": "Nemotron 3 Super Free - Gratis, 262K context, reasoning",
-      "cost": "free",
-      "context": 262000,
-      "reasoning": true
-    },
-    "free-nemotron-nano-free": {
-      "model": "nemotron-3-nano-30b-a3b",
-      "provider": "nvidia",
-      "description": "Nemotron 3 Nano - $0.06/1M tokens, 262K context, reasoning",
-      "cost": "free",
-      "context": 262000,
-      "reasoning": true
-    },
-    "free-qwen-plus-free": {
-      "model": "qwen3.6-plus-free",
-      "provider": "qwen",
-      "description": "Qwen3.6 Plus Free - Gratis, 1M context, reasoning",
-      "cost": "free",
-      "context": 1000000,
-      "reasoning": true
-    },
-    "paid-deepseek-v4-flash": {
-      "model": "deepseek-v4-flash",
-      "provider": "opencode-go",
-      "description": "DeepSeek V4 Flash - $0.14/$0.28, 1M context, reasoning",
-      "cost": "low",
-      "context": 1048000,
-      "reasoning": true
-    },
-    "paid-deepseek-v4-pro": {
-      "model": "deepseek-v4-pro",
-      "provider": "opencode-go",
-      "description": "DeepSeek V4 Pro - $1.69/$3.38, 1M context, reasoning",
-      "cost": "high",
-      "context": 1048000,
-      "reasoning": true
-    },
-    "paid-qwen3-max": {
-      "model": "qwen3-max",
-      "provider": "qwen",
-      "description": "Qwen3 Max - $1.20/$6.00, 262K context, reasoning",
-      "cost": "high",
-      "context": 262000,
-      "reasoning": true
-    },
-    "paid-qwen3-plus": {
-      "model": "qwen3.6-plus",
-      "provider": "qwen",
-      "description": "Qwen3.6 Plus - $0.50/$3.00, 1M context, reasoning",
-      "cost": "medium",
-      "context": 1000000,
-      "reasoning": true
-    },
-    "paid-minimax-m2.5": {
-      "model": "minimax-m2.5",
-      "provider": "minimax",
-      "description": "MiniMax M2.5 - $0.30/$1.20, 204K context, reasoning",
-      "cost": "medium",
-      "context": 204000,
-      "reasoning": true
-    },
-    "paid-minimax-m2.7": {
-      "model": "minimax-m2.7",
-      "provider": "minimax",
-      "description": "MiniMax M2.7 - $0.30/$1.20, 204K context, reasoning",
-      "cost": "medium",
-      "context": 204000,
-      "reasoning": true
-    },
-    "paid-qwen3-flash": {
-      "model": "qwen3.6-flash",
-      "provider": "qwen",
-      "description": "Qwen3.6 Flash - $0.25/$1.50, 1M context, reasoning",
-      "cost": "low",
-      "context": 1000000,
-      "reasoning": true
-    },
-    "paid-nemotron-super": {
-      "model": "nemotron-3-super-120b",
-      "provider": "nvidia",
-      "description": "Nemotron 3 Super - $0.20/$0.80, 262K context, reasoning",
-      "cost": "medium",
-      "context": 262000,
-      "reasoning": true
-    },
-    "paid-deepseek-r1": {
-      "model": "deepseek-r1",
-      "provider": "deepseek-ai",
-      "description": "DeepSeek R1 - $0.55/$2.20, 131K context, reasoning",
-      "cost": "high",
-      "context": 131000,
-      "reasoning": true
-    },
-    "T1-ultra-fast": {
-      "model": "minimax-m2.5-free",
-      "provider": "opencode",
-      "description": "Minimax Free - Gratis, 200K context",
-      "cost": "free",
-      "context": 200000,
-      "reasoning": false
-    },
-    "T2-fast": {
-      "model": "minimax-m2.5-free",
-      "provider": "opencode",
-      "description": "Minimax - Simple, poco contexto",
+      "description": "Big Pickle - Gratis, 200K context, reasoning. Para tareas cotidianas chicas.",
       "cost": "free",
       "context": 200000,
       "reasoning": true
     },
     "T3-balanced": {
-      "model": "big-pickle",
+      "model": "minimax-m2.5-free",
       "provider": "opencode",
-      "description": "Big Pickle - Gratis, 200K context, reasoning",
+      "description": "MiniMax Free - Gratis, 200K context, reasoning. Default balanceado.",
       "cost": "free",
       "context": 200000,
       "reasoning": true
     },
-    "T4-reasoning": {
+    "T4-complejo": {
       "model": "deepseek-v4-flash",
       "provider": "opencode-go",
-      "description": "DeepSeek V4 Flash - $0.14/$0.28, 1M context",
+      "description": "DeepSeek V4 Flash - $0.14/$0.28, 1M context. Para tareas complejas.",
       "cost": "low",
       "context": 1048000,
       "reasoning": true
     },
-    "T5-deep": {
+    "T5-arquitectura": {
       "model": "deepseek-v4-pro",
       "provider": "opencode-go",
-      "description": "DeepSeek V4 Pro - $1.69/$3.38, 1M context",
+      "description": "DeepSeek V4 Pro - $1.69/$3.38, 1M context. Para arquitectura profunda y diseño crítico.",
       "cost": "high",
       "context": 1048000,
       "reasoning": true
     }
   },
   "skills": {
-    "commits-real": "T3-balanced",
-    "skill-registry": "T3-balanced",
-    "branch-pr": "T3-balanced",
-    "chained-pr": "T3-balanced",
-    "issue-creation": "T3-balanced",
-    "data-cleaning": "T2-fast",
+    "lend-ai-engram": "T1-lectura",
+    "engram-memory-system": "T1-lectura",
+    "data-profiling": "T1-lectura",
+    "notebook-integration": "T1-lectura",
+    "commits-real": "T2-cotidiano",
+    "skill-registry": "T2-cotidiano",
+    "branch-pr": "T2-cotidiano",
+    "chained-pr": "T2-cotidiano",
+    "issue-creation": "T2-cotidiano",
+    "data-cleaning": "T2-cotidiano",
+    "etl-pipelines": "T2-cotidiano",
+    "file-formats": "T2-cotidiano",
+    "python-environment": "T2-cotidiano",
+    "regex-data": "T2-cotidiano",
+    "database-connections": "T2-cotidiano",
+    "web-scraping": "T2-cotidiano",
+    "data-validation": "T2-cotidiano",
+    "go-testing": "T2-cotidiano",
+    "docker-engineer": "T2-cotidiano",
+    "ci-cd-pilot": "T2-cotidiano",
+    "gitops-engineer": "T2-cotidiano",
+    "backup-engineer": "T2-cotidiano",
+    "lend-ai-testing": "T3-balanced",
     "data-visualization": "T3-balanced",
     "sql-analysis": "T3-balanced",
     "statistical-testing": "T3-balanced",
-    "data-profiling": "T3-balanced",
     "data-archive": "T3-balanced",
-    "etl-pipelines": "T2-fast",
-    "file-formats": "T2-fast",
-    "python-environment": "T2-fast",
-    "regex-data": "T2-fast",
     "reporting": "T3-balanced",
-    "database-connections": "T2-fast",
-    "web-scraping": "T2-fast",
-    "notebook-integration": "T3-balanced",
     "data-analysis": "T3-balanced",
     "streamlit": "T3-balanced",
     "data-question": "T3-balanced",
-    "data-validation": "T2-fast",
-    "go-testing": "T2-fast",
-    "time-series-analysis": "T4-reasoning",
-    "ml-modeling": "T3-balanced",
-    "data-design": "T5-deep",
-    "data-verify": "T5-deep",
-    "judgment-day": "T5-deep",
-    "skill-creator": "T5-deep",
-    "docker-engineer": "T2-fast",
-    "ci-cd-pilot": "T2-fast",
-    "cloud-architect": "T4-reasoning",
     "db-admin": "T3-balanced",
     "infra-sre": "T3-balanced",
-    "security-auditor": "T4-reasoning",
     "network-engineer": "T3-balanced",
-    "gitops-engineer": "T2-fast",
-    "backup-engineer": "T2-fast",
-    "perf-engineer": "T3-balanced"
+    "perf-engineer": "T3-balanced",
+    "ml-modeling": "T4-complejo",
+    "time-series-analysis": "T4-complejo",
+    "security-auditor": "T4-complejo",
+    "cloud-architect": "T4-complejo",
+    "lend-ai-docs": "T4-complejo",
+    "data-design": "T5-arquitectura",
+    "data-verify": "T5-arquitectura",
+    "judgment-day": "T5-arquitectura",
+    "skill-creator": "T5-arquitectura"
   },
   "overrides": {
-    "skills": {
-      "ml-modeling": "T5-deep"
-    },
+    "skills": {},
     "agents": {
-      "content-engine": "T3-balanced",
-      "growth-engine": "T3-balanced",
-      "enhance-engine": "T3-balanced",
-      "lend-ai-docs": "T3-balanced",
-      "lend-ai-engram": "T2-fast",
+      "lend-ai-engram": "T1-lectura",
+      "engram-keeper": "T1-lectura",
+      "data-explorer": "T1-lectura",
+      "data-profiling": "T1-lectura",
+      "notebook-integration": "T1-lectura",
+      "content-engine": "T2-cotidiano",
+      "growth-engine": "T2-cotidiano",
       "lend-ai-testing": "T3-balanced",
-      "judgment-day": "T5-deep",
-      "devops": "T4-reasoning",
-      "frontend-senior": "T4-reasoning",
-      "engram-keeper": "T2-fast",
-      "data-explorer": "T3-balanced",
-      "data-modeler": "T4-reasoning",
       "data-analysis": "T3-balanced",
-      "data-profiling": "T2-fast",
-      "ml-modeling": "T4-reasoning",
-      "time-series-analysis": "T4-reasoning",
-      "statistical-testing": "T2-fast",
-      "notebook-integration": "T1-ultra-fast",
-      "docker-engineer": "T2-fast",
-      "ci-cd-pilot": "T2-fast",
-      "cloud-architect": "T4-reasoning",
-      "db-admin": "T3-balanced",
       "ui-crafter": "T3-balanced",
-      "framework-architect": "T4-reasoning"
+      "ml-modeling": "T4-complejo",
+      "time-series-analysis": "T4-complejo",
+      "data-modeler": "T4-complejo",
+      "devops": "T4-complejo",
+      "frontend-senior": "T4-complejo",
+      "framework-architect": "T4-complejo",
+      "enhance-engine": "T4-complejo",
+      "data-design": "T5-arquitectura",
+      "data-verify": "T5-arquitectura",
+      "judgment-day": "T5-arquitectura",
+      "skill-creator": "T5-arquitectura",
+      "cloud-architect": "T5-arquitectura"
     }
   }
 }

@@ -7,7 +7,7 @@ description: >
 license: MIT
 metadata:
   author: Leandro Benjamin L.
-  version: "3.0"
+  version: "4.0"
 ---
 
 # Skill: senior-orchestrator
@@ -22,16 +22,46 @@ Orquestación del ecosistema. Decidí qué agente, qué modelo, qué camino.
 - Planear estrategia de modelos (local vs cloud)
 - Configurar CI/CD, seguridad o infraestructura
 
+## Model Routing (SIEMPRE antes de delegar)
+
+Antes de spawnear cualquier sub-agente, consultá el model-router MCP
+para determinar el tier óptimo:
+
+```
+1. Identificar la skill o agente que va a ejecutar
+2. Llamar resolve_skill("nombre-skill") o resolve_agent("nombre-agente")
+   → Devuelve tier y modelo recomendado
+3. Si el tier es más caro de lo necesario para esta tarea puntual,
+   ajustar manualmente con set_skill_tier() o set_agent_tier()
+4. Spawnear el sub-agente con task()
+5. (Opcional) resetear al default después si fue un override temporal
+```
+
+### Mapa de complejidad → tier
+
+| Tipo de tarea | Tier | Modelo | Costo |
+|--------------|------|--------|-------|
+| Lectura, exploración, profiling | T1-lectura | Qwen3.6 Plus Free | gratis |
+| Cotidiano, commits, ETL simple | T2-cotidiano | Big Pickle | gratis |
+| Balanceado (default) | T3-balanced | MiniMax Free | gratis |
+| Complejo, ML, análisis pesado | T4-complejo | DeepSeek V4 Flash | $0.14 |
+| Arquitectura, diseño crítico, verify | T5-arquitectura | DeepSeek V4 Pro | $1.69 |
+
 ## Workflow LEND
 
 1. ANALIZAR
    ├── Tipo de tarea: data, frontend, devops, o transversal
-   ├── Complejidad: mecánica, estándar, compleja, crítica
+   ├── Complejidad: lectura, cotidiano, balanceado, complejo, arquitectura
    ├── Contexto: consultar Engram por decisiones previas
    ├── Consultar agent-router MCP: resolve_task() si hay duda
-   └── Presupuesto: ¿usar modelos gratis o pagos?
+   └── Consultar model-router MCP: resolve_skill() para saber el tier
 
-2. DELEGAR (no preguntes — ejecutá)
+2. ASIGNAR MODELO (SIEMPRE)
+   ├── llamar resolve_skill("skill") del model-router MCP → tier + modelo
+   ├── Si el tier default no alcanza → set_skill_tier("skill", "T4-complejo")
+   └── Si el tier default es caro al pedo → set_skill_tier("skill", "T2-cotidiano")
+
+3. DELEGAR (no preguntes — ejecutá)
    ├── Data/ML/ETL → task('data-analyst', instrucciones)
    ├── Frontend/React/CSS → task('frontend-senior', instrucciones)
    ├── Infra/CI/CD/Cloud → task('devops', instrucciones)
@@ -41,13 +71,13 @@ Orquestación del ecosistema. Decidí qué agente, qué modelo, qué camino.
    ├── Si hay ambigüedad → agent-router MCP resolve_task()
    └── Solo transversal: ejecutá vos mismo
 
-3. HACER (el sub-agente ejecuta)
+4. HACER (el sub-agente ejecuta)
    ├── Pasá instrucciones claras al task()
    ├── Esperá el resultado del sub-agente
    ├── Verificá que completó lo pedido
-   └── Registrá en Engram: qué se delegó, a quién, resultado
+   └── Registrá en Engram: qué se delegó, a quién, resultado, qué modelo se usó
 
-4. ITERAR si es necesario
+5. ITERAR si es necesario
    ├── ¿Resultado correcto? → seguí
    ├── ¿Necesita ajustes? → re-delegá con feedback
    └── ¿Error? → diagnosticá y re-delegá
