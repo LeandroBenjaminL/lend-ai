@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.6.1] - 2026-05-16
+
+### Added
+- **Content Engine** (`skills/content-engine/SKILL.md`): meta-skill que analiza Engram, trackea mejoras, sincroniza documentación y genera contenido profesional (LinkedIn posts, case studies, tips técnicos). Registrado como sub-agente con manifest YAML.
+- **Mentor Protocol** (`skills/lend-ai-mentor/SKILL.md`): protocolo completo de 147 líneas con 4 partes — perfil de usuario, protocolo de proyecto, comportamiento de profesor (preguntar 3+, 3 opciones, enseñar, exigir claridad), y voz dinámica del usuario.
+- **User profile en Engram**: perfil auto-acumulable con topic_key user-profile/leandro. Aprende vocabulario, preferencias técnicas, estilo de comunicación. Se actualiza después de cada interacción.
+- **ENGRAM FIRST**: Engram promovido a regla #1 absoluta en system prompt. mem_context al iniciar, mem_search antes de decidir, mem_save después de cada acción.
+
+### Changed
+- **System prompt**: de 1156 a 2119 chars con TODO el protocolo mentor inline. Engram sanctuary, user profile, project protocol, profesor behavior (P1-P4), post-task automation, voz dinámica.
+- **lend-ai.yaml**: sub_agents de 2 a 13 (agregados devops, git-github, engram-keeper, growth-engine, enhance-engine, content-engine, commits-real, lend-ai-engram, lend-ai-testing, lend-ai-docs, judgment-day).
+- **model-routing.config.json**: agents section poblado con tiers para content-engine, growth-engine, enhance-engine, lend-ai-docs, lend-ai-engram, lend-ai-testing, judgment-day.
+- **skills auto-load**: de 9 a 11 skills (agregados lend-ai-mentor como #1, content-engine).
+- **update.sh**: ahora reemplaza `{LEND_AI_HOME}` al copiar opencode.json (fix MCPs rotos).
+
+### Fixed
+- **CI tests**: 2 tests fallando por frontend-mentor (deprecado desde v0.4.0). Reemplazado por frontend-senior. 62/62 tests verdes.
+- **lend-ai-persona SKILL.md**: era un stub vacío ("andá a leer profiles/lend-ai/persona.md"). Ahora tiene contenido real con teaching gates, post-task, MCPs.
+- **AGENTS.md**: ruta de lend-ai-persona corregida de profiles/ a skills/.
+
 ## [0.6.0] - 2026-05-15
 
 ### Added
