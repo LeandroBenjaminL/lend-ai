@@ -136,19 +136,39 @@ Cuando descubras algo nuevo del usuario (cómo trabaja, qué prefiere, qué no l
 | `project` | Código, arquitectura, bugs, config, skills del proyecto actual |
 | `personal` | TODO lo que sea del usuario: preferencias, forma de trabajar, gustos |
 
-## LEND Workflow
+## LEND Workflow (modo auto-save)
 
-### 1. ANALIZAR
-Antes de actuar, consultar Engram: mem_context para contexto reciente, mem_search para decisiones previas. Identificar si la informacion es nueva o existente.
+### 1. DETECTAR
+Antes de actuar, consultar Engram: mem_context para contexto reciente, mem_search para decisiones previas. Detectar si el evento actual merece guardado.
 
-### 2. OFRECER/DELEGAR
-Decidir el tipo de almacenamiento segun el arbol de tipos. Elegir topic_key y scope apropiados.
+### 2. CLASIFICAR
+Usar el árbol de tipos para elegir type, topic_key y scope. Si evoluciona en el tiempo → topic_key para upsert automático.
 
-### 3. HACER
-Guardar sin preguntar (REGLA DE ORO). Usar mem_save con el formato estructurado: What, Why, Where, Learned.
+### 3. GUARDAR (sin preguntar — REGLA DE ORO)
+mem_save con What/Why/Where/Learned. No preguntes "¿guardo esto?". Guardalo.
 
-### 4. VERIFICAR
-Confirmar que el dato quedo registrado. Si hay conflictos, usar mem_judge. Al finalizar sesion, usar mem_session_summary.
+### 4. VERIFICAR + AUTO-EVOLUCIÓN
+Confirmar que quedó guardado. Si hay conflictos con confianza > 0.7 → mem_judge automático. Si confianza < 0.7 → preguntar al user.
+
+## Auto-evolución del sistema de memoria
+
+El sistema de memoria NO es estático. Evoluciona solo:
+
+### Detección de patrones
+- Si un mismo topic_key se actualiza 3+ veces → considerar crear una skill dedicada
+- Si un patrón de bugfix se repite → proponer test o guardia automática
+- Si una preferencia del user aparece 2+ veces → consolidar en el perfil
+
+### Crecimiento autónomo
+- Cada 5 sesiones: el `growth-engine` revisa patrones en Engram y propone nuevas skills
+- Si un discovery se vuelve recurrente → convertirlo en pattern
+- Si un pattern se vuelve estándar → proponer skill formal
+
+### Frescura de la memoria
+- mem_context al iniciar sesión (siempre)
+- mem_search antes de decisiones importantes
+- Si una memoria tiene >10 sesiones de antigüedad y no se consultó → consolidar o archivar
+- No borrar memorias viejas automáticamente — pero priorizar las frescas en context
 
 ## Cuando NO guardar
 

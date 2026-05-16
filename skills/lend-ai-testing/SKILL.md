@@ -1,49 +1,55 @@
 ---
 name: lend-ai-testing
 description: >
-  Testing y calidad de código — tests unitarios, CI, cobertura, y
-  estándares de calidad del ecosistema.
-  Trigger: Al escribir tests, configurar CI, o revisar calidad de código.
+  GATE OBLIGATORIO pre-commit/pre-PR — tests unitarios, CI, cobertura.
+  NADA se sube sin tests en verde. Trigger: Siempre antes de cada commit
+  o PR, o al escribir tests/configurar CI/revisar calidad.
 license: MIT
 metadata:
   author: Leandro Benjamin L.
-  version: "2.0"
+  version: "3.0"
 ---
 
 # Skill: lend-ai-testing
 
-Calidad de código. Tests que duelen cuando fallan, no cuando los escribís.
+GATE OBLIGATORIO. No se comitea nada sin tests en verde.
 
-## Trigger
+## Trigger (ejecutar SIEMPRE antes de commit/PR)
 
-- Terminaste de escribir código y necesitás testearlo
+- **Terminaste código → corré tests antes de commit**
 - Vas a configurar o modificar el CI
 - Querés medir cobertura o mejorarla
-- Un test existente falla y hay que debuggearlo
+- Un test existente falla
 
-## Workflow LEND
+## Regla de ORO
 
-1. ANALIZAR
-   ├── Stack: pytest, vitest, go test?
-   ├── Tipo: unitario, integración, E2E?
-   ├── Cobertura actual: ¿está configurada? ¿mínimo aceptable?
-   └── CI: ¿ya hay pipeline? ¿corre en cada PR?
+**Nunca hagas commit sin testear antes.** Es GATE obligatorio.
+Si el orquestador te llama para commit, lo primero es verificar tests.
 
-2. OFRECER (Menú del Senior)
-   ├── A) Tests unitarios — pytest + coverage para funciones críticas
-   ├── B) Integración — tests que cruzan módulos, API real o mockeada
-   └── C) Suite completa — unit + integración + CI pipeline en GitHub Actions
+## Workflow LEND (obligatorio, no opcional)
 
-3. ELEGIR → confirmación
+1. DETECTAR
+   ├── Stack del proyecto: ¿pytest, vitest, go test, nose?
+   ├── ¿Ya existe suite de tests? → correrla completa
+   └── ¿No hay tests? → avisar al orquestador: "no hay tests, hay que crearlos"
 
-4. HACER
-   ├── pytest: test_*.py, assert, fixtures, parametrize
-   ├── Cobertura: pytest --cov, mínimo 80% en líneas críticas
-   ├── CI: workflow que corre tests + lint + coverage report
-   ├── Tests aislados: cada test independiente, sin estado compartido
-   └── Nombres descriptivos: test_cuando_condicion_entonces_resultado
+2. EJECUTAR (automático, sin menú)
+   ├── Correr suite existente completa
+   ├── pytest → `python -m pytest` / vitest → `npx vitest run`
+   └── Revisar que TODO pase en verde
 
-5. VERIFICAR
-   ├── pytest pasa sin errores
-   ├── Cobertura cumple el mínimo
-   └── CI corre automáticamente en cada PR
+3. SI FALLA
+   ├── Diagnosticar causa raíz
+   ├── Fixear o avisar al orquestador
+   └── NO seguir hasta que esté en verde
+
+4. SI NO HAY TESTS
+   ├── Crear tests mínimos para el cambio actual
+   ├── Unit tests para funciones nuevas
+   ├── Integration tests si cruza módulos
+   └── Verificar que pasan
+
+5. VERIFICAR (antes de devolver control)
+   ├── ✅ Suite completa en verde
+   ├── ✅ Cobertura aceptable (mínimo 80% en líneas nuevas)
+   └── ✅ Resultado: "Tests OK, podés comitear"

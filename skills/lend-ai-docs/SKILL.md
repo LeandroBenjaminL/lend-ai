@@ -1,25 +1,48 @@
 ---
 name: lend-ai-docs
 description: >
-  Documentación senior — multi-archivo, Google-style docstrings, ADR,
-  y documentación técnica en inglés.
-  Trigger: Al escribir documentación, generar docstrings, o estructurar la documentación de un proyecto.
+  Documentación senior — multi-archivo, Google-style docstrings, ADR.
+  GATE OBLIGATORIO post-task: revisar si hay que actualizar docs del proyecto.
+  Trigger: Siempre después de cada task (revisar si docs cambiaron),
+  o al escribir documentación/generar docstrings/estructurar docs.
 license: MIT
 metadata:
   author: Leandro Benjamin L.
-  version: "2.0"
+  version: "3.0"
 ---
 
 # Skill: lend-ai-docs
 
 Documentación senior. Código sin docs es deuda técnica.
 
-## Trigger
+## Trigger (SIEMPRE post-task)
 
-- Terminaste una función y necesitás su docstring
-- Vas a crear o actualizar un README, ARCHITECTURE, o CHANGELOG
-- Necesitás documentar una decisión de arquitectura (ADR)
-- El proyecto no tiene documentación y hay que arrancarla
+- **Terminaste de trabajar → revisá si hay docs que actualizar**
+- Creaste o modificaste una función pública → docstring
+- Cambiaste estructura, agregaste features, modificaste AGENTS.md
+- Tomaste una decisión de arquitectura → ADR
+- El proyecto no tiene documentación → arrancala
+
+## Post-Task Docs Review (GATE OBLIGATORIO)
+
+Después de CADA task, antes de commit, revisá:
+
+```
+1. ¿Cambió la estructura del proyecto?
+   ├── Nuevo agente/skill → AGENTS.md
+   ├── Nueva feature pública → README
+   └── Cambio arquitectónico → ARCHITECTURE.md
+
+2. ¿Cambió la funcionalidad?
+   ├── Nueva API/ruta → README o docs de la API
+   ├── Nueva funcionalidad visible → CHANGELOG
+   └── Nuevo flag de configuración → README
+
+3. ¿Decisión técnica con tradeoffs?
+   └── ADR en docs/adr/ (fecha, contexto, opciones, decisión)
+
+4. Si no hay nada que actualizar → seguí tranqui
+```
 
 ## Workflow LEND
 
@@ -29,24 +52,22 @@ Documentación senior. Código sin docs es deuda técnica.
    ├── Estado: ¿docs desde cero o actualizar existentes?
    └── Lenguaje: inglés técnico US para código y commits
 
-2. OFRECER (Menú del Senior)
-   ├── A) Docstrings — Google-style para funciones y clases públicas
-   ├── B) README + ARCHITECTURE — visión general del proyecto + estructura
-   └── C) ADR — documentar decisión con contexto, opciones y resultado
+2. REVISAR (post-task automático, sin menú)
+   ├── ¿Hay cambios que afectan docs? (ver checklist arriba)
+   ├── Si NO → seguí
+   └── Si SÍ → determinar qué docs tocar
 
-3. ELEGIR → confirmación
-
-4. HACER
+3. HACER
    ├── Google-style: Args, Returns, Raises, Examples (cuando aplica)
    ├── README: qué hace, cómo instalar, cómo usar, configuración
    ├── ARCHITECTURE: estructura, agentes, skills, decisiones técnicas
    ├── ADR: título, contexto, opciones, decisión, consecuencias
    └── Inglés técnico US, claro y directo
 
-5. VERIFICAR
-    ├── La documentación es útil sin leer el código
-    ├── Los ejemplos funcionan (ejecutables)
-    └── No hay información desactualizada
+4. VERIFICAR
+   ├── La documentación es útil sin leer el código
+   ├── Los ejemplos funcionan (ejecutables)
+   └── No hay información desactualizada
 
 ## Cognitive Load Patterns (diseñar docs que reduzcan carga mental)
 

@@ -3,48 +3,54 @@ name: lend-ai-engram
 description: >
   Gestión de memoria del ecosistema — guarda, consulta y organiza
   información en Engram para mantener contexto permanente entre sesiones.
-  Trigger: Al guardar o consultar memoria en Engram.
+  Trigger: Al guardar o consultar memoria en Engram. AUTO-SAVE sin preguntar.
 license: MIT
 metadata:
   author: Leandro Benjamin L.
-  version: "2.0"
+  version: "3.0"
 ---
 
 # Skill: lend-ai-engram
 
 Memoria del ecosistema. Si no está en engram, no pasó.
 
-## Trigger
+## Regla de ORO
 
-- Terminaste una decisión importante
-- Encontraste y corregiste un bug
-- El usuario expresó una preferencia
-- Vas a empezar una tarea y necesitás contexto previo
-- Finalizás una sesión
+**Guardá SIN PREGUNTAR.** No preguntes "¿guardo esto?". Guardalo. Siempre.
+Usá topic_key para que se actualice solo si ya existe.
 
-## Workflow LEND
+## Triggers de auto-save (sin preguntar)
 
-1. ANALIZAR
-   ├── ¿Qué pasó? decisión, bug, descubrimiento, preferencia, o fin de sesión
-   ├── ¿Es project-scope o personal-scope? (preferencias del usuario → personal)
-   ├── ¿Evoluciona en el tiempo? (topic_key sí) o es puntual (topic_key no)
-   └── ¿Ya hay info similar en engram? consultar antes de guardar
+| Cuándo | type | topic_key | scope |
+|--------|------|-----------|-------|
+| Cambiaste configuración | `config` | `config/<area>` | project |
+| Encontraste y fixeaste un bug | `bugfix` | `bugfix/<area>` | project |
+| Tomaste una decisión con tradeoffs | `decision` | `decision/<area>` | project |
+| Descubriste algo no obvio | `discovery` | `discovery/<area>` | project |
+| Identificaste un patrón reusable | `pattern` | `pattern/<area>` | project |
+| El user dijo algo sobre cómo trabaja | `user_preference` | `preference/<area>` | personal |
+| Definiste arquitectura | `architecture` | `architecture/<area>` | project |
+| Terminaste una sesión | `session_summary` | — | project |
+| Aprendizaje general | `learning` | `learning/<area>` | project |
+| El user expresó una preferencia/estilo | `user_preference` | `preference/<area>` | personal |
 
-2. OFRECER (Menú del Senior)
-   ├── A) Guardar — mem_save con What/Why/Where/Learned
-   ├── B) Consultar — mem_search por proyecto o tipo
-   └── C) Resumen de sesión — mem_session_summary al finalizar
+## Workflow LEND (modo auto-save, sin menú)
 
-3. ELEGIR → confirmación
+1. DETECTAR
+   ├── ¿Pasó algo relevante? (ver triggers arriba)
+   ├── ¿Es project o personal?
+   └── ¿Tiene topic_key para upsert?
 
-4. HACER
+2. GUARDAR (sin preguntar — directo)
    ├── Formato: **What**, **Why**, **Where**, **Learned**
-   ├── Tipo: decision, bugfix, pattern, architecture, config, discovery, learning
-   ├── topic_key: solo si evoluciona (architecture/x, bugfix/x, pattern/x)
-   ├── scope: project para código/arquitectura, personal para preferencias
-   └── Al final de sesión: mem_session_summary con Goal/Accomplished/Next Steps
+   ├── Tipo: decision, bugfix, pattern, architecture, config, discovery, learning, user_preference
+   ├── topic_key: siempre que evolucione en el tiempo
+   └── scope: project para código/arquitectura, personal para preferencias del user
 
-5. VERIFICAR
-   ├── La entrada es clara y útil para el futuro
-   ├── No duplica información existente
-   └── El tipo y scope son correctos
+3. AL FINAL DE SESIÓN (no preguntar)
+   ├── mem_session_summary con Goal/Accomplished/Next Steps/Relevant Files
+   └── Guardar preferencias aprendidas durante la sesión
+
+4. VERIFICACIÓN RÁPIDA
+   ├── ¿Quedó guardado? sí → seguí
+   └── ¿Hay conflicto? → mem_judge automático si confianza > 0.7, si no → preguntar

@@ -1,109 +1,161 @@
 ---
 name: commits-real
 description: >
-  Professional commits with Conventional Commits in English US.
-  Semantic versioning, changelog generation, and commit hygiene.
+  Commits, PRs e issues con voz humana — español rioplatense cálido.
+  Límite 300 líneas. Modo técnico (inglés) también disponible.
   Trigger: When writing commits, creating PRs, filing issues, or writing documentation.
 license: MIT
 metadata:
   author: Leandro Benjamin L.
-  version: "3.0"
+  version: "4.0"
   model_tier: T3-balanced
 ---
 
 # Skill: commits-real
 
-Professional commits. Every message tells a story.
+Commits que cuentan una historia, no que parecen generados por una máquina.
 
 ## Trigger
 
-- You finished a change and need to commit
-- You're creating a PR or issue
-- You need to update a CHANGELOG
-- Setting up semantic versioning for a project
+- Terminaste un cambio y hay que comitear
+- Estás creando un PR o issue
+- Necesitás actualizar un CHANGELOG
+- Vas a versionar semver
+
+## Modos de commit
+
+### Modo Humano (default — español rioplatense)
+Cálido, claro, directo. Como si se lo explicaras a un colega.
+
+```
+feat(api): agrego endpoint de login pa que los users entren tranqui
+
+Ahora se puede autenticar con email + password. Devuelve un JWT
+con expiración de 24hs. Implementé middleware de verificación
+también, así que ya estamos cubiertos del lado del server.
+
+Closes #42
+```
+
+```
+fix(data): corrijo el cálculo de interés compuesto
+
+El error estaba en la línea 47 — estaba usando la tasa nominal
+cuando tenía que ser la tasa efectiva mensual. Afectaba todos
+los préstamos con periodo > 30 días.
+```
+
+```
+feat(ui): agrego dark mode que tanto venías pidiendo
+
+Toggle en el header, usa CSS variables, persiste en localStorage.
+Anda en todos los browsers que importan.
+```
+
+### Modo Técnico (inglés — para proyectos open source / internacional)
+Conventional Commits clásico en inglés US.
+
+```
+feat(api): add JWT authentication endpoint
+
+Implements email+password login returning a signed JWT.
+Token expires in 24h. Includes middleware for route protection.
+
+Closes #42
+```
+
+## Reglas de oro
+
+1. **Máximo 300 líneas por commit/PR/issue** — si supera, usá `chained-pr`
+2. **Atomic commits** — un cambio lógico por commit
+3. **Contá una historia** — el título dice QUÉ, el body dice POR QUÉ y el PATRÓN
+4. **Nunca hagas commit sin testear antes** — primero delegá a `lend-ai-testing`
+5. **Engram siempre** — guardá lo que se hizo con mem_save
 
 ## Workflow LEND
 
-1. ANALYZE
-   ├── What changed? files, functionality, bug fix, refactor?
-   ├── Scope: which module? (api, ui, data, infra, docs)
-   ├── Breaking: does it break backward compatibility?
-   └── Issues: are there related issues or PRs?
+1. ANALIZAR
+   ├── ¿Qué cambió? archivos, funcionalidad, bug, refactor?
+   ├── Scope: ¿qué módulo? (api, ui, data, infra, docs)
+   ├── Breaking: ¿rompe compatibilidad hacia atrás?
+   └── Issues: ¿hay issues o PRs relacionados?
 
-2. OFFER (Senior Menu)
-   ├── A) Simple conventional commit — feat/fix/chore + short message in English
-   ├── B) Commit with body — conventional commit + description + issue reference
-   └── C) Full structure — conventional commit + breaking change + changelog update
+2. OFRECER (Menú del Senior)
+   ├── A) Modo humano — español rioplatense, título + breve descripción
+   ├── B) Modo técnico — conventional commit en inglés
+   ├── C) Full — commit + PR + changelog update
+   └── D) Chained PR — si supera 300 líneas, partilo en PRs encadenados
 
-3. CHOOSE → user confirms
+3. ELEGIR → user confirma
 
-4. EXECUTE
-   ├── Format: `type(scope): message` (feat, fix, chore, docs, refactor, test, style)
-   ├── Message: imperative, present tense, < 50 chars title, < 72 chars body
-   ├── Breaking: `feat(api): remove deprecated endpoint\n\nBREAKING CHANGE: ...`
-   ├── Atomic commits: one change per commit, not "multiple fixes"
-   ├── Issues: `Closes #123` or `Refs #456` in the body
-   ├── Language: English US, technical, clear
-   └── Versioning: semver (major.minor.patch) based on conventional commits
+4. HACER (PRE-COMMIT GATES primero!)
+   ├── ¿Ya corriste tests? Si no → `task('lend-ai-testing', 'verificar que todo anda')`
+   ├── ¿Está todo en verde? Ok seguí
+   ├── ¿Supera 300 líneas? → `task('chained-pr', ...)`, no commits gigantes
+   ├── Formato humano: `tipo(scope): título en español cálido`
+   ├── Tipos: feat, fix, chore, docs, refactor, test, style, perf, ci
+   ├── Mensaje: imperativo, presente, < 60 chars título, < 80 chars body
+   ├── Atomic: un cambio por commit
+   └── Issues: `Closes #123` en el body
 
-5. VERIFY
-   ├── The message follows conventional commit format
-   ├── No unrelated files in the commit
-   └── Breaking changes are documented
+5. VERIFICAR
+   ├── El mensaje es claro y útil para el futuro
+   ├── No hay archivos no relacionados
+   ├── Breaking changes están documentados
+   └── Tests pasan (siempre)
 
-### Post-task (always)
-1. Save this task to Engram with mem_save
-2. Review if documentation needs updating (README, AGENTS.md, ARCHITECTURE.md)
-3. If docs changed → include in the same PR/commit
+### Post-task (siempre)
+1. mem_save a Engram con lo que se hizo
+2. Revisar si hay que actualizar docs (README, AGENTS.md, ARCHITECTURE.md)
 
-## Patterns
+## Regla del título (modo humano)
 
-- **Imperative mood**: "Add login endpoint" not "Added login endpoint" or "Adding login endpoint"
-- **Atomic commits**: one logical change per commit, commit by work unit (not file type)
-- **Issue linking**: `Closes #123` in the body, not the title
-- **Scope**: lowercase, single word: (api), (ui), (data), (deps)
-- **Types**: feat, fix, chore, docs, refactor, test, style, perf, ci
-- **400-line PR budget**: default review budget is 400 changed lines. Split PRs that exceed this.
+```
+tipo(scope): qué hace, en menos de 60 caracteres, en español
 
-## Work-unit split examples
+Tipos: feat (nueva funcionalidad), fix (bug fix), refactor, test,
+       docs, style, chore, perf, ci
+Scope: api, ui, data, infra, docs, deps, config
 
-| Weak split | Better work-unit split |
-|-----------|----------------------|
-| Commit 1: "Add model" / Commit 2: "Add migration" | Commit 1: "Add User model + migration + test" |
-| Commit 1: "Update styles" / Commit 2: "Fix styles" | Commit 1: "Update sign-in page styles" |
-| Commit 1: "Refactor" / Commit 2: "More refactor" | Commit 1: "Extract AuthService from UserController" |
+Ejemplos:
+  feat(api): agrego ruta de login con JWT
+  fix(data): corrijo cálculo de interés compuesto
+  refactor(ui): extraigo Navbar a componente separado
+  test(api): agrego tests para auth middleware
+  docs(readme): actualizo ejemplos de uso
+  chore(deps): actualizo pandas a 2.0
+```
 
-## Comment/Voice rules (for PRs, issues, reviews)
+## Comment/Voice rules (PRs, issues, reviews)
 
-- **Be useful fast**: lead with what matters — the decision, the bug, the question
-- **Warm and direct**: friendly but no fluff. "This is wrong because X" not "I think maybe we could consider..."
-- **Short**: default to 1-2 sentences. Expand only when needed.
-- **Explain why**: every request or observation includes the reasoning
-- **Avoid pile-ons**: if someone already pointed it out, 👍 and move on
-- **Match thread language**: reply in the same language as the thread
-- **Rioplatense Spanish**: warm, voseo, direct. "Che, esto está mal porque..." not "Se sugiere considerar..."
+- **Cálido y directo**: "Che, esto está mal porque..." no "Se sugiere reconsiderar..."
+- **Corto**: 1-2 oraciones. Expandí solo si hace falta.
+- **Explicá el por qué**: cada observación incluye la razón
+- **Idioma**: español rioplatense con voseo
+- **Sé útil rápido**: arrancá con lo que importa
 
 ## Comment formula
 
 ```
-Direct observation/request → Why it matters → Concrete next action
+Observación directa → Por qué importa → Acción concreta
 
-"Este hook debería usar useCallback. Sin memoization se recrea
-en cada render y rompe la comparación de dependencias del useEffect
-de abajo. Metele useCallback con [] y validamos."
+"Este hook necesita useCallback. Sin memoization se recrea en cada
+render y rompe las dependencias del useEffect de abajo.
+Metele useCallback con [] y tiramos."
 ```
 
-## PR/review doc guidelines
+## PR guidelines
 
-- State what to review FIRST (high-impact files)
-- State what's OUT OF SCOPE (don't make reviewers guess)
-- Link chain context if this is part of a PR chain
-- Include test plan: what was tested manually and automatically
+- Qué revisar PRIMERO (archivos de alto impacto)
+- Qué está FUERA DE SCOPE (no hagas adivinar al reviewer)
+- Link de contexto si es parte de una cadena de PRs
+- Test plan: qué se testeó manual y automáticamente
 
 ## Anti-patterns
 
-- ❌ Vague messages: "update", "fix", "changes"
-- ❌ Commits in Spanish — English US only
-- ❌ Multiple features in one commit
-- ❌ Breaking changes without BREAKING CHANGE note
-- ❌ Unrelated files in the same commit
+- ❌ Mensajes vagos: "update", "fix", "cambios"
+- ❌ Múltiples features en un solo commit
+- ❌ Breaking changes sin nota
+- ❌ Archivos no relacionados en el mismo commit
+- ❌ Commits sin test previo
+- ❌ Superar 300 líneas sin partir en chained-pr
