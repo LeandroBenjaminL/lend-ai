@@ -17,7 +17,7 @@
       },
       "permission": {
         "task": {
-          "*": "deny",
+          "*": "allow",
           "data-analyst": "allow",
           "frontend-senior": "allow",
           "devops": "allow",
@@ -98,7 +98,7 @@
       ],
       "permission": {
         "task": {
-          "*": "deny",
+          "*": "allow",
           "commits-real": "allow",
           "lend-ai-engram": "allow",
           "lend-ai-testing": "allow",
@@ -163,7 +163,7 @@
       ],
       "permission": {
         "task": {
-          "*": "deny",
+          "*": "allow",
           "commits-real": "allow",
           "lend-ai-engram": "allow",
           "lend-ai-testing": "allow",
@@ -220,7 +220,7 @@
       ],
       "permission": {
         "task": {
-          "*": "deny",
+          "*": "allow",
           "commits-real": "allow",
           "lend-ai-engram": "allow",
           "lend-ai-testing": "allow",
@@ -878,7 +878,7 @@
       },
       "permission": {
         "task": {
-          "*": "deny"
+          "*": "allow"
         }
       }
     },
@@ -1318,22 +1318,9 @@
     "notion": {
       "type": "local",
       "command": [
-        "bash",
-        "{LEND_AI_HOME}/mcp-servers/notion-wrapper.sh"
-      ]
-    },
-    "smtp-email": {
-      "type": "local",
-      "command": [
-        "bash",
-        "{LEND_AI_HOME}/mcp-servers/smtp-wrapper.sh"
-      ]
-    },
-    "postgres": {
-      "type": "local",
-      "command": [
-        "python3",
-        "{LEND_AI_HOME}/mcp-servers/postgres-server.py"
+        "npx",
+        "-y",
+        "easy-notion-mcp"
       ]
     },
     "ocr": {
@@ -1356,24 +1343,6 @@
         "python3",
         "{LEND_AI_HOME}/mcp-servers/model-router.py"
       ]
-    },
-    "sqlite": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "mcp-sqlite-server",
-        "{LEND_AI_HOME}/data/analisis.db"
-      ]
-    },
-    "mysql": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "@berthojoris/mcp-mysql-server"
-      ],
-      "enabled": false
     }
   },
   "plugin": [

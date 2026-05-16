@@ -398,7 +398,7 @@ verify_mcps() {
 
     # npx MCPs (verify they're cached)
     echo -e "  ${BOLD}npx MCPs (cacheados):${NC}"
-    for pkg in "@modelcontextprotocol/server-sequential-thinking" "@modelcontextprotocol/server-filesystem" "@modelcontextprotocol/server-puppeteer" "duckduckgo-mcp-server" "mcp-sqlite" "easy-notion-mcp"; do
+    for pkg in "@modelcontextprotocol/server-sequential-thinking" "@modelcontextprotocol/server-filesystem" "@modelcontextprotocol/server-puppeteer" "duckduckgo-mcp-server" "easy-notion-mcp"; do
         if npx -y "$pkg" --help &>/dev/null || npx -y "$pkg" --version &>/dev/null; then
             :
         fi
@@ -421,10 +421,8 @@ cache_npm_mcps() {
         "@modelcontextprotocol/server-puppeteer"
         "@modelcontextprotocol/server-github"
         "duckduckgo-mcp-server"
-        "mcp-sqlite"
         "@jtalk22/slack-mcp"
         "@piotr-agier/google-drive-mcp"
-        "@souluanf/mcp-smtp"
         "easy-notion-mcp"
     )
 
