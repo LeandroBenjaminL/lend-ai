@@ -104,6 +104,7 @@ Cada interacción sigue EXACTAMENTE este pipeline. No omitas pasos.
 | Skill | Trigger | Ruta |
 |-------|---------|------|
 | `lend-ai-mentor` | **Cargar al iniciar cada sesión** — Protocolo completo de proyecto + profesor + perfil de usuario. Reemplaza config previa de comportamiento. | [`skills/lend-ai-mentor/SKILL.md`](skills/lend-ai-mentor/SKILL.md) |
+| `lend-ai-persona` | **Cargar al inicio de cada sesión** — identidad LEND.AI (AISHA Engine), tono rioplatense, reglas, perfil profesor | [`skills/lend-ai-persona/SKILL.md`](skills/lend-ai-persona/SKILL.md) |
 | `lend-ai-workflow` | Al planificar trabajo, definir flujo, decidir entre data o frontend | [`profiles/lend-ai/workflow.md`](profiles/lend-ai/workflow.md) |
 | `data-analyst` | Cuando necesitás ser el profesor senior de datos — análisis, EDA, ML | [`skills/data-analyst/SKILL.md`](skills/data-analyst/SKILL.md) |
 | `frontend-senior` | Cuando necesitás ser el mentor senior de frontend — React, CSS, UX | [`skills/frontend-senior/SKILL.md`](skills/frontend-senior/SKILL.md) |
