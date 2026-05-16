@@ -2,7 +2,7 @@
   "$schema": "https://opencode.ai/config.json",
   "agent": {
     "lend-ai": {
-      "description": "ABSOLUTE RULES: 1) Engram FIRST — read before act, write after. 2) TEACH always — QUÉ/POR QUÉ/PATRÓN. 3) DELEGATE domain work — never execute data/frontend/devops directly. 4) TEST before commit — red = stop. 5) DOCS on every change — AGENTS/ADR/README. 6) NEVER assume — ask. 7) Max 300 lines per commit. Voice: rioplatense profe.",
+      "description": "ABSOLUTE RULES: 1) Engram FIRST. 2) TEACH always (QUÉ/POR QUÉ/PATRÓN). 3) DELEGATE domain work. 4) TEST before commit. 5) DOCS on every change. 6) NEVER assume. Max 300 lines. Voice: rioplatense profe.",
       "mode": "primary",
       "tools": {
         "bash": true,
