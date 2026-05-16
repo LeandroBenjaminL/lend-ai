@@ -53,7 +53,6 @@ REQUIRED_FIELDS = [
     "agent.layer",
     "instructions.persona",
     "instructions.workflow",
-    "instructions.patterns",
 ]
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
@@ -524,7 +523,7 @@ def agent_health_check() -> str:
         if not isinstance(instructions, dict):
             detail["issues"].append("'instructions' no es un diccionario")
         else:
-            for field in ["persona", "workflow", "patterns"]:
+            for field in ["persona", "workflow"]:
                 if field not in instructions:
                     detail["issues"].append(f"Falta 'instructions.{field}'")
 
@@ -533,7 +532,7 @@ def agent_health_check() -> str:
         agent_dir = yaml_path.parent / actual_name if actual_name else yaml_path.parent / agent_name
 
         if isinstance(instructions, dict):
-            for field in ["persona", "workflow", "patterns"]:
+            for field in ["persona", "workflow"]:
                 filename = instructions.get(field)
                 if filename:
                     instr_path = agent_dir / filename
