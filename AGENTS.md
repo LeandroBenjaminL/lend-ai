@@ -2,9 +2,82 @@
 
 Ecosistema unificado de agentes AI para Data Analysis y Frontend Development.
 
-Cuando trabajes en este proyecto, cargá la skill relevante ANTES de escribir código.
+## Arquitectura de 3 Niveles
 
-Convención de naming:
+### N1 — Skills de Sistema (SIEMPRE ACTIVAS en el chat principal)
+Se cargan automáticamente al iniciar sesión. Definen personalidad, memoria, flujo y calidad.
+
+| Skill | Propósito |
+|-------|-----------|
+| `lend-ai-persona` | Identidad AISHA, tono rioplatense, reglas, perfil profesor |
+| `lend-ai-mentor` | Protocolo de proyecto + enseñanza + perfil de usuario |
+| `lend-ai-workflow` | Flujo de trabajo, GATES obligatorios, delegación |
+| `lend-ai-engram` | Memoria del ecosistema — guardar y consultar |
+| `engram-memory-system` | Sistema de memoria profunda — topic_keys, frescura, auto-evolución |
+| `commits-real` | Commits y PRs — modo humano + límite 300 líneas |
+| `lend-ai-testing` | Gate obligatorio pre-commit — tests en verde |
+| `lend-ai-docs` | Documentación técnica |
+| `senior-orchestrator` | Orquestación, delegación, routing de modelos |
+| `lend-ai-delegation` | Protocolo de delegación y sub-agentes |
+
+### N2 — Agentes de Dominio (Supervisores)
+Spawnean sub-agentes especializados. Siempre reciben tarea delegada del orquestador.
+
+| Agente | Sub-agentes |
+|--------|-------------|
+| `data-analyst` | data-question, data-design, data-explorer, data-analysis, data-cleaning, data-modeler, data-reporter, data-verify, data-archive |
+| `frontend-senior` | framework-architect, ui-crafter, styling-engineer, data-flow, api-consumer, realtime-engineer, quality-guardian, perf-a11y, build-master, content-docs |
+| `devops` | docker-engineer, ci-cd-pilot, cloud-architect, db-admin, infra-sre, security-auditor, network-engineer, gitops-engineer, backup-engineer, perf-engineer |
+
+### N3 — Agentes Especialistas (Ejecutores)
+Reciben tareas concretas de los supervisores. No delegan más (salvo excepciones).
+
+Ver tabla completa en [`skills/`](skills/) o en [`opencode.json`](opencode.json).
+
+## Flujo de Sesión Obligatorio
+
+Cada sesión sigue este pipeline. NO saltees pasos.
+
+```
+1. INICIAR
+   ├── mem_context — contexto de sesiones anteriores
+   ├── mem_search "user profile" — perfil, preferencias, personalidad
+   └── preguntar dudas — si hay ambigüedad en lo que pide el user
+
+2. ANALIZAR
+   ├── entender el problema (lógica de negocio, no solo código)
+   ├── evaluar tradeoffs y opciones
+   └── SI HAY AMBIGÜEDAD → PREGUNTAR (no asumas nada)
+
+3. EJECUTAR
+   ├── delegar si matchea dominio (N2 o N3)
+   ├── enseñar mientras hacés (QUÉ, POR QUÉ, PATRÓN)
+   ├── cuestionar decisiones del user si hay mejor opción
+   └── guardar en Engram CADA decisión importante (sin preguntar)
+
+4. POST-TASK — DOCS REVIEW (GATE OBLIGATORIO)
+   ├── ¿Cambió estructura? → AGENTS.md, ARCHITECTURE.md, README
+   ├── ¿Decisión técnica? → ADR en docs/adr/
+   ├── ¿Feature nueva? → CHANGELOG / README
+   └── delegar a lend-ai-docs si hay algo que actualizar
+
+5. PRE-COMMIT (GATES OBLIGATORIOS)
+   ├── ¿Hay tests? → delegar a lend-ai-testing
+   ├── ¿Todo en verde? → no seguir si falla
+   └── ¿Supera 300 líneas? → chained-pr, no un solo commit gigante
+
+6. COMMIT / PR
+   ├── modo humano (español rioplatense, cálido, claro)
+   ├── max 300 líneas por commit/PR/issue
+   └── Engram mem_save con lo que se hizo
+
+7. CERRAR
+   ├── mem_session_summary
+   ├── guardar preferencias aprendidas en la sesión
+   └── growth-engine revisa patrones (opcional)
+```
+
+## Convención de naming
 - `lend-ai-*` skills son específicas del repo (workflow, identidad)
 - `data-*` skills son del dominio Data Analysis
 - `frontend-*` skills son del dominio Frontend
@@ -16,20 +89,6 @@ Convención de naming:
 2. Cargá la skill leyendo el archivo SKILL.md en la ruta indicada
 3. Seguí TODOS los patrones y reglas de la skill cargada
 4. Múltiples skills pueden aplicarse simultáneamente
-
-## Agentes del Ecosistema
-
-| Agente | Rol | Primary | Sub-agentes |
-|--------|-----|---------|-------------|
-| `lend-ai` | Orquestador general del ecosistema (AISHA Engine) | ✅ | data-analyst, frontend-senior, devops, engram-keeper, growth-engine, enhance-engine, content-engine, commits-real, lend-ai-engram, lend-ai-testing, lend-ai-docs, judgment-day |
-| `data-analyst` | Análisis de datos, ML, EDA, reporting | ❌ (sub) | data-question, data-design, data-explorer, data-analysis, data-cleaning, data-modeler, data-reporter, data-verify, data-archive |
-| `frontend-senior` | Desarrollo frontend, React, CSS, testing | ❌ (sub) | framework-architect, ui-crafter, styling-engineer, data-flow, api-consumer, realtime-engineer, quality-guardian, perf-a11y, build-master, content-docs |
-| `devops` | Infraestructura, CI/CD, Docker, cloud, seguridad | ❌ (sub) | docker-engineer, ci-cd-pilot, cloud-architect, db-admin, infra-sre, security-auditor, network-engineer, gitops-engineer, backup-engineer, perf-engineer |
-| `engram-keeper` | Memoria del ecosistema (Engram) | ❌ (sub) | lend-ai-engram |
-| `growth-engine` | Meta-aprendizaje, detección de patrones, mejora del ecosistema | ❌ (sub) | — |
-| `enhance-engine` | Mejora paralela desde 10 perspectivas | ❌ (sub) | — |
-| `content-engine` | Analiza Engram, trackea mejoras, genera contenido para LinkedIn | ❌ (sub) | — |
-| `lend-ai-mentor` | Protocolo de proyecto + profesor + perfil de usuario | ❌ (sub) | — |
 
 ## Skills
 
