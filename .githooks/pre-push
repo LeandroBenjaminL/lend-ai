@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Lend.Ai — Pre-push hook: bloquea el push si los tests fallan
+# REGLA FUNDAMENTAL: tests must pass before push
+# Config: git config core.hooksPath .githooks
+
+set -euo pipefail
+
+echo ""
+echo "  =============================================="
+echo "     RUNNING TESTS BEFORE PUSH..."
+echo "  =============================================="
+echo ""
+
+cd "$(git rev-parse --show-toplevel)"
+
+if ! python3 -m pytest tests/ -q --tb=short 2>&1; then
+    echo ""
+    echo "  =============================================="
+    echo "     TESTS FAILED — PUSH BLOCKED"
+    echo "     Fix the failing tests before pushing again."
+    echo "  =============================================="
+    exit 1
+fi
+
+echo ""
+echo "  =============================================="
+echo "     ALL TESTS PASSED — PUSHING"
+echo "  =============================================="
+echo ""

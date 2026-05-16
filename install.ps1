@@ -229,6 +229,15 @@ if (-not (Test-Path $PROFILE)) {
 }
 
 # ============================================================================
+# Step 7b: Configure git hooks
+# ============================================================================
+
+step "Configurando git hooks (tests antes de push)"
+Set-Location -LiteralPath $repoPath
+git config core.hooksPath .githooks 2>$null
+success "Git hooks configurados: tests se ejecutan antes de cada push"
+
+# ============================================================================
 # Step 8: Verify installation
 # ============================================================================
 

@@ -203,6 +203,7 @@ def guardar_tier_activo(tier: str) -> dict:
         "tipo_tarea": tiers[tier].get("tipo_tarea", ""),
     }
     try:
+        ACTIVE_TIER_FILE.parent.mkdir(parents=True, exist_ok=True)
         with open(ACTIVE_TIER_FILE, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
         return data

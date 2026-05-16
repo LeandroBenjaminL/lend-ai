@@ -328,6 +328,12 @@ verify_mcps() {
     local mcp_ok=0
     local mcp_fail=0
 
+    # Git hooks setup
+    step "Configurando git hooks (tests antes de push)"
+    git config core.hooksPath .githooks 2>/dev/null || true
+    chmod +x "${INSTALL_DIR}/.githooks/pre-push" 2>/dev/null || true
+    success "Git hooks configurados: tests se ejecutan antes de cada push"
+
     # Python MCPs
     echo -e "  ${BOLD}MCPs Python:${NC}"
     if python3 -c "from mcp.server.fastmcp import FastMCP" &>/dev/null 2>&1; then
