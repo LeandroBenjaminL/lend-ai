@@ -2,7 +2,7 @@
 name: branch-pr
 description: >
   Enterprise PR workflow — issue-first, branch naming, conventional commits,
-  PR description, and review cycle. PRs under 400 lines.
+  PR description, and review cycle. PRs under 300 lines.
   Trigger: When creating a PR, preparing changes for review, or opening a branch.
 license: MIT
 metadata:
@@ -20,13 +20,13 @@ Enterprise PR workflow. Small PRs, clear descriptions, review before merge.
 - You're creating a new branch to work on an issue
 - Changes are ready and you need to open a PR
 - Someone requested a review on your PR
-- A PR is too large and needs splitting (> 400 lines)
+- A PR is too large and needs splitting (> 300 lines)
 
 ## Workflow LEND
 
 1. ANALYZE
    ├── Issue: is there an associated issue? what does it solve?
-   ├── Scope: how many files? how many lines? (> 400 → chained-pr)
+   ├── Scope: how many files? how many lines? (> 300 → chained-pr)
    ├── Base branch: main, develop, or feature branch?
    └── Dependencies: does this PR block or depend on others?
 
@@ -43,7 +43,7 @@ Enterprise PR workflow. Small PRs, clear descriptions, review before merge.
    ├── Commits: conventional commits in English, atomic
    ├── PR description: what, why, how, testing evidence, screenshots
    ├── Template: context, changes, testing, checklist for reviewer
-   ├── Small PR: < 400 lines. If larger → chained-pr
+   ├── Small PR: < 300 lines. If larger → chained-pr
    ├── Labels: feat, fix, chore, breaking, needs-review
    └── REVIEW CYCLE: author opens → reviewer approves/requests changes → author updates → merge
 
@@ -61,7 +61,7 @@ Enterprise PR workflow. Small PRs, clear descriptions, review before merge.
 ## Patterns
 
 - **Issue-first**: every branch/PR comes from an issue
-- **Small PRs**: < 400 lines, one logical change
+- **Small PRs**: < 300 lines, one logical change
 - **Branch naming**: `type/issue-number-description`
 - **PR description**: what, why, how, screenshots, testing
 - **Review cycle**: author opens → reviewer feedback → author updates → merge

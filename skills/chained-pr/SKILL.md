@@ -2,8 +2,8 @@
 name: chained-pr
 description: >
   Chained PRs for large changes — split oversized PRs into sequential,
-  reviewable chunks under 400 lines. Stacked PRs or Feature Branch Chain.
-  Trigger: When a PR exceeds 400 lines, or SDD forecasts budget risk High.
+  reviewable chunks under 300 lines. Stacked PRs or Feature Branch Chain.
+  Trigger: When a PR exceeds 300 lines, or SDD forecasts budget risk High.
 license: MIT
 metadata:
   author: Leandro Benjamin L.
@@ -18,13 +18,13 @@ Chained PRs. Large changes broken into reviewable chunks that protect reviewer c
 ## Activation Contract
 
 Load this skill when:
-- A planned PR may exceed **400 changed lines**
-- SDD forecasts `400-line budget risk: High` or `Chained PRs recommended: Yes`
+- A planned PR may exceed **300 changed lines**
+- SDD forecasts `300-line budget risk: High` or `Chained PRs recommended: Yes`
 - The user asks for chained/stacked PRs or review slices
 
 ## Hard Rules
 
-- Split PRs over **400 changed lines** unless a maintainer explicitly accepts `size:exception`
+- Split PRs over **300 changed lines** unless a maintainer explicitly accepts `size:exception`
 - Keep each PR reviewable in ≤60 minutes
 - One deliverable work unit per PR; keep tests/docs with the unit they verify
 - State start, end, prior dependencies, follow-up work, and out-of-scope in every chained PR
@@ -35,9 +35,9 @@ Load this skill when:
 
 | Condition | Action |
 |-----------|--------|
-| PR ≤400 changed lines and focused | Keep single PR |
-| PR >400, each slice can land independently | Use **Stacked PRs to main** |
-| PR >400, feature must integrate before main | Use **Feature Branch Chain** with tracker |
+| PR ≤300 changed lines and focused | Keep single PR |
+| PR >300, each slice can land independently | Use **Stacked PRs to main** |
+| PR >300, feature must integrate before main | Use **Feature Branch Chain** with tracker |
 | Generated/vendor/migration diff cannot split cleanly | Ask maintainer for `size:exception` |
 | SDD provides `delivery_strategy` | Follow it before apply/PR creation |
 
