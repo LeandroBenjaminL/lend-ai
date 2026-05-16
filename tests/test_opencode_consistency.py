@@ -28,7 +28,7 @@ SKILLS_WITHOUT_MANIFEST = {
 
 
 def _get_opencode_agents() -> set[str]:
-    with open(OPENCODE_JSON, encoding="utf-8") as f:
+    with open(OPENCODE_JSON, encoding="utf-8-sig") as f:
         data = json.load(f)
     return set(data.get("agent", {}).keys())
 
@@ -58,7 +58,7 @@ class TestOpencodeManifestConsistency:
 
     def test_opencode_json_is_valid(self):
         """opencode.json es JSON valido."""
-        with open(OPENCODE_JSON, encoding="utf-8") as f:
+        with open(OPENCODE_JSON, encoding="utf-8-sig") as f:
             data = json.load(f)
         assert isinstance(data, dict)
         assert "agent" in data
@@ -66,7 +66,7 @@ class TestOpencodeManifestConsistency:
 
     def test_opencode_has_required_mcps(self):
         """opencode.json tiene los MCPs core configurados."""
-        with open(OPENCODE_JSON, encoding="utf-8") as f:
+        with open(OPENCODE_JSON, encoding="utf-8-sig") as f:
             data = json.load(f)
         mcps = data.get("mcp", {})
 

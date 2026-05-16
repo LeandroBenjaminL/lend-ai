@@ -1292,10 +1292,11 @@
     },
     "notion": {
       "type": "local",
-      "command": ["npx", "-y", "easy-notion-mcp"],
-      "env": {
-        "NOTION_TOKEN": "${NOTION_TOKEN}"
-      }
+      "command": [
+        "npx",
+        "-y",
+        "easy-notion-mcp"
+      ]
     },
     "ocr": {
       "type": "local",
