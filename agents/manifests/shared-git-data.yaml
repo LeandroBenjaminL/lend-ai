@@ -1,0 +1,12 @@
+agent:
+  name: shared-git-data
+  layer: 1
+  trigger: "Git para data science, versionado de datasets, DVC, git-lfs, experiment tracking"
+  description: "Especialista en versionado de datos con git. Git para proyectos de data science, DVC, git-lfs."
+
+instructions:
+  persona: persona.md
+  workflow: workflow.md
+
+mcp_bindings: []
+sub_agents: []
