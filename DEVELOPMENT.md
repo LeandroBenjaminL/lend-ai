@@ -286,3 +286,30 @@ Technical decisions are documented in `docs/adr/`.
 cp docs/adr/TEMPLATE.md docs/adr/XXX-descriptive-title.md
 # Complete: Context → Decision → Consequences → Status
 ```
+
+## Troubleshooting
+
+### Agente no delega correctamente
+```bash
+# Verificar que agent-router está corriendo
+python3 mcp-servers/agent-router.py --health
+
+# Ver qué agentes están registrados
+python3 scripts/model-commands.py list
+```
+
+### Engram no responde
+```bash
+# Verificar servidor Engram
+bash engram-wrapper.sh --health
+
+# Restaurar backup si hay corrupción
+cp ~/.engram/engram.db.bak ~/.engram/engram.db
+```
+
+### Agregar un MCP nuevo
+1. Agregar config en `opencode.json` bajo `mcp` (nota: no es mcpServers)
+2. Agregar token necesario en `.env`
+3. Documentar en `docs/MCP_REQUIREMENTS.md`
+4. Correr `./update.sh` para verificar consistencia
+```

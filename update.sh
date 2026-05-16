@@ -54,7 +54,7 @@ step()    { echo -e "\n${BOLD}▶ $*${NC}"; }
 # ============================================================================
 
 echo -e "\n${BOLD}╔══════════════════════════════════════════════════╗${NC}"
-echo -e "${BOLD}║   Lend.Ai — Update v0.6.2                      ║${NC}"
+echo -e "${BOLD}║   Lend.Ai — Update v0.8.0                      ║${NC}"
 echo -e "${BOLD}╚══════════════════════════════════════════════════╝${NC}\n"
 
 if [ ! -d "${LEND_AI_HOME}" ]; then
@@ -83,6 +83,21 @@ if ! git diff --quiet HEAD 2>/dev/null; then
     echo ""
     info "Se van a stash para que el pull sea limpio."
     git stash --include-untracked || true
+fi
+
+# ============================================================================
+# 2.5. Backup Engram DB before update
+# ============================================================================
+
+echo ""
+step "Backing up Engram DB..."
+
+ENGRA_DB="${HOME}/.engram/engram.db"
+if [ -f "$ENGRA_DB" ]; then
+    cp "$ENGRA_DB" "${HOME}/.engram/engram.db.bak"
+    success "Engram backup saved to ~/.engram/engram.db.bak"
+else
+    info "No Engram DB found at ${ENGRA_DB} — skipping backup"
 fi
 
 # ============================================================================

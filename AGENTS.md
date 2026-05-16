@@ -104,7 +104,6 @@ Cada interacción sigue EXACTAMENTE este pipeline. No omitas pasos.
 | Skill | Trigger | Ruta |
 |-------|---------|------|
 | `lend-ai-mentor` | **Cargar al iniciar cada sesión** — Protocolo completo de proyecto + profesor + perfil de usuario. Reemplaza config previa de comportamiento. | [`skills/lend-ai-mentor/SKILL.md`](skills/lend-ai-mentor/SKILL.md) |
-| `lend-ai-persona` | Al iniciar sesión, definir perfil, conocer la identidad del ecosistema | [`skills/lend-ai-persona/SKILL.md`](skills/lend-ai-persona/SKILL.md) |
 | `lend-ai-workflow` | Al planificar trabajo, definir flujo, decidir entre data o frontend | [`profiles/lend-ai/workflow.md`](profiles/lend-ai/workflow.md) |
 | `data-analyst` | Cuando necesitás ser el profesor senior de datos — análisis, EDA, ML | [`skills/data-analyst/SKILL.md`](skills/data-analyst/SKILL.md) |
 | `frontend-senior` | Cuando necesitás ser el mentor senior de frontend — React, CSS, UX | [`skills/frontend-senior/SKILL.md`](skills/frontend-senior/SKILL.md) |
@@ -139,11 +138,11 @@ Cada interacción sigue EXACTAMENTE este pipeline. No omitas pasos.
 | `frontend-type-script` | Al escribir TypeScript, tipos, genéricos | [`skills/frontend-type-script/SKILL.md`](skills/frontend-type-script/SKILL.md) |
 | `frontend-web-performance` | Al optimizar performance, Core Web Vitals | [`skills/frontend-web-performance/SKILL.md`](skills/frontend-web-performance/SKILL.md) |
 | `gitops-engineer` | Al implementar GitOps, ArgoCD, Flux | [`skills/gitops-engineer/SKILL.md`](skills/gitops-engineer/SKILL.md) |
-| `go-testing` | Al escribir tests en Go | [`skills/go-testing/SKILL.md`](skills/go-testing/SKILL.md) |
+| `go-testing` | Al escribir tests en Go — (reserved, no active Go modules in current codebase) | [`skills/go-testing/SKILL.md`](skills/go-testing/SKILL.md) |
 | `infra-sre` | Al manejar infraestructura, monitoreo, SRE | [`skills/infra-sre/SKILL.md`](skills/infra-sre/SKILL.md) |
 | `issue-creation` | Al crear issues en GitHub, reportar bugs | [`skills/issue-creation/SKILL.md`](skills/issue-creation/SKILL.md) |
 | `judgment-day` | Al necesitar doble review, revisión adversarial | [`skills/judgment-day/SKILL.md`](skills/judgment-day/SKILL.md) |
-| `lend-ai-delegation` | Al decidir a qué sub-agente delegar una tarea | [`skills/lend-ai-delegation/SKILL.md`](skills/lend-ai-delegation/SKILL.md) |
+| `lend-ai-delegation` | Al necesitar delegar tareas a sub-agentes automáticamente, árbol de delegación, agent-router | [`skills/lend-ai-delegation/SKILL.md`](skills/lend-ai-delegation/SKILL.md) |
 | `lend-ai-workflow` | Al planificar trabajo, definir flujo, decidir entre data o frontend | [`profiles/lend-ai/workflow.md`](profiles/lend-ai/workflow.md) |
 | `ml-modeling` | Al entrenar modelos ML, regresión, clasificación | [`skills/ml-modeling/SKILL.md`](skills/ml-modeling/SKILL.md) |
 | `network-engineer` | Al configurar redes, DNS, VPN, firewalls | [`skills/network-engineer/SKILL.md`](skills/network-engineer/SKILL.md) |
@@ -190,6 +189,6 @@ Cada interacción sigue EXACTAMENTE este pipeline. No omitas pasos.
 | `cloud-architect` | Al diseñar arquitectura cloud, AWS, GCP, Azure | [`skills/cloud-architect/SKILL.md`](skills/cloud-architect/SKILL.md) |
 | `content-engine` | Al analizar progreso, generar contenido para LinkedIn, documentar mejoras | [`skills/content-engine/SKILL.md`](skills/content-engine/SKILL.md) |
 | `issue-creation` | Al crear issues en GitHub, reportar bugs | [`skills/issue-creation/SKILL.md`](skills/issue-creation/SKILL.md) |
-| `go-testing` | Al escribir tests en Go | [`skills/go-testing/SKILL.md`](skills/go-testing/SKILL.md) |
+| `go-testing` | Al escribir tests en Go — (reserved, no active Go modules in current codebase) | [`skills/go-testing/SKILL.md`](skills/go-testing/SKILL.md) |
 
 > **Skills deprecadas**: `cognitive-doc-design`, `comment-writer`, `work-unit-commits` → reemplazadas por `commits-real`

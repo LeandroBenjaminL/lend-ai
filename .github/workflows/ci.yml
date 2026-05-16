@@ -59,6 +59,22 @@ jobs:
       - name: Validate install.sh syntax
         run: bash -n install.sh && echo "✅ install.sh syntax OK"
 
+      - name: Validate AGENTS.md consistency
+        run: |
+          python -c "
+          import re, sys
+          from pathlib import Path
+          content = Path('AGENTS.md').read_text(encoding='utf-8')
+          paths = re.findall(r'\[.*?SKILL\.md\]\((.*?)\)', content)
+          missing = [p for p in paths if not Path(p).exists()]
+          if missing:
+              print('Missing SKILL.md files:')
+              for m in missing:
+                  print(f'  {m}')
+              sys.exit(1)
+          print(f'All {len(paths)} skills validated OK')
+          "
+
   test:
     runs-on: ubuntu-latest
     steps:

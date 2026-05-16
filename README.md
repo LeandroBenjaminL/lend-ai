@@ -4,7 +4,7 @@
 
 > Unified AI agent ecosystem: Data Analysis, Frontend Development, DevOps, and SDD. Running on OpenCode with a hierarchical skill system, sub-agents, and tiered models (T1-T5) for cost-quality optimization.
 
-Lend.Ai is a production-grade AI agent ecosystem that orchestrates **88 agents**, **73 skills**, and **17 MCPs** across four domains. It runs on [OpenCode](https://opencode.ai) and provides a senior mentor experience with automatic personality loading, memory persistence via Engram, and a spec-driven development (SDD) workflow.
+Lend.Ai is a production-grade AI agent ecosystem that orchestrates **88 agents**, **73 skills**, and **10 MCPs** across four domains. It runs on [OpenCode](https://opencode.ai) and provides a senior mentor experience with automatic personality loading, memory persistence via Engram, and a spec-driven development (SDD) workflow.
 
 ## CI Rule
 
@@ -80,11 +80,11 @@ Each orchestrator has an explicit **Arsenal** mapping: Core Protocols (always-on
 
 | Metric | Value |
 |--------|-------|
-| Version | v0.7.0 |
+| Version | v0.8.0 |
 | Agents | 88 |
 | Skills | 73 (all with LEND Protocol) |
 | Shared Protocols | 5 |
-| MCPs | 9 |
+| MCPs | 10 |
 | CI | Passing required before push |
 | Commits | 3-level ceremony (direct, quick PR, full review) |
 
@@ -95,7 +95,7 @@ Each orchestrator has an explicit **Arsenal** mapping: Core Protocols (always-on
 - **OpenCode** as the agent platform
 - **Models**: DeepSeek, Minimax via T1-T5 tiers (free + paid)
 - **Engram** for persistent memory between sessions
-- **9 MCPs**: engram, sequential-thinking, web-search, github, context7, google-drive, notion, ocr, agent-router, model-router
+- **10 MCPs**: engram, sequential-thinking, web-search, github, context7, google-drive, notion, ocr, agent-router, model-router
 
 ## Enterprise Workflow
 
@@ -157,6 +157,19 @@ All skills follow the **LEND Protocol**: Trigger → Analyze → Offer (3 option
 | `make lint` | Run linter (ruff) |
 | `/model list` | View agents and skills with their models |
 | `/model set agent <name> <tier>` | Change model for an agent |
+| `python scripts/skill-health-check.py` | Validate ecosystem consistency |
+| `python scripts/usage-dashboard.py` | View usage dashboard |
+| `python scripts/backup-engram.ps1` | Backup Engram database |
+| `python3 mcp-servers/model-router.py list` | List all tiers and models |
+| `python3 mcp-servers/agent-router.py --health` | Check agent-router health |
+| `python3 mcp-servers/model-router.py resolve --skill <name>` | Check tier for a skill |
+| `python3 mcp-servers/model-router.py resolve --agent <name>` | Check tier for an agent |
+| `pytest tests/ -v` | Run all tests |
+| `pytest tests/test_agent_logic.py -v` | Run agent logic tests |
+| `pytest tests/test_model_router.py -v` | Run model router tests |
+| `ruff check .` | Lint |
+| `ruff format .` | Format |
+| `python scripts/model-commands.py list` | List models |
 
 ## Personality
 
