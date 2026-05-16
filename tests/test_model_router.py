@@ -52,17 +52,12 @@ class TestRouterBasics:
         )
 
     def test_router_is_valid_python(self, model_router_script: Path) -> None:
-        """model-router.py se puede importar sin errores de sintaxis."""
-        result = subprocess.run(
-            [
-                sys.executable,
-                "-c",
-                f"import py_compile; py_compile.compile(r'{model_router_script}', doraise=True)",
-            ],
-            capture_output=True,
-            text=True,
-        )
-        assert result.returncode == 0, f"Error de sintaxis en model-router.py:\n{result.stderr}"
+        """model-router.py es Python sintácticamente válido."""
+        source = model_router_script.read_text(encoding="utf-8")
+        try:
+            compile(source, str(model_router_script), "exec")
+        except SyntaxError as e:
+            pytest.fail(f"Error de sintaxis en model-router.py:\n{e}")
 
 
 class TestRouterList:

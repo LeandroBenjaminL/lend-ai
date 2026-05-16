@@ -153,7 +153,8 @@ def check_opencode_json_agents(json_path: Path) -> tuple[int, int, list[str]]:
 
 def check_n1_skills(text: str):
     global errors
-    n1_section = get_section(text, r"N1 \u2014 Skills de Sistema \(SIEMPRE ACTIVAS en el chat principal\)")
+    heading = r"N1 \u2014 Skills de Sistema \(SIEMPRE ACTIVAS en el chat principal\)"
+    n1_section = get_section(text, heading)
     n1_skills = extract_skill_names_from_md(n1_section)
 
     print("\n=== N1 CROSS-REFERENCE CHECK ===")
@@ -204,7 +205,7 @@ def main():
 
     status = "[PASS]" if errors == 0 else "[FAIL]"
 
-    print(f"\n=== SUMMARY ===")
+    print("\n=== SUMMARY ===")
     print(f"Skills: {total_disk} total, {len(missing)} missing from disk, "
           f"{len(orphans)} orphans (no AGENTS.md entry)")
     print(f"Manifests: {total_manifests} total, {broken_manifests} broken")

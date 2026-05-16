@@ -7,8 +7,6 @@ reglas de enseñanza/engram/docs están definidas en skills críticas.
 import json
 from pathlib import Path
 
-import pytest
-
 REPO_ROOT = Path(__file__).resolve().parent.parent
 OPENCODE_JSON = REPO_ROOT / "opencode.json"
 AGENTS_MD = REPO_ROOT / "AGENTS.md"

@@ -45,7 +45,9 @@ def build_report(db):
     out(f"  Ultimos 7 dias: {recent_s}")
 
     # Sessions per week approximation
-    rows = try_query(db, "SELECT started_at FROM sessions WHERE started_at IS NOT NULL ORDER BY started_at")
+    rows = try_query(
+        db, "SELECT started_at FROM sessions WHERE started_at IS NOT NULL ORDER BY started_at"
+    )
     if len(rows) >= 2:
         try:
             first = datetime.fromisoformat(rows[0][0])
@@ -59,7 +61,7 @@ def build_report(db):
     out(f"  Promedio por semana: {avg}")
 
     # ── Most Active Areas ──
-    out(f"\nAREAS MAS ACTIVAS (por observaciones)")
+    out("\nAREAS MAS ACTIVAS (por observaciones)")
     active = try_query(
         db,
         "SELECT topic_key, COUNT(*) as cnt FROM observations "
@@ -73,7 +75,7 @@ def build_report(db):
         out("  (sin topic_keys asignados aun)")
 
     # ── Least Active Areas ──
-    out(f"\nAREAS MENOS ACTIVAS")
+    out("\nAREAS MENOS ACTIVAS")
     least = try_query(
         db,
         "SELECT topic_key, COUNT(*) as cnt FROM observations "
@@ -88,7 +90,7 @@ def build_report(db):
         out("  (sin topic_keys asignados aun)")
 
     # ── Observation Types ──
-    out(f"\nTIPOS DE OBSERVACION")
+    out("\nTIPOS DE OBSERVACION")
     types = try_query(
         db, "SELECT type, COUNT(*) as cnt FROM observations GROUP BY type ORDER BY cnt DESC"
     )
@@ -97,7 +99,7 @@ def build_report(db):
             out(f"  {t}: {cnt}")
 
     # ── Session timeline ──
-    out(f"\nSESIONES EN EL TIEMPO")
+    out("\nSESIONES EN EL TIEMPO")
     timeline = try_query(
         db,
         "SELECT DATE(started_at) as d, COUNT(*) as cnt FROM sessions "
@@ -111,7 +113,7 @@ def build_report(db):
         out("  (sin datos)")
 
     # ── Recommendations ──
-    out(f"\nRECOMENDACIONES")
+    out("\nRECOMENDACIONES")
     zero_areas = try_query(
         db,
         "SELECT topic_key FROM observations "
@@ -125,7 +127,7 @@ def build_report(db):
         out(f"  - Top area '{top_key}' ({top_cnt} obs) es la mas activa - enfocar aqui")
     else:
         out(f"  - {zero_count} areas tienen 0 observaciones - considerar eliminar o consolidar")
-        out(f"  - No hay areas con observaciones aun")
+        out("  - No hay areas con observaciones aun")
 
     # Total obs count
     total_obs = try_query(db, "SELECT COUNT(*) FROM observations")

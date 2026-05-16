@@ -1,7 +1,6 @@
 """Tests for agent-level contracts and skill registration."""
 
 from pathlib import Path
-import yaml
 
 
 def test_lend_ai_delegation_skill_exists():
