@@ -13,13 +13,7 @@ skills:
   - lend-ai-persona
   - senior-orchestrator
   - commits-real
-  - lend-ai-docs
   - lend-ai-engram
-  - lend-ai-testing
-  - judgment-day
-  - growth-engine
-  - enhance-engine
-  - content-engine
 
 sub_agents:
   - data-analyst
