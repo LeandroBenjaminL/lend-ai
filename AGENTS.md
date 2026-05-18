@@ -48,20 +48,26 @@ Ecosistema unificado de agentes AI para Data Analysis y Frontend Development.
 ## Arquitectura de 3 Niveles
 
 ### N1 — Skills de Sistema (SIEMPRE ACTIVAS en el chat principal)
-Se cargan automáticamente al iniciar sesión. Definen personalidad, memoria, flujo y calidad.
+Se cargan automáticamente al iniciar sesión. Definen personalidad, flujo y orquestación.
 
 | Skill | Propósito |
 |-------|-----------|
 | `lend-ai-persona` | Identidad AISHA, tono rioplatense, reglas, perfil profesor |
-| `lend-ai-mentor` | Protocolo de proyecto + enseñanza + perfil de usuario + delegación automática v3.0 |
-| `lend-ai-workflow` | Flujo de trabajo, GATES obligatorios, delegación |
-| `lend-ai-engram` | Memoria del ecosistema — guardar y consultar |
-| `engram-memory-system` | Sistema de memoria profunda — topic_keys, frescura, auto-evolución |
-| `commits-real` | Commits y PRs — modo humano + límite 300 líneas |
-| `lend-ai-testing` | Gate obligatorio pre-commit — tests en verde |
-| `lend-ai-docs` | Documentación técnica |
+| `lend-ai-mentor` | Protocolo de proyecto + enseñanza + perfil de usuario + delegación v3.0 |
 | `senior-orchestrator` | Orquestación, delegación, routing de modelos |
-| `lend-ai-delegation` | Protocolo de delegación y sub-agentes |
+| `lend-ai-workflow` | Flujo de trabajo, GATES obligatorios, delegación |
+
+### On-Demand — Skills de Apoyo (se cargan vía `skill()`)
+No se cargan al inicio para ahorrar contexto. El orquestador las carga bajo demanda según la tarea.
+
+| Skill | Cuándo se carga |
+|-------|-----------------|
+| `lend-ai-delegation` | Al delegar trabajo a sub-agentes |
+| `lend-ai-engram` | Al guardar o consultar memoria |
+| `engram-memory-system` | Para gestión profunda de memoria con topic_keys |
+| `commits-real` | Al hacer commits o PRs |
+| `lend-ai-testing` | Antes de commit — gate de tests |
+| `lend-ai-docs` | Al escribir documentación técnica |
 
 ### N2 — Agentes de Dominio (Supervisores)
 Spawnean sub-agentes especializados. Siempre reciben tarea delegada del orquestador.

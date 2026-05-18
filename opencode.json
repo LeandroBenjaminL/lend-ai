@@ -52,13 +52,7 @@
       "skills": [
         "lend-ai-mentor",
         "lend-ai-persona",
-        "senior-orchestrator",
-        "lend-ai-delegation",
-        "commits-real",
-        "lend-ai-engram",
-        "lend-ai-testing",
-        "lend-ai-docs",
-        "engram-memory-system"
+        "senior-orchestrator"
       ]
     },
     "data-analyst": {
@@ -243,7 +237,7 @@
       }
     },
     "engram-keeper": {
-      "description": "Engram Keeper — guardian de la memoria del ecosistema. Organiza, consolida y mantiene el contexto entre sesiones. Preserva la frescura de la memoria, detecta patrones, propone skills nuevas. AUTO-EVOLUCIONA.",
+      "description": "Engram Keeper — memoria del ecosistema. Organiza, consolida, preserva frescura, detecta patrones, propone skills.",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -320,7 +314,7 @@
       ]
     },
     "data-reporter": {
-      "description": "Reportes, visualizaciones y dashboards — spawnea sub-agentes de reporte",
+      "description": "Reportes, visualizaciones y dashboards — spawns reporte",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -351,7 +345,7 @@
       ]
     },
     "data-etl": {
-      "description": "Pipelines ETL y automatización — spawnea sub-agentes de extracción/transformación",
+      "description": "Pipelines ETL — spawns extracción/transformación",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -446,7 +440,7 @@
       }
     },
     "data-verify": {
-      "description": "Verificar resultados del análisis — spawnea validación y revisión adversaria",
+      "description": "Verificar resultados del análisis — spawns validación y revisión",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -514,7 +508,7 @@
       ]
     },
     "data-analysis": {
-      "description": "Análisis con Pandas/NumPy — puede spawnear sub-agentes de profiling y validación",
+      "description": "Análisis con Pandas/NumPy — spawns profiling y validación",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -619,7 +613,7 @@
       ]
     },
     "data-visualization": {
-      "description": "Gráficos con Matplotlib, Seaborn, Plotly — spawnea sub-agentes de reporte",
+      "description": "Gráficos con Matplotlib, Seaborn, Plotly — spawns reporte",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -1131,7 +1125,7 @@
       }
     },
     "growth-engine": {
-      "description": "Meta-aprendizaje, detección de patrones, mejora del ecosistema. Observa sesiones pasadas y propone skills/protocolos nuevos.",
+      "description": "Meta-aprendizaje. Analiza sesiones pasadas y propone skills/protocolos nuevos.",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -1150,7 +1144,7 @@
       ]
     },
     "enhance-engine": {
-      "description": "Mejora paralela desde 10 perspectivas: perf, quality, security, arch, testing, docs, errors, acc, UX, maint.",
+      "description": "Mejora paralela: perf, quality, security, arch, testing, docs, errors, acc, UX, maint.",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -1186,7 +1180,7 @@
       ]
     },
     "framework-architect": {
-      "description": "Arquitectura frontend — spawnea sub-agentes de React, estado, APIs",
+      "description": "Arquitectura frontend — spawns React, estado, APIs",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -1210,7 +1204,7 @@
       }
     },
     "ui-crafter": {
-      "description": "Componentes UI reutilizables — spawnea sub-agentes de React, CSS, TS",
+      "description": "Componentes UI reutilizables — spawns React, CSS, TS",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -1240,7 +1234,7 @@
       ]
     },
     "styling-engineer": {
-      "description": "CSS y estilos — spawnea sub-agentes de CSS y responsive",
+      "description": "CSS y estilos — spawns CSS y responsive",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -1268,7 +1262,7 @@
       ]
     },
     "data-flow": {
-      "description": "Manejo de datos y estado frontend — spawnea sub-agentes de estado y APIs",
+      "description": "Manejo de datos y estado frontend — spawns estado y APIs",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -1296,7 +1290,7 @@
       ]
     },
     "api-consumer": {
-      "description": "Consumo de APIs frontend — spawnea sub-agentes de APIs",
+      "description": "Consumo de APIs frontend — spawns APIs",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -1324,7 +1318,7 @@
       ]
     },
     "realtime-engineer": {
-      "description": "WebSockets y tiempo real — spawnea sub-agentes de APIs",
+      "description": "WebSockets y tiempo real — spawns APIs",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -1350,7 +1344,7 @@
       ]
     },
     "quality-guardian": {
-      "description": "Testing y calidad frontend — spawnea sub-agentes de testing",
+      "description": "Testing y calidad frontend — spawns testing",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -1377,7 +1371,7 @@
       ]
     },
     "perf-a11y": {
-      "description": "Performance y accesibilidad — spawnea sub-agentes de web performance",
+      "description": "Performance y accesibilidad — spawns web performance",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -1403,7 +1397,7 @@
       ]
     },
     "build-master": {
-      "description": "Build y tooling — spawnea sub-agentes de Docker, CI/CD y TS",
+      "description": "Build y tooling — spawns Docker, CI/CD y TS",
       "mode": "subagent",
       "hidden": true,
       "tools": {
@@ -1433,7 +1427,7 @@
       ]
     },
     "content-docs": {
-      "description": "Documentación y contenido — spawnea sub-agentes de docs y commits",
+      "description": "Documentación y contenido — spawns docs y commits",
       "mode": "subagent",
       "hidden": true,
       "tools": {
